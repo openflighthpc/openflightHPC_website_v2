@@ -1,16 +1,6 @@
 import ExampleRenderer from "../../components/_renderer/Renderer";
 
-type Props = {
-  params: Promise<{
-    name: string;
-  }>;
-};
-
-/* ————————————————————————————————————————————————
-   Specimen file. The page is a concrete wall, the
-   project is the thing being looked at. Dossier
-   framing, stencilled metadata, one green accent.
-   ———————————————————————————————————————————————— */
+import { useParams } from "next/navigation";
 
 type StencilProps = {
   text: string;
@@ -37,8 +27,8 @@ function StencilText({ text, repeat = 1 }: StencilProps) {
   );
 }
 
-export default async function ProjectPage({ params }: Props) {
-  const { name } = await params;
+export default function ProjectPage() {
+  const { name } = useParams<{ name: string }>();
 
   return <ExampleRenderer projectName={name} StencilText={StencilText} />;
 }
