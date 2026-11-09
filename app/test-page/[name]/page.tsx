@@ -1,13 +1,9 @@
+import { useParams } from "next/navigation";
 import Renderer from "../../components/_renderer/Renderer";
 
-type Props = {
-  params: Promise<{
-    name: string;
-  }>;
-};
-
-export default async function TestPage({ params }: Readonly<Props>) {
-  const { name } = await params;
+export default function TestPage(
+) {
+  const { name } = useParams<{ name: string }>()
 
   return (
     <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
