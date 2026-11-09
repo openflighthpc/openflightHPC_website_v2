@@ -27,7 +27,7 @@ console.log(hello);
 | Bob | 30 |
 `;
   return (
-    <div className="prose prose-neutral dark:prose-invert max-w-none">
+    <div className="prose prose-neutral dark:prose-invert max-w-none prose-headings:tracking-tight prose-pre:bg-zinc-950 prose-pre:text-zinc-100 prose-pre:rounded-lg prose-code:before:hidden prose-code:after:hidden">
       <ReactMarkdown remarkPlugins={[remarkGfm]}>
         {markdownString}
       </ReactMarkdown>
