@@ -6,7 +6,7 @@ type RendererProps = {
   projectName: string;
 };
 
-export default function Renderer({ projectName }: RendererProps) {
+export default function Renderer({ projectName }: Readonly<RendererProps>) {
   const project = getProject(projectName);
   const markdownString = project.page;
   return (
