@@ -18,7 +18,7 @@ export type Project = {
  * @returns All the projects from the projects directory
  */
 export function getAllProjects(): Project[] {
-   const projectsDir = path.join(process.cwd(), "projects");
+   const projectsDir = path.join(process.cwd(), 'public', "projects");
 
    const folders = fs.readdirSync(projectsDir).filter((item) =>
       fs.statSync(path.join(projectsDir, item)).isDirectory()
@@ -47,7 +47,7 @@ export function getAllProjects(): Project[] {
  * @returns The meta data about the project
  */
 export function getProject(name: string): Project & { page: string } {
-   const projectFolder = path.join(process.cwd(), 'projects', name);
+   const projectFolder = path.join(process.cwd(), 'public', 'projects', name);
 
    if (!fs.existsSync(projectFolder) || !fs.existsSync(path.join(projectFolder, 'meta.json'))) {
       throw new Error(`Cannot find a project called ${name}`);
