@@ -2,7 +2,7 @@ import { getProject } from "@/public/projects/handler";
 import Renderer from "../components/_renderer/Renderer";
 
 export default function TestPage() {
-  const projects = getProject('example');
+  const projects = getProject("example");
 
   console.log(projects);
 
@@ -12,7 +12,7 @@ export default function TestPage() {
         <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
           Test page
         </h1>
-        <Renderer projectName="Test Project" />
+        <Renderer projectName="example" />
       </main>
     </div>
   );
