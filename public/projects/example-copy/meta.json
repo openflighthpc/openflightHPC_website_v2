@@ -1,0 +1,14 @@
+{
+   "name": "example-project-2",
+   "description": "",
+   "languages": [
+      "javascript",
+      "typescript",
+      "css"
+   ],
+   "tags": [
+      "HPC"
+   ],
+   "status": "complete",
+   "featured": true
+}
