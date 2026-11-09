@@ -64,3 +64,11 @@ export function getProject(name: string): Project & { page: string } {
       logoPath: (fs.existsSync(path.join(projectDir, 'logo.png'))) ? path.join(projectDir, 'logo.png') : null
    };
 }
+
+/**
+ * Gets the featured projects from the projects dir
+ * @returns The featured projects
+ */
+export function getFeaturedProjects(): Project[] {
+   return getAllProjects().filter((project) => project.featured);
+}
