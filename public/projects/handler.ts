@@ -11,6 +11,7 @@ export type Project = {
    tags: string[];
    status: 'active' | 'complete' | 'archived';
    featured: boolean;
+   logoPath: string | null;
 }
 
 /**
@@ -27,15 +28,17 @@ export function getAllProjects(): Project[] {
    const projects: Project[] = [];
 
    for (const folder of folders) {
-      const metaPath = path.join(path.join(projectsDir, folder), "meta.json");
+      const projectDir = path.join(projectsDir, folder)
+      const metaPath = path.join(projectDir, "meta.json");
 
       if (!fs.existsSync(metaPath) || !fs.statSync(metaPath).isFile()) {
          continue;
       }
 
-      projects.push(
-         JSON.parse(fs.readFileSync(metaPath, "utf8"))
-      );
+      projects.push({
+         ...JSON.parse(fs.readFileSync(metaPath, "utf8")),
+         logoPath: (fs.existsSync(path.join(projectDir, 'logo.png'))) ? path.join(projectDir, 'logo.png') : null
+      });
    }
 
    return projects;
@@ -47,16 +50,25 @@ export function getAllProjects(): Project[] {
  * @returns The meta data about the project
  */
 export function getProject(name: string): Project & { page: string } {
-   const projectFolder = path.join(process.cwd(), 'public', 'projects', name);
+   const projectDir = path.join(process.cwd(), 'public', 'projects', name);
 
-   if (!fs.existsSync(projectFolder) || !fs.existsSync(path.join(projectFolder, 'meta.json'))) {
+   if (!fs.existsSync(projectDir) || !fs.existsSync(path.join(projectDir, 'meta.json'))) {
       throw new Error(`Cannot find a project called ${name}`);
    }
 
-   const data = JSON.parse(fs.readFileSync(path.join(projectFolder, 'meta.json'), 'utf8'))
+   const data = JSON.parse(fs.readFileSync(path.join(projectDir, 'meta.json'), 'utf8'))
 
    return {
       ...data,
-      page: fs.readFileSync(path.join(projectFolder, 'page.md'), 'utf8')
+      page: fs.readFileSync(path.join(projectDir, 'page.md'), 'utf8'),
+      logoPath: (fs.existsSync(path.join(projectDir, 'logo.png'))) ? path.join(projectDir, 'logo.png') : null
    };
+}
+
+/**
+ * Gets the featured projects from the projects dir
+ * @returns The featured projects
+ */
+export function getFeaturedProjects(): Project[] {
+   return getAllProjects().filter((project) => project.featured);
 }
