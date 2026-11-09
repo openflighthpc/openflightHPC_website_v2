@@ -1,4 +1,5 @@
 import { getProject } from "@/public/projects/handler";
+import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
@@ -14,18 +15,19 @@ export default function Renderer({ projectName }: RendererProps) {
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{
-          img({ src, alt, title }) {
+          img({ src, alt }) {
             if (typeof src !== "string") return null;
 
             const resolvedSrc = resolveImagePath(src, projectName);
 
             return (
-              <img
+              <Image
                 src={resolvedSrc}
                 alt={alt || ""}
-                title={title}
+                width={1200}
+                height={800}
                 className="rounded-lg max-w-full h-auto"
-                loading="lazy"
+                sizes="(max-width: 768px) 100vw, 768px"
               />
             );
           },
