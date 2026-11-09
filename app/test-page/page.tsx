@@ -1,5 +1,5 @@
+import { getProject } from "@/public/projects/handler";
 import Renderer from "../components/_renderer/Renderer";
-import { getAllProjects, getProject } from "@/projects/handler";
 
 export default function TestPage() {
   const projects = getProject('example');
