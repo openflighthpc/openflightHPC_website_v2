@@ -131,7 +131,11 @@ Team 3 took a different approach, focusing on the problems users encounter when 
 
 The objective was to replicate the experience of trying to build, compile and run a project when the accompanying documentation is inaccurate or misleading.
 
-To achieve this, the team deliberately introduced incorrect information into the README. Users were then required to work through the instructions, identify the problems and figure out how to get the program running successfully.
+To achieve this, the team deliberately introduced incorrect information into the README. Users were then required to work through the instructions, identify the problems and figure out how to get the program running successfully. 
+
+Such a lie can be seen here, as build.sh does not actually exist in the project:
+
+![a screenshot showing Team 3's Ring 1 lie](extras/Team3-ReadmeLie.png)
 
 Hints were incorporated into the Markdown documentation to help users identify and overcome the issues without immediately revealing the solutions.
 
