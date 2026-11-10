@@ -1,3 +1,4 @@
+import { getAllProjects } from "@/lib/projects-handler";
 import ExampleRenderer from "../../components/_renderer/Renderer";
 
 type StencilProps = {
@@ -5,9 +6,10 @@ type StencilProps = {
   repeat?: number;
 };
 
-function StencilText({ text, repeat = 1 }: StencilProps) {
+function StencilText({ text, repeat = 1 }: Readonly<StencilProps>) {
   const rows = Array.from({ length: repeat });
   const doubled = `${text.toUpperCase()} ${text.toUpperCase()}`;
+
   return (
     <div
       aria-hidden
@@ -25,12 +27,23 @@ function StencilText({ text, repeat = 1 }: StencilProps) {
   );
 }
 
-export default async function ProjectPage({
-  params,
-}: {
-  params: Promise<{ name: string }>;
-}) {
-  const { name } = await params;
+export function generateStaticParams() {
+  return getAllProjects().map((project) => ({
+    id: project.id,
+  }));
+}
 
-  return <ExampleRenderer projectName={name} StencilText={StencilText} />;
+type ProjectPageProps = {
+  params: Promise<{ id: string }>;
+};
+
+export default async function ProjectPage({ params }: Readonly<ProjectPageProps>) {
+  const { id } = await params;
+
+  return (
+    <ExampleRenderer
+      projectName={id}
+      StencilText={StencilText}
+    />
+  );
 }

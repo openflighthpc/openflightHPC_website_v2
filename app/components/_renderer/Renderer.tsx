@@ -1,4 +1,5 @@
-import { getProject } from "@/public/projects/handler";
+
+import { getProject } from "@/lib/projects-handler";
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
