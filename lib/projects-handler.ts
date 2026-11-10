@@ -69,8 +69,8 @@ export function getProject(id: string): Project & { summary: string; breakdown: 
    return {
       id,
       ...data,
-      summary: fs.readFileSync(path.join(projectDir, 'summary.md'), 'utf8'),
-      breakdown: fs.readFileSync(path.join(projectDir, 'breakdown.md'), 'utf8'),
+      summary: fs.readFileSync(path.join(projectDir, 'summary.md'), 'utf8').trim(),
+      breakdown: fs.readFileSync(path.join(projectDir, 'breakdown.md'), 'utf8').trim(),
       logoPath: fs.existsSync(path.join(projectDir, 'logo.png'))
          ? path.join('projects', id, 'logo.png')
          : null
