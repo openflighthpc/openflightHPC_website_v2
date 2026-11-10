@@ -1,7 +1,7 @@
-import "server-only";
+import 'server-only';
 
-import path from "node:path";
-import fs from 'node:fs'
+import path from 'node:path';
+import fs from 'node:fs';
 
 /**
  * The layout of the project meta.json file
@@ -15,7 +15,7 @@ export type Project = {
    status: 'in-progress' | 'complete' | 'archived';
    featured: boolean;
    logoPath: string | null;
-}
+};
 
 /**
  * Gathers all the projects from the projects directory and returns them
@@ -24,15 +24,15 @@ export type Project = {
 export function getAllProjects(): Project[] {
    const projectsDir = path.join(process.cwd(), 'public', 'projects');
 
-   const folders = fs.readdirSync(projectsDir).filter((item) =>
-      fs.statSync(path.join(projectsDir, item)).isDirectory()
-   );
+   const folders = fs
+      .readdirSync(projectsDir)
+      .filter((item) => fs.statSync(path.join(projectsDir, item)).isDirectory());
 
    const projects: Project[] = [];
 
    for (const folder of folders) {
-      const projectDir = path.join(projectsDir, folder)
-      const metaPath = path.join(projectDir, "meta.json");
+      const projectDir = path.join(projectsDir, folder);
+      const metaPath = path.join(projectDir, 'meta.json');
 
       if (!fs.existsSync(metaPath) || !fs.statSync(metaPath).isFile()) {
          continue;
@@ -40,8 +40,10 @@ export function getAllProjects(): Project[] {
 
       projects.push({
          id: folder,
-         ...JSON.parse(fs.readFileSync(metaPath, "utf8")),
-         logoPath: (fs.existsSync(path.join(projectDir, 'logo.png'))) ? path.join(projectDir, 'logo.png') : null
+         ...JSON.parse(fs.readFileSync(metaPath, 'utf8')),
+         logoPath: fs.existsSync(path.join(projectDir, 'logo.png'))
+            ? path.join(projectDir, 'logo.png')
+            : null
       });
    }
 
@@ -66,7 +68,9 @@ export function getProject(id: string): Project & { page: string } {
       id,
       ...data,
       page: fs.readFileSync(path.join(projectDir, 'page.md'), 'utf8'),
-      logoPath: (fs.existsSync(path.join(projectDir, 'logo.png'))) ? path.join(projectDir, 'logo.png') : null
+      logoPath: fs.existsSync(path.join(projectDir, 'logo.png'))
+         ? path.join(projectDir, 'logo.png')
+         : null
    };
 }
 

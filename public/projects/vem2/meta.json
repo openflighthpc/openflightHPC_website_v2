@@ -1,15 +1,8 @@
 {
    "name": "vem2",
    "description": "A hpc as cloud computing model",
-   "languages": [
-      "javascript",
-      "typescript",
-      "bash"
-   ],
-   "tags": [
-      "HPC",
-      "R&D"
-   ],
+   "languages": ["javascript", "typescript", "bash"],
+   "tags": ["HPC", "R&D"],
    "status": "in-progress",
    "featured": true
 }

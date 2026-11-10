@@ -6,11 +6,11 @@ The folder the files are stored in must have the same name as the project but in
 
 ```json
 {
-  "name": "Example Project",
-  "description": "This is an example project.",
-  "tags": ["example", "project"],
-  "languages": ["Python", "JavaScript"],
-  // The status of the project (active, complete, archived, etc.)
-  "status": "active"
+   "name": "Example Project",
+   "description": "This is an example project.",
+   "tags": ["example", "project"],
+   "languages": ["Python", "JavaScript"],
+   // The status of the project (active, complete, archived, etc.)
+   "status": "active"
 }
 ```
