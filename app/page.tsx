@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Marquee from "react-fast-marquee";
 import Link from "next/link";
+import AnimatedLogo from "./components/AnimatedLogo";
 
 const projects = [
   {
@@ -43,7 +43,7 @@ const projects = [
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#080808] flex flex-col mt-[-60] items-center justify-start text-[#f8f8f8]">
-      <Image src="/openflightHPC_website_v2/logo.svg" alt="logo" width={500} height={500}></Image>
+      <AnimatedLogo />
       <div className="w-full mt-[-160] font-bold tracking-wide flex flex-col mx-80 text-lg justify-center w-full max-w-4xl mx-auto px-6 flex flex-col gap-6 text-center">
         <p>
           Welcome to the <em>OpenFlight <span className="text-green-400/70">Labs</span></em>, a curated collection

@@ -24,3 +24,14 @@ body {
   color: var(--foreground);
   font-family: var(--font-chalet), Arial, Helvetica, sans-serif;
 }
+
+.animated-logo {
+  width: 500px;
+  max-width: 100%;
+}
+
+.animated-logo svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
