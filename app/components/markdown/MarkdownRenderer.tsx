@@ -1,6 +1,6 @@
 import { getProject } from '@/lib/projects-handler';
 import Image from 'next/image';
-import ReactMarkdown from 'react-markdown';
+import ReactMarkdown, { type Components } from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
 type RendererProps = {
@@ -29,6 +29,50 @@ export default function MarkdownRenderer({ projectName, StencilText }: Readonly<
       STATUS_COLOR[project.status as keyof typeof STATUS_COLOR] ?? STATUS_COLOR.archived;
    const stampAngle = ((project.name.length * 7) % 15) - 7;
    const seed = project.name.length;
+
+   const mediaComponents: Components = {
+      img({ src, alt }) {
+         if (typeof src !== 'string') return null;
+
+         // A raw <video> tag falls back to the img component with the whole
+         // tag leaked into `alt`, so only keep a genuine alt text.
+         const altText = alt && alt !== src ? alt : '';
+
+         if (/\.(mp4|webm|ogg|mov|m4v)$/i.test(src)) {
+            return (
+               <video
+                  src={resolveImagePath(src, projectName)}
+                  controls
+                  className="max-w-full rounded-sm"
+               />
+            );
+         }
+
+         return (
+            <Image
+               src={resolveImagePath(src, projectName)}
+               alt={altText}
+               width={1200}
+               height={800}
+               className="grayscale-[35%] max-w-full h-auto rounded-sm"
+               sizes="(max-width: 768px) 100vw, 768px"
+            />
+         );
+      },
+      video({ src, children }) {
+         if (typeof src !== 'string') return null;
+
+         return (
+            <video
+               src={resolveImagePath(src, projectName)}
+               controls
+               className="max-w-full rounded-sm"
+            >
+               {children}
+            </video>
+         );
+      }
+   };
 
    return (
       <div className="relative min-h-screen font-sans text-neutral-100">
@@ -147,50 +191,10 @@ export default function MarkdownRenderer({ projectName, StencilText }: Readonly<
                </aside>
 
                <div className="prose prose-invert max-w-none">
-                  <ReactMarkdown
-                     remarkPlugins={[remarkGfm]}
-                     components={{
-                        img({ src, alt }) {
-                           if (typeof src !== 'string') return null;
-
-                           const resolvedSrc = resolveImagePath(src, projectName);
-
-                           return (
-                              <Image
-                                 src={resolvedSrc}
-                                 alt={alt || ''}
-                                 width={1200}
-                                 height={800}
-                                 className="grayscale-[35%] max-w-full h-auto rounded-sm"
-                                 sizes="(max-width: 768px) 100vw, 768px"
-                              />
-                           );
-                        }
-                     }}
-                  >
+                  <ReactMarkdown remarkPlugins={[remarkGfm]} components={mediaComponents}>
                      {project.summary}
                   </ReactMarkdown>
-                  <ReactMarkdown
-                     remarkPlugins={[remarkGfm]}
-                     components={{
-                        img({ src, alt }) {
-                           if (typeof src !== 'string') return null;
-
-                           const resolvedSrc = resolveImagePath(src, projectName);
-
-                           return (
-                              <Image
-                                 src={resolvedSrc}
-                                 alt={alt || ''}
-                                 width={1200}
-                                 height={800}
-                                 className="grayscale-[35%] max-w-full h-auto rounded-sm"
-                                 sizes="(max-width: 768px) 100vw, 768px"
-                              />
-                           );
-                        }
-                     }}
-                  >
+                  <ReactMarkdown remarkPlugins={[remarkGfm]} components={mediaComponents}>
                      {project.breakdown}
                   </ReactMarkdown>
                </div>
