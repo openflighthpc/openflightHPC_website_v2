@@ -18,6 +18,7 @@ const nextConfig: NextConfig = {
       },
     },
   },
+  basePath: '/openflightHPC_website_v2'
 };
 
 export default nextConfig;
