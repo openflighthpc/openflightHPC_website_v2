@@ -1,0 +1,11 @@
+{
+   "name": "Feature Demo",
+   "colour": "#c86e47",
+   "description": "A living exhibit of the custom markdown features the dossier renderer supports.",
+   "tags": ["meta", "demo"],
+   "languages": ["markdown"],
+   "status": "active",
+   "featured": false,
+   "startDate": "10/11/2026",
+   "endDate": null
+}

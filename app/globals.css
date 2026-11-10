@@ -36,3 +36,13 @@ body {
    width: 100%;
    height: auto;
 }
+
+/* Shiki code blocks rendered inside markdown */
+.shiki-block pre {
+   margin: 0;
+   padding: 1.1rem 1.25rem;
+   overflow-x: auto;
+   font-family: var(--font-geist-mono), monospace;
+   font-size: 0.85rem;
+   line-height: 1.7;
+}

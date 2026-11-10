@@ -1,0 +1,12 @@
+/**
+ * Resolves an asset path written in project markdown to a site URL.
+ * Absolute and remote paths are passed through untouched.
+ */
+export function resolveImagePath(src: string, projectName: string) {
+   if (src.startsWith('https://') || src.startsWith('http://') || src.startsWith('/')) {
+      return src;
+   }
+
+   // Change based on where project files are
+   return `/openflightHPC_website_v2/projects/${encodeURIComponent(projectName)}/${src.replace(/^\.\//, '')}`;
+}

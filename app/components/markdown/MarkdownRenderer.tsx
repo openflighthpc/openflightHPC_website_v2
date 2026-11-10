@@ -1,24 +1,18 @@
-import { getProject } from '@/lib/projects-handler';
+import { getAllProjects, getProject } from '@/lib/projects-handler';
+import type { Element as HastElement, Text as HastText } from 'hast';
 import Image from 'next/image';
 import ReactMarkdown, { type Components } from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import BeforeAfterSlider from './BeforeAfterSlider';
+import CodeBlock from './CodeBlock';
+import ProjectCard from './ProjectCard';
+import { resolveImagePath } from './paths';
+import { STATUS_COLOR, STATUS_TAGS } from './status';
 
 type RendererProps = {
    projectName: string;
    StencilText?: React.FC<{ text: string; repeat?: number }>;
 };
-
-const STATUS_TAGS = {
-   active: 'LIVE ON RACK',
-   complete: 'COOLING DOWN',
-   archived: 'FROZEN IN TAPE'
-} as const;
-
-const STATUS_COLOR = {
-   active: 'text-lime-300 border-lime-400/30 bg-lime-400/5',
-   complete: 'text-lime-500 border-lime-500/20 bg-lime-500/5',
-   archived: 'text-neutral-400 border-neutral-600 bg-neutral-900'
-} as const;
 
 const NODE_LABELS = ['NODE', 'JOB', 'TAPE', 'RACK', 'PORT', 'ECHO', 'MOOR', 'FLUX'];
 
@@ -29,6 +23,7 @@ export default function MarkdownRenderer({ projectName, StencilText }: Readonly<
       STATUS_COLOR[project.status as keyof typeof STATUS_COLOR] ?? STATUS_COLOR.archived;
    const stampAngle = ((project.name.length * 7) % 15) - 7;
    const seed = project.name.length;
+   const allProjects = getAllProjects();
 
    const mediaComponents: Components = {
       img({ src, alt }) {
@@ -71,6 +66,83 @@ export default function MarkdownRenderer({ projectName, StencilText }: Readonly<
                {children}
             </video>
          );
+      },
+      pre({ node, children }) {
+         // The <pre> wrapper is replaced by CodeBlock, which owns the frame,
+         // so fenced code never reaches the `code` override below.
+         const codeEl = node?.children.find(
+            (child): child is HastElement => child.type === 'element' && child.tagName === 'code'
+         );
+
+         if (!codeEl) return <>{children}</>;
+
+         const className = (codeEl.properties.className as string[] | undefined) ?? [];
+         const lang = className
+            .find((cls) => cls.startsWith('language-'))
+            ?.replace('language-', '');
+         // `meta` is delivered as an attribute by the remarkCodeMeta plugin,
+         // with the hast node's data field as a fallback.
+         const meta =
+            (codeEl.properties.meta as string | undefined) ??
+            (codeEl.data as { meta?: string } | undefined)?.meta;
+
+         return <CodeBlock code={hastTextContent(codeEl)} lang={lang} meta={meta} />;
+      },
+      code({ className, children }) {
+         const raw = String(children);
+
+         // Inline `[[project-id]]` references render as dossier cards.
+         const refMatch = !className ? raw.match(/^\[\[([a-z0-9-]+)\]\]$/i) : undefined;
+         if (refMatch) {
+            const referenced = allProjects.find(
+               (candidate) => candidate.id.toLowerCase() === refMatch[1].toLowerCase()
+            );
+            if (referenced) return <ProjectCard project={referenced} />;
+         }
+
+         return <code className="font-mono text-[0.85em] text-lime-200/90">{children}</code>;
+      },
+      p({ node, children }) {
+         // A paragraph holding only a bare `[[project-id]]` reference renders
+         // as a dossier card for that project.
+         const paraChildren = node?.children ?? [];
+         const soleText =
+            paraChildren.length === 1 && paraChildren[0].type === 'text'
+               ? (paraChildren[0] as HastText)
+               : undefined;
+         const soleRef = soleText?.value.match(/^\[\[([a-z0-9-]+)\]\]$/i);
+
+         if (soleRef) {
+            const referenced = allProjects.find(
+               (candidate) => candidate.id.toLowerCase() === soleRef[1].toLowerCase()
+            );
+            if (referenced) return <ProjectCard project={referenced} />;
+         }
+
+         // Two adjacent images in one paragraph whose alt text starts with
+         // `before|after` collapse into a draggable comparison slider.
+         const images = (node?.children ?? []).filter(
+            (child): child is HastElement => child.type === 'element' && child.tagName === 'img'
+         );
+
+         if (
+            images.length === 2 &&
+            images.every((image) =>
+               /^before\s*\|\s*after/i.test(String(image.properties.alt ?? ''))
+            )
+         ) {
+            const [before, after] = images;
+            return (
+               <BeforeAfterSlider
+                  beforeSrc={resolveImagePath(String(before.properties.src), projectName)}
+                  beforeAlt={String(before.properties.alt)}
+                  afterSrc={resolveImagePath(String(after.properties.src), projectName)}
+                  afterAlt={String(after.properties.alt)}
+               />
+            );
+         }
+
+         return <p>{children}</p>;
       }
    };
 
@@ -191,10 +263,16 @@ export default function MarkdownRenderer({ projectName, StencilText }: Readonly<
                </aside>
 
                <div className="prose prose-invert max-w-none">
-                  <ReactMarkdown remarkPlugins={[remarkGfm]} components={mediaComponents}>
+                  <ReactMarkdown
+                     remarkPlugins={[remarkGfm, remarkCodeMeta]}
+                     components={mediaComponents}
+                  >
                      {project.summary}
                   </ReactMarkdown>
-                  <ReactMarkdown remarkPlugins={[remarkGfm]} components={mediaComponents}>
+                  <ReactMarkdown
+                     remarkPlugins={[remarkGfm, remarkCodeMeta]}
+                     components={mediaComponents}
+                  >
                      {project.breakdown}
                   </ReactMarkdown>
                </div>
@@ -217,11 +295,38 @@ export default function MarkdownRenderer({ projectName, StencilText }: Readonly<
    );
 }
 
-function resolveImagePath(src: string, projectName: string) {
-   if (src.startsWith('https://') || src.startsWith('http://') || src.startsWith('/')) {
-      return src;
-   }
+type MdastNode = {
+   type: string;
+   meta?: string;
+   data?: { hProperties?: Record<string, string> };
+   children?: MdastNode[];
+};
 
-   // Change based on where project files are
-   return `/openflightHPC_website_v2/projects/${encodeURIComponent(projectName)}/${src.replace(/^\.\//, '')}`;
+/**
+ * Copies a fenced code block's info-string meta into `data.hProperties` so
+ * it survives into the hast `code` element's properties, e.g.
+ * ```bash title=backup.sh → properties.meta === 'title=backup.sh'.
+ */
+function remarkCodeMeta() {
+   return (tree: unknown) => {
+      const visitNode = (node: MdastNode) => {
+         if (node.type === 'code' && node.meta) {
+            node.data = { ...node.data, hProperties: { meta: node.meta } };
+         }
+         node.children?.forEach(visitNode);
+      };
+      visitNode(tree as MdastNode);
+   };
+}
+
+function hastTextContent(node: HastElement): string {
+   return node.children
+      .map((child) =>
+         child.type === 'text'
+            ? child.value
+            : child.type === 'element'
+              ? hastTextContent(child)
+              : ''
+      )
+      .join('');
 }
