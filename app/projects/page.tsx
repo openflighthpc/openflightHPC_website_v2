@@ -20,7 +20,7 @@ export default function HomePage() {
                >
                   {project.logoPath && (
                      <Image
-                        src={`/openflightHPC_website_v2/${project.logoPath}`.trimEnd()}
+                        src={`/openflightHPC_website_v2/${project.logoPath}`}
                         alt={`${project.name} logo`}
                         width={600}
                         height={300}
