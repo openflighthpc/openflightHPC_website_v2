@@ -64,13 +64,11 @@ export function getProject(id: string): Project & { summary: string; breakdown: 
       throw new Error(`Cannot find a project called ${id}`);
    }
 
-   const data = JSON.parse(fs.readFileSync(path.join(projectDir, 'meta.json'), 'utf8'));
-
    return {
       id,
-      ...data,
-      summary: fs.readFileSync(path.join(projectDir, 'summary.md'), 'utf8'),
-      breakdown: fs.readFileSync(path.join(projectDir, 'breakdown.md'), 'utf8'),
+      ...JSON.parse(fs.readFileSync(path.join(projectDir, 'meta.json'), 'utf8')),
+      summary: fs.readFileSync(path.join(projectDir, 'summary.md'), 'utf8').trim(),
+      breakdown: fs.readFileSync(path.join(projectDir, 'breakdown.md'), 'utf8').trim(),
       logoPath: fs.existsSync(path.join(projectDir, 'logo.png'))
          ? path.join('projects', id, 'logo.png')
          : null
