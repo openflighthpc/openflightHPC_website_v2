@@ -7,6 +7,8 @@ The folder the files are stored in must have the same name as the project but in
 ```json
 {
    "name": "Example Project",
+   // The accent colour associated with the project
+   "colour": "#ffffff",
    "description": "This is an example project.",
    "tags": ["example", "project"],
    "languages": ["Python", "JavaScript"],
