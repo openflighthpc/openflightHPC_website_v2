@@ -27,12 +27,12 @@ body {
 }
 
 .animated-logo {
-  width: 500px;
-  max-width: 100%;
+   width: 500px;
+   max-width: 100%;
 }
 
 .animated-logo svg {
-  display: block;
-  width: 100%;
-  height: auto;
+   display: block;
+   width: 100%;
+   height: auto;
 }
