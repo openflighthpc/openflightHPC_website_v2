@@ -42,7 +42,7 @@ export default function Home() {
                Featured Projects
             </h2>
             <div className="mt-10">
-               <Marquee speed={35} pauseOnHover autoFill>
+               <Marquee speed={15} pauseOnHover autoFill>
                   {featuredProjects.map((project, index) => (
                      <article key={project.id} className="mx-3 w-64 shrink-0 sm:w-72">
                         <Link key={project.id} href={`/projects/${project.id}`}>
