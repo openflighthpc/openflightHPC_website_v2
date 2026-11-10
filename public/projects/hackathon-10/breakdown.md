@@ -4,7 +4,7 @@ This hackathon focused on revisiting existing projects, understanding their purp
 
 The aim was to explore how adopting someone else's project, combined with persona-based testing, could uncover bugs, usability issues and gaps in documentation that might otherwise go unnoticed.
 
-Several key concepts were explored throughout the hackathon, including functional versus user specifications, project readoption and the impact of dormancy, testing personas, technical versus specification testing, and using AI to expand testing coverage.
+Several key concepts were explored throughout the hackathon, including functional versus user specifications, project read option and the impact of dormancy, testing personas, technical versus specification testing, and using AI to expand testing coverage.
 
 # Approach
 

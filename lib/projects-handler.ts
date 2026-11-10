@@ -34,19 +34,28 @@ export function getAllProjects(): Project[] {
    const projects: Project[] = [];
 
    for (const folder of folders) {
-      const projectDir = path.join(projectsDir, folder);
-      const metaPath = path.join(projectDir, 'meta.json');
-
-      if (!fs.existsSync(metaPath) || !fs.statSync(metaPath).isFile()) {
+      // Get the project directory
+      const projectDir = path.join(process.cwd(), 'public', 'projects', folder);
+      if (!fs.existsSync(projectDir)) {
          continue;
       }
 
+      // Get the meta data
+      const metadataPath = path.join(projectDir, 'meta.json');
+      if (!fs.existsSync(metadataPath)) {
+         continue;
+      }
+      const metadata = JSON.parse(fs.readFileSync(path.join(projectDir, 'meta.json'), 'utf8'));
+
+      // Get logo if their is one
+      const logoPath = fs.existsSync(path.join(projectDir, 'logo.png'))
+         ? path.join('projects', folder, 'logo.png')
+         : null;
+
       projects.push({
          id: folder,
-         ...JSON.parse(fs.readFileSync(metaPath, 'utf8')),
-         logoPath: fs.existsSync(path.join(projectDir, 'logo.png'))
-            ? path.join('projects', folder, 'logo.png')
-            : null
+         ...metadata,
+         logoPath
       });
    }
 
@@ -59,20 +68,63 @@ export function getAllProjects(): Project[] {
  * @returns The meta data about the project
  */
 export function getProject(id: string): Project & { summary: string; breakdown: string } {
+   // Get the project directory
    const projectDir = path.join(process.cwd(), 'public', 'projects', id);
-
-   if (!fs.existsSync(projectDir) || !fs.existsSync(path.join(projectDir, 'meta.json'))) {
+   if (!fs.existsSync(projectDir)) {
       throw new Error(`Cannot find a project called ${id}`);
    }
 
+   // Get the meta data
+   const metadataPath = path.join(projectDir, 'meta.json');
+   if (!fs.existsSync(metadataPath)) {
+      throw new Error(`no metadata file can be found for ${id}`);
+   }
+   const metadata = JSON.parse(fs.readFileSync(path.join(projectDir, 'meta.json'), 'utf8'));
+
+   // Get the summary data
+   const summaryPath = path.join(projectDir, 'summary.md');
+   if (!fs.existsSync(summaryPath)) {
+      throw new Error(`No summary.md file can be found for ${id}`);
+   }
+   const summaryData = fs.readFileSync(summaryPath, 'utf8').trim();
+
+   // Get the breakdown data
+   const breakdownPath = path.join(projectDir, 'breakdown.md');
+   let breakdownData: string = '';
+   if (!fs.existsSync(breakdownPath)) {
+      const breakdownDir = path.join(projectDir, 'breakdown');
+      if (!fs.existsSync(breakdownDir) && !fs.statSync(breakdownDir).isDirectory()) {
+         throw new Error(`No breakdown.md file can be found for ${id}`);
+      }
+
+      const files = fs
+         .readdirSync(breakdownDir)
+         .filter((value) => value.endsWith('.md'))
+         .filter((item) => !fs.statSync(path.join(breakdownDir, item)).isDirectory());
+
+      for (const file of files) {
+         if (breakdownData) {
+            breakdownData += `\n\n`;
+         }
+         breakdownData += fs.readFileSync(path.join(breakdownDir, file), 'utf8').trim();
+      }
+
+      console.log(breakdownData);
+   } else {
+      breakdownData = fs.readFileSync(breakdownPath, 'utf8').trim();
+   }
+
+   // Get logo if their is one
+   const logoPath = fs.existsSync(path.join(projectDir, 'logo.png'))
+      ? path.join('projects', id, 'logo.png')
+      : null;
+
    return {
       id,
-      ...JSON.parse(fs.readFileSync(path.join(projectDir, 'meta.json'), 'utf8')),
-      summary: fs.readFileSync(path.join(projectDir, 'summary.md'), 'utf8').trim(),
-      breakdown: fs.readFileSync(path.join(projectDir, 'breakdown.md'), 'utf8').trim(),
-      logoPath: fs.existsSync(path.join(projectDir, 'logo.png'))
-         ? path.join('projects', id, 'logo.png')
-         : null
+      ...metadata,
+      summary: summaryData,
+      breakdown: breakdownData,
+      logoPath
    };
 }
 

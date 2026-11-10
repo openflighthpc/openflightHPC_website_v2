@@ -17,7 +17,7 @@ export default function Home() {
                </em>
                , a curated collection of research and development experiments from the{' '}
                <Link
-                  href="/"
+                  href="https://openflighthpc.github.io/docs.openflighthpc.org/latest/"
                   className="text-green-300/70 underline transition hover:text-green-400"
                >
                   OpenFlightHPC group
@@ -42,7 +42,7 @@ export default function Home() {
                Featured Projects
             </h2>
             <div className="mt-10">
-               <Marquee speed={35} pauseOnHover autoFill>
+               <Marquee speed={15} pauseOnHover autoFill>
                   {featuredProjects.map((project, index) => (
                      <article key={project.id} className="mx-3 w-64 shrink-0 sm:w-72">
                         <Link key={project.id} href={`/projects/${project.id}`}>
@@ -102,7 +102,7 @@ export default function Home() {
                            </h3>
 
                            <div className="flex flex-wrap gap-2">
-                              {project.languages.slice(0, 3).map((language) => (
+                              {project.languages.map((language) => (
                                  <span
                                     key={language}
                                     className="rounded-full bg-white/10 px-2.5 py-1 text-xs text-zinc-300"

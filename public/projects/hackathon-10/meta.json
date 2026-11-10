@@ -1,10 +1,11 @@
 {
    "name": "Hackathon 10",
+   "colour": "#35a314",
    "description": "Exploration of testing personas and ai assisted testing",
    "languages": ["typescript"],
    "tags": ["R&D", "Hackathon"],
    "status": "complete",
-   "featured": true,
-   "startDate": "26/09/2026",
-   "endDate": "26/09/2026"
+   "featured": false,
+   "startDate": "25/09/2026",
+   "endDate": "25/09/2026"
 }
