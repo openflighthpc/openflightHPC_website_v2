@@ -37,9 +37,9 @@ export default function Home() {
             </p>
          </div>
 
-         <section aria-labelledby="recent-projects" className="mt-20 w-full pb-24">
-            <h2 id="recent-projects" className="text-center text-4xl font-bold">
-               Recent Projects
+         <section aria-labelledby="featured-projects" className="mt-20 w-full pb-24">
+            <h2 id="featured-projects" className="text-center text-4xl font-bold">
+               Featured Projects
             </h2>
             <div className="mt-10">
                <Marquee speed={35} pauseOnHover autoFill>
