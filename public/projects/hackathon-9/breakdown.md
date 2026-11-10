@@ -1,9 +1,11 @@
 # Hypothesis
-This hackathon focused on exploring how traditional command-line interfaces (CLI) could be transformed into more interactive, visually engaging experiences using [Opentui](https://opentui.com). 
+
+This hackathon focused on exploring how traditional command-line interfaces (CLI) could be transformed into more interactive, visually engaging experiences using [Opentui](https://opentui.com).
 
 Participants were given the freedom to define their own individual goals. They could either focus on building a small but complete application or explore a particular feature of the OpenTUI framework. The overarching objective was to experiment with a new technology and learn something new.
 
 OpenTUI also introduced the use of the Bun package manager, which made setting up and running applications relatively straightforward.
+
 # Approach
 
 Rather than concentrating on exploring individual framework features, everyone opted to build a small but complete project. This allowed us to experiment with OpenTUI in practical scenarios and explore the different types of applications that could be built within a terminal environment.
