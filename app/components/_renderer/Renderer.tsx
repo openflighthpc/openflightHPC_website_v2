@@ -221,5 +221,5 @@ function resolveImagePath(src: string, projectName: string) {
   }
 
   // Change based on where project files are
-  return `/projects/public/${encodeURIComponent(projectName)}/${src.replace(/^\.\//, "")}`;
+  return `/public/projects/${encodeURIComponent(projectName)}/${src.replace(/^\.\//, "")}`;
 }
