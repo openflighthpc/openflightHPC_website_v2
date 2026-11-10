@@ -17,7 +17,7 @@ export default function Home() {
                </em>
                , a curated collection of research and development experiments from the{' '}
                <Link
-                  href="/"
+                  href="https://openflighthpc.github.io/docs.openflighthpc.org/latest/"
                   className="text-green-300/70 underline transition hover:text-green-400"
                >
                   OpenFlightHPC group
