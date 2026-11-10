@@ -61,7 +61,7 @@ export default function Renderer({
 
         {Array.from({ length: 36 }).map((_, i) => {
           const col = i % 6;
-          const row = (i / 6) | 0; // 0 = bright, 5 = deep dark
+          const row = Math.trunc(i / 6);
           const left = 4 + col * 17 + ((seed * (i + 3)) % 9);
           const top = 5 + row * 13 + ((seed * (i + 5)) % 11);
           const opacity = 0.38 - row * 0.055;

@@ -12,7 +12,7 @@ export type Project = {
    description: string;
    languages: string[];
    tags: string[];
-   status: 'active' | 'complete' | 'archived';
+   status: 'in-progress' | 'complete' | 'archived';
    featured: boolean;
    logoPath: string | null;
 }
