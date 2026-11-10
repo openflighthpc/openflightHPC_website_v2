@@ -2,7 +2,7 @@
    "name": "Hackathon 13",
    "description": "Exploration of user experience engineering",
    "languages": ["typescript"],
-   "tags": ["R&D"],
+   "tags": ["R&D","Hackathon"],
    "status": "complete",
    "featured": true,
    "startDate": "06/11/2026",
