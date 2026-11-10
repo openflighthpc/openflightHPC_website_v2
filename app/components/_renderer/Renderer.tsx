@@ -66,9 +66,8 @@ export default function Renderer({
           const top = 5 + row * 13 + ((seed * (i + 5)) % 11);
           const opacity = 0.38 - row * 0.055;
           const scale = 0.9 + row * 0.04;
-          const label = `${NODE_LABELS[(i + seed) % NODE_LABELS.length]}-${
-            ((seed * 31 + i * (17 + col * 13)) % 9000) + 1000
-          }`;
+          const label = `${NODE_LABELS[(i + seed) % NODE_LABELS.length]}-${((seed * 31 + i * (17 + col * 13)) % 9000) + 1000
+            }`;
 
           return (
             <div
@@ -222,5 +221,5 @@ function resolveImagePath(src: string, projectName: string) {
   }
 
   // Change based on where project files are
-  return `/projects/${encodeURIComponent(projectName)}/${src.replace(/^\.\//, "")}`;
+  return `/projects/public/${encodeURIComponent(projectName)}/${src.replace(/^\.\//, "")}`;
 }
