@@ -55,7 +55,7 @@ export function getAllProjects(): Project[] {
  * @param id The projects ID
  * @returns The meta data about the project
  */
-export function getProject(id: string): Project & { page: string } {
+export function getProject(id: string): Project & { summary: string; breakdown: string } {
    const projectDir = path.join(process.cwd(), 'public', 'projects', id);
 
    if (!fs.existsSync(projectDir) || !fs.existsSync(path.join(projectDir, 'meta.json'))) {
@@ -67,7 +67,8 @@ export function getProject(id: string): Project & { page: string } {
    return {
       id,
       ...data,
-      page: fs.readFileSync(path.join(projectDir, 'page.md'), 'utf8'),
+      summary: fs.readFileSync(path.join(projectDir, 'summary.md'), 'utf8'),
+      breakdown: fs.readFileSync(path.join(projectDir, 'breakdown.md'), 'utf8'),
       logoPath: fs.existsSync(path.join(projectDir, 'logo.png'))
          ? path.join('projects', id, 'logo.png')
          : null

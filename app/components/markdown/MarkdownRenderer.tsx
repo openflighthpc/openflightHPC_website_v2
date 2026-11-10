@@ -24,7 +24,7 @@ const NODE_LABELS = ['NODE', 'JOB', 'TAPE', 'RACK', 'PORT', 'ECHO', 'MOOR', 'FLU
 
 export default function MarkdownRenderer({ projectName, StencilText }: Readonly<RendererProps>) {
    const project = getProject(projectName);
-   const markdownString = project.page;
+   const markdownString = project.breakdown;
    const stamp = STATUS_TAGS[project.status as keyof typeof STATUS_TAGS] ?? project.status;
    const stampColor =
       STATUS_COLOR[project.status as keyof typeof STATUS_COLOR] ?? STATUS_COLOR.archived;
