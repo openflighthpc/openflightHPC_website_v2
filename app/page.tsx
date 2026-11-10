@@ -37,41 +37,64 @@ export default function Home() {
             </p>
          </div>
 
-         <section aria-labelledby="recent-projects" className="mt-20 w-full pb-24">
-            <h2 id="recent-projects" className="text-center text-4xl font-bold">
-               Recent Projects
+         <section aria-labelledby="featured-projects" className="mt-20 w-full pb-24">
+            <h2 id="featured-projects" className="text-center text-4xl font-bold">
+               Featured Projects
             </h2>
             <div className="mt-10">
                <Marquee speed={35} pauseOnHover autoFill>
                   {featuredProjects.map((project, index) => (
                      <article key={project.id} className="mx-3 w-64 shrink-0 sm:w-72">
-                        <div className="relative flex aspect-[4/3] flex-col justify-between overflow-hidden rounded-2xl bg-zinc-900 p-5">
-                           {/* Decorative circle */}
+                        <Link key={project.id} href={`/projects/${project.id}`}>
                            <div
-                              aria-hidden="true"
-                              className="absolute -right-12 -top-14 h-48 w-48 rounded-full border-[28px] border-white/15"
-                           />
+                              style={{
+                                 backgroundColor: project.logoPath ? undefined : project.colour
+                              }}
+                              className="relative flex aspect-[4/3] flex-col justify-between overflow-hidden rounded-2xl p-5"
+                           >
+                              {/* Background logo */}
+                              {project.logoPath && (
+                                 <>
+                                    <img
+                                       src={project.logoPath}
+                                       alt=""
+                                       aria-hidden="true"
+                                       className="absolute inset-0 h-full w-full scale-110 object-cover blur-md"
+                                    />
 
-                           <div className="relative flex items-center justify-between">
-                              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-white/80">
-                                 OpenFlight Labs
-                              </span>
+                                    {/* Darken logo only */}
+                                    <div className="absolute inset-0 bg-black/40" />
+                                 </>
+                              )}
 
-                              <span className="text-xs font-medium text-white/60">
-                                 {String(index + 1).padStart(2, '0')}
-                              </span>
+                              {/* Decorative circle */}
+                              <div
+                                 aria-hidden="true"
+                                 className="absolute -right-12 -top-14 h-48 w-48 rounded-full border-[28px] border-white/15"
+                              />
+
+                              {/* Content */}
+                              <div className="relative z-10 flex items-center justify-between">
+                                 <span className="text-xs font-semibold uppercase tracking-[0.2em] text-white/80">
+                                    OpenFlight Labs
+                                 </span>
+
+                                 <span className="text-xs font-medium text-white/60">
+                                    {String(index + 1).padStart(2, '0')}
+                                 </span>
+                              </div>
+
+                              <div className="relative z-10">
+                                 <span className="mb-2 block text-xs font-medium uppercase tracking-wider text-white/60">
+                                    {project.status.replace('-', ' ')}
+                                 </span>
+
+                                 <span className="block max-w-[10ch] text-3xl font-semibold leading-tight text-white">
+                                    {project.name}
+                                 </span>
+                              </div>
                            </div>
-
-                           <div className="relative">
-                              <span className="mb-2 block text-xs font-medium uppercase tracking-wider text-white/60">
-                                 {project.status.replace('-', ' ')}
-                              </span>
-
-                              <span className="block max-w-[10ch] text-3xl font-semibold leading-tight text-white">
-                                 {project.name}
-                              </span>
-                           </div>
-                        </div>
+                        </Link>
 
                         <div className="pt-4">
                            <h3 className="min-h-[4.5rem] text-lg font-semibold leading-snug text-[#f8f8f8]">
