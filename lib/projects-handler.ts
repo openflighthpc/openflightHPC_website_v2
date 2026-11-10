@@ -34,16 +34,22 @@ export function getAllProjects(): Project[] {
    const projects: Project[] = [];
 
    for (const folder of folders) {
-      const projectDir = path.join(projectsDir, folder);
-      const metaPath = path.join(projectDir, 'meta.json');
-
-      if (!fs.existsSync(metaPath) || !fs.statSync(metaPath).isFile()) {
+      // Get the project directory
+      const projectDir = path.join(process.cwd(), 'public', 'projects', folder);
+      if (!fs.existsSync(projectDir)) {
          continue;
       }
 
+      // Get the meta data
+      const metadataPath = path.join(projectDir, 'meta.json');
+      if (!fs.existsSync(metadataPath)) {
+         continue;
+      }
+      const metadata = JSON.parse(fs.readFileSync(path.join(projectDir, 'meta.json'), 'utf8'));
+
       projects.push({
          id: folder,
-         ...JSON.parse(fs.readFileSync(metaPath, 'utf8')),
+         ...metadata,
          logoPath: fs.existsSync(path.join(projectDir, 'logo.png'))
             ? path.join('projects', folder, 'logo.png')
             : null
@@ -85,8 +91,6 @@ export function getProject(id: string): Project & { summary: string; breakdown: 
       throw new Error(`No breakdown.md file can be found for ${id}`);
    }
    const breakdownData = fs.readFileSync(breakdownPath, 'utf8').trim();
-
-
 
    return {
       id,

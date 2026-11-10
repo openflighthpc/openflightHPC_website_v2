@@ -102,7 +102,7 @@ export default function Home() {
                            </h3>
 
                            <div className="flex flex-wrap gap-2">
-                              {project.languages.slice(0, 3).map((language) => (
+                              {project.languages.map((language) => (
                                  <span
                                     key={language}
                                     className="rounded-full bg-white/10 px-2.5 py-1 text-xs text-zinc-300"

@@ -405,17 +405,17 @@ This would mean that only the slurm jobs requested by the api could be run, and 
 
 To test this, I made a test cluster with the following specs:
 
-| | login-01 | login-02 | node-01 | node-02 |
-| --- | --- | --- | --- | --- |
-| User | dev | dev | dev | dev |
-| OS | alma10 | alma10 | alma10 | alma10 |
-| Internal IP | 10.0.0.200 | 10.0.0.201 | 10.0.0.202 | 10.0.0.203 |
-| External IP | 10.151.0.42 | 10.151.0.44 | 10.151.0.165 | 10.151.0.125 |
-| Local Hostname | login-01.testcluster | login-02.testcluster | node-01.testcluster | node-02.testcluster |
+|                   | login-01             | login-02             | node-01              | node-02              |
+| ----------------- | -------------------- | -------------------- | -------------------- | -------------------- |
+| User              | dev                  | dev                  | dev                  | dev                  |
+| OS                | alma10               | alma10               | alma10               | alma10               |
+| Internal IP       | 10.0.0.200           | 10.0.0.201           | 10.0.0.202           | 10.0.0.203           |
+| External IP       | 10.151.0.42          | 10.151.0.44          | 10.151.0.165         | 10.151.0.125         |
+| Local Hostname    | login-01.testcluster | login-02.testcluster | node-01.testcluster  | node-02.testcluster  |
 | Internal Hostname | login-01.testcluster | login-01.testcluster | login-01.testcluster | login-01.testcluster |
-| Password | m00seh3ad! | m00seh3ad! | m00seh3ad! | m00seh3ad! |
-| Role | login + mgmnt | login | compute | compute |
-| Partition | n/a | n/a | nodes | vviz |
+| Password          | m00seh3ad!           | m00seh3ad!           | m00seh3ad!           | m00seh3ad!           |
+| Role              | login + mgmnt        | login                | compute              | compute              |
+| Partition         | n/a                  | n/a                  | nodes                | vviz                 |
 
 The openflight shared key is on the login node so it should be open to access.
 
