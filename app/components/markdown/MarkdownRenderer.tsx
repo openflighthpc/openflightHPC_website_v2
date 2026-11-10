@@ -24,7 +24,6 @@ const NODE_LABELS = ['NODE', 'JOB', 'TAPE', 'RACK', 'PORT', 'ECHO', 'MOOR', 'FLU
 
 export default function MarkdownRenderer({ projectName, StencilText }: Readonly<RendererProps>) {
    const project = getProject(projectName);
-   const markdownString = project.breakdown;
    const stamp = STATUS_TAGS[project.status as keyof typeof STATUS_TAGS] ?? project.status;
    const stampColor =
       STATUS_COLOR[project.status as keyof typeof STATUS_COLOR] ?? STATUS_COLOR.archived;
@@ -154,7 +153,7 @@ export default function MarkdownRenderer({ projectName, StencilText }: Readonly<
                         img({ src, alt }) {
                            if (typeof src !== 'string') return null;
 
-                           const resolvedSrc = resolveImagePath(src, projectName);
+                           const resolvedSrc = resolveImagePath(project.summary, projectName);
 
                            return (
                               <Image
@@ -169,7 +168,30 @@ export default function MarkdownRenderer({ projectName, StencilText }: Readonly<
                         }
                      }}
                   >
-                     {markdownString}
+                     {project.summary}
+                  </ReactMarkdown>
+                  <ReactMarkdown
+                     remarkPlugins={[remarkGfm]}
+                     components={{
+                        img({ src, alt }) {
+                           if (typeof src !== 'string') return null;
+
+                           const resolvedSrc = resolveImagePath(project.breakdown, projectName);
+
+                           return (
+                              <Image
+                                 src={resolvedSrc}
+                                 alt={alt || ''}
+                                 width={1200}
+                                 height={800}
+                                 className="grayscale-[35%] max-w-full h-auto rounded-sm"
+                                 sizes="(max-width: 768px) 100vw, 768px"
+                              />
+                           );
+                        }
+                     }}
+                  >
+                     {project.breakdown}
                   </ReactMarkdown>
                </div>
             </div>
