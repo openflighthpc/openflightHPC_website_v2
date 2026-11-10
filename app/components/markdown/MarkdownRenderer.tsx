@@ -153,7 +153,7 @@ export default function MarkdownRenderer({ projectName, StencilText }: Readonly<
                         img({ src, alt }) {
                            if (typeof src !== 'string') return null;
 
-                           const resolvedSrc = resolveImagePath(project.summary, projectName);
+                           const resolvedSrc = resolveImagePath(src, projectName);
 
                            return (
                               <Image
@@ -176,7 +176,7 @@ export default function MarkdownRenderer({ projectName, StencilText }: Readonly<
                         img({ src, alt }) {
                            if (typeof src !== 'string') return null;
 
-                           const resolvedSrc = resolveImagePath(project.breakdown, projectName);
+                           const resolvedSrc = resolveImagePath(src, projectName);
 
                            return (
                               <Image
