@@ -3,6 +3,25 @@ import Link from 'next/link';
 import AnimatedLogo from './components/AnimatedLogo';
 import { getFeaturedProjects } from '@/lib/projects-handler';
 
+const projectBackgroundColors = [
+   '#1b8a62',
+   '#7d57b6',
+   '#c86e47',
+   '#2f76a6',
+   '#b39539'
+];
+
+const formatDate = (date: string) => {
+   const [day, month, year] = date.split('/').map(Number);
+
+   return new Date(Date.UTC(year, month - 1, day)).toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+      timeZone: 'UTC'
+   });
+};
+
 export default function Home() {
    const featuredProjects = getFeaturedProjects();
 
@@ -45,7 +64,13 @@ export default function Home() {
                <Marquee speed={35} pauseOnHover autoFill>
                   {featuredProjects.map((project, index) => (
                      <article key={project.id} className="mx-3 w-64 shrink-0 sm:w-72">
-                        <div className="relative flex aspect-[4/3] flex-col justify-between overflow-hidden rounded-2xl bg-zinc-900 p-5">
+                        <div
+                           className="relative flex aspect-[4/3] flex-col justify-between overflow-hidden rounded-2xl p-5"
+                           style={{
+                              backgroundColor:
+                                 projectBackgroundColors[index % projectBackgroundColors.length]
+                           }}
+                        >
                            {/* Decorative circle */}
                            <div
                               aria-hidden="true"
@@ -93,8 +118,10 @@ export default function Home() {
                               dateTime={project.startDate}
                               className="mt-3 block text-sm text-zinc-400"
                            >
-                              {project.startDate}
-                              {project.endDate && ` — ${project.endDate}`}
+                              {formatDate(project.startDate)}
+                              {project.endDate &&
+                                 project.endDate !== project.startDate &&
+                                 ` — ${formatDate(project.endDate)}`}
                            </time>
                         </div>
                      </article>

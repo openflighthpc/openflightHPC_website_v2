@@ -1,46 +1,70 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { getAllProjects } from '@/lib/projects-handler';
+import { ChevronRight } from 'lucide-react';
+
+const formatDate = (date: string) => {
+   const [day, month, year] = date.split('/').map(Number);
+
+   return new Date(Date.UTC(year, month - 1, day)).toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+      timeZone: 'UTC'
+   });
+};
 
 export default function HomePage() {
    const projects = getAllProjects();
 
    return (
-      <main className="mx-auto max-w-7xl px-6 py-12">
-         <h1 className="text-4xl font-bold mb-3">My Projects</h1>
+      <main className="mx-auto px-16 py-12  ">
+         <h1 className="md:text-5xl sm:text-4xl text-3xl font-bold mb-3 mt-14">All Projects</h1>
 
-         <p className="text-gray-500 mb-10">Explore the projects I&apos;ve been working on.</p>
-
-         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+         <div className="sm:max-w-7xl grid grid-cols-2  md:grid-cols-3 gap-6">
             {projects.map((project) => (
                <Link
                   key={project.name}
                   href={`/projects/${project.id}`}
-                  className="group rounded-xl border p-5 hover:shadow-lg transition"
+                  className="group rounded-xl mt-10 hover:shadow-lg overflow-hidden transition"
                >
                   {project.logoPath && (
-                     <Image
-                        src={`/openflightHPC_website_v2/${project.logoPath}`}
-                        alt={`${project.name} logo`}
-                        width={600}
-                        height={300}
-                        className="w-full h-40 object-contain mb-4"
-                     />
+                     <div className="relative w-full aspect-square overflow-hidden rounded-lg border border-transparent mb-4">
+                        <Image
+                           src={`/openflightHPC_website_v2/${project.logoPath}`}
+                           alt={`${project.name} logo`}
+                           fill
+                           className="object-cover scale-100 transition-transform duration-400 hover:scale-110"
+                        />
+                     </div>
                   )}
 
-                  <h2 className="text-xl font-semibold mb-2">{project.name}</h2>
-
-                  <p className="text-gray-600 mb-4">{project.description}</p>
+                  <h2 className="text-xl font-bold mb-2">{project.description}</h2>
 
                   <div className="flex flex-wrap gap-2 mb-4">
                      {project.tags.map((tag) => (
-                        <span key={tag} className="text-xs rounded-full bg-gray-600 px-3 py-1">
+                        <span
+                           key={tag}
+                           className="text-xs text-slate-200 border border-slate-300/10 rounded-full bg-slate-600/40 px-3 py-1"
+                        >
                            {tag}
                         </span>
                      ))}
                   </div>
+                  <div className="flex flex-col">
+                     <span className="font-light">
+                        {formatDate(project.startDate)}
+                        {project.status === 'in-progress'
+                           ? ' - ongoing'
+                           : project.endDate && project.endDate !== project.startDate
+                             ? ` - ${formatDate(project.endDate)}`
+                             : ''}
+                     </span>
 
-                  <span className="text-sm font-medium">View project →</span>
+                     <span className="flex items-center transition duration-400 group-hover:translate-x-2 group-hover:text-green-400 text-sm mt-2 font-bold">
+                        View project <ChevronRight />{' '}
+                     </span>
+                  </div>
                </Link>
             ))}
          </div>
