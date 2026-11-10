@@ -15,7 +15,7 @@ export default function HomePage() {
             {projects.map((project) => (
                <Link
                   key={project.name}
-                  href={`/projects/${project.name}`}
+                  href={`/projects/${project.id}`}
                   className="group rounded-xl border p-5 hover:shadow-lg transition"
                >
                   {project.logoPath && (

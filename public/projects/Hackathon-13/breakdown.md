@@ -1,4 +1,5 @@
 # Hypothesis
+
 The aim of this hackathon was to explore user experience engineering and how it can be used to make learning new tools and technologies more accessible.
 
 A key challenge when introducing users to an unfamiliar concept is catering for different levels of existing knowledge and technical ability. How can we guide someone from having no prior experience to becoming a confident, capable user without overwhelming or discouraging them along the way?
@@ -6,6 +7,7 @@ A key challenge when introducing users to an unfamiliar concept is catering for 
 The central idea was to create a learning experience that builds confidence through small, achievable steps, encouraging users to continue exploring a concept rather than becoming frustrated and giving up.
 
 # Approach
+
 To address this challenge, we decided to explore the concept of a self-guided learning ladder.
 
 The ladder was designed around six rungs, numbered 0 to 5. Rung 0 represents a user with no prior knowledge of the concept, while rung 5 represents someone who can confidently use it at an advanced level.
