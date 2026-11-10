@@ -1,7 +1,7 @@
-import "server-only";
+import 'server-only';
 
-import path from "node:path";
-import fs from 'node:fs'
+import path from 'node:path';
+import fs from 'node:fs';
 
 /**
  * The layout of the project meta.json file
@@ -12,10 +12,12 @@ export type Project = {
    description: string;
    languages: string[];
    tags: string[];
-   status: 'active' | 'complete' | 'archived';
+   status: 'in-progress' | 'complete' | 'archived';
    featured: boolean;
    logoPath: string | null;
-}
+   startDate: string;
+   endDate: string | null;
+};
 
 /**
  * Gathers all the projects from the projects directory and returns them
@@ -24,15 +26,15 @@ export type Project = {
 export function getAllProjects(): Project[] {
    const projectsDir = path.join(process.cwd(), 'public', 'projects');
 
-   const folders = fs.readdirSync(projectsDir).filter((item) =>
-      fs.statSync(path.join(projectsDir, item)).isDirectory()
-   );
+   const folders = fs
+      .readdirSync(projectsDir)
+      .filter((item) => fs.statSync(path.join(projectsDir, item)).isDirectory());
 
    const projects: Project[] = [];
 
    for (const folder of folders) {
-      const projectDir = path.join(projectsDir, folder)
-      const metaPath = path.join(projectDir, "meta.json");
+      const projectDir = path.join(projectsDir, folder);
+      const metaPath = path.join(projectDir, 'meta.json');
 
       if (!fs.existsSync(metaPath) || !fs.statSync(metaPath).isFile()) {
          continue;
@@ -40,8 +42,10 @@ export function getAllProjects(): Project[] {
 
       projects.push({
          id: folder,
-         ...JSON.parse(fs.readFileSync(metaPath, "utf8")),
-         logoPath: (fs.existsSync(path.join(projectDir, 'logo.png'))) ? path.join(projectDir, 'logo.png') : null
+         ...JSON.parse(fs.readFileSync(metaPath, 'utf8')),
+         logoPath: fs.existsSync(path.join(projectDir, 'logo.png'))
+            ? path.join('projects', folder, 'logo.png')
+            : null
       });
    }
 
@@ -53,7 +57,7 @@ export function getAllProjects(): Project[] {
  * @param id The projects ID
  * @returns The meta data about the project
  */
-export function getProject(id: string): Project & { page: string } {
+export function getProject(id: string): Project & { summary: string; breakdown: string } {
    const projectDir = path.join(process.cwd(), 'public', 'projects', id);
 
    if (!fs.existsSync(projectDir) || !fs.existsSync(path.join(projectDir, 'meta.json'))) {
@@ -65,8 +69,11 @@ export function getProject(id: string): Project & { page: string } {
    return {
       id,
       ...data,
-      page: fs.readFileSync(path.join(projectDir, 'page.md'), 'utf8'),
-      logoPath: (fs.existsSync(path.join(projectDir, 'logo.png'))) ? path.join(projectDir, 'logo.png') : null
+      summary: fs.readFileSync(path.join(projectDir, 'summary.md'), 'utf8'),
+      breakdown: fs.readFileSync(path.join(projectDir, 'breakdown.md'), 'utf8'),
+      logoPath: fs.existsSync(path.join(projectDir, 'logo.png'))
+         ? path.join('projects', id, 'logo.png')
+         : null
    };
 }
 
