@@ -14,8 +14,8 @@ The folder the files are stored in must have the same name as the project but in
    "description": "This is an example project.",
    "tags": ["example", "project"],
    "languages": ["Python", "JavaScript"],
-   // The status of the project (active, complete, archived, etc.)
-   "status": "active",
+   // The status of the project (in-progress, complete, archived)
+   "status": "in-progress",
    "startDate": "10/01/2026",
    // Can be null if the project is ongoing
    "endDate": "10/01/2027"
