@@ -90,10 +90,27 @@ export function getProject(id: string): Project & { summary: string; breakdown: 
 
    // Get the breakdown data
    const breakdownPath = path.join(projectDir, 'breakdown.md');
+   let breakdownData: string = "";
    if (!fs.existsSync(breakdownPath)) {
-      throw new Error(`No breakdown.md file can be found for ${id}`);
+      const breakdownDir = path.join(projectDir, "breakdown");
+      if (!fs.existsSync(breakdownDir) && !fs.statSync(breakdownDir).isDirectory()) {
+         throw new Error(`No breakdown.md file can be found for ${id}`);
+      }
+
+      const files = fs.readdirSync(breakdownDir).filter((value) => value.endsWith(".md"))
+         .filter((item) => !fs.statSync(path.join(breakdownDir, item)).isDirectory());
+
+      for (const file of files) {
+         if (breakdownData) {
+            breakdownData += `\n\n`
+         }
+         breakdownData += fs.readFileSync(path.join(breakdownDir, file), 'utf8').trim();
+      }
+
+      console.log(breakdownData);
+   } else {
+      breakdownData = fs.readFileSync(breakdownPath, 'utf8').trim();
    }
-   const breakdownData = fs.readFileSync(breakdownPath, 'utf8').trim();
 
    // Get logo if their is one
    const logoPath = fs.existsSync(path.join(projectDir, 'logo.png'))
