@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function Header() {
    return (
-      <header className="mx-8 flex h-16 items-center justify-between bg-black/80 text-white backdrop-blur sm:mx-16">
+      <header className="px-8 flex h-16 items-center justify-between bg-red text-white backdrop-blur sm:px-16">
          <Link href="/" className="cursor-pointer">
             <Image
                src="/openflightHPC_website_v2/header_logo.svg"
