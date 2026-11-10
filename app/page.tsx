@@ -7,7 +7,7 @@ export default function Home() {
    const featuredProjects = getFeaturedProjects();
 
    return (
-      <main className="min-h-screen bg-[#080808] flex flex-col mt-[-60] items-center justify-start text-[#f8f8f8]">
+      <main className="min-h-screen bg-black flex flex-col mt-[-100] items-center justify-start text-[#f8f8f8]">
          <AnimatedLogo />
          <div className="w-full mt-[-160] font-bold tracking-wide flex flex-col mx-80 text-lg justify-center w-full max-w-4xl mx-auto px-6 flex flex-col gap-6 text-center">
             <p>
