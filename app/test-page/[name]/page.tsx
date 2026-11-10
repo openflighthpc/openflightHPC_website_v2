@@ -1,7 +1,5 @@
 import ExampleRenderer from "../../components/_renderer/Renderer";
 
-import { useParams } from "next/navigation";
-
 type StencilProps = {
   text: string;
   repeat?: number;
@@ -27,8 +25,12 @@ function StencilText({ text, repeat = 1 }: StencilProps) {
   );
 }
 
-export default function ProjectPage() {
-  const { name } = useParams<{ name: string }>();
+export default async function ProjectPage({
+  params,
+}: {
+  params: Promise<{ name: string }>;
+}) {
+  const { name } = await params;
 
   return <ExampleRenderer projectName={name} StencilText={StencilText} />;
 }
