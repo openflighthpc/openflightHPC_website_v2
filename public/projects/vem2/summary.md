@@ -11,15 +11,26 @@ They can be scheduled at any future time, and safeguards are in place to ensure 
 
 ## How are they created?
 
+The VVIZes are created and managed through slurm, using the scheduler to allocate resources and manage uptime.
+Slurm runs a flavour file on one of the hypervisor nodes, and then that node creates a vm using virsh with all the specifics set in the flavour file, and any other flags or environment variables used.
+Examples of configuration include:
+
+- The OS of the vm
+- If the vm will have a GUI
+- If the vm can have additional users
+- The flavour of the vm
+- Any packages that come preinstalled on the vm
+
 - vviz scripts
-  - vm management
-  - flavours
-  - packages
+   - slots/licences
+   - vm management
+   - flavours
+   - packages
 
 - api
-  - scheduling
-  - auth
-  - integrating with the vviz scripts
+   - scheduling
+   - auth
+   - integrating with the vviz scripts
 
 ## Other tools
 
