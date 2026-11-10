@@ -1,14 +1,15 @@
 {
-   "name": "example-project",
-   "description": "",
+   "name": "vem2",
+   "description": "A hpc as cloud computing model",
    "languages": [
       "javascript",
       "typescript",
-      "css"
+      "bash"
    ],
    "tags": [
-      "HPC"
+      "HPC",
+      "R&D"
    ],
-   "status": "complete",
+   "status": "active",
    "featured": true
 }
