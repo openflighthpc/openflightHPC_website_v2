@@ -1,8 +1,9 @@
 {
    "name": "Hackathon 13",
+   "colour": "#c86e47",
    "description": "Exploration of user experience engineering",
    "languages": ["typescript"],
-   "tags": ["R&D","Hackathon"],
+   "tags": ["R&D", "Hackathon"],
    "status": "complete",
    "featured": true,
    "startDate": "06/11/2026",

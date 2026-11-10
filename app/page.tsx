@@ -45,18 +45,36 @@ export default function Home() {
                <Marquee speed={35} pauseOnHover autoFill>
                   {featuredProjects.map((project, index) => (
                      <article key={project.id} className="mx-3 w-64 shrink-0 sm:w-72">
-                        <Link
-                           key={project.name}
-                           href={`/projects/${project.id}`}
-                        >
-                           <div className="relative flex aspect-[4/3] flex-col justify-between overflow-hidden rounded-2xl bg-zinc-900 p-5">
+                        <Link key={project.id} href={`/projects/${project.id}`}>
+                           <div
+                              style={{
+                                 backgroundColor: project.logoPath ? undefined : project.colour
+                              }}
+                              className="relative flex aspect-[4/3] flex-col justify-between overflow-hidden rounded-2xl p-5"
+                           >
+                              {/* Background logo */}
+                              {project.logoPath && (
+                                 <>
+                                    <img
+                                       src={project.logoPath}
+                                       alt=""
+                                       aria-hidden="true"
+                                       className="absolute inset-0 h-full w-full scale-110 object-cover blur-md"
+                                    />
+
+                                    {/* Darken logo only */}
+                                    <div className="absolute inset-0 bg-black/40" />
+                                 </>
+                              )}
+
                               {/* Decorative circle */}
                               <div
                                  aria-hidden="true"
                                  className="absolute -right-12 -top-14 h-48 w-48 rounded-full border-[28px] border-white/15"
                               />
 
-                              <div className="relative flex items-center justify-between">
+                              {/* Content */}
+                              <div className="relative z-10 flex items-center justify-between">
                                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-white/80">
                                     OpenFlight Labs
                                  </span>
@@ -66,7 +84,7 @@ export default function Home() {
                                  </span>
                               </div>
 
-                              <div className="relative">
+                              <div className="relative z-10">
                                  <span className="mb-2 block text-xs font-medium uppercase tracking-wider text-white/60">
                                     {project.status.replace('-', ' ')}
                                  </span>

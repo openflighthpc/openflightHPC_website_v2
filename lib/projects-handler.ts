@@ -9,6 +9,7 @@ import fs from 'node:fs';
 export type Project = {
    id: string;
    name: string;
+   colour: string;
    description: string;
    languages: string[];
    tags: string[];

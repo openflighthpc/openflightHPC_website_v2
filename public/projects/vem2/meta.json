@@ -1,5 +1,6 @@
 {
    "name": "vem2",
+   "colour": "#2f76a6",
    "description": "A hpc as cloud computing model",
    "languages": ["javascript", "typescript", "bash"],
    "tags": ["HPC", "R&D"],

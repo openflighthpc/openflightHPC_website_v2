@@ -1,4 +1,5 @@
 # Hypothesis
+
 This hackathon focused on revisiting existing projects, understanding their purpose and evaluating them from the perspective of different types of users.
 
 The aim was to explore how adopting someone else's project, combined with persona-based testing, could uncover bugs, usability issues and gaps in documentation that might otherwise go unnoticed.
