@@ -27,7 +27,7 @@ export default function Home() {
    const featuredProjects = getFeaturedProjects();
 
    return (
-      <main className="min-h-screen bg-[#080808] flex flex-col mt-[-60] items-center justify-start text-[#f8f8f8]">
+      <main className="min-h-screen bg-black flex flex-col mt-[-100] items-center justify-start text-[#f8f8f8]">
          <AnimatedLogo />
          <div className="w-full mt-[-160] font-bold tracking-wide flex flex-col mx-80 text-lg justify-center w-full max-w-4xl mx-auto px-6 flex flex-col gap-6 text-center">
             <p>
@@ -63,7 +63,7 @@ export default function Home() {
                Featured Projects
             </h2>
             <div className="mt-10">
-               <Marquee speed={35} pauseOnHover autoFill>
+               <Marquee speed={15} pauseOnHover autoFill>
                   {featuredProjects.map((project, index) => (
                      <article key={project.id} className="mx-3 w-64 shrink-0 sm:w-72">
                         <Link key={project.id} href={`/projects/${project.id}`}>

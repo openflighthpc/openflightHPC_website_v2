@@ -1,8 +1,8 @@
 {
    "name": "vem2",
    "colour": "#2f76a6",
-   "description": "A hpc as cloud computing model",
-   "languages": ["javascript", "typescript", "bash", "GO"],
+   "description": "An HPC as cloud computing model",
+   "languages": ["javascript", "typescript", "bash", "go"],
    "tags": ["HPC", "R&D"],
    "status": "in-progress",
    "featured": true,
