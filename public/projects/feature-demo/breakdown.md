@@ -1,17 +1,14 @@
 # Renderer feature reference
 
-The site's markdown renderer adds a handful of behaviours on top of standard
-markdown. Every feature is demonstrated live on this project's summary page;
-this file is the written reference.
+Notes on what the site's markdown renderer does beyond normal markdown.
+Each feature has a working example on the summary page.
 
-## Syntax-highlighted code fences
+## Code fences
 
-Fences with a language tag are highlighted with
-[shiki](https://shiki.style). Loaded languages include bash, javascript,
-typescript, json, css, python, ruby, dockerfile and diff; any other language
-renders as plain text in the same frame instead of failing.
-
-Text after the language in the fence opener becomes a filename tab:
+Fences with a language tag are highlighted with shiki. bash, javascript,
+typescript, json, css, python, ruby, dockerfile and diff are loaded, and
+anything else comes out as plain text rather than an error. Text after the
+language tag becomes the filename tab:
 
 ````md
 ```css title=theme.css
@@ -23,5 +20,46 @@ Text after the language in the fence opener becomes a filename tab:
 
 ## Inline code
 
-Inline spans are rendered smaller, tinted green, and keep their monospace
-font: `npm run build`.
+Smaller than body text, tinted green, still monospace: `npm run build`.
+
+## Cross-project cards
+
+If a paragraph is just a project id in double brackets it becomes a card
+for that project, with its status stamp and a link to its page:
+
+```md
+[[my-project]]
+```
+
+The id is matched against project folder names, case insensitive. If no
+project has that id you just get the span back as plain inline code.
+
+## Before / after sliders
+
+Two images in one paragraph, both alt texts starting with `before|after`,
+become a draggable slider. First image is the before, second is the after:
+
+```md
+![before|after the grade](extras/old.png)
+![before|after the grade](extras/new.png)
+```
+
+## Videos
+
+An image path ending in a video extension (mp4, webm, ogg, mov, m4v)
+renders a `<video controls>` instead of an image, so a screencast can go
+where a screenshot would:
+
+```md
+![a walkthrough of the tool](extras/demo.mp4)
+```
+
+Hand written `<video>` tags are passed through too, which is how you would
+get poster images or multiple sources in.
+
+## Everything else
+
+Headings, lists, tables, task lists, footnotes, quotes, links. All plain
+markdown via remark-gfm, images go through next/image. Image and video
+paths are resolved relative to the project's own folder, so `extras/…`
+means that project's assets.

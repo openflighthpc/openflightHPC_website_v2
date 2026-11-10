@@ -1,14 +1,13 @@
-# Markdown Feature Tour
+# Markdown features
 
-A live exhibit of everything the site's markdown renderer adds on top of
-standard markdown. Each feature is demonstrated on this very page — the
-syntax shown is the demo.
+This page shows off the extras the site's markdown renderer adds on top of
+normal markdown. Everything below goes through the renderer itself, so the
+examples are the demos.
 
-## 1. Syntax-highlighted code fences
+## 1. Code fences
 
-Code fences are coloured with the
-[shiki](https://shiki.style) highlighter. Text after the language in the
-fence opener becomes a filename tab, and a copy button sits at the right:
+Fences get shiki syntax highlighting. Whatever comes after the language tag
+becomes the filename tab, and there's a copy button on the right:
 
 ```bash title=backup.sh
 #!/usr/bin/env bash
@@ -34,8 +33,7 @@ def notify(event: dict, endpoint: str) -> int:
         return response.status
 ```
 
-Languages the highlighter doesn't know still render — plain text inside
-the same chrome, no crash:
+Languages shiki doesn't know just come out plain instead of erroring:
 
 ```toml title=app.toml
 [server]
@@ -46,46 +44,45 @@ debug = false
 
 ## 2. Inline code
 
-Inline spans render smaller, with a soft green tint:
-`curl -s localhost:8000/health`.
+Inline code is smaller and tinted green: `curl -s localhost:8000/health`.
 
 ## 3. Cross-project cards
 
-A paragraph that is nothing but a project id in double brackets —
-`[[project-id]]` — embeds that project's dossier card, stamped with its
-status and linking to its page. This one points at a real project:
+A paragraph that only contains a project id in double brackets gets swapped
+for a card for that project, status stamp and all. Take Hackathon-13:
 
 [[Hackathon-13]]
 
-An unknown id degrades to a harmless inline span: `[[does-not-exist]]`.
+An id that matches no project stays a normal inline span:
+`[[does-not-exist]]`.
 
 ## 4. Before / after sliders
 
-A paragraph containing exactly two images whose alt text begins with
-`before|after` collapses into a draggable comparison slider. Drag the
-divider between a desaturated photo and a colour-graded one:
+Two images in one paragraph, both with alt text starting with
+`before|after`, turn into a draggable slider. Left side is desaturated,
+right side is the original:
 
 ![before|after a colour grade](extras/old.png)
 ![before|after a colour grade](extras/new.png)
 
-## 5. Video embeds
+## 5. Videos
 
-Image syntax whose path ends in a video extension (`.mp4`, `.webm`,
-`.ogg`, `.mov`, `.m4v`) renders a playable `<video controls>` element
-instead of an image. Raw `<video>` tags work too:
+If the image extension is a video one (mp4, webm, ogg, mov, m4v) the
+renderer puts down a `<video controls>` instead of an image. Hand written
+`<video>` tags work too:
 
 ![a sample clip](extras/demo.mp4)
 
-## 6. Everything else still works
+## 6. Regular markdown
 
-Standard markdown is untouched:
+The usual stuff still works: gfm tables, task lists, footnotes, links and
+the rest.
 
 - **bold**, _italic_, ~~strikethrough~~, [links](https://shiki.style)
-- task lists, footnotes and autolinks via remark-gfm
 
 | service | port | status |
 | ------- | ---- | ------ |
 | web     | 3000 | up     |
 | api     | 8000 | up     |
 
-> good demos are short.
+> this is a blockquote. it exists to prove blockquotes work.

@@ -1,7 +1,7 @@
 {
    "name": "Feature Demo",
    "colour": "#c86e47",
-   "description": "A living exhibit of the custom markdown features the dossier renderer supports.",
+   "description": "Small demo of the custom markdown features the site's renderer supports.",
    "tags": ["meta", "demo"],
    "languages": ["markdown"],
    "status": "active",
