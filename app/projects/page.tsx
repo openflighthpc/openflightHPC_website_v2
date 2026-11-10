@@ -15,12 +15,12 @@ export default function HomePage() {
             {projects.map((project) => (
                <Link
                   key={project.name}
-                  href={`/projects/${project.name}`}
+                  href={`/projects/${project.id}`}
                   className="group rounded-xl border p-5 hover:shadow-lg transition"
                >
                   {project.logoPath && (
                      <Image
-                        src={`/openflightHPC_website_v2/${project.logoPath}`.trimEnd()}
+                        src={`/openflightHPC_website_v2/${project.logoPath}`}
                         alt={`${project.name} logo`}
                         width={600}
                         height={300}
