@@ -15,6 +15,8 @@ export type Project = {
    status: 'in-progress' | 'complete' | 'archived';
    featured: boolean;
    logoPath: string | null;
+   startDate: string;
+   endDate: string | null;
 };
 
 /**

@@ -4,5 +4,7 @@
    "languages": ["javascript", "typescript", "bash"],
    "tags": ["HPC", "R&D"],
    "status": "in-progress",
-   "featured": true
+   "featured": true,
+   "startDate": "10/06/2026",
+   "endDate": "20/06/2026"
 }
