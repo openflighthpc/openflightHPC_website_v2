@@ -17,7 +17,8 @@ const nextConfig: NextConfig = {
         as: "*.css",
       },
     },
-  }
+  },
+  basePath: '/openflightHPC_website_v2'
 };
 
 export default nextConfig;
