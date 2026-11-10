@@ -47,12 +47,15 @@ export function getAllProjects(): Project[] {
       }
       const metadata = JSON.parse(fs.readFileSync(path.join(projectDir, 'meta.json'), 'utf8'));
 
+      // Get logo if their is one
+      const logoPath = fs.existsSync(path.join(projectDir, 'logo.png'))
+         ? path.join('projects', folder, 'logo.png')
+         : null;
+
       projects.push({
          id: folder,
          ...metadata,
-         logoPath: fs.existsSync(path.join(projectDir, 'logo.png'))
-            ? path.join('projects', folder, 'logo.png')
-            : null
+         logoPath
       });
    }
 
@@ -92,14 +95,17 @@ export function getProject(id: string): Project & { summary: string; breakdown: 
    }
    const breakdownData = fs.readFileSync(breakdownPath, 'utf8').trim();
 
+   // Get logo if their is one
+   const logoPath = fs.existsSync(path.join(projectDir, 'logo.png'))
+      ? path.join('projects', id, 'logo.png')
+      : null;
+
    return {
       id,
       ...metadata,
       summary: summaryData,
       breakdown: breakdownData,
-      logoPath: fs.existsSync(path.join(projectDir, 'logo.png'))
-         ? path.join('projects', id, 'logo.png')
-         : null
+      logoPath
    };
 }
 
