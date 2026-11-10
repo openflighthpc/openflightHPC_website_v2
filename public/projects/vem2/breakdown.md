@@ -67,10 +67,10 @@ When the user creates a VVIZ, they can specify times that they would not like to
 The system would then use the start time and time limits of existing and queued jobs in order to find the next available slot that would fit the specifications of the user, and then the job could be queued, with the job id returned to the user so they could keep track of its status.
 Jobs would be run internally with slurm with the --begin flag so that they won’t run too early.
 
-If a vviz session was cancelled early, other vviz sessions would not be reorganized to account for this gap, the slot would be made available for booking by other people.
+If a vviz session was cancelled early, other vviz sessions would not be reorganised to account for this gap, the slot would be made available for booking by other people.
 This is because if a user has been told that they have the machine from a certain time, they will schedule things around it and it wouldn’t make sense for it to start early.
 
-This information could be visualized like this in order to show how much resources are available:
+This information could be visualised like this in order to show how much resources are available:
 
 ![timetable](./extras/api/timetable.png)
 
@@ -96,7 +96,7 @@ The frontend used Alex and Oscar’s API to view flavours, create instances and 
 After experimenting with the frontend for AWS, a clear pain point was a lack of user flow and a very noisy UI.
 I therefore decided to create a UI that was clean, minimal and straightforward for a user that would hopefully minimise any future pain points they would have when interacting with the site.
 
-I named the site AlcesNova, or New Moose, as I wanted a modern, technical sounding name without downselling the project.
+I named the site AlcesNova, or New Moose, as I wanted a modern, technical sounding name without down selling the project.
 The landing page features a supernova-inspired design with the project name and clear guidance of what it does.
 It also features an infinite marquee with the software packages that would come preinstalled with launching the computer.
 (This needs some revising as unsure whether the VM inherits all the software from the compute node it is hosted on, or whether a user would have to install all desired software packages themselves.)
@@ -319,7 +319,7 @@ I then decided to start working on an api which can interact with the database w
 ## VVIZ Scripts
 
 In week 3 further improvements were made to the core scripts, files relating to bringing the vviz’s up have been successfully merged into the prolog.sh file making overall maintenance and alterations to the start up process significantly easier.
-Furthermore significant changes were made to the system to make it more easily parsable by the API, namely changing the os.allowed and seasonings.allowed files to JSON files.
+Furthermore significant changes were made to the system to make it more easily parseable by the API, namely changing the os.allowed and seasonings.allowed files to JSON files.
 This has allowed categorisation to be implemented into seasonings and families to be implemented into os’s allowing for easier expandability in the future on both the seasonings and JSON side.
 
 Further improvements in week 3 included an output of a JSON file with all the information about a vviz when the vviz has finished it’s cloud init process, the JSON file contains: the job id, when it ends, the cancel command, the name of the vm, the hostname, the ip, the flavour, the os image, the hypervisor, the user, the user’s home directory, ssh information and VNC connection information.

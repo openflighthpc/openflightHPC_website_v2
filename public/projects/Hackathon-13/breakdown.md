@@ -18,11 +18,11 @@ We were provided with seven qualities that a successful learning ladder should d
 
 1. Rung 0 assumes the user is completely new to the concept.
 
-2. there shoud be a win at every single rung with the user having done something that clearly worked.
+2. there should be a win at every single rung with the user having done something that clearly worked.
 
 3. Ensure users don't get stuck by providing self-serve material, a user should be able to rescue themselves without seeking out another person.
 
-4. It should be clear which rung of the ladder you're on and that you've mmoved up the ladder.
+4. It should be clear which rung of the ladder you're on and that you've moved up the ladder.
 
 5. At the final rung the skills that are needed should build on all the previous levels and should be an actual advanced technique.
 

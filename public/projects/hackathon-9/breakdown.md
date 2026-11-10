@@ -91,7 +91,7 @@ During the first half of the day, development focused on creating a functional i
 
 During the second half of the day, further functionality was introduced, including an audio waveform visualisation and 3D elements. These additions transformed the album carousel into a floating, more visually dynamic interface.
 
-![Mutiple albums and waveform](extras/Music2.mov)
+![Multiple albums and waveform](extras/Music2.mov)
 
 This project demonstrated that terminal interfaces do not necessarily need to be restricted to text and basic formatting, and can instead incorporate multimedia elements and more sophisticated visual experiences.
 
