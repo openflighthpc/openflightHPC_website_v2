@@ -1,12 +1,13 @@
 import MarkdownRenderer from '@/app/components/markdown/MarkdownRenderer';
 import { getAllProjects } from '@/lib/projects-handler';
 
-type StencilProps = {
+function StencilText({
+   text,
+   repeat = 1
+}: Readonly<{
    text: string;
    repeat?: number;
-};
-
-function StencilText({ text, repeat = 1 }: Readonly<StencilProps>) {
+}>) {
    const rows = Array.from({ length: repeat });
    const doubled = `${text.toUpperCase()} ${text.toUpperCase()}`;
 
@@ -30,11 +31,9 @@ export function generateStaticParams() {
    }));
 }
 
-type ProjectPageProps = {
-   params: Promise<{ id: string }>;
-};
-
-export default async function ProjectPage({ params }: Readonly<ProjectPageProps>) {
+export default async function ProjectPage({
+   params
+}: Readonly<{ params: Promise<{ id: string }> }>) {
    const { id } = await params;
 
    return <MarkdownRenderer projectName={id} StencilText={StencilText} />;

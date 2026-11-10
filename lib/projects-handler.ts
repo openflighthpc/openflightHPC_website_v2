@@ -42,7 +42,7 @@ export function getAllProjects(): Project[] {
          id: folder,
          ...JSON.parse(fs.readFileSync(metaPath, 'utf8')),
          logoPath: fs.existsSync(path.join(projectDir, 'logo.png'))
-            ? path.join(projectDir, 'logo.png')
+            ? path.join('projects', folder, 'logo.png')
             : null
       });
    }
@@ -69,7 +69,7 @@ export function getProject(id: string): Project & { page: string } {
       ...data,
       page: fs.readFileSync(path.join(projectDir, 'page.md'), 'utf8'),
       logoPath: fs.existsSync(path.join(projectDir, 'logo.png'))
-         ? path.join(projectDir, 'logo.png')
+         ? path.join('projects', id, 'logo.png')
          : null
    };
 }

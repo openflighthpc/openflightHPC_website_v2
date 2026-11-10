@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Renderer from './components/_renderer/Renderer';
 
 export default function Home() {
    return (
