@@ -5,8 +5,6 @@ import { getAllProjects } from '@/lib/projects-handler';
 export default function HomePage() {
    const projects = getAllProjects();
 
-   console.log(projects)
-
    return (
       <main className="mx-auto max-w-7xl px-6 py-12">
          <h1 className="text-4xl font-bold mb-3">My Projects</h1>
