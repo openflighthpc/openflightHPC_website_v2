@@ -221,5 +221,5 @@ function resolveImagePath(src: string, projectName: string) {
   }
 
   // Change based on where project files are
-  return `/public/projects/${encodeURIComponent(projectName)}/${src.replace(/^\.\//, "")}`;
+  return `/openflightHPC_website_v2/projects/${encodeURIComponent(projectName)}/${src.replace(/^\.\//, "")}`;
 }
