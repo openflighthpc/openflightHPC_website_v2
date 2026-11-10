@@ -1,4 +1,5 @@
-import { getProject } from "@/public/projects/handler";
+
+import { getProject } from "@/lib/projects-handler";
 import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -65,9 +66,8 @@ export default function Renderer({
           const top = 5 + row * 13 + ((seed * (i + 5)) % 11);
           const opacity = 0.38 - row * 0.055;
           const scale = 0.9 + row * 0.04;
-          const label = `${NODE_LABELS[(i + seed) % NODE_LABELS.length]}-${
-            ((seed * 31 + i * (17 + col * 13)) % 9000) + 1000
-          }`;
+          const label = `${NODE_LABELS[(i + seed) % NODE_LABELS.length]}-${((seed * 31 + i * (17 + col * 13)) % 9000) + 1000
+            }`;
 
           return (
             <div

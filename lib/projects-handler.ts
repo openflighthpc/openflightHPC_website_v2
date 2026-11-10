@@ -1,3 +1,5 @@
+import "server-only";
+
 import path from "node:path";
 import fs from 'node:fs'
 
@@ -5,6 +7,7 @@ import fs from 'node:fs'
  * The layout of the project meta.json file
  */
 export type Project = {
+   id: string;
    name: string;
    description: string;
    languages: string[];
@@ -19,7 +22,7 @@ export type Project = {
  * @returns All the projects from the projects directory
  */
 export function getAllProjects(): Project[] {
-   const projectsDir = path.join(process.cwd(), 'public', "projects");
+   const projectsDir = path.join(process.cwd(), 'public', 'projects');
 
    const folders = fs.readdirSync(projectsDir).filter((item) =>
       fs.statSync(path.join(projectsDir, item)).isDirectory()
@@ -36,6 +39,7 @@ export function getAllProjects(): Project[] {
       }
 
       projects.push({
+         id: folder,
          ...JSON.parse(fs.readFileSync(metaPath, "utf8")),
          logoPath: (fs.existsSync(path.join(projectDir, 'logo.png'))) ? path.join(projectDir, 'logo.png') : null
       });
@@ -46,19 +50,20 @@ export function getAllProjects(): Project[] {
 
 /**
  * Get's the information about a specific project
- * @param name The name of the project to get
+ * @param id The projects ID
  * @returns The meta data about the project
  */
-export function getProject(name: string): Project & { page: string } {
-   const projectDir = path.join(process.cwd(), 'public', 'projects', name);
+export function getProject(id: string): Project & { page: string } {
+   const projectDir = path.join(process.cwd(), 'public', 'projects', id);
 
    if (!fs.existsSync(projectDir) || !fs.existsSync(path.join(projectDir, 'meta.json'))) {
-      throw new Error(`Cannot find a project called ${name}`);
+      throw new Error(`Cannot find a project called ${id}`);
    }
 
-   const data = JSON.parse(fs.readFileSync(path.join(projectDir, 'meta.json'), 'utf8'))
+   const data = JSON.parse(fs.readFileSync(path.join(projectDir, 'meta.json'), 'utf8'));
 
    return {
+      id,
       ...data,
       page: fs.readFileSync(path.join(projectDir, 'page.md'), 'utf8'),
       logoPath: (fs.existsSync(path.join(projectDir, 'logo.png'))) ? path.join(projectDir, 'logo.png') : null
