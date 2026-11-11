@@ -56,7 +56,18 @@ for a card for that project, status stamp and all. Take Hackathon-13:
 An id that matches no project stays a normal inline span:
 `[[does-not-exist]]`.
 
-## 4. Before / after sliders
+## 4. GitHub embeds
+
+A paragraph holding nothing but a `[github](…)` link pointing at a repo
+root becomes a card for that repository, with stars, forks and language
+fetched live from the GitHub API. Take Phaser:
+
+[github](https://github.com/phaserjs/phaser)
+
+Deeper links (issues, trees, blobs) and links with other link text stay
+ordinary anchors.
+
+## 5. Before / after sliders
 
 Two images in one paragraph, both with alt text starting with
 `before|after`, turn into a draggable slider. Left side is desaturated,
@@ -65,7 +76,7 @@ right side is the original:
 ![before|after a colour grade](extras/old.webp)
 ![before|after a colour grade](extras/new.webp)
 
-## 5. Videos
+## 6. Videos
 
 If the image extension is a video one (mp4, webm, ogg, mov, m4v) the
 renderer puts down a `<video controls>` instead of an image. Hand written
@@ -73,7 +84,7 @@ renderer puts down a `<video controls>` instead of an image. Hand written
 
 ![a sample clip](extras/demo.mp4)
 
-## 6. Regular markdown
+## 7. Regular markdown
 
 The usual stuff still works: gfm tables, task lists, footnotes, links and
 the rest.
