@@ -5,7 +5,23 @@ import { getFeaturedProjects } from '@/lib/project-handler';
 
 import AnimatedLogo from './components/AnimatedLogo';
 
-const projectBackgroundColors = ['#1b8a62', '#7d57b6', '#c86e47', '#2f76a6', '#b39539'];
+const projectBackgroundColors = [
+   '#1b8a62',
+   '#7d57b6',
+   '#c86e47',
+   '#2f76a6',
+   '#b39539',
+   '#b65773',
+   '#5f69a8',
+   '#2b8a83',
+   '#a65d93',
+   '#ba7042',
+   '#647f54',
+   '#8b65aa',
+   '#4f879f',
+   '#aa5f5a',
+   '#6a8f76'
+];
 
 const formatDate = (date: string) => {
    const [day, month, year] = date.split('/').map(Number);
@@ -57,7 +73,7 @@ export default async function Home() {
             <h2 id="featured-projects" className="text-center text-4xl font-bold">
                Featured Projects
             </h2>
-            <div className="mt-10">
+            <div className="mt-10 mb-[-200] sm:mb-[-100]">
                <Marquee speed={15} pauseOnHover autoFill>
                   {featuredProjects.map((project, index) => (
                      <article key={project.id} className="mx-3 h-[26rem] w-64 shrink-0 sm:w-72">

@@ -96,10 +96,11 @@ export default function ProjectsGallery({ projects }: Readonly<{ projects: Proje
             {selectedCategory} Projects
          </h1>
          <div className="flex flex-wrap justify-between items-center gap-4">
-            <details className="flex flex-wrap gap-2 text-lg" aria-label="Project categories">
+            <div className="flex flex-wrap gap-2 text-lg" aria-label="Project categories">
                {categories.map((category) => (
                   <button
                      key={category}
+                     role="group"
                      type="button"
                      aria-pressed={selectedCategory === category}
                      onClick={() => setSelectedCategory(category)}
@@ -112,7 +113,7 @@ export default function ProjectsGallery({ projects }: Readonly<{ projects: Proje
                      {category}
                   </button>
                ))}
-            </details>
+            </div>
             <div
                ref={controlsRef}
                className="flex items-center text-lg tracking-wide font-bold gap-5"
@@ -132,7 +133,8 @@ export default function ProjectsGallery({ projects }: Readonly<{ projects: Proje
                      {openMenu === 'filter' ? <X size={20} /> : <RxFilter aria-hidden="true" />}
                   </button>
                   {openMenu === 'filter' && (
-                     <details
+                     <div
+                        role="group"
                         id="project-status-options"
                         aria-label="Filter by project status"
                         className="absolute right-0 top-full z-20 mt-2 w-44 rounded-xl  bg-zinc-900 p-1 shadow-xl"
@@ -153,7 +155,7 @@ export default function ProjectsGallery({ projects }: Readonly<{ projects: Proje
                               {option.label}
                            </button>
                         ))}
-                     </details>
+                     </div>
                   )}
                </div>
 
@@ -172,7 +174,8 @@ export default function ProjectsGallery({ projects }: Readonly<{ projects: Proje
                      />
                   </button>
                   {openMenu === 'sort' && (
-                     <details
+                     <div
+                        role="group"
                         id="project-sort-options"
                         aria-label="Sort projects"
                         className="absolute right-0 top-full z-20 mt-2 w-48 rounded-xl font-bold bg-zinc-900 p-1 shadow-xl"
@@ -193,7 +196,7 @@ export default function ProjectsGallery({ projects }: Readonly<{ projects: Proje
                               {option.label}
                            </button>
                         ))}
-                     </details>
+                     </div>
                   )}
                </div>
             </div>

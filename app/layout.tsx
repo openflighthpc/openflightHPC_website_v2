@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import localFont from 'next/font/local';
 
+import Footer from './components/Footer';
 import Header from './components/Header';
 
 const chaletFont = localFont({
@@ -32,9 +33,10 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
          lang="en"
          className={`${chaletFont.variable} ${geistSans.variable} ${geistMono.variable} h-full antialiased`}
       >
-         <body className="min-h-full flex flex-col">
+         <body className="min-h-screen flex flex-col">
             <Header></Header>
             {children}
+            <Footer></Footer>
          </body>
       </html>
    );
