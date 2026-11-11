@@ -2,7 +2,7 @@ import { defineProjectMetadata } from '@/lib/metadata-handler';
 
 export default defineProjectMetadata({
    colour: '#c86e47',
-   description: "A custom enhance markdown rerender",
+   description: 'A custom enhance markdown rerender',
    featured: true,
    languages: ['markdown'],
    name: 'OpenFlight Labs Markdown renderer',
