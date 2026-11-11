@@ -1,7 +1,7 @@
 {
    "name": "SACCT reporter and SACCT API",
    "colour": "#bada55",
-   "description": "Exploration of improved reporting metrics",
+   "description": "Exploration of improved SACCT reporting metrics",
    "languages": ["ruby","python"],
    "tags": ["R&D", "Adam"],
    "status": "complete",
