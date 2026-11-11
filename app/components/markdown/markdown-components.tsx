@@ -1,6 +1,6 @@
 import type { Element as HastElement, Text as HastText } from 'hast';
 import Image from 'next/image';
-import { Children } from 'react';
+import { Children, type ComponentType, type ReactNode } from 'react';
 import type { Components } from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
@@ -9,10 +9,12 @@ import type { Project } from '@/lib/project-handler';
 import BeforeAfterSlider from './BeforeAfterSlider';
 import CodeBlock from './CodeBlock';
 import GithubRepoCard from './GithubRepoCard';
+import MarkdownTabs from './MarkdownTabs';
 import { resolveImagePath } from './paths';
 import ProjectCard from './ProjectCard';
 import remarkCollapse from './remarkCollapse';
 import remarkSpoiler from './remarkSpoiler';
+import remarkTabs from './remarkTabs';
 import Spoiler from './Spoiler';
 
 type MdastNode = {
@@ -31,6 +33,12 @@ const GITHUB_REPO_PATTERN = /^https:\/\/github\.com\/([\w.-]+)\/([\w.-]+)\/?$/;
 /** Class name the remarkSpoiler plugin stamps on spoiler wrapper spans. */
 const SPOILER_CLASS = 'spoiler';
 
+/** Element name the remarkTabs plugin gives its custom container node. */
+const TABSET_ELEMENT = 'tabset';
+
+/** Element name the remarkTabs plugin gives each panel wrapper node. */
+const TABPANEL_ELEMENT = 'tabpanel';
+
 /**
  * Copies a fenced code block's info-string meta into `data.hProperties` so
  * it survives into the hast `code` element's properties, e.g.
@@ -48,8 +56,20 @@ function remarkCodeMeta() {
    };
 }
 
-/** Remark plugins applied to every markdown source rendered on the page. */
-export const REMARK_PLUGINS = [remarkGfm, remarkCodeMeta, remarkCollapse, remarkSpoiler];
+/**
+ * Remark plugins applied to every markdown source rendered on the page.
+ * remarkTabs must run *before* remarkCollapse: both treat a bare `:::`
+ * line as a closer, and running container-splitting collapse-first eats
+ * tab closers — silently swallowing everything after a tabs container
+ * into its panels.
+ */
+export const REMARK_PLUGINS = [
+   remarkGfm,
+   remarkCodeMeta,
+   remarkTabs,
+   remarkCollapse,
+   remarkSpoiler
+];
 
 function hastTextContent(node: HastElement): string {
    return node.children
@@ -66,16 +86,17 @@ function hastTextContent(node: HastElement): string {
 /**
  * The react-markdown `components` overrides that implement the project's
  * custom markdown features: raw video tags, dossier cards for
- * `[[project-id]]` references, before/after comparison sliders and
- * shiki-highlighted code fences. Behaviour only — the page chrome and its
- * styling live in `ProjectDossierLayout.tsx`.
+ * `[[project-id]]` references, before/after comparison sliders,
+ * `:::tabs` tabsets and shiki-highlighted code fences. Behaviour
+ * only — the page chrome and its styling live in
+ * `ProjectDossierLayout.tsx`.
  */
 export function createMarkdownComponents(
    projectName: string,
    // Powers the `[[project-id]]` → ProjectCard lookups.
    allProjects: Project[]
 ): Components {
-   return {
+   const components: Components = {
       code({ children, className }) {
          const raw = String(children);
 
@@ -255,4 +276,35 @@ export function createMarkdownComponents(
          );
       }
    };
+
+   // The remarkTabs plugin emits custom `tabset`/`tabpanel` elements, which
+   // have no intrinsic keys in react-markdown's `Components` map; hook the
+   // client component on with the loose keys the runtime lookup actually
+   // uses. The tabpanel wrapper is a plain passthrough div — MarkdownTabs
+   // reads each panel's label off its `data-*` props. Unmapped tab panels
+   // would render as unknown literal elements, so both keys are required.
+   const looseComponents = components as Record<
+      string,
+      ComponentType<{
+         children?: ReactNode;
+         className?: string;
+         'data-label'?: string;
+         'data-index'?: string;
+      }>
+   >;
+   looseComponents[TABSET_ELEMENT] = MarkdownTabs;
+   looseComponents[TABPANEL_ELEMENT] = function TabPanel({
+      children,
+      className,
+      'data-label': dataLabel,
+      'data-index': dataIndex
+   }) {
+      return (
+         <div data-label={dataLabel} data-index={dataIndex} className={className}>
+            {children}
+         </div>
+      );
+   };
+
+   return components;
 }

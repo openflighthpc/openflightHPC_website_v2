@@ -65,6 +65,36 @@ the state keyword is optional, closed is the default
 Containers can be nested. The closing `:::` only needs to be on its own
 line — blank lines around it are not required, though they are allowed.
 
+## Tabs
+
+A `:::tabs` container renders its panels as client-side tabs. The opening
+marker line carries a pipe-separated list of labels, one per panel, in
+panel order. Within the container, each panel starts with a `:::Label`
+line and ends with a bare `:::`; the final `:::` closes the tabset
+itself:
+
+```md
+:::tabs Setup | Run | Results
+:::Setup
+install and configure everything
+:::
+
+:::Run
+submit the job
+:::
+:::
+```
+
+A bare `:::` line always closes the innermost open block, so panels and
+tabsets never need to be counted — `:::` closes the panel when one is
+open, otherwise the tabset. Blank lines around the markers are optional.
+Everything the renderer supports — fences, images, spoilers, cards —
+works inside a panel, and a panel can hold any number of blocks, not
+just one paragraph. Any content before the first `:::Label` becomes an
+unlabelled first panel. Tabs are not designed to be nested inside other
+tabs, and collapse containers should stay outside tabsets: a `:::` line
+inside a panel always closes the panel, never a collapse block.
+
 ## Before / after sliders
 
 Two images in one paragraph, both alt texts starting with `before|after`,

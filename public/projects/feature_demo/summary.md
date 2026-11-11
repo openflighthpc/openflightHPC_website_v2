@@ -62,7 +62,7 @@ A paragraph holding nothing but a `[github](…)` link pointing at a repo
 root becomes a card for that repository, with stars, forks and language
 fetched live from the GitHub API. Take Phaser:
 
-[github](https://github.com/phaserjs/phaser)
+[github](https://github.com/codecrafters-io/build-your-own-x)
 
 Deeper links (issues, trees, blobs) and links with other link text stay
 ordinary anchors.
@@ -102,19 +102,44 @@ renderer puts down a `<video controls>` instead of an image. Hand written
 
 ![a sample clip](extras/demo.mp4)
 
-## 8. Regular markdown
+## 8. Tabs
 
-The usual stuff still works: gfm tables, task lists, footnotes, links and
-the rest.
+A `:::tabs` container turns its content into client-side tabs. The header
+line after `:::tabs` is a pipe-separated list of labels, and each panel
+is bounded by its own `:::Label` line and a closing `:::` — so a panel
+can hold any number of blocks, not just one paragraph. Try switching:
 
-- **bold**, _italic_, ~~strikethrough~~, [links](https://shiki.style)
+:::tabs Setup | Run
+:::Setup
+Install the bundle, then submit the job to the queue.
 
-| service | port | status |
-| ------- | ---- | ------ |
-| web     | 3000 | up     |
-| api     | 8000 | up     |
+This panel holds two paragraphs; the blank line between them is fine.
+:::
 
-> this is a blockquote. it exists to prove blockquotes work.
+:::Run
+Second panel — anything markdown can do works here: `inline code`,
+_emphasis_, images, even lists:
+
+- one
+- two
+
+:::
+:::
+
+:::tabs Bash | Notes
+:::Bash
+
+```bash title=run.sh
+echo "Hello world"
+```
+
+:::
+
+:::Notes
+The panel above held a code fence — it renders exactly as it would
+outside a tabset.
+:::
+:::
 
 ## 9. Spoilers
 
@@ -123,3 +148,17 @@ an image and a video, all hidden:
 
 The secret word is ||verisimilitude||, and this image is ||![a hidden image](extras/old.webp)||
 so is this clip: ||![a hidden clip](extras/demo.mp4)||
+
+## 10. Regular markdown
+
+The usual stuff still works: gfm tables, task lists, footnotes, links and
+the rest.
+
+- **bold**, _italic_, ~~strikethrough~~, [links](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+
+| service | port | status |
+| ------- | ---- | ------ |
+| web     | 3000 | up     |
+| api     | 8000 | up     |
+
+> this is a blockquote. it exists to prove blockquotes work.
