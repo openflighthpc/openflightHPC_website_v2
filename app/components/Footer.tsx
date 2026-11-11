@@ -1,8 +1,6 @@
 import Image from 'next/image';
 
 export default function Footer() {
-   const year = new Date().getFullYear();
-
    return (
       <footer className="z-80 flex mt-16  h-40 w-full items-end justify-between bg-black/80 text-white backdrop-blur">
          <Image
@@ -22,7 +20,7 @@ export default function Footer() {
                className="h-auto w-full max-w-[400px]"
             />
             <p className="mt-2 text-xs sm:text-sm md:text-lg tracking-wide text-center">
-               Maintained by <span className="text-green-400">OpenFlightHPC </span>© {year}
+               Maintained by <span className="text-green-400">OpenFlightHPC </span>© {new Date().getFullYear()}
             </p>
          </div>
 
