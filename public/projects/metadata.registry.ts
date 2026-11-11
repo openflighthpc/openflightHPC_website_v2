@@ -9,6 +9,7 @@ import hackathon_13 from './hackathon_13/projects.metadata';
 import job_cost_calculator from './job_cost_calculator/projects.metadata';
 import SACCT_reporter_and_SACCT_API from './SACCT_reporter_and_SACCT_API/projects.metadata';
 import vem2 from './vem2/projects.metadata';
+import flight_environment from './flight_environment/projects.metadata';
 
 const ProjectMetadata = {
    carbon_leaderboard,
@@ -19,8 +20,9 @@ const ProjectMetadata = {
    hackathon_9,
    hackathon_10,
    hackathon_13,
-   job_cost_calculator,
    SACCT_reporter_and_SACCT_API,
+   job_cost_calculator,
+   flight_environment,
    vem2
 };
 
