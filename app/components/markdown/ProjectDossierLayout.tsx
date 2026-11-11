@@ -47,7 +47,7 @@ export default function ProjectDossierLayout({
    const stamp = STATUS_TAGS[project.status as keyof typeof STATUS_TAGS] ?? project.status;
 
    return (
-      <div className="relative min-h-screen font-sans text-neutral-100">
+      <div className="relative flex-1 font-sans text-neutral-100">
          {/* ————————————————————————————————————————
           BACKDROP — the wall behind everything:
           poured concrete, one warm seam, node-rack
