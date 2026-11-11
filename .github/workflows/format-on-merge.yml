@@ -1,48 +1,48 @@
 name: Format on Merge
 
 on:
-  push:
-    branches:
-      - main
+   push:
+      branches:
+         - main
 
 permissions:
-  contents: write
+   contents: write
 
 jobs:
-  format:
-    # Prevent the bot's own commit from triggering another formatting run.
-    if: github.actor != 'github-actions[bot]'
+   format:
+      # Prevent the bot's own commit from triggering another formatting run.
+      if: github.actor != 'github-actions[bot]'
 
-    runs-on: ubuntu-latest
+      runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      steps:
+         - name: Checkout repository
+           uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: npm
+         - name: Set up Node.js
+           uses: actions/setup-node@v4
+           with:
+              node-version: 22
+              cache: npm
 
-      - name: Install dependencies
-        run: npm ci
+         - name: Install dependencies
+           run: npm ci
 
-      - name: Run ESLint fixes
-        run: npm run lint:fix
+         - name: Run ESLint fixes
+           run: npm run lint:fix
 
-      - name: Format files
-        run: npm run format
+         - name: Format files
+           run: npm run format
 
-      - name: Commit and push changes
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+         - name: Commit and push changes
+           run: |
+              git config user.name "github-actions[bot]"
+              git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          if [[ -n "$(git status --porcelain)" ]]; then
-            git add -A
-            git commit -m "chore: apply lint and formatting fixes"
-            git push
-          else
-            echo "No formatting changes to commit."
-          fi
+              if [[ -n "$(git status --porcelain)" ]]; then
+                git add -A
+                git commit -m "chore: apply lint and formatting fixes"
+                git push
+              else
+                echo "No formatting changes to commit."
+              fi
