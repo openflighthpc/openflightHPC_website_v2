@@ -2,32 +2,24 @@
 
 ## API
 
-In week 4 I worked on implementing the new features brought into the VVIZ into the API so that they can be brought into the frontend, this also came with more improvements to filtering on get endpoints allowing for more ways to filter returned data.
-I also worked on improving the CLI to handle the new features I added to the API as well as improving its handling of logging in users.
+In week 4 we worked on implementing the new features brought into the VVIZ into the API so that they can be brought into the frontend, this also came with more improvements to filtering on get endpoints allowing for more ways to filter returned data.
+We also worked on improving the CLI to handle the new features added to the API as well as improving its handling of logging in users.
 
-As well as this I also worked on taking parts of my most recent API and implementing them into an API skeleton i’ve made to help with creating APIs in the future, some of the things i’ve taken is a new error handler for the API as well as streamlining other parts of the skeleton to make it easier to work with and more lightweight making it easy to work with and build on top of.
-
-Github links:
-
-[api skeleton](https://github.com/acegoal07/Hono-API-Skeleton)
-[vem2 cli](https://gitlab.dmz.alces.network/dev/vem2-cli)
-[vem2 api](https://gitlab.dmz.alces.network/dev/vem2-api)
+As well as this we also worked on taking parts of the most recent API and implementing them into an API skeleton we’ve made to help with creating APIs in the future, some of the things we’ve taken is a new error handler for the API as well as streamlining other parts of the skeleton to make it easier to work with and more lightweight making it easy to work with and build on top of.
 
 ### Continuing
 
-#### Oscar
+#### Slurmy Vvizy Stuff
 
-##### Slurmy Vvizy Stuff
-
-I was able to use the slurm config and munge key on the existing cluster, as well as the built slurm rpms, to add another login node in with the same configuration as the first login node, just without being a slurm controller.
-It shouldn’t really be called a login node, as I disabled ssh access to it except for a dev account.
+We were able to use the slurm config and munge key on the existing cluster, as well as the built slurm rpms, to add another login node in with the same configuration as the first login node, just without being a slurm controller.
+It shouldn’t really be called a login node, as we disabled ssh access to it except for a dev account.
 It’s really just an http access point to the vviz scripts.
-I was also able to get my api running on this node, and Alex was able to get his api running as a service so that it didn’t need to be run as a user.
+We were also able to get the api running on this node, and to run as a service so that it didn’t need to be run as a user.
 It was very simple to add the APIs onto the node, as they could be configured to use any path for the vviz scripts and outputs.
 This means that the gateway node could sit completely separate from the rest of the cluster, including the vviz scripts, but still run the jobs.
 The entire api could be packaged into a vm or container that sits entirely separate from the rest of the cluster.
 
-I also had a look at other slurm config options that could be relevant.
+We also had a look at other slurm config options that could be relevant.
 
 ‘SchedulerType’ determines how slurm schedules jobs.
 By default, it comes with builtin and backfill, which both deal with priority slightly differently.
@@ -37,9 +29,9 @@ This does raise the question of if the vviz nodes and normal compute nodes even 
 
 ‘PreemptMode’
 
-##### Partition Config
+#### Partition Config
 
-For this type of setup, where the api is acting as the only route to run the vviz jobs, I think the partitions should be configured as follows.
+For this type of setup, where the api is acting as the only route to run the vviz jobs, we think the partitions should be configured as follows.
 
 Nodes that run vviz jobs should be in their own partition with a distinct name.
 This will make it both easier to get specifically vviz jobs from slurm, as well as making it possible to configure the partition specifically for those jobs.
@@ -54,11 +46,11 @@ One of the main parts of config that is needed is a controller user that has roo
 This is so this user can run the slurm jobs as any user while still managing the permissions of all the files.
 
 Another bit of config that is needed is that the flavours need to be accessible by a standard user.
-I solved this by putting the flavour scripts in /etc, but it would probably make more sense to put them in /usr/share/vviz or something similar, as they can be edited, and new ones can be added.
+We solved this by putting the flavour scripts in /etc, but it would probably make more sense to put them in /usr/share/vviz or something similar, as they can be edited, and new ones can be added.
 
-##### FiFo Slurm Configuration
+#### FiFo Slurm Configuration
 
-Doing some research into different slurm configurations has shown me that there might be a way to configure slurm to use a First in / First out configuration for queuing, which, combined with preemption, would mean that jobs that were scheduled earlier would always have priority over those scheduled later, meaning that they could be queued without worry of an earlier job pushing it back.
+Doing some research into different slurm configurations has shown us that there might be a way to configure slurm to use a First in / First out configuration for queuing, which, combined with preemption, would mean that jobs that were scheduled earlier would always have priority over those scheduled later, meaning that they could be queued without worry of an earlier job pushing it back.
 
 ![Preemption Config](./extras/api/preemptConfig.webp)
 
@@ -66,17 +58,17 @@ One key part of this is that this is a cluster-wide configuration, meaning that 
 
 ## Monitoring
 
-This week I spent fixing my API and altering my website so it works a bit better.
-I also started making like a doctor cli which could try to diagnose issues with vvizes if there was one.
+This week was spent fixing the API and altering the website so it works a bit better.
+We also started making like a doctor cli which could try to diagnose issues with vvizes if there was one.
 So you would run the command ./bin/dev.js doc vviz1 and it would check the viz is in the squeue and that you can ssh into the node.
 Then it would make sure you can get an ip address of that vm and some other stuff that you should be able to get with the vm.
 
-In terms of the fixes for the site I made it more usable and less laggy with the radar.
-Also, I noticed that the site wasn’t showing the full history just some so I fixed that issue it was just a frontend issue.
+In terms of the fixes for the site we made it more usable and less laggy with the radar.
+Also, we noticed that the site wasn’t showing the full history just some so we fixed that issue it was just a frontend issue.
 
 ## CLI
 
-For this week I was focusing on the CLI integration tools for the VVIZ to make setting up new vviz units easier, as well as providing for a linking tool for all of the other projects.
+For this week we were focusing on the CLI integration tools for the VVIZ to make setting up new vviz units easier, as well as providing for a linking tool for all of the other projects.
 This has been constructed in Ruby and is designed to work on the login node.
 It is able to read the current cluster state, and run slurm commands from a simple cluster based system as seen by the command list here allowing for creation, deletion and monitoring of VVIZ nodes as required.
 Every single command here contains an output reporting in json format as needed to allow for API integration.
@@ -93,3 +85,10 @@ VVIZ create requires the flavour, then status can be used to track where the cur
 Connect gives you the command action, not actually running the connect.
 
 Killing ends the process
+
+## What we learnt
+
+The gateway node experiment showed the apis can sit entirely separate from the cluster they run jobs on, as they could both be configured to use any path for the vviz scripts and outputs, so the whole thing could be packaged into its own vm or container.
+Research into SchedulerType made clear that a custom scheduler would conflict with slurm's normal usage on the other partitions, which raises the question of whether the vviz nodes need to be in the same logical cluster as the compute nodes at all, and working out the partition config showed what the api being the only route in actually takes: a distinct vviz partition, AllocNodes limiting submissions to the gateway, a root controller user, and flavours a standard user can read.
+The cli work drove the same point home from the other side: because launch.sh writes the connection info out per job, connect just relays it and launch script changes need no cli change.
+Alongside the site fixes, which showed the missing history was just a frontend bug, a doctor command for diagnosing misbehaving vvizes felt like a natural addition to the cli.
