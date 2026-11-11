@@ -20,7 +20,8 @@ export default function Footer() {
                className="h-auto w-full max-w-[400px]"
             />
             <p className="mt-2 text-xs sm:text-sm md:text-lg tracking-wide text-center">
-               Maintained by <span className="text-green-400">OpenFlightHPC </span>© {new Date().getFullYear()}
+               Maintained by <span className="text-green-400">OpenFlightHPC </span>©{' '}
+               {new Date().getFullYear()}
             </p>
          </div>
 
