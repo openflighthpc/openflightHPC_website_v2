@@ -7,6 +7,7 @@ import hackathon_10 from './hackathon_10/projects.metadata';
 import hackathon_13 from './hackathon_13/projects.metadata';
 import SACCT_reporter_and_SACCT_API from './SACCT_reporter_and_SACCT_API/projects.metadata';
 import vem2 from './vem2/projects.metadata';
+import diskless_stack from './diskless_stack/projects.metadata';
 
 const ProjectMetadata = {
    carbon_leaderboard,
@@ -17,6 +18,7 @@ const ProjectMetadata = {
    hackathon_10,
    hackathon_13,
    SACCT_reporter_and_SACCT_API,
+   diskless_stack,
    vem2
 };
 
