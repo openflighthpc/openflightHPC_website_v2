@@ -1,11 +1,12 @@
 'use client';
 
-import Link from 'next/link';
+import { ChevronDown, ChevronRight, X } from 'lucide-react';
 import Image from 'next/image';
-import { ChevronRight, ChevronDown, X } from 'lucide-react';
+import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
-import type { Project } from '@/lib/project-handler';
 import { RxFilter } from 'react-icons/rx';
+
+import type { Project } from '@/lib/project-handler';
 
 const projectGradients = [
    'linear-gradient(135deg, #166534 0%, #0f766e 55%, #164e63 100%)',
@@ -44,10 +45,10 @@ const formatDate = (date: string) => {
    const [day, month, year] = date.split('/').map(Number);
 
    return new Date(Date.UTC(year, month - 1, day)).toLocaleDateString('en-US', {
-      month: 'short',
       day: 'numeric',
-      year: 'numeric',
-      timeZone: 'UTC'
+      month: 'short',
+      timeZone: 'UTC',
+      year: 'numeric'
    });
 };
 
@@ -78,7 +79,7 @@ export default function ProjectsGallery({ projects }: { projects: Project[] }) {
 
    const categories = ['All', ...new Set(projects.flatMap((project) => project.tags))];
    const visibleProjects = projects
-      .map((project, index) => ({ project, index }))
+      .map((project, index) => ({ index, project }))
       .filter(
          ({ project }) =>
             (selectedCategory === 'All' || project.tags.includes(selectedCategory)) &&
@@ -208,7 +209,7 @@ export default function ProjectsGallery({ projects }: { projects: Project[] }) {
             {visibleProjects.length === 0 && (
                <p className="col-span-full mt-10 text-zinc-400">No projects match these filters.</p>
             )}
-            {visibleProjects.map(({ project, index }) => (
+            {visibleProjects.map(({ index, project }) => (
                <Link
                   key={project.id}
                   href={`/projects/${project.id}`}

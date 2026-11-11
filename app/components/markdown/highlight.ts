@@ -1,7 +1,7 @@
 import {
+   type CodeToHastOptions,
    createHighlighterCoreSync,
-   type HighlighterCore,
-   type CodeToHastOptions
+   type HighlighterCore
 } from 'shiki/core';
 import { createJavaScriptRegexEngine } from 'shiki/engine/javascript';
 import bash from 'shiki/langs/bash.mjs';
@@ -17,12 +17,12 @@ import typescript from 'shiki/langs/typescript.mjs';
 import vesper from 'shiki/themes/vesper.mjs';
 
 export const highlighter: HighlighterCore = createHighlighterCoreSync({
-   themes: [vesper],
-   langs: [bash, css, diff, dockerfile, javascript, json, python, ruby, shellscript, typescript],
    // Forgiving mode: grammars that use oniguruma-only patterns are skipped
    // instead of throwing, so fences render (slightly degraded) rather than
    // silently falling back to plain text.
-   engine: createJavaScriptRegexEngine({ forgiving: true })
+   engine: createJavaScriptRegexEngine({ forgiving: true }),
+   langs: [bash, css, diff, dockerfile, javascript, json, python, ruby, shellscript, typescript],
+   themes: [vesper]
 });
 
 /**
