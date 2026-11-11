@@ -1,6 +1,6 @@
 # Hypothesis
 
-The aims of both these projects was to improve the accessibility and readability of existing SACCT breakdowns via two methods of access:
+The aims of both these projects was to improve the accessiblitly and readability of existing SACCT breakdowns via two methods of access:
 
 - **CLI Tool:** A program on the cluster itself able to print out the general metrics of a cluster in operation.
 - **API:** A program to interface with an active cluster using API calls to provide a JSON dump of key metrics on how the cluster is being used by the end operator.
@@ -11,7 +11,15 @@ Thus the central challenge was defining the structure of how the general use dat
 
 # Approach
 
-The approach taken was to consolidate output sacct report
+The approach taken was to consolidate command line sacct reporting metrics into either a easily processable CSV/tty table format, or a JSON dump format showing the general metrics of jobs and resource usage across the entire cluster regardless of given partition.
+
+Each section is specifically designed for a different user in mind.
+
+For the CLI tool, it is designed for a system operator who wants to understand the current job completion statuses and if a certain partition or user data is more vunerable to a failure state, so that they can use traditional SACCT tools targeted at the known failure states to debug the program.
+ 
+For the API tool it is designed for flight centre to monitor general system usage via a long distance API call using https processes. It is designed to see where the customer is using the systems to allow monitoring of how well used the cluster is and to adjust support as needed to customer usage.
+
+Both combined can give a clear pitcure of the health of a cluster and how its jobs process on the cluster 
 
 ## CLI Tool
 
