@@ -1,7 +1,9 @@
 # Hypothesis
+
 The goal for this project was to assemble and create a collection of tools for HPC environment accessibility and management.
 
 The Flight Environment is a comprehensive suite of tools designed to make HPC environments more accessible to end-users and easier for administrators to manage. The tools work independently but become more powerful when used together, each addressing specific areas of HPC environment usage.
+
 # Approach
 
 It consists of three main components:
@@ -11,6 +13,7 @@ It consists of three main components:
 - **Flight Admin Tools:** CLI tools for administrators to handle cluster configuration, system inventory, and configuration management
 
 ### Flight User Suite
+
 The Flight User Suite provides self-service tools for HPC end-users:
 
 - **Runway:** A self-contained Ruby environment and entrypoint for accessing other Flight tools
@@ -21,6 +24,7 @@ The Flight User Suite provides self-service tools for HPC end-users:
 - **Job:** Create job scripts from templates, launch jobs, and monitor activity
 
 ### Flight Web Suite
+
 The Flight Web Suite provides web-based access to HPC environments:
 
 - **WWW:** Self-contained web-server for Web Suite applications
@@ -44,7 +48,7 @@ Administarator-focused tools for cluster management:
 - **Gather:** Collect and store system information.
 - **Hunter:** Send system information anad manage host inventory over the network.
 - **Profile:** Apply configuration identities to hosts in a HPC environment.
-- **PDSH:** OpenFlight's build of PDSH for parallel shell execution. 
+- **PDSH:** OpenFlight's build of PDSH for parallel shell execution.
 
 ### Outcomes
 
@@ -53,8 +57,11 @@ Administarator-focused tools for cluster management:
 - Integrated admin tools for cluster configuration.
 
 # Documentation
+
 :::collapse Flight Environment Basics
+
 ### Activate the Flight environment
+
 The Flight User Suite sits unobtrusively on the research environment with the `flight` command serving as an entrypoint to the various system commands.
 
 This provides some quick tips to activating the system and finding out more about the flight system (`flight info`).
@@ -66,6 +73,7 @@ To load the system, simply run `flight start` (which, when first run, will gener
 The flight system can be set to automatically start on login for the user by running `flight set always on`
 
 ### Flight HowTo
+
 The Flight User Suite comes with built-in guides to assist with usage of the research environment from setting up the flight environment to using the queue system.
 
 #### Showing Available Guides
@@ -90,9 +98,11 @@ To show the available guides, list them with:
 ```
 
 #### Viewing a Guide
+
 A guide can be viewed by requesting either the index or name of the desired guide. When viewing a guide, the content will open inside a `less` session.
 
 To view the get started guide by name:
+
 ```bash
 flight howto show 'Get Started'
 ```
@@ -107,12 +117,12 @@ When finished with the guide, simply escape the `less` session with `q`. Alterna
 
 :::
 
-
 ### Flight Admin Tools
 
 :::collapse Flight Gather
 
 ### Flight Gather
+
 Flight Gather collects system information into a processable YAML format.
 
 Data collected by Flight Gather:
@@ -131,15 +141,21 @@ Further to the above, the user can provide groups (in a similar vein to genders 
 #### Using Flight Gather
 
 There are a few basic usages to flight gather:
+
 - Collect system information
+
 ```bash
 flight gather collect
 ```
+
 - View the system information
+
 ```bash
 flight gather show
 ```
+
 - Modify groups assigned to the data
+
 ```bash
 flight gather modify --primary MyPrimaryGroupName
 ```
@@ -342,57 +358,57 @@ When `flight profile configure` is run, the user will be guided through a series
 
 ```json title="Web Access"
 {
-  "cluster_type": "openflight-web-access",
-  "default_username": "flight",
-  "default_password": "0penfl1ght",
-  "access_host": "51.104.217.61"
+   "cluster_type": "openflight-web-access",
+   "default_username": "flight",
+   "default_password": "0penfl1ght",
+   "access_host": "51.104.217.61"
 }
 ```
 
 ```json title="Slurm Standalone"
 {
-  "cluster_type": "openflight-slurm-standalone",
-  "cluster_name": "my-cluster",
-  "default_username": "flight",
-  "default_password": "0penfl1ght",
-  "access_host": "51.104.217.61"
+   "cluster_type": "openflight-slurm-standalone",
+   "cluster_name": "my-cluster",
+   "default_username": "flight",
+   "default_password": "0penfl1ght",
+   "access_host": "51.104.217.61"
 }
 ```
 
 ```json title="Slurm Multinode"
 {
-  "cluster_type": "openflight-slurm-multinode",
-  "cluster_name": "my-cluster",
-  "ipa_use": "false",
-  "default_username": "flight",
-  "default_password": "0penfl1ght",
-  "access_host": "51.104.217.61",
-  "compute_ip_range": "10.10.0.0/16",
-  "nfs_server": "login1",
-  "configure_rack_view": "true"
+   "cluster_type": "openflight-slurm-multinode",
+   "cluster_name": "my-cluster",
+   "ipa_use": "false",
+   "default_username": "flight",
+   "default_password": "0penfl1ght",
+   "access_host": "51.104.217.61",
+   "compute_ip_range": "10.10.0.0/16",
+   "nfs_server": "login1",
+   "configure_rack_view": "true"
 }
 ```
 
 ```json title="Kubernetes Multinode"
 {
-  "cluster_type": "openflight-kubernetes-multinode",
-  "cluster_name": "my-cluster",
-  "default_username": "flight",
-  "default_password": "0penfl1ght",
-  "access_host": "51.104.217.61",
-  "compute_ip_range": "10.10.0.0/16",
-  "pod_ip_range": "192.168.0.0/16",
-  "nfs_server": "login1"
+   "cluster_type": "openflight-kubernetes-multinode",
+   "cluster_name": "my-cluster",
+   "default_username": "flight",
+   "default_password": "0penfl1ght",
+   "access_host": "51.104.217.61",
+   "compute_ip_range": "10.10.0.0/16",
+   "pod_ip_range": "192.168.0.0/16",
+   "nfs_server": "login1"
 }
 ```
 
 ```json title="Jupyter"
 {
-  "cluster_type": "openflight-jupyter-standalone",
-  "cluster_name": "my-cluster",
-  "default_username": "flight",
-  "default_password": "0penfl1ght",
-  "access_host": "51.104.217.61"
+   "cluster_type": "openflight-jupyter-standalone",
+   "cluster_name": "my-cluster",
+   "default_username": "flight",
+   "default_password": "0penfl1ght",
+   "access_host": "51.104.217.61"
 }
 ```
 
@@ -489,15 +505,15 @@ Profile can automatically apply an identity to a node with the auto-apply config
 
 ```yaml
 auto_apply:
-  <regex>: <identity>
+   <regex>: <identity>
 ```
 
 - You can add extra lines of `<regex>: <identity>` to catch more identities. e.g.
 
 ```yaml
 auto_apply:
-  cnode: compute
-  chead: login
+   cnode: compute
+   chead: login
 ```
 
 3. Restart the hunter service with `flight service restart hunter`.
@@ -914,8 +930,8 @@ The Flight Env command provides streamlined installation of many popular softwar
 | ---------------------- | :---: | :-------: | :-----: | :---------: | :---: |
 | Dependency Management  |  ✅   |    ✅     |   ❌    |     ✅      |  ✅   |
 | Compilation            |  ✅   |    ✅     |   ❌    |     ❌      |  ✅   |
-| Preconfigured Binaries |  ❌   |    ✅     |   ❌    |     ✅      |  ◆    |
-| Multiple Versions      |  ◆    |    ✅     |   ✅    |     ✅      |  ✅   |
+| Preconfigured Binaries |  ❌   |    ✅     |   ❌    |     ✅      |   ◆   |
+| Multiple Versions      |   ◆   |    ✅     |   ✅    |     ✅      |  ✅   |
 
 More information on the features:
 
