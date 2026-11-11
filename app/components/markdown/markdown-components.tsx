@@ -1,8 +1,8 @@
 import type { Element as HastElement, Text as HastText } from 'hast';
 import Image from 'next/image';
+import { Children } from 'react';
 import type { Components } from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import { Children } from 'react';
 
 import type { Project } from '@/lib/project-handler';
 
@@ -83,6 +83,20 @@ export function createMarkdownComponents(
          if (!className.includes(SPOILER_CLASS)) return <span {...props}>{children}</span>;
          return <Spoiler>{children}</Spoiler>;
       },
+      code({ children, className }) {
+         const raw = String(children);
+
+         // Inline `[[project-id]]` references render as dossier cards.
+         const refMatch = !className ? new RegExp(PROJECT_REF_PATTERN).exec(raw) : undefined;
+         if (refMatch) {
+            const referenced = allProjects.find(
+               (candidate) => candidate.id.toLowerCase() === refMatch[1].toLowerCase()
+            );
+            if (referenced) return <ProjectCard project={referenced} />;
+         }
+
+         return <code className="font-mono text-[0.85em] text-lime-200/90">{children}</code>;
+      },
       details({ children, open, node, ...props }) {
          // Everything after the summary is padded; the summary keeps its
          // own padding so its bottom border stays full-bleed.
@@ -98,39 +112,6 @@ export function createMarkdownComponents(
                {content.length > 0 && <div className="px-5 pb-4 sm:px-8">{content}</div>}
             </details>
          );
-      },
-      summary({ children }) {
-         return (
-            <summary className="block cursor-pointer list-none border-b border-neutral-800 px-5 py-4 font-bold tracking-wide transition-colors hover:text-lime-300 sm:px-8">
-               <span className="flex items-center justify-between gap-4">
-                  <span>{children}</span>
-                  <svg
-                     width="12"
-                     height="12"
-                     viewBox="0 0 12 12"
-                     fill="none"
-                     aria-hidden
-                     className="shrink-0 text-lime-400/70 transition-transform group-open/details:rotate-180"
-                  >
-                     <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" />
-                  </svg>
-               </span>
-            </summary>
-         );
-      },
-      code({ children, className }) {
-         const raw = String(children);
-
-         // Inline `[[project-id]]` references render as dossier cards.
-         const refMatch = !className ? new RegExp(PROJECT_REF_PATTERN).exec(raw) : undefined;
-         if (refMatch) {
-            const referenced = allProjects.find(
-               (candidate) => candidate.id.toLowerCase() === refMatch[1].toLowerCase()
-            );
-            if (referenced) return <ProjectCard project={referenced} />;
-         }
-
-         return <code className="font-mono text-[0.85em] text-lime-200/90">{children}</code>;
       },
       img({ alt, src }) {
          if (typeof src !== 'string') return null;
@@ -240,6 +221,25 @@ export function createMarkdownComponents(
             (codeEl.data as { meta?: string } | undefined)?.meta;
 
          return <CodeBlock code={hastTextContent(codeEl)} lang={lang} meta={meta} />;
+      },
+      summary({ children }) {
+         return (
+            <summary className="block cursor-pointer list-none border-b border-neutral-800 px-5 py-4 font-bold tracking-wide transition-colors hover:text-lime-300 sm:px-8">
+               <span className="flex items-center justify-between gap-4">
+                  <span>{children}</span>
+                  <svg
+                     width="12"
+                     height="12"
+                     viewBox="0 0 12 12"
+                     fill="none"
+                     aria-hidden
+                     className="shrink-0 text-lime-400/70 transition-transform group-open/details:rotate-180"
+                  >
+                     <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" />
+                  </svg>
+               </span>
+            </summary>
+         );
       },
       video({ children, src }) {
          if (typeof src !== 'string') return null;
