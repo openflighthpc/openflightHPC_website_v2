@@ -1,6 +1,6 @@
 # Hypothesis
 
-The goal of this project is to provide templates and documentation to quickly create HPC environmnets, giving admin users a way of creating environments to test and demo HPC functionality, while non-admin users could spin up their own environments within the private cloud space for personal use.
+The goal of this project is to provide templates and documentation to quickly create HPC environments, giving admin users a way of creating environments to test and demo HPC functionality, while non-admin users could spin up their own environments within the private cloud space for personal use.
 
 This project sought to expose key considerations with HPC environments: workload lifetime requirements, infrastructure costs, and collaboration requirements.
 
@@ -8,7 +8,7 @@ This project sought to expose key considerations with HPC environments: workload
 
 ### Architecture
 
-Flight Warehouse was built around Flight Solo, the packaged cloud image containing Flight Tools and helpers to jumpstart HPC environment creation. It provided templates and workflows for deploying complete HPC stacks in private cloud environments.
+Flight Warehouse was built around Flight Solo, the packaged cloud image containing Flight Tools and helpers to jump-start HPC environment creation. It provided templates and workflows for deploying complete HPC stacks in private cloud environments.
 
 ![WareHouse Home Page](extras/warehouse-1.webp)
 ![Slurm team edition Launch instructions](extras/warehouse-2.webp)
