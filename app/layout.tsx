@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import localFont from 'next/font/local';
 import Header from './components/Header';
+import Footer from './components/Footer'
 
 const chaletFont = localFont({
    src: '../public//fonts/chalet.otf',
@@ -30,9 +31,11 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
          lang="en"
          className={`${chaletFont.variable} ${geistSans.variable} ${geistMono.variable} h-full antialiased`}
       >
-         <body className="min-h-full flex flex-col">
+         <body className="min-h-screen flex flex-col">
             <Header></Header>
             {children}
+            <Footer></Footer>
+            
          </body>
       </html>
    );
