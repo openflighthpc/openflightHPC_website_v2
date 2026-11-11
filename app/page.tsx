@@ -34,7 +34,7 @@ const formatDate = (date: string) => {
    });
 };
 
-export default async function Home() {
+export default function Home() {
    const featuredProjects = getFeaturedProjects();
 
    return (
