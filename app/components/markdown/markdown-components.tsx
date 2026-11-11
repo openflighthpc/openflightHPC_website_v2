@@ -5,6 +5,7 @@ import remarkGfm from 'remark-gfm';
 import type { Components } from 'react-markdown';
 import BeforeAfterSlider from './BeforeAfterSlider';
 import CodeBlock from './CodeBlock';
+import GithubRepoCard from './GithubRepoCard';
 import ProjectCard from './ProjectCard';
 import { resolveImagePath } from './paths';
 
@@ -17,6 +18,9 @@ type MdastNode = {
 
 /** Matches a bare `[[project-id]]` reference, inline or sole in a paragraph. */
 const PROJECT_REF_PATTERN = /^\[\[([a-z0-9-]+)\]\]$/i;
+
+/** Matches a github.com repo root URL and extracts owner and repo name. */
+const GITHUB_REPO_PATTERN = /^https:\/\/github\.com\/([\w.-]+)\/([\w.-]+)\/?$/;
 
 /**
  * Copies a fenced code block's info-string meta into `data.hProperties` so
@@ -154,6 +158,24 @@ export function createMarkdownComponents(
                (candidate) => candidate.id.toLowerCase() === soleRef[1].toLowerCase()
             );
             if (referenced) return <ProjectCard project={referenced} />;
+         }
+
+         // A paragraph holding nothing but a `[github](repo-url)` link
+         // renders as a repo embed card for that repository.
+         const soleAnchor =
+            paraChildren.length === 1 && paraChildren[0].type === 'element'
+               ? (paraChildren[0] as HastElement)
+               : undefined;
+         const githubHref =
+            soleAnchor?.tagName === 'a' && hastTextContent(soleAnchor).toLowerCase() === 'github'
+               ? String(soleAnchor.properties.href ?? '')
+               : undefined;
+
+         if (githubHref) {
+            const repoRef = githubHref.match(GITHUB_REPO_PATTERN);
+            if (repoRef) {
+               return <GithubRepoCard owner={repoRef[1]} repo={repoRef[2]} href={githubHref} />;
+            }
          }
 
          // Two adjacent images in one paragraph whose alt text starts with
