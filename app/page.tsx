@@ -2,6 +2,26 @@ import Marquee from 'react-fast-marquee';
 import Link from 'next/link';
 import AnimatedLogo from './components/AnimatedLogo';
 import { getFeaturedProjects } from '@/lib/projects-handler';
+import Image from "next/image"
+
+const projectBackgroundColors = [
+   '#1b8a62',
+   '#7d57b6',
+   '#c86e47',
+   '#2f76a6',
+   '#b39539'
+];
+
+const formatDate = (date: string) => {
+   const [day, month, year] = date.split('/').map(Number);
+
+   return new Date(Date.UTC(year, month - 1, day)).toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+      timeZone: 'UTC'
+   });
+};
 
 export default function Home() {
    const featuredProjects = getFeaturedProjects();
@@ -16,12 +36,13 @@ export default function Home() {
                   OpenFlight <span className="text-green-400/70">Labs</span>
                </em>
                , a curated collection of research and development experiments from the{' '}
-               <Link
+               <a
                   href="https://openflighthpc.github.io/docs.openflighthpc.org/latest/"
                   className="text-green-300/70 underline transition hover:text-green-400"
+                  target="_blank"
                >
                   OpenFlightHPC group
-               </Link>
+               </a>
                . Each project in our collection represents a unique exploration — an idea tested, a
                hypothesis pursued, a discovery made.
             </p>
@@ -55,9 +76,11 @@ export default function Home() {
                               {/* Background logo */}
                               {project.logoPath && (
                                  <>
-                                    <img
+                                    <Image
                                        src={project.logoPath}
                                        alt=""
+                                       width={1}
+                                       height={1}
                                        aria-hidden="true"
                                        className="absolute inset-0 h-full w-full scale-110 object-cover blur-md"
                                     />
@@ -116,8 +139,10 @@ export default function Home() {
                               dateTime={project.startDate}
                               className="mt-3 block text-sm text-zinc-400"
                            >
-                              {project.startDate}
-                              {project.endDate && ` — ${project.endDate}`}
+                              {formatDate(project.startDate)}
+                              {project.endDate &&
+                                 project.endDate !== project.startDate &&
+                                 ` — ${formatDate(project.endDate)}`}
                            </time>
                         </div>
                      </article>
