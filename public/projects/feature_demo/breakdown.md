@@ -137,3 +137,12 @@ Headings, lists, tables, task lists, footnotes, quotes, links. All plain
 markdown via remark-gfm, images go through next/image. Image and video
 paths are resolved relative to the project's own folder, so `extras/…`
 means that project's assets.
+
+## Website cards
+
+A paragraph that only contains a `[pretty-link:::<title>:::<description>](…)` link pointing at a website
+becomes a card for that website, with title and description. 
+
+```md
+[pretty-link:::pretty.io:::this is just a test page link](https://pretty-link.io)
+```
