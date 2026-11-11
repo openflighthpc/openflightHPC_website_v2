@@ -11,7 +11,7 @@ Thus the central challenge was defining the structure of how the general use dat
 
 # Approach
 
-The approach taken was to consolidate output sacct report 
+The approach taken was to consolidate output sacct report
 
 ## CLI Tool
 
