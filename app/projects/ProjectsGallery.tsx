@@ -1,11 +1,12 @@
 'use client';
 
-import Link from 'next/link';
+import { ChevronDown, ChevronRight, X } from 'lucide-react';
 import Image from 'next/image';
-import { ChevronRight, ChevronDown, X } from 'lucide-react';
+import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
-import type { Project } from '@/lib/project-handler';
 import { RxFilter } from 'react-icons/rx';
+
+import type { Project } from '@/lib/project-handler';
 
 const projectGradients = [
    'linear-gradient(135deg, #166534 0%, #0f766e 55%, #164e63 100%)',
@@ -44,14 +45,14 @@ const formatDate = (date: string) => {
    const [day, month, year] = date.split('/').map(Number);
 
    return new Date(Date.UTC(year, month - 1, day)).toLocaleDateString('en-US', {
-      month: 'short',
       day: 'numeric',
-      year: 'numeric',
-      timeZone: 'UTC'
+      month: 'short',
+      timeZone: 'UTC',
+      year: 'numeric'
    });
 };
 
-export default function ProjectsGallery({ projects }: { projects: Project[] }) {
+export default function ProjectsGallery({ projects }: Readonly<{ projects: Project[] }>) {
    const [selectedCategory, setSelectedCategory] = useState('All');
    const [selectedStatus, setSelectedStatus] = useState<StatusFilter>('all');
    const [sortOrder, setSortOrder] = useState<SortOrder>('newest');
@@ -78,7 +79,7 @@ export default function ProjectsGallery({ projects }: { projects: Project[] }) {
 
    const categories = ['All', ...new Set(projects.flatMap((project) => project.tags))];
    const visibleProjects = projects
-      .map((project, index) => ({ project, index }))
+      .map((project, index) => ({ index, project }))
       .filter(
          ({ project }) =>
             (selectedCategory === 'All' || project.tags.includes(selectedCategory)) &&
@@ -95,14 +96,11 @@ export default function ProjectsGallery({ projects }: { projects: Project[] }) {
             {selectedCategory} Projects
          </h1>
          <div className="flex flex-wrap justify-between items-center gap-4">
-            <div
-               className="flex flex-wrap gap-2 text-lg"
-               role="group"
-               aria-label="Project categories"
-            >
+            <div className="flex flex-wrap gap-2 text-lg" aria-label="Project categories">
                {categories.map((category) => (
                   <button
                      key={category}
+                     role="group"
                      type="button"
                      aria-pressed={selectedCategory === category}
                      onClick={() => setSelectedCategory(category)}
@@ -136,8 +134,8 @@ export default function ProjectsGallery({ projects }: { projects: Project[] }) {
                   </button>
                   {openMenu === 'filter' && (
                      <div
-                        id="project-status-options"
                         role="group"
+                        id="project-status-options"
                         aria-label="Filter by project status"
                         className="absolute right-0 top-full z-20 mt-2 w-44 rounded-xl  bg-zinc-900 p-1 shadow-xl"
                      >
@@ -177,8 +175,8 @@ export default function ProjectsGallery({ projects }: { projects: Project[] }) {
                   </button>
                   {openMenu === 'sort' && (
                      <div
-                        id="project-sort-options"
                         role="group"
+                        id="project-sort-options"
                         aria-label="Sort projects"
                         className="absolute right-0 top-full z-20 mt-2 w-48 rounded-xl font-bold bg-zinc-900 p-1 shadow-xl"
                      >
@@ -208,7 +206,7 @@ export default function ProjectsGallery({ projects }: { projects: Project[] }) {
             {visibleProjects.length === 0 && (
                <p className="col-span-full mt-10 text-zinc-400">No projects match these filters.</p>
             )}
-            {visibleProjects.map(({ project, index }) => (
+            {visibleProjects.map(({ index, project }) => (
                <Link
                   key={project.id}
                   href={`/projects/${project.id}`}

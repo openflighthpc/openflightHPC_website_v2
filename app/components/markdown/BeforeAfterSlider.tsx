@@ -13,12 +13,12 @@ type BeforeAfterSliderProps = {
 };
 
 export default function BeforeAfterSlider({
-   beforeSrc,
-   beforeAlt,
-   afterSrc,
    afterAlt,
+   afterLabel = 'AFTER',
+   afterSrc,
+   beforeAlt,
    beforeLabel = 'BEFORE',
-   afterLabel = 'AFTER'
+   beforeSrc
 }: Readonly<BeforeAfterSliderProps>) {
    const containerRef = useRef<HTMLDivElement>(null);
    const [isDragging, setIsDragging] = useState(false);
@@ -52,7 +52,8 @@ export default function BeforeAfterSlider({
             src={afterSrc}
             alt={afterAlt}
             fill
-            className="object-cover"
+            draggable={false}
+            className="object-contain"
             sizes="(max-width: 768px) 100vw, 768px"
          />
 
@@ -64,7 +65,8 @@ export default function BeforeAfterSlider({
                src={beforeSrc}
                alt={beforeAlt}
                fill
-               className="object-cover grayscale-[35%]"
+               draggable={false}
+               className="object-contain grayscale-[35%]"
                sizes="(max-width: 768px) 100vw, 768px"
             />
          </div>

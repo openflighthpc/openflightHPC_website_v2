@@ -10,25 +10,21 @@ type DossierTabsProps = {
 };
 
 const TABS: { key: SheetKey; index: string; label: string }[] = [
-   { key: 'summary', index: '01', label: 'Summary' },
-   { key: 'breakdown', index: '02', label: 'Breakdown' }
+   { index: '01', key: 'summary', label: 'Summary' },
+   { index: '02', key: 'breakdown', label: 'Breakdown' }
 ];
 
-export default function DossierTabs({ summarySheet, breakdownSheet }: Readonly<DossierTabsProps>) {
+export default function DossierTabs({ breakdownSheet, summarySheet }: Readonly<DossierTabsProps>) {
    const [active, setActive] = useState<SheetKey>('summary');
 
    const sheets: Record<SheetKey, React.ReactNode> = {
-      summary: summarySheet,
-      breakdown: breakdownSheet
+      breakdown: breakdownSheet,
+      summary: summarySheet
    };
 
    return (
       <div className="flex flex-col gap-0">
-         <div
-            role="tablist"
-            aria-label="dossier exhibits"
-            className="flex text-md gap-4"
-         >
+         <div role="tablist" aria-label="dossier exhibits" className="flex text-md gap-4">
             {TABS.map((tab) => (
                <button
                   key={tab.key}
@@ -42,11 +38,11 @@ export default function DossierTabs({ summarySheet, breakdownSheet }: Readonly<D
                         : ' bg-transparent text-neutral-500  hover:text-neutral-300'
                   }`}
                >
-                  {tab.label} 
+                  {tab.label}
                </button>
             ))}
          </div>
-         <hr className='text-neutral-800'></hr>
+         <hr className="text-neutral-800"></hr>
 
          <div className="flex-1">{sheets[active]}</div>
       </div>

@@ -1,12 +1,15 @@
-import type { Project } from '@/lib/project-handler';
 import type { Element as HastElement, Text as HastText } from 'hast';
 import Image from 'next/image';
-import remarkGfm from 'remark-gfm';
 import type { Components } from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+
+import type { Project } from '@/lib/project-handler';
+
 import BeforeAfterSlider from './BeforeAfterSlider';
 import CodeBlock from './CodeBlock';
-import ProjectCard from './ProjectCard';
+import GithubRepoCard from './GithubRepoCard';
 import { resolveImagePath } from './paths';
+import ProjectCard from './ProjectCard';
 
 type MdastNode = {
    type: string;
@@ -17,6 +20,9 @@ type MdastNode = {
 
 /** Matches a bare `[[project-id]]` reference, inline or sole in a paragraph. */
 const PROJECT_REF_PATTERN = /^\[\[([a-z0-9-]+)\]\]$/i;
+
+/** Matches a github.com repo root URL and extracts owner and repo name. */
+const GITHUB_REPO_PATTERN = /^https:\/\/github\.com\/([\w.-]+)\/([\w.-]+)\/?$/;
 
 /**
  * Copies a fenced code block's info-string meta into `data.hProperties` so
@@ -63,7 +69,21 @@ export function createMarkdownComponents(
    allProjects: Project[]
 ): Components {
    return {
-      img({ src, alt }) {
+      code({ children, className }) {
+         const raw = String(children);
+
+         // Inline `[[project-id]]` references render as dossier cards.
+         const refMatch = !className ? new RegExp(PROJECT_REF_PATTERN).exec(raw) : undefined;
+         if (refMatch) {
+            const referenced = allProjects.find(
+               (candidate) => candidate.id.toLowerCase() === refMatch[1].toLowerCase()
+            );
+            if (referenced) return <ProjectCard project={referenced} />;
+         }
+
+         return <code className="font-mono text-[0.85em] text-lime-200/90">{children}</code>;
+      },
+      img({ alt, src }) {
          if (typeof src !== 'string') return null;
 
          // A raw <video> tag falls back to the img component with the whole
@@ -91,55 +111,7 @@ export function createMarkdownComponents(
             />
          );
       },
-      video({ src, children }) {
-         if (typeof src !== 'string') return null;
-
-         return (
-            <video
-               src={resolveImagePath(src, projectName)}
-               controls
-               className="max-w-full rounded-sm"
-            >
-               {children}
-            </video>
-         );
-      },
-      pre({ node, children }) {
-         // The <pre> wrapper is replaced by CodeBlock, which owns the frame,
-         // so fenced code never reaches the `code` override below.
-         const codeEl = node?.children.find(
-            (child): child is HastElement => child.type === 'element' && child.tagName === 'code'
-         );
-
-         if (!codeEl) return <>{children}</>;
-
-         const className = (codeEl.properties.className as string[] | undefined) ?? [];
-         const lang = className
-            .find((cls) => cls.startsWith('language-'))
-            ?.replace('language-', '');
-         // `meta` is delivered as an attribute by the remarkCodeMeta plugin,
-         // with the hast node's data field as a fallback.
-         const meta =
-            (codeEl.properties.meta as string | undefined) ??
-            (codeEl.data as { meta?: string } | undefined)?.meta;
-
-         return <CodeBlock code={hastTextContent(codeEl)} lang={lang} meta={meta} />;
-      },
-      code({ className, children }) {
-         const raw = String(children);
-
-         // Inline `[[project-id]]` references render as dossier cards.
-         const refMatch = !className ? raw.match(PROJECT_REF_PATTERN) : undefined;
-         if (refMatch) {
-            const referenced = allProjects.find(
-               (candidate) => candidate.id.toLowerCase() === refMatch[1].toLowerCase()
-            );
-            if (referenced) return <ProjectCard project={referenced} />;
-         }
-
-         return <code className="font-mono text-[0.85em] text-lime-200/90">{children}</code>;
-      },
-      p({ node, children }) {
+      p({ children, node }) {
          // A paragraph holding only a bare `[[project-id]]` reference renders
          // as a dossier card for that project.
          const paraChildren = node?.children ?? [];
@@ -154,6 +126,24 @@ export function createMarkdownComponents(
                (candidate) => candidate.id.toLowerCase() === soleRef[1].toLowerCase()
             );
             if (referenced) return <ProjectCard project={referenced} />;
+         }
+
+         // A paragraph holding nothing but a `[github](repo-url)` link
+         // renders as a repo embed card for that repository.
+         const soleAnchor =
+            paraChildren.length === 1 && paraChildren[0].type === 'element'
+               ? (paraChildren[0] as HastElement)
+               : undefined;
+         const githubHref =
+            soleAnchor?.tagName === 'a' && hastTextContent(soleAnchor).toLowerCase() === 'github'
+               ? String(soleAnchor.properties.href ?? '')
+               : undefined;
+
+         if (githubHref) {
+            const repoRef = githubHref.match(GITHUB_REPO_PATTERN);
+            if (repoRef) {
+               return <GithubRepoCard owner={repoRef[1]} repo={repoRef[2]} href={githubHref} />;
+            }
          }
 
          // Two adjacent images in one paragraph whose alt text starts with
@@ -180,6 +170,40 @@ export function createMarkdownComponents(
          }
 
          return <p>{children}</p>;
+      },
+      pre({ children, node }) {
+         // The <pre> wrapper is replaced by CodeBlock, which owns the frame,
+         // so fenced code never reaches the `code` override below.
+         const codeEl = node?.children.find(
+            (child): child is HastElement => child.type === 'element' && child.tagName === 'code'
+         );
+
+         if (!codeEl) return <>{children}</>;
+
+         const className = (codeEl.properties.className as string[] | undefined) ?? [];
+         const lang = className
+            .find((cls) => cls.startsWith('language-'))
+            ?.replace('language-', '');
+         // `meta` is delivered as an attribute by the remarkCodeMeta plugin,
+         // with the hast node's data field as a fallback.
+         const meta =
+            (codeEl.properties.meta as string | undefined) ??
+            (codeEl.data as { meta?: string } | undefined)?.meta;
+
+         return <CodeBlock code={hastTextContent(codeEl)} lang={lang} meta={meta} />;
+      },
+      video({ children, src }) {
+         if (typeof src !== 'string') return null;
+
+         return (
+            <video
+               src={resolveImagePath(src, projectName)}
+               controls
+               className="max-w-full rounded-sm"
+            >
+               {children}
+            </video>
+         );
       }
    };
 }

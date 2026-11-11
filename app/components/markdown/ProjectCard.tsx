@@ -1,6 +1,8 @@
 import Link from 'next/link';
+
 import { type Project } from '@/lib/project-handler';
-import { STATUS_COLOR, STATUS_TAGS } from './status';
+
+import { STATUS_TAGS } from './status';
 
 type ProjectCardProps = {
    project: Project;
@@ -10,10 +12,10 @@ const formatDate = (date: string) => {
    const [day, month, year] = date.split('/').map(Number);
 
    return new Date(Date.UTC(year, month - 1, day)).toLocaleDateString('en-US', {
-      month: 'short',
       day: 'numeric',
-      year: 'numeric',
-      timeZone: 'UTC'
+      month: 'short',
+      timeZone: 'UTC',
+      year: 'numeric'
    });
 };
 
@@ -40,14 +42,12 @@ export default function ProjectCard({ project }: Readonly<ProjectCardProps>) {
          <div className="text-center max-w-2xl mx-auto">
             <div className="flex flex-wrap items-center justify-center gap-2">
                <span className="font-bold">{dateRange}</span>
-               {project.status !== 'in-progress' && (
-                  <span className="font-light">{status}</span>
-               )}
+               {project.status !== 'in-progress' && <span className="font-light">{status}</span>}
             </div>
 
-            <h2 className="mt-6 text-center text-4xl font-bold leading-[1.05] tracking-wide text-white sm:text-5xl">
+            <p className="mt-6 text-center text-4xl font-bold leading-[1.05] tracking-wide text-white sm:text-5xl">
                {project.description}
-            </h2>
+            </p>
          </div>
 
          <div className="mt-8 flex flex-wrap justify-center gap-2 font-mono text-[10px] uppercase tracking-[0.3em]">

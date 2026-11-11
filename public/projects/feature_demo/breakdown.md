@@ -34,6 +34,18 @@ for that project, with its status stamp and a link to its page:
 The id is matched against project folder names, case insensitive. If no
 project has that id you just get the span back as plain inline code.
 
+## GitHub embeds
+
+A paragraph that is nothing but a `[github](…)` link at a repository root
+becomes an embed card with live repo stats:
+
+```md
+[github](https://github.com/phaserjs/phaser)
+```
+
+Links with other link text, or URLs deeper than the repo root, stay
+ordinary anchors.
+
 ## Before / after sliders
 
 Two images in one paragraph, both alt texts starting with `before|after`,

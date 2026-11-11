@@ -123,7 +123,11 @@ Despite this, the team successfully demonstrated an alternative approach to tech
 
 The use of collected learning cards also provided a way to introduce information at relevant points, rather than overwhelming users with everything they needed to know at the beginning.
 
-One particularly interesting aspect of this project was the use of the [Phaser framework](https://github.com/phaserjs/phaser) to develop the 2D platformer. This introduced the team to a new technology and demonstrated how game development frameworks could be applied to create more engaging educational experiences.
+One particularly interesting aspect of this project was the use of the Phaser framework to develop the 2D platformer.
+
+[github](https://github.com/phaserjs/phaser)
+
+This introduced the team to a new technology and demonstrated how game development frameworks could be applied to create more engaging educational experiences.
 
 ## Team 3's Ladder
 

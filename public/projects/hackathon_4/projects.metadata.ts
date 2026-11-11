@@ -1,12 +1,12 @@
 import { defineProjectMetadata } from '@/lib/metadata-handler';
 
 export default defineProjectMetadata({
-   name: 'Hackathon 4',
    description: 'Exploration of AI image generation',
-   languages: ['typescript'],
-   tags: ['R&D', 'Hackathon'],
-   status: 'complete',
+   endDate: '03/07/2026',
    featured: true,
+   languages: ['typescript'],
+   name: 'Hackathon 4',
    startDate: '03/07/2026',
-   endDate: '03/07/2026'
+   status: 'complete',
+   tags: ['R&D', 'Hackathon']
 });
