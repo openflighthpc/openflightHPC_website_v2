@@ -9,5 +9,5 @@ export default defineProjectMetadata({
    name: 'SACCT reporter and SACCT API',
    startDate: '06/08/2026',
    status: 'complete',
-   tags: ['R&D', 'Adam']
+   tags: ['R&D', 'SACCT']
 });

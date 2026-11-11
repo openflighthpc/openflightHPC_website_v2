@@ -11,8 +11,26 @@ Thus the central challenge was defining the structure of how the general use dat
 
 # Approach
 
+TBD
+
 ## CLI Tool
+
+TBD
+
+![CLI tool output](CLI.png)
 
 ## API tool
 
+TBD
+
+![API command line interface](API-CLI-7.png)
+
+![API CLI timing output](API-CLI-Time.png)
+
+![JSON output for a 7 day period](JSON-7.png)
+
+![JSON output with timing](JSON-Time.png)
+
 # What was learnt
+
+TBD
