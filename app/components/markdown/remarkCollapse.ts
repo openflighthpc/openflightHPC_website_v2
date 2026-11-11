@@ -130,7 +130,7 @@ function splitMarkerParagraphs(nodes: MdastNode[]): MdastNode[] {
       const flush = () => {
          if (!pending.length) return;
          const children = rejoin(pending);
-         if (children.length) out.push({ type: 'paragraph', children });
+         if (children.length) out.push({ children, type: 'paragraph' });
          pending = [];
       };
 
@@ -140,9 +140,9 @@ function splitMarkerParagraphs(nodes: MdastNode[]): MdastNode[] {
          if (classified.kind === 'open') {
             flush();
             out.push({
-               type: OPEN_MARKER_TYPE,
                open: classified.open,
-               titleChildren: [{ type: 'text', value: classified.title ?? 'Details' }]
+               titleChildren: [{ type: 'text', value: classified.title ?? 'Details' }],
+               type: OPEN_MARKER_TYPE
             });
          } else if (classified.kind === 'close') {
             flush();
@@ -179,9 +179,9 @@ function spliceContainers(nodes: MdastNode[]): MdastNode[] {
       }
 
       const summaryNode: MdastNode = {
-         type: 'paragraph',
+         children: node.titleChildren ?? [{ type: 'text', value: 'Details' }],
          data: { hName: 'summary', hProperties: {} },
-         children: node.titleChildren ?? [{ type: 'text', value: 'Details' }]
+         type: 'paragraph'
       };
 
       const content: MdastNode[] = [];
@@ -206,12 +206,12 @@ function spliceContainers(nodes: MdastNode[]): MdastNode[] {
       }
 
       out.push({
-         type: 'collapse',
+         children: [summaryNode, ...spliceContainers(content)],
          data: {
             hName: 'details',
             ...(node.open ? { hProperties: { open: true } } : {})
          },
-         children: [summaryNode, ...spliceContainers(content)]
+         type: 'collapse'
       });
 
       index = cursor;
