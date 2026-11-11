@@ -96,23 +96,23 @@ export default function ProjectsGallery({ projects }: Readonly<{ projects: Proje
             {selectedCategory} Projects
          </h1>
          <div className="flex flex-wrap justify-between items-center gap-4">
-            <details className="flex flex-wrap gap-2 text-lg" aria-label="Project categories">
+            <div className="flex flex-wrap gap-2 text-lg" aria-label="Project categories">
                {categories.map((category) => (
                   <button
                      key={category}
+                     role='group'
                      type="button"
                      aria-pressed={selectedCategory === category}
                      onClick={() => setSelectedCategory(category)}
-                     className={`rounded-full border px-4 py-1.5 cursor-pointer text-sm transition ${
-                        selectedCategory === category
-                           ? 'border-green-400/60 bg-green-400/20 text-green-300'
-                           : 'border-slate-300/10 bg-slate-600/40 text-slate-200 hover:border-green-400/50'
-                     }`}
+                     className={`rounded-full border px-4 py-1.5 cursor-pointer text-sm transition ${selectedCategory === category
+                        ? 'border-green-400/60 bg-green-400/20 text-green-300'
+                        : 'border-slate-300/10 bg-slate-600/40 text-slate-200 hover:border-green-400/50'
+                        }`}
                   >
                      {category}
                   </button>
                ))}
-            </details>
+            </div>
             <div
                ref={controlsRef}
                className="flex items-center text-lg tracking-wide font-bold gap-5"
@@ -132,7 +132,8 @@ export default function ProjectsGallery({ projects }: Readonly<{ projects: Proje
                      {openMenu === 'filter' ? <X size={20} /> : <RxFilter aria-hidden="true" />}
                   </button>
                   {openMenu === 'filter' && (
-                     <details
+                     <div
+                        role="group"
                         id="project-status-options"
                         aria-label="Filter by project status"
                         className="absolute right-0 top-full z-20 mt-2 w-44 rounded-xl  bg-zinc-900 p-1 shadow-xl"
@@ -146,14 +147,13 @@ export default function ProjectsGallery({ projects }: Readonly<{ projects: Proje
                                  setSelectedStatus(option.value);
                                  setOpenMenu(null);
                               }}
-                              className={`block w-full cursor-pointer rounded-lg px-3 py-2 text-left text-sm font-medium tracking-normal hover:bg-white/10 ${
-                                 selectedStatus === option.value ? 'text-green-400' : 'text-white'
-                              }`}
+                              className={`block w-full cursor-pointer rounded-lg px-3 py-2 text-left text-sm font-medium tracking-normal hover:bg-white/10 ${selectedStatus === option.value ? 'text-green-400' : 'text-white'
+                                 }`}
                            >
                               {option.label}
                            </button>
                         ))}
-                     </details>
+                     </div>
                   )}
                </div>
 
@@ -172,7 +172,8 @@ export default function ProjectsGallery({ projects }: Readonly<{ projects: Proje
                      />
                   </button>
                   {openMenu === 'sort' && (
-                     <details
+                     <div
+                        role="group"
                         id="project-sort-options"
                         aria-label="Sort projects"
                         className="absolute right-0 top-full z-20 mt-2 w-48 rounded-xl font-bold bg-zinc-900 p-1 shadow-xl"
@@ -186,14 +187,13 @@ export default function ProjectsGallery({ projects }: Readonly<{ projects: Proje
                                  setSortOrder(option.value);
                                  setOpenMenu(null);
                               }}
-                              className={`block w-full cursor-pointer rounded-lg px-3 py-2 text-left text-sm font-medium tracking-normal hover:bg-white/10 ${
-                                 sortOrder === option.value ? 'text-green-400' : 'text-white'
-                              }`}
+                              className={`block w-full cursor-pointer rounded-lg px-3 py-2 text-left text-sm font-medium tracking-normal hover:bg-white/10 ${sortOrder === option.value ? 'text-green-400' : 'text-white'
+                                 }`}
                            >
                               {option.label}
                            </button>
                         ))}
-                     </details>
+                     </div>
                   )}
                </div>
             </div>
@@ -245,8 +245,8 @@ export default function ProjectsGallery({ projects }: Readonly<{ projects: Proje
                         {project.status === 'in-progress'
                            ? ' - In Progress'
                            : project.endDate && project.endDate !== project.startDate
-                             ? ` - ${formatDate(project.endDate)}`
-                             : ''}
+                              ? ` - ${formatDate(project.endDate)}`
+                              : ''}
                      </span>
 
                      <span className="flex items-center transition duration-400 group-hover:translate-x-2 group-hover:text-green-400 text-sm mt-2 font-bold">
