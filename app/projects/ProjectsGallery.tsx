@@ -246,7 +246,7 @@ export default function ProjectsGallery({ projects }: { projects: Project[] }) {
                      <span className="font-light">
                         {formatDate(project.startDate)}
                         {project.status === 'in-progress'
-                           ? ' - ongoing'
+                           ? ' - In Progress'
                            : project.endDate && project.endDate !== project.startDate
                              ? ` - ${formatDate(project.endDate)}`
                              : ''}

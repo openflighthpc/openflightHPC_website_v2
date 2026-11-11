@@ -9,7 +9,7 @@ export default function Header() {
    const isProjectsPage = pathname === '/projects' || pathname.startsWith('/projects/');
 
    return (
-      <header className="px-8 flex h-16 w-full items-center justify-between bg-black/80 text-white backdrop-blur sm:px-16">
+      <header className="sticky top-0 z-80 flex h-16 w-full items-center justify-between bg-black/80 px-8 text-white backdrop-blur sm:px-16">
          <Link href="/" className="cursor-pointer">
             <Image
                src="/openflightHPC_website_v2/header_logo.svg"

@@ -2,6 +2,7 @@ export const STATUS_TAGS = {
    active: 'In Progress',
    complete: 'Completed',
    archived: 'Archived',
+   'in-progress': 'In Progress'
 
 } as const;
 

@@ -129,19 +129,65 @@ One particularly interesting aspect of this project was the use of the [Phaser f
 
 Team 3 took a different approach, focusing on the problems users encounter when following poorly written README files and development instructions.
 
-The objective was to replicate the experience of trying to build, compile and run a project when the accompanying documentation is inaccurate or misleading.
+The exemplar was a small C project, sacct-reporter 1.0 (classic edition), presented as though written in August 2009 — a hand-rolled Makefile, sample job-accounting dumps, and a README full of era-appropriate confidence. Only the provenance was fiction: the code, the dependency and the data were all real. The README was written to be read as a suspect rather than a manual, with six deliberate lies planted in it, one per rung — each lie the engine of the rung it hid in.
 
-To achieve this, the team deliberately introduced incorrect information into the README. Users were then required to work through the instructions, identify the problems and figure out how to get the program running successfully.
+### Rung 0
 
-Hints were incorporated into the Markdown documentation to help users identify and overcome the issues without immediately revealing the solutions.
+The rung delivered exactly what the fiction promised: the tarball and its 2009 README. An environment check verified the toolchain — pointedly nothing else, so no lie could be caught by a script instead of by reading.
+
+The win was the framing for the whole climb: treat the README as a suspect, not as documentation.
+
+### Rung 1
+
+The README's build instructions consisted of a single command, `./build.sh`, which no version of the project ever contained.
+
+Users fell back to the tool the README never mentioned: the compiler itself, compiling a hello-world that printed the project's own banner — making the first win part of the fiction.
+
+Such a lie can be seen here, as build.sh does not actually exist in the project:
+
+![a screenshot showing Team 3's Rung 1 lie](extras/Team3-ReadmeLie.png)
+
+### Rung 2
+
+The rung hunted the dependencies the README had lied about, in two parts:
+
+- Toolchain: the README demanded gcc 4.1. Museum-hunting a 2009 compiler was the wrong lesson; the right one was recording which compiler was actually available, a reproducibility fact for later.
+- Packages: the prerequisite `yum install sacct-metrics-devel` never shipped anywhere, presented alongside a "no third-party dependencies" claim.
+- The transferable move: hunt by the missing file, not by the README's names — ask the package manager which package provides `zlib.h`, then install it.
+
+### Rung 3
+
+The rung assembled the real build against the shipped data, its problems arriving in strict order:
+
+- `-std=gnu89`: the compiler refused the project's 2009-era function definitions — ask gcc for the code's dialect rather than rewriting the code.
+- `-lz`: linking failed on undefined references to zlib. Everything compiled, but the Makefile had never told the linker about the library — which is what "no third-party dependencies" meant in practice.
+- `acsacct`: the usage docs described a binary the build never produced, with modern option flags — documentation leaked backwards from a later generation of the tool. Trust the artifact over the README.
+- The truth test: `make clean && make` rebuilt pristine, with the report on the sample data matching an expected checksum byte for byte.
+
+### Rung 4
+
+The README insisted that any optimisation beyond -O2 was pointless. A supplied benchmark script and a one-million-row dump let users answer that claim with their own timing table across -O0, -O2, -O3 and -march=native:
+
+- -O2 ran roughly 1.7× faster than -O0.
+- -O3 and -march=native settled back at essentially -O2 speed — an honest null on a workload bound by reading compressed data.
+- Parallel make makes the build faster; compiler flags make the program faster.
+- -march=native raised the distinctly HPC trade-off of performance versus portability across heterogeneous nodes.
+
+### Rung 5
+
+Each rung from 2 onwards had added one line to a pins file: the compiler, the packages, the dialect and link flags, the optimisation choice. Rung 5 turned those facts into the contract the README had pretended to be:
+
+- A real `build.sh`, the file lie #1 had pretended existed.
+- A written reproducibility document, alongside the pins file.
+- Verified live: the person next to you rebuilt from a fresh environment using the instructions alone, and had to reproduce the identical checksum.
+
+Hints supported each rung at three depths — where to look, what the actual cause is, and only then the exact fix — never costing users their progress. A one-page error oracle alongside them mapped the first line of each compiler error onto its cause and fix, so a user stuck at a rung could rescue themselves without finding another person.
 
 ![a screenshot showing Team 3's ladder](extras/Team3-Ladder.png)
 
-Unlike the other two teams, this learning ladder was not interactive in the traditional sense. Instead, it relied on users independently investigating the problems and applying their existing knowledge to find a solution.
+Unlike the other two teams, this learning ladder was not interactive in the traditional sense, and nothing was simulated but the provenance: the compiler, the errors and the data were all real, and the rung checks only printed their pass banner when something genuinely ran. Users progressed by investigating what had gone wrong, not by completing exercises.
 
-This approach explored a different aspect of user experience engineering: the importance of good documentation and the impact that poor instructions can have on a user's ability to engage with a technology.
-
-By deliberately introducing these frustrations, the team demonstrated how easily an otherwise straightforward development task can become an obstacle when documentation is unclear or incorrect.
+By deliberately introducing these frustrations, the team demonstrated how easily an otherwise straightforward development task becomes an obstacle when documentation is unclear, incorrect or simply out of date — and that most of a "lying" README is not lying at all, but truth that has expired. The skill the ladder taught was noticing when a truth has expired, and pinning down the facts that let the next person reproduce the build.
 
 # What was learnt
 
