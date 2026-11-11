@@ -24,6 +24,7 @@ Both combined can give a clear pitcure of the health of a cluster and how its jo
 ## CLI Tool
 
 ### Key features
+
 TBD
 
 ### Usage demonstration
@@ -36,8 +37,8 @@ This allows the operator of the cluster to now look into why some of the jobs ha
 
 ## API tool
 
-
 ### Key features
+
 TBD
 
 ### Usage demonstration
