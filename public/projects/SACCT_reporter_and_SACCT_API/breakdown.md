@@ -6,3 +6,5 @@ The aims of both these projects was to improve the accessiblitly and readability
 - **API:** A program to interface with an active cluster using API calls to provide a JSON dump of key metrics on how the cluster is being used by the end operator.
 
 The main reason is because SACCT itself is a tool able to give job by job breakdowns of completed and submitted jobs, however it lacks the in built tools to make general observations of cluster operations work as expected.
+
+E
