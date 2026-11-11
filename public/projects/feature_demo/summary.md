@@ -166,6 +166,6 @@ the rest.
 ## 11. Website card
 
 A paragraph that only contains a `[pretty-link:::title:::description](…)` link pointing at a website
-becomes a card for that website, with title and description. 
+becomes a card for that website, with title and description.
 
 [pretty-link:::pretty.io:::this is just a test page link](https://pretty-link.io)
