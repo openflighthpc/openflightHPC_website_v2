@@ -5,7 +5,7 @@ export default defineProjectMetadata({
    description: "A demo of the custom markdown features the site's renderer supports",
    featured: true,
    languages: ['markdown'],
-   name: 'Flight Lab Markdown renderer',
+   name: 'OpenFlight Labs Markdown renderer',
    startDate: '10/11/2026',
    status: 'in-progress',
    tags: ['META', 'DEMO', 'RENDERER']
