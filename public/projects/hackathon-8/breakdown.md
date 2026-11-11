@@ -16,7 +16,7 @@ However, we felt this approach abstracted too much from the intended use case. A
 
 The following architecture was implemented:
 
-![Kubernetes cluster architecture](extras/Architecture.png)
+![Kubernetes cluster architecture](extras/Architecture.webp)
 
 The initial implementation focused on allowing users to submit jobs without any additional scheduling logic. This provided a foundation for exploring how Kubernetes could manage and execute workloads.
 

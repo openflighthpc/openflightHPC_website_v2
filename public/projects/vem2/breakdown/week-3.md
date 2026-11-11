@@ -9,7 +9,7 @@ This has allowed categorisation to be implemented into seasonings and families t
 Further improvements in week 3 included an output of a JSON file with all the information about a vviz when the vviz has finished it’s cloud init process, the JSON file contains: the job id, when it ends, the cancel command, the name of the vm, the hostname, the ip, the flavour, the os image, the hypervisor, the user, the user’s home directory, ssh information and VNC connection information.
 All of this is provided to make it as easy as possible for API’s to get information about the vviz’s, the sbatch command also now takes in the users password as an argument as we also create the user who ran the sbatch command on the vviz so passing their password through makes this as seamless as possible to the user.
 
-![Vviz JSON Output](./extras/vvizScripts/vvizJsonOutput.png)
+![Vviz JSON Output](./extras/vvizScripts/vvizJsonOutput.webp)
 
 Significantly more seasonings were added to the system this week across several categories, several text editors were added, podman and docker were added, basic utilities like firefox, a pdf viewer and the libreoffice suite were included as well as developer tools like Jupyter and general build tools and scientific tools like Avogadro and IGV.
 
@@ -53,7 +53,7 @@ I created two endpoints to this end.
 Firstly, I created an endpoint to see if a vviz would fit in a given time.
 This just used the already existing logic I had that would throw an error if a posted vviz wouldn’t fit in order to return what nodes the vviz could run on.
 
-![Fit In Time](./extras/api/fitInTime.png)
+![Fit In Time](./extras/api/fitInTime.webp)
 
 Secondly I created an endpoint that would get the next time that a vvizes with a specified config would be able to run.
 The way I made it was inefficient, as it had to check each spot where a vviz could be slotted in and see if it would actually fit.
@@ -103,7 +103,7 @@ To test this, I made a test cluster with the following specs:
 
 The openflight shared key is on the login node so it should be open to access.
 
-![Split Partitions](./extras/api/splitPartitions.png)
+![Split Partitions](./extras/api/splitPartitions.webp)
 
 I was able to set the slurm partitions so that vviz would only accept jobs from login-02 and nodes would only accept jobs from login-01.
 
@@ -125,27 +125,27 @@ The wizard steps:
 
 1. Flavour
 
-![Flavour Choice](./extras/frontend/flavourChoice.png)
+![Flavour Choice](./extras/frontend/flavourChoice.webp)
 
 2. Operating system
 
-![Operating System Choice](./extras/frontend/osChoice.png)
+![Operating System Choice](./extras/frontend/osChoice.webp)
 
 3. Software packages
 
-![Package Choice](./extras/frontend/packageChoice.png)
+![Package Choice](./extras/frontend/packageChoice.webp)
 
 4. Time limit
 
-![Time Limit](./extras/frontend/timeLimit.png)
+![Time Limit](./extras/frontend/timeLimit.webp)
 
 5. Graphical User Interface
 
-![Gui Config](./extras/frontend/guiConfig.png)
+![Gui Config](./extras/frontend/guiConfig.webp)
 
 I have also been further experimenting with the design of the site, creating the landing page to be a night scene in the desert with the Alces constellation in the night sky.
 
-![Homepage 3](./extras/frontend/homepage3.png)
+![Homepage 3](./extras/frontend/homepage3.webp)
 
 This week I’m planning to finalise the frontend flow, ensuring consistent styling across the whole site.
 I will also look at incorporating Oscar’s timetable into my own frontend.
@@ -158,7 +158,7 @@ As the database is updated dependent on what vvizes are doing and how many there
 
 It only has endpoints and an image for them is below.
 
-![Monitoring Api Docs](./extras/monitoring/apiDoc.png)
+![Monitoring Api Docs](./extras/monitoring/apiDoc.webp)
 
 Initially I made the API how I would make it in university which isn’t the best practice.
 So after I made the API I looked at Alex’s api skeleton then tried to reformat my api to match something similar to that.
@@ -175,7 +175,7 @@ The frontend was heavily AI as I wanted to focus more on the monitoring systems 
 I just wanted to spend a bit of time on a frontend so I could showcase the API a bit better.
 Below are some screenshots.
 
-![Monitoring Frontend Fleet](./extras/monitoring/genericTelemetry.png)
-![Monitoring Frontend Viz](./extras/monitoring/specificTelemetry.png)
+![Monitoring Frontend Fleet](./extras/monitoring/genericTelemetry.webp)
+![Monitoring Frontend Viz](./extras/monitoring/specificTelemetry.webp)
 
 For the following week I was going to focus on fixing the site as it was heavily vibecoded there was a few bugs and then I'm going to mess around with a viz cli tool which may be able to find more information about the vizes need to do some research as well, seeing if its worth me spending time doing.

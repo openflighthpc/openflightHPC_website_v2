@@ -20,9 +20,9 @@ Finally I plan on implementing an absolute endtime for vviz jobs so instead of s
 
 Below is the successful output of the newNode.sh script adding a slot for viz7:
 
-![New Vviz 1](./extras/vvizScripts/newVviz1.png)
-![New Vviz 2](./extras/vvizScripts/newVviz2.png)
-![New Vviz 3](./extras/vvizScripts/newVviz3.png)
+![New Vviz 1](./extras/vvizScripts/newVviz1.webp)
+![New Vviz 2](./extras/vvizScripts/newVviz2.webp)
+![New Vviz 3](./extras/vvizScripts/newVviz3.webp)
 
 ## API
 
@@ -32,7 +32,7 @@ The idea was a proof of concept for an api that could sit on the login node, in 
 We used the hono template that we already had, and found that it was possible to directly run slurm commands via node, and output the data as json.
 We did find that you had to be very restrictive with what commands can be run, as an RCE exploit could be very dangerous on a web interface attached to a HPC.
 
-![vviz response](./extras/api/getVvizResponse.png)
+![vviz response](./extras/api/getVvizResponse.webp)
 
 After that, we made a delete endpoint that would run the scancel process on that id.
 To do that, we found that scancel and squeue will return stderr if you give it a job id that didn’t exist, so we had to make a method that would ensure that the job existed, and was a viz job before cancelling it.
@@ -40,11 +40,11 @@ To do that, we found that scancel and squeue will return stderr if you give it a
 We were able to use the fact that the genders are just sbatch scripts to create an endpoint that lists the available flavours.
 Also by reading the content of those scripts, we was able to get information about them such as their core count and memory.
 
-![flavours response](./extras/api/getFlavoursResponse.png)
+![flavours response](./extras/api/getFlavoursResponse.webp)
 
 Finally, using the flavour names, we could make an endpoint that created a vviz.
 
-![create vviz response](./extras/api/createVvizResponse.png)
+![create vviz response](./extras/api/createVvizResponse.webp)
 
 Using slurm commands as the data layer proved to be a bit challenging, as the outputs are optimised for human readability and not for computers.
 
@@ -72,7 +72,7 @@ This is because if a user has been told that they have the machine from a certai
 
 This information could be visualised like this in order to show how much resources are available:
 
-![timetable](./extras/api/timetable.png)
+![timetable](./extras/api/timetable.webp)
 
 Pros:
 
@@ -102,7 +102,7 @@ It also features an infinite marquee with the software packages that would come 
 (This needs some revising as unsure whether the VM inherits all the software from the compute node it is hosted on, or whether a user would have to install all desired software packages themselves.)
 This was added to increase transparency for the user, answering questions regarding whether the virtual machines would have the software they needed.
 
-![Homepage 1](./extras/frontend/homepage.png)
+![Homepage 1](./extras/frontend/homepage.webp)
 
 The flow is log in → select a flavour → create instance → track status → if running, provide instructions for connection to their machine.
 The connection options included a web terminal which was achieved through running a separate backend and opening up a websocket where the client could SSH in and see the terminal in real time.
@@ -148,4 +148,4 @@ Below are URL’s to the monitoring agents I made. I also have more detailed not
 
 Below is example of data of what both agents would give out:
 
-![Raw Monitoring Response](./extras/monitoring/rawMonitoringResponse.png)
+![Raw Monitoring Response](./extras/monitoring/rawMonitoringResponse.webp)

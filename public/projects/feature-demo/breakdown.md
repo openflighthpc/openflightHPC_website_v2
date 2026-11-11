@@ -40,8 +40,8 @@ Two images in one paragraph, both alt texts starting with `before|after`,
 become a draggable slider. First image is the before, second is the after:
 
 ```md
-![before|after the grade](extras/old.png)
-![before|after the grade](extras/new.png)
+![before|after the grade](extras/old.webp)
+![before|after the grade](extras/new.webp)
 ```
 
 ## Videos

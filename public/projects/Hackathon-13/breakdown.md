@@ -111,11 +111,11 @@ The experience involved users navigating a platforming environment and collectin
 The practical activities required users to apply what they had learnt, with challenges ranging from inspecting the hardware configuration of an existing virtual machine to provisioning a virtual machine from scratch.
 
 Shown below is a selection of screenshots from team 2's ladder.
-![a ScreenShot showing the platform section](extras/Team2-2D-Platformer.png)
+![a ScreenShot showing the platform section](extras/Team2-2D-Platformer.webp)
 
-![a ScreenShot showing the learning card](extras/Team2-Learning-Card.png)
+![a ScreenShot showing the learning card](extras/Team2-Learning-Card.webp)
 
-![a ScreenShot showing the practical section](extras/Team2-Practical.png)
+![a ScreenShot showing the practical section](extras/Team2-Practical.webp)
 
 The original plan was to implement all five levels of the learning ladder. However, due to the limited development time available during the hackathon, only three levels were completed.
 
@@ -145,7 +145,7 @@ Users fell back to the tool the README never mentioned: the compiler itself, com
 
 Such a lie can be seen here, as build.sh does not actually exist in the project:
 
-![a screenshot showing Team 3's Rung 1 lie](extras/Team3-ReadmeLie.png)
+![a screenshot showing Team 3's Rung 1 lie](extras/Team3-ReadmeLie.webp)
 
 ### Rung 2
 
@@ -183,7 +183,7 @@ Each rung from 2 onwards had added one line to a pins file: the compiler, the pa
 
 Hints supported each rung at three depths — where to look, what the actual cause is, and only then the exact fix — never costing users their progress. A one-page error oracle alongside them mapped the first line of each compiler error onto its cause and fix, so a user stuck at a rung could rescue themselves without finding another person.
 
-![a screenshot showing Team 3's ladder](extras/Team3-Ladder.png)
+![a screenshot showing Team 3's ladder](extras/Team3-Ladder.webp)
 
 Unlike the other two teams, this learning ladder was not interactive in the traditional sense, and nothing was simulated but the provenance: the compiler, the errors and the data were all real, and the rung checks only printed their pass banner when something genuinely ran. Users progressed by investigating what had gone wrong, not by completing exercises.
 

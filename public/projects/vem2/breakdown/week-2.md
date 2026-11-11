@@ -19,16 +19,16 @@ Due to the vviz nodes being only on the internal network currently and using the
 
 After requests by Oscar the attributes of a vviz are now stored in the comments of the job in json format making it easier for an API to parse making development of web APIs easier.
 
-![Job Comment Example](./extras/vvizScripts/commentExample.png)
+![Job Comment Example](./extras/vvizScripts/commentExample.webp)
 
 This week I have also started to merge files into the prolog.sh file cutting down on the amount of files the vviz core scripts have, it should also make it easier to work with as it will centralise all of the generate and setup vm logic into one central file rather than being spread out across multiple.
 Next week on merging files into the prolog.sh will continue into the following week as well as expanding the amount of seasonings available, research into passing gpus into vviz nodes and general changes to make the system more user friendly for example by placing the vnc connection information into the home directory of the user that creating the vviz rather than just outputting it into a slurm.out as is done currently.
 
 Below is screenshots of the current list of seasonings implemented, OS’s supported and a vviz running a gui:
 
-![Allowed Seasonings](./extras/vvizScripts/allowedSeasoning.png)
-![Allowed OSs](./extras/vvizScripts/allowedOs.png)
-![Vviz Desktop](./extras/vvizScripts/desktop.png)
+![Allowed Seasonings](./extras/vvizScripts/allowedSeasoning.webp)
+![Allowed OSs](./extras/vvizScripts/allowedOs.webp)
+![Vviz Desktop](./extras/vvizScripts/desktop.webp)
 
 ## API
 
@@ -59,7 +59,7 @@ The idea of scheduling would also have fit into this with “portions” being t
 
 Visually it would have looked like this:
 
-![Portions](./extras/api/portions.png)
+![Portions](./extras/api/portions.webp)
 
 Where you can easily see how much space is being taken up.
 This could also be given a time axis to show how much space is being taken up for a given time, showing users where they might be able to schedule their vvizes.
@@ -72,7 +72,7 @@ Abstracting computing power into a single scalar was always going to waste some 
 
 I removed all the references to portions, and instead replaced them with a less abstracted, but more intuitive method for getting this information, by just having the vvizes and nodes return the actual values for their resource amount.
 
-![Resource Values](./extras/api/resourceValues.png)
+![Resource Values](./extras/api/resourceValues.webp)
 
 ##### Scheduling
 
@@ -98,7 +98,7 @@ Managing core allocations also isn’t that complex, and can be handled in the s
 Slurm itself stores the information about the start and run times of jobs, even if they aren’t running yet, and the resource information could be retrieved from the flavours.
 Because of this, I was able to return resource usage over time from the GET /vviz endpoint, and format it like this.
 
-![Resource Usage Over Time](./extras/api/resourceOverTime.png)
+![Resource Usage Over Time](./extras/api/resourceOverTime.webp)
 
 After this, I made the api calculate if a job would be able to run when submitted based on how many resources are available at that time.
 If it couldn’t, rather than let slurm schedule it after, I decided to make it return a conflict error.
@@ -107,7 +107,7 @@ I also made an endpoint that will tell the user if a vviz will be able to run, a
 
 I was able to represent this information like this:
 
-![Cluster Impact](./extras/api/clusterImpact.png)
+![Cluster Impact](./extras/api/clusterImpact.webp)
 
 Overall, manual scheduling works well.
 The main issue with it is that all the jobs need to be submitted through the api, as otherwise, jobs could skip the validation process, and push other jobs later in the queue.
@@ -125,7 +125,7 @@ I also want to experiment with taking the scheduling logic out of the api.
 The idea here is that if other methods of interacting with the vviz scripts is required, then users wouldn’t have to go through the api in order to use the scheduling functionality.
 Other systems, such as a cli tool or a TUI, could then interact with it, and keep the same scheduling logic.
 
-![Interface Scripts](./extras/api/interfaceScripts.png)
+![Interface Scripts](./extras/api/interfaceScripts.webp)
 
 ## Frontend
 
@@ -157,7 +157,7 @@ The process is to first get the vviz jobs running to work out which nodes they a
 Then depending on what nodes they are on it will ssh into those nodes and get info about the vviz jobs on that node and so on.
 Then once it has all finished it will wait 20 seconds then start again below is an example of the information it collects.
 
-![Monitoring Response](./extras/monitoring/monitoringResponse.png)
+![Monitoring Response](./extras/monitoring/monitoringResponse.webp)
 
 I put the database onto a vm and am currently storing the data from the monitoring script.
 I then decided to start working on an api which can interact with the database which is what I started building the end of week 2 and am still finishing it up now in week 3.

@@ -26,10 +26,10 @@ The game incorporated several familiar clicker mechanics, including:
 
 The project demonstrated how OpenTUI could be used to create an interactive game with multiple screens, gameplay mechanics and persistent progression.
 
-![Home page of the clicker](extras/Clicker1.png)
-![Upgrades page of the clicker](extras/Clicker2.png)
-![Buildings page of the clicker](extras/Clicker3.png)
-![Stats page of the clicker](extras/Clicker4.png)
+![Home page of the clicker](extras/Clicker1.webp)
+![Upgrades page of the clicker](extras/Clicker2.webp)
+![Buildings page of the clicker](extras/Clicker3.webp)
+![Stats page of the clicker](extras/Clicker4.webp)
 
 ### Visual Representation of TAC
 
@@ -39,9 +39,9 @@ The project utilised the React variant of OpenTUI to build an interactive interf
 
 The interface included functionality for creating and deleting clusters, as well as viewing information about existing clusters.
 
-![Cluster deletion confirmation](extras/TAC1.png)
-![Cluster creation form](extras/TAC2.png)
-![Cluster information](extras/TAC3.png)
+![Cluster deletion confirmation](extras/TAC1.webp)
+![Cluster creation form](extras/TAC2.webp)
+![Cluster information](extras/TAC3.webp)
 
 This project demonstrated how OpenTUI could be used to improve the usability of existing command-line tools without needing to replace their underlying functionality.
 
@@ -53,10 +53,10 @@ Users could explore the different planets by navigating the camera, zooming in a
 
 The project explored OpenTUI's graphical capabilities beyond traditional terminal text, demonstrating how 3D visualisations could be incorporated into a terminal-based application.
 
-![Saturn in the visualiser](extras/Planet1.png)
-![the Sun in the visualiser](extras/Planet2.png)
-![the Earth in the visualiser](extras/Planet3.png)
-![Jupiter in the visualiser](extras/Planet4.png)
+![Saturn in the visualiser](extras/Planet1.webp)
+![the Sun in the visualiser](extras/Planet2.webp)
+![the Earth in the visualiser](extras/Planet3.webp)
+![Jupiter in the visualiser](extras/Planet4.webp)
 
 ### 1v1 Shooter
 
@@ -66,8 +66,8 @@ The game begins with a coin toss to determine which player shoots first. Players
 
 The first player to successfully hit their opponent three times wins the duel.
 
-![Start screen of the shooter](extras/Bullets1.png)
-![Gameplay of the shooter](extras/Bullets2.png)
+![Start screen of the shooter](extras/Bullets1.webp)
+![Gameplay of the shooter](extras/Bullets2.webp)
 
 This project demonstrated how OpenTUI could support interactive gameplay, player input and real-time game logic.
 

@@ -62,8 +62,8 @@ Two images in one paragraph, both with alt text starting with
 `before|after`, turn into a draggable slider. Left side is desaturated,
 right side is the original:
 
-![before|after a colour grade](extras/old.png)
-![before|after a colour grade](extras/new.png)
+![before|after a colour grade](extras/old.webp)
+![before|after a colour grade](extras/new.webp)
 
 ## 5. Videos
 

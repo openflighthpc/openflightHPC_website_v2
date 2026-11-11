@@ -60,7 +60,7 @@ I solved this by putting the flavour scripts in /etc, but it would probably make
 
 Doing some research into different slurm configurations has shown me that there might be a way to configure slurm to use a First in / First out configuration for queuing, which, combined with preemption, would mean that jobs that were scheduled earlier would always have priority over those scheduled later, meaning that they could be queued without worry of an earlier job pushing it back.
 
-![Preemption Config](./extras/api/preemptConfig.png)
+![Preemption Config](./extras/api/preemptConfig.webp)
 
 One key part of this is that this is a cluster-wide configuration, meaning that a custom priority plugin would have to be made that handles priority one way for most partitions, but does it a different way for the vviz partition.
 

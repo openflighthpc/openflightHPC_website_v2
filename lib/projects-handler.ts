@@ -48,8 +48,8 @@ export function getAllProjects(): Project[] {
       const metadata = JSON.parse(fs.readFileSync(path.join(projectDir, 'meta.json'), 'utf8'));
 
       // Get logo if their is one
-      const logoPath = fs.existsSync(path.join(projectDir, 'logo.png'))
-         ? path.join('projects', folder, 'logo.png')
+      const logoPath = fs.existsSync(path.join(projectDir, 'logo.webp'))
+         ? path.join('projects', folder, 'logo.webp')
          : null;
 
       projects.push({
@@ -115,8 +115,8 @@ export function getProject(id: string): Project & { summary: string; breakdown: 
    }
 
    // Get logo if their is one
-   const logoPath = fs.existsSync(path.join(projectDir, 'logo.png'))
-      ? path.join('projects', id, 'logo.png')
+   const logoPath = fs.existsSync(path.join(projectDir, 'logo.webp'))
+      ? path.join('projects', id, 'logo.webp')
       : null;
 
    return {
