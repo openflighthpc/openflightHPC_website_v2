@@ -23,11 +23,24 @@ Both combined can give a clear pitcure of the health of a cluster and how its jo
 
 ## CLI Tool
 
+### Key features
 TBD
 
-![CLI tool output](extras/CLI.webp)
+### Usage demonstration
+
+A report of how the CLI tool is used on an actual customer cluster showing the user data of how jobs colate on the CLI over time, showing the mean usage statistics and the final job statuses:
+
+[CLI tool output](extras/CLI.webp)
+
+This allows the operator of the cluster to now look into why some of the jobs have failed, knowing that some jobs have failed from a specifific user on a specific cluster.
 
 ## API tool
+
+
+### Key features
+TBD
+
+### Usage demonstration
 
 TBD
 
