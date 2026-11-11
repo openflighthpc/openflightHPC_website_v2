@@ -35,13 +35,9 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
       >
          <body className="h-screen flex flex-col">
             <Header></Header>
-            <main className='flex-1'>
-            {children}
-            </main>
-               <Footer></Footer>
-          
+            <main className="flex-1">{children}</main>
+            <Footer></Footer>
          </body>
-        
       </html>
    );
 }

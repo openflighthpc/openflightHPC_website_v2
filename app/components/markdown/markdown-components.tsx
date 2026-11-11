@@ -16,6 +16,7 @@ import remarkCollapse from './remarkCollapse';
 import remarkSpoiler from './remarkSpoiler';
 import remarkTabs from './remarkTabs';
 import Spoiler from './Spoiler';
+import WebsiteCard from './WebsiteCard';
 
 type MdastNode = {
    type: string;
@@ -178,16 +179,33 @@ export function createMarkdownComponents(
             paraChildren.length === 1 && paraChildren[0].type === 'element'
                ? (paraChildren[0] as HastElement)
                : undefined;
+
          const githubHref =
             soleAnchor?.tagName === 'a' && hastTextContent(soleAnchor).toLowerCase() === 'github'
                ? String(soleAnchor.properties.href ?? '')
                : undefined;
 
          if (githubHref) {
-            const repoRef = githubHref.match(GITHUB_REPO_PATTERN);
+            const repoRef = new RegExp(GITHUB_REPO_PATTERN).exec(githubHref);
             if (repoRef) {
                return <GithubRepoCard owner={repoRef[1]} repo={repoRef[2]} href={githubHref} />;
             }
+         }
+
+         if (
+            soleAnchor?.tagName === 'a' &&
+            hastTextContent(soleAnchor).toLowerCase().startsWith('pretty-link')
+         ) {
+            const [, name, description] = hastTextContent(soleAnchor)
+               .toLocaleLowerCase()
+               .split(':::');
+            return (
+               <WebsiteCard
+                  name={name}
+                  href={String(soleAnchor.properties.href ?? '')}
+                  description={description}
+               ></WebsiteCard>
+            );
          }
 
          // Two adjacent images in one paragraph whose alt text starts with
