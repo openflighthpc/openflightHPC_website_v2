@@ -20,8 +20,8 @@ type TabsetProps = {
  * inactive panels' players and code fences alive between switches.
  */
 export default function MarkdownTabs({
-   'data-labels': dataLabels,
-   children
+   children,
+   'data-labels': dataLabels
 }: Readonly<TabsetProps>) {
    const labels = (dataLabels ?? '')
       .split('|')

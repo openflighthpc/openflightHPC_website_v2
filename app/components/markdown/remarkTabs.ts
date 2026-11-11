@@ -227,7 +227,7 @@ function spliceTabsets(nodes: MdastNode[]): MdastNode[] {
          const candidate = nodes[cursor];
 
          if (candidate.type === PANEL_MARKER_TYPE) {
-            current = { label: candidate.label ?? '', children: [] };
+            current = { children: [], label: candidate.label ?? '' };
             panels.push(current);
          } else if (candidate.type === PANEL_CLOSE_MARKER_TYPE) {
             current = undefined;
@@ -238,7 +238,7 @@ function spliceTabsets(nodes: MdastNode[]): MdastNode[] {
             // Content before the first `:::Label` lands in an unlabelled
             // implicit first panel.
             if (!current) {
-               current = { label: '', children: [] };
+               current = { children: [], label: '' };
                panels.push(current);
             }
             current.children.push(candidate);

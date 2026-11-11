@@ -296,8 +296,8 @@ export function createMarkdownComponents(
    looseComponents[TABPANEL_ELEMENT] = function TabPanel({
       children,
       className,
-      'data-label': dataLabel,
-      'data-index': dataIndex
+      'data-index': dataIndex,
+      'data-label': dataLabel
    }) {
       return (
          <div data-label={dataLabel} data-index={dataIndex} className={className}>
