@@ -76,13 +76,6 @@ export function createMarkdownComponents(
    allProjects: Project[]
 ): Components {
    return {
-      // The remarkSpoiler plugin wraps `||…||` regions in spans carrying
-      // the spoiler class; render them as clickable reveal components.
-      span({ node, children, ...props }) {
-         const className = (node?.properties?.className as string[] | undefined) ?? [];
-         if (!className.includes(SPOILER_CLASS)) return <span {...props}>{children}</span>;
-         return <Spoiler>{children}</Spoiler>;
-      },
       code({ children, className }) {
          const raw = String(children);
 
@@ -97,7 +90,7 @@ export function createMarkdownComponents(
 
          return <code className="font-mono text-[0.85em] text-lime-200/90">{children}</code>;
       },
-      details({ children, open, node, ...props }) {
+      details({ children, node, open, ...props }) {
          // Everything after the summary is padded; the summary keeps its
          // own padding so its bottom border stays full-bleed.
          const [summary, ...content] = Children.toArray(children);
@@ -221,6 +214,13 @@ export function createMarkdownComponents(
             (codeEl.data as { meta?: string } | undefined)?.meta;
 
          return <CodeBlock code={hastTextContent(codeEl)} lang={lang} meta={meta} />;
+      },
+      // The remarkSpoiler plugin wraps `||…||` regions in spans carrying
+      // the spoiler class; render them as clickable reveal components.
+      span({ children, node, ...props }) {
+         const className = (node?.properties?.className as string[] | undefined) ?? [];
+         if (!className.includes(SPOILER_CLASS)) return <span {...props}>{children}</span>;
+         return <Spoiler>{children}</Spoiler>;
       },
       summary({ children }) {
          return (

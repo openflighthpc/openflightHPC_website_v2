@@ -31,9 +31,9 @@ function wrapSpoilers(children: MdastNode[]): MdastNode[] {
    const flush = () => {
       if (buffer.length) {
          out.push({
-            type: 'spoil',
+            children: buffer,
             data: { hName: 'span', hProperties: { className: WRAPPER_CLASS } },
-            children: buffer
+            type: 'spoil'
          });
          buffer = [];
       }
