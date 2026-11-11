@@ -69,7 +69,7 @@ export default function Home() {
             </p>
          </div>
 
-         <section aria-labelledby="featured-projects" className="mt-20 pb-12 w-full ">
+         <section aria-labelledby="featured-projects" className="mt-20 w-full ">
             <h2 id="featured-projects" className="text-center text-4xl font-bold">
                Featured Projects
             </h2>

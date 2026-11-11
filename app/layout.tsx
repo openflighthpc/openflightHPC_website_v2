@@ -33,9 +33,9 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
          lang="en"
          className={`${chaletFont.variable} ${geistSans.variable} ${geistMono.variable} h-full antialiased`}
       >
-         <body className="min-h-screen flex flex-col">
+         <body className="h-screen flex flex-col">
             <Header></Header>
-            {children}
+            <main className="flex-1">{children}</main>
             <Footer></Footer>
          </body>
       </html>

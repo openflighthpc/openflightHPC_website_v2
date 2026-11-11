@@ -12,7 +12,7 @@ export default function Footer() {
             className="h-auto w-[30%] max-w-72 shrink-0"
          />
 
-         <div className="flex min-w-0 translate-y-6 sm:translate-y-0 flex-1 flex-col items-center self-center px-2">
+         <div className="flex min-w-0 flex-1 flex-col items-center self-center px-2">
             <Image
                src="/openflightHPC_website_v2/header_logo.svg"
                width={288}
@@ -20,7 +20,7 @@ export default function Footer() {
                alt="OpenFlight Labs"
                className="h-auto w-full max-w-[400px]"
             />
-            <p className="mt-2 text-xs sm:text-sm md:text-lg tracking-wide text-center">
+            <p className="mt-2 text-[8px] sm:text-sm md:text-lg tracking-wide text-center">
                Maintained by{' '}
                <a
                   target="_blank"

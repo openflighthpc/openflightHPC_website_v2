@@ -65,6 +65,6 @@ Overall, the project demonstrated how diskless architecture can simplify the dep
 
 ## Links
 
-[website](https://ghpc.openflighthpc.org/)
+[pretty-link:::Website:::Link to the GHPC project website](https://ghpc.openflighthpc.org/)
 
-[documentation wrapper](https://github.com/alces-flight/ghpc-docs)
+[github](https://github.com/alces-flight/ghpc)
