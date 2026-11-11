@@ -1,12 +1,12 @@
 import { defineProjectMetadata } from '@/lib/metadata-handler';
 
 export default defineProjectMetadata({
-   name: 'Carbon Leaderboard',
    description: 'Ranking Carbon Emissions of Clusters',
-   languages: ['ruby', 'html', 'css', 'javascript'],
-   tags: ['R&D'],
-   status: 'complete',
+   endDate: '01/05/2024',
    featured: false,
+   languages: ['ruby', 'html', 'css', 'javascript'],
+   name: 'Carbon Leaderboard',
    startDate: '01/05/2024',
-   endDate: '01/05/2024'
+   status: 'complete',
+   tags: ['R&D']
 });
