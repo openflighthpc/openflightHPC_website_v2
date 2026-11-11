@@ -3,7 +3,7 @@ import Image from 'next/image';
 export default function Footer() {
    const year = new Date().getFullYear();
    return (
-      <footer className="z-80 flex mt-16  h-40 w-full items-end justify-between bg-black/80 text-white backdrop-blur">
+      <footer className="z-80 flex h-40 w-full items-end justify-between bg-black/80 text-white backdrop-blur">
          <Image
             src="/openflightHPC_website_v2/parting_cloud_l.svg"
             width={288}

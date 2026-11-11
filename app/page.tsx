@@ -69,12 +69,12 @@ export default function Home() {
             </p>
          </div>
 
-         <section aria-labelledby="featured-projects" className="mt-20 w-full pb-24">
+         <section aria-labelledby="featured-projects" className="mt-20 pb-12 w-full ">
             <h2 id="featured-projects" className="text-center text-4xl font-bold">
                Featured Projects
             </h2>
 
-            <div className="mt-10 mb-[-200] hidden sm:block sm:mb-[-100]">
+            <div className="mt-10  hidden sm:block ">
                <Marquee speed={15} pauseOnHover autoFill>
                   {featuredProjects.map((project, index) => (
                      <article key={project.id} className="mx-3 h-[26rem] w-64 shrink-0 sm:w-72">
