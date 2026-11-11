@@ -1,7 +1,9 @@
 # Hypothesis
+
 The goal of this project was to build a diskless PXE-booted HPC stack using OverlayFS and cloud-init.
 
 GHPC is an experimental Rocky Linux 9 stack built around diskless PXE booting and OverlayFS. It aims to provide a scalable and manageable way of deploying and operating multiple HPC clusters from a single site.
+
 # Approach
 
 ![stack launch process gif](extras/ghpc-how-it-works.gif)
@@ -14,7 +16,7 @@ The aim of the project was to provide a quick and straightforward way to deploy 
 
 The project also explores disaster recovery and change management. When a node is rebooted, its original state is restored unless changes have been made to its source configuration. This allows users to experiment with their environments without permanently damaging the underlying host operating system.
 
-### Architecture 
+### Architecture
 
 #### Diskless Exports
 
@@ -23,7 +25,7 @@ GHPC provides four different diskless images that systems can boot from, dependi
 - **Hunter:** Used by systems that have not yet been assigned an identity. It identifies key system information, such as the boot interface and MAC address.
 - **Controller:** Provides the environment for controller nodes, including the SLURM controller daemon and other cluster management services.
 - **Login:** Provides the environment for login nodes, including Flight Web Suite for remote access.
-- **Compute:**  Provides a minimal environment for compute nodes, prepared for running HPC workloads.
+- **Compute:** Provides a minimal environment for compute nodes, prepared for running HPC workloads.
 
 In addition to these images, each cluster has access to shared persistent storage. This allows files that need to remain consistent across all nodes to be maintained in one location. For example, the `/etc/slurm/slurm.conf` configuration file is served from this shared storage, meaning it only needs to be updated once for the change to be reflected across the cluster.
 
@@ -62,6 +64,7 @@ Finally, we learnt how packaging documentation within an appliance can make a sy
 Overall, the project demonstrated how diskless architecture can simplify the deployment and management of HPC clusters, making it easier to maintain consistency, recover systems and manage multiple environments.
 
 ## Links
+
 [website](https://ghpc.openflighthpc.org/)
 
 [documentation wrapper](https://github.com/alces-flight/ghpc-docs)

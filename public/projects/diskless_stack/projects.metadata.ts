@@ -1,13 +1,13 @@
 import { defineProjectMetadata } from '@/lib/metadata-handler';
 
 export default defineProjectMetadata({
-   name: 'Diskless Stack',
    colour: '#1f8ece',
    description: 'A stack for managing diskless systems',
-   languages: ['bash'],
-   tags: ['R&D'],
-   status: 'complete',
+   endDate: '01/11/2025',
    featured: true,
+   languages: ['bash'],
+   name: 'Diskless Stack',
    startDate: '01/11/2025',
-   endDate: '01/11/2025'
+   status: 'complete',
+   tags: ['R&D']
 });
