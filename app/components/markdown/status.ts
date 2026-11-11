@@ -1,7 +1,8 @@
 export const STATUS_TAGS = {
-   active: 'LIVE ON RACK',
-   complete: 'COOLING DOWN',
-   archived: 'FROZEN IN TAPE'
+   active: 'In Progress',
+   complete: 'Completed',
+   archived: 'Archived',
+
 } as const;
 
 export const STATUS_COLOR = {
