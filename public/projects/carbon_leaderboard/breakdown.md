@@ -59,6 +59,4 @@ We also learnt that carbon impact estimates depend heavily on the quality and av
 
 Overall, we learnt how to build a system that turns server specifications into comparable carbon impact estimates, while recognising the limitations and assumptions involved in environmental calculations. The project also demonstrated how a leaderboard can make technical data more accessible and encourage users to consider the environmental impact of their computing resources.
 
-## Links
-
 [github](https://github.com/openflighthpc/carbon-leaderboard)
