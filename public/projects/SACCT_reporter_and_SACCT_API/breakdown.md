@@ -16,28 +16,28 @@ The approach taken was to consolidate command line sacct reporting metrics into 
 Each section is specifically designed for a different user in mind.
 
 For the CLI tool, it is designed for a system operator who wants to understand the current job completion statuses and if a certain partition or user data is more vunerable to a failure state, so that they can use traditional SACCT tools targeted at the known failure states to debug the program.
- 
+
 For the API tool it is designed for flight centre to monitor general system usage via a long distance API call using https processes. It is designed to see where the customer is using the systems to allow monitoring of how well used the cluster is and to adjust support as needed to customer usage.
 
-Both combined can give a clear pitcure of the health of a cluster and how its jobs process on the cluster 
+Both combined can give a clear pitcure of the health of a cluster and how its jobs process on the cluster
 
 ## CLI Tool
 
 TBD
 
-![CLI tool output](CLI.png)
+![CLI tool output](extras/CLI.webp)
 
 ## API tool
 
 TBD
 
-![API command line interface](API-CLI-7.png)
+![API command line interface](extras/API-CLI-7.webp)
 
-![API CLI timing output](API-CLI-Time.png)
+![API CLI timing output](extras/API-CLI-Time.webp)
 
-![JSON output for a 7 day period](JSON-7.png)
+![JSON output for a 7 day period](extras/JSON-7.webp)
 
-![JSON output with timing](JSON-Time.png)
+![JSON output with timing](extras/JSON-Time.webp)
 
 # What was learnt
 
