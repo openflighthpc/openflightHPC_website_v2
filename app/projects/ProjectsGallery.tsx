@@ -52,7 +52,7 @@ const formatDate = (date: string) => {
    });
 };
 
-export default function ProjectsGallery({ projects }: { projects: Project[] }) {
+export default function ProjectsGallery({ projects }: Readonly<{ projects: Project[] }>) {
    const [selectedCategory, setSelectedCategory] = useState('All');
    const [selectedStatus, setSelectedStatus] = useState<StatusFilter>('all');
    const [sortOrder, setSortOrder] = useState<SortOrder>('newest');
@@ -96,11 +96,7 @@ export default function ProjectsGallery({ projects }: { projects: Project[] }) {
             {selectedCategory} Projects
          </h1>
          <div className="flex flex-wrap justify-between items-center gap-4">
-            <div
-               className="flex flex-wrap gap-2 text-lg"
-               role="group"
-               aria-label="Project categories"
-            >
+            <details className="flex flex-wrap gap-2 text-lg" aria-label="Project categories">
                {categories.map((category) => (
                   <button
                      key={category}
@@ -116,7 +112,7 @@ export default function ProjectsGallery({ projects }: { projects: Project[] }) {
                      {category}
                   </button>
                ))}
-            </div>
+            </details>
             <div
                ref={controlsRef}
                className="flex items-center text-lg tracking-wide font-bold gap-5"
@@ -136,9 +132,8 @@ export default function ProjectsGallery({ projects }: { projects: Project[] }) {
                      {openMenu === 'filter' ? <X size={20} /> : <RxFilter aria-hidden="true" />}
                   </button>
                   {openMenu === 'filter' && (
-                     <div
+                     <details
                         id="project-status-options"
-                        role="group"
                         aria-label="Filter by project status"
                         className="absolute right-0 top-full z-20 mt-2 w-44 rounded-xl  bg-zinc-900 p-1 shadow-xl"
                      >
@@ -158,7 +153,7 @@ export default function ProjectsGallery({ projects }: { projects: Project[] }) {
                               {option.label}
                            </button>
                         ))}
-                     </div>
+                     </details>
                   )}
                </div>
 
@@ -177,9 +172,8 @@ export default function ProjectsGallery({ projects }: { projects: Project[] }) {
                      />
                   </button>
                   {openMenu === 'sort' && (
-                     <div
+                     <details
                         id="project-sort-options"
-                        role="group"
                         aria-label="Sort projects"
                         className="absolute right-0 top-full z-20 mt-2 w-48 rounded-xl font-bold bg-zinc-900 p-1 shadow-xl"
                      >
@@ -199,7 +193,7 @@ export default function ProjectsGallery({ projects }: { projects: Project[] }) {
                               {option.label}
                            </button>
                         ))}
-                     </div>
+                     </details>
                   )}
                </div>
             </div>

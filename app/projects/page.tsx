@@ -2,7 +2,7 @@ import { getAllProjects } from '@/lib/project-handler';
 
 import ProjectsGallery from './ProjectsGallery';
 
-export default async function HomePage() {
+export default function HomePage() {
    const projects = getAllProjects();
 
    return (

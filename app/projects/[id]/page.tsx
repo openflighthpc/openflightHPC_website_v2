@@ -25,7 +25,7 @@ function StencilText({
    );
 }
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
    return getAllProjects().map((project) => ({
       id: project.id
    }));
