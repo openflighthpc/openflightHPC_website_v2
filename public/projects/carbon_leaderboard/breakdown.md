@@ -17,7 +17,7 @@ To collect the required data, we developed a [helper script](https://github.com/
 
 The project uses the [Boavizta API](https://doc.api.boavizta.org/) to estimate the carbon impact of server hardware based on its specifications and available environmental data.
 
-The primary metric used is **Global Warming Potential (GWP)**, which expresses the estimated carbon impact in grams of CO<sub>2</sub> equivalent per hour (gCO<sub>2</sub>eq/hr).
+The primary metric used is **Global Warming Potential (GWP)**, which expresses the estimated carbon impact in grams of CO₂ equivalent per hour (gCO₂eq/hr).
 
 The leaderboard currently focuses on the estimated impact of operating the hardware at runtime. It does not include the carbon impact associated with manufacturing the hardware.
 
@@ -59,6 +59,4 @@ We also learnt that carbon impact estimates depend heavily on the quality and av
 
 Overall, we learnt how to build a system that turns server specifications into comparable carbon impact estimates, while recognising the limitations and assumptions involved in environmental calculations. The project also demonstrated how a leaderboard can make technical data more accessible and encourage users to consider the environmental impact of their computing resources.
 
-## Links
-
-[Source Code](https://github.com/openflighthpc/carbon-leaderboard)
+[github](https://github.com/openflighthpc/carbon-leaderboard)

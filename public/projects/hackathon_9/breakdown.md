@@ -33,7 +33,7 @@ The project demonstrated how OpenTUI could be used to create an interactive game
 
 ### Visual Representation of TAC
 
-OpenTUI was also used to create a graphical interface for an existing tool,[TAC](https://www.npmjs.com/package/@acegoal07/tac).
+OpenTUI was also used to create a graphical interface for an existing tool,[TAC](https://www.npmjs.com/package/@acegoal07/taac).
 
 The project utilised the React variant of OpenTUI to build an interactive interface, with an additional layer developed between the application and the Docker API. This allowed users to manage clusters and their associated files through a visual interface rather than relying entirely on traditional CLI commands.
 

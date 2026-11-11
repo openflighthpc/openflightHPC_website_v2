@@ -8,7 +8,7 @@ The team split into smaller projects, with each member or group focusing on a di
 
 ### Image Generation Server
 
-Intially, we experimented with [Ollama's image generation models](https://ollama.com/blog/image-generation). Although these models ran successfully locally, they presented challenges when it came to scalability and hosting.
+Initially, we experimented with [Ollama's image generation models](https://ollama.com/blog/image-generation). Although these models ran successfully locally, they presented challenges when it came to scalability and hosting.
 
 We then experimented with running a smaller image generation model, approximately 6GB in size, on CPU-only hardware behind a lightweight web server. This server accepted user inputs and returned a generated image. Despite running without GPU acceleration, the model was able to generate an image in approximately one minute.
 
@@ -16,8 +16,8 @@ Initially, the server struggled to handle multiple clients simultaneously. After
 
 The following images compare the results produced by the original Ollama model and the smaller 6GB model.
 
-![before|after the swap to the 6GB model](extras/Ollama-Image-Generator.png)
-![before|after the swap to the 6GB model](extras/Image-Generation-Server.png)
+![before|after the swap to the 6GB model](extras/Ollama-Image-Generator.webp)
+![before|after the swap to the 6GB model](extras/Image-Generation-Server.webp)
 
 ### UI for Image Generation Server
 
@@ -25,11 +25,11 @@ To make the image generation process more accessible, a user interface was devel
 
 A form was created to collect the attributes required to generate each mascot, allowing users to provide information about their HPC environment and use it as input for image generation.
 
-![Image Generation Form](extras/Generation-UI.png)
+![Image Generation Form](extras/Generation-UI.webp)
 
 The website was also extended to display the generated mascots alongside their individual statistics. This allowed users to compare mascots and see how different HPC environments influenced their characteristics, creating a Top Trumps-style experience.
 
-![HPC Top Trumps Cards](extras/Cards-Stats.png)
+![HPC Top Trumps Cards](extras/Cards-Stats.webp)
 
 ### Stats Generation
 
@@ -37,20 +37,20 @@ One team member focused on developing the statistics system for the mascots. Eac
 
 - **Combat Ability**
 - **Coolness**
-- **Intelligenece**
+- **Intelligence**
 - **Popularity**
 - **Mischief**
 
 These statistics were calculated using information about the HPC cluster and its surrounding environment. For example, bonuses could be awarded based on the cluster's operating system, cooling system or number of compute nodes.
 
-![Os type bonus image](extras/OsBonus.png)
-![Cooling type bonus image](extras/CoolingBonus.png)
+![Os type bonus image](extras/OsBonus.webp)
+![Cooling type bonus image](extras/CoolingBonus.webp)
 
 The mischief statistic was based on the crime rate of the area in which the cluster was located. To obtain this information, we integrated the [Data police UK API](https://data.police.uk/docs/).
 
 However, we encountered difficulties working with the API, meaning that not all the data and features we had originally hoped to incorporate could be implemented.
 
-![Mischief bonus image](extras/Mischief.png)
+![Mischief bonus image](extras/Mischief.webp)
 
 ### Image generation experimentation
 
@@ -60,7 +60,7 @@ We initially experimented with the [pollinations.ai API](http://pollinations.ai)
 
 Following this experimentation, we moved towards hosting our own image generation model through the image generation server. This allowed the website to make API requests directly to the model and gave us greater control over the generation process. The resulting images were more reflective of the prompts and the specific HPC environments being represented.
 
-![Generated image for the MARS cluster](extras/MarsMascot.png)
+![Generated image for the MARS cluster](extras/MarsMascot.webp)
 
 ### Mascot Battling Game
 
@@ -72,8 +72,8 @@ Different battle scenarios were introduced, with each scenario assigning differe
 
 Once the probabilities had been calculated, the game displayed the likelihood of each mascot winning and used these values to determine the winner.
 
-![Battle game logo and scenario selection](extras/BattleMascotLogo.png)
-![Battle game win chance](extras/Battle.png)
+![Battle game logo and scenario selection](extras/BattleMascotLogo.webp)
+![Battle game win chance](extras/Battle.webp)
 
 # What was learnt
 

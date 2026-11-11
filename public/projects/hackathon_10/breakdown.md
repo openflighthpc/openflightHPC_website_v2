@@ -28,7 +28,7 @@ Examples included:
 
 - **The Newcomer:** Uses the specification as a step-by-step guide and avoids attempting anything that has not been explicitly documented.
 
-![picture of the persona sheets](extras/personas.jpg)
+![picture of the persona sheets](extras/personas.webp)
 
 These personas helped us approach testing from two different perspectives:
 
