@@ -69,7 +69,7 @@ export function createMarkdownComponents(
          const raw = String(children);
 
          // Inline `[[project-id]]` references render as dossier cards.
-         const refMatch = !className ? raw.match(PROJECT_REF_PATTERN) : undefined;
+         const refMatch = !className ? new RegExp(PROJECT_REF_PATTERN).exec(raw) : undefined;
          if (refMatch) {
             const referenced = allProjects.find(
                (candidate) => candidate.id.toLowerCase() === refMatch[1].toLowerCase()
