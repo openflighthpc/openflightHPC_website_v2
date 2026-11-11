@@ -12,6 +12,7 @@ Thus the central challenge was defining the structure of how the general use dat
 # Approach
 
 ## CLI Tool
+
 ## API tool
 
 # What was learnt
