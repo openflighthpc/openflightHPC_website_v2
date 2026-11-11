@@ -1,6 +1,6 @@
 # Hypothesis
 
-The aims of both these projects was to improve the accessibility and readability of existing SACCT breakdowns via two methods of access:
+The aims of both these projects was to improve the accessiblitly and readability of existing SACCT breakdowns via two methods of access:
 
 - **CLI Tool:** A program on the cluster itself able to print out the general metrics of a cluster in operation.
 - **API:** A program to interface with an active cluster using API calls to provide a JSON dump of key metrics on how the cluster is being used by the end operator.
@@ -11,26 +11,31 @@ Thus the central challenge was defining the structure of how the general use dat
 
 # Approach
 
-TBD
+The approach taken was to consolidate output sacct report 
 
 ## CLI Tool
 
 TBD
 
-![CLI tool output](extras/CLI.webp)
+![CLI tool output](CLI.png)
 
 ## API tool
 
 TBD
 
-![API command line interface](extras/API-CLI-7.webp)
+![API command line interface](API-CLI-7.png)
 
-![API CLI timing output](extras/API-CLI-Time.webp)
+![API CLI timing output](API-CLI-Time.png)
 
-![JSON output for a 7 day period](extras/JSON-7.webp)
+![JSON output for a 7 day period](JSON-7.png)
 
-![JSON output with timing](extras/JSON-Time.webp)
+![JSON output with timing](JSON-Time.png)
 
 # What was learnt
 
 TBD
+
+# GitHub Repositories
+
+- [Alces-Sacct-V2](https://github.com/AdamJ2009/Alces-Sacct-V2) – CLI local program for sacct accounting.
+- [SACCT_API](https://github.com/AdamJ2009/SACCT_API) – Backend API service for SACCT data with CLI tarball for API.
