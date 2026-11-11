@@ -2,6 +2,7 @@ import type { Element as HastElement, Text as HastText } from 'hast';
 import Image from 'next/image';
 import type { Components } from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import { Children } from 'react';
 
 import type { Project } from '@/lib/project-handler';
 
@@ -10,6 +11,7 @@ import CodeBlock from './CodeBlock';
 import GithubRepoCard from './GithubRepoCard';
 import { resolveImagePath } from './paths';
 import ProjectCard from './ProjectCard';
+import remarkCollapse from './remarkCollapse';
 
 type MdastNode = {
    type: string;
@@ -42,7 +44,7 @@ function remarkCodeMeta() {
 }
 
 /** Remark plugins applied to every markdown source rendered on the page. */
-export const REMARK_PLUGINS = [remarkGfm, remarkCodeMeta];
+export const REMARK_PLUGINS = [remarkGfm, remarkCodeMeta, remarkCollapse];
 
 function hastTextContent(node: HastElement): string {
    return node.children
@@ -69,6 +71,41 @@ export function createMarkdownComponents(
    allProjects: Project[]
 ): Components {
    return {
+      details({ children, open, node, ...props }) {
+         // Everything after the summary is padded; the summary keeps its
+         // own padding so its bottom border stays full-bleed.
+         const [summary, ...content] = Children.toArray(children);
+
+         return (
+            <details
+               {...props}
+               open={open}
+               className="group/details my-8 border border-neutral-800 bg-neutral-900/40 shadow-[0_1.5rem_3rem_-1rem_rgba(0,0,0,0.9)]"
+            >
+               {summary}
+               {content.length > 0 && <div className="px-5 pb-4 sm:px-8">{content}</div>}
+            </details>
+         );
+      },
+      summary({ children }) {
+         return (
+            <summary className="block cursor-pointer list-none border-b border-neutral-800 px-5 py-4 font-bold tracking-wide transition-colors hover:text-lime-300 sm:px-8">
+               <span className="flex items-center justify-between gap-4">
+                  <span>{children}</span>
+                  <svg
+                     width="12"
+                     height="12"
+                     viewBox="0 0 12 12"
+                     fill="none"
+                     aria-hidden
+                     className="shrink-0 text-lime-400/70 transition-transform group-open/details:rotate-180"
+                  >
+                     <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" />
+                  </svg>
+               </span>
+            </summary>
+         );
+      },
       code({ children, className }) {
          const raw = String(children);
 

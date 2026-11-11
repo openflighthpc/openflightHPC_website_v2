@@ -46,6 +46,25 @@ becomes an embed card with live repo stats:
 Links with other link text, or URLs deeper than the repo root, stay
 ordinary anchors.
 
+## Collapsible sections
+
+A `:::collapse` container renders as a native `<details>` panel. The line
+after the opening marker can carry an `open` or `closed` state keyword and
+the title to display:
+
+```md
+:::collapse open An open-by-default section
+any markdown in here
+:::
+
+:::collapse A closed-by-default section
+the state keyword is optional, closed is the default
+:::
+```
+
+Containers can be nested. The closing `:::` only needs to be on its own
+line — blank lines around it are not required, though they are allowed.
+
 ## Before / after sliders
 
 Two images in one paragraph, both alt texts starting with `before|after`,

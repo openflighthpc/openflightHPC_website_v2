@@ -67,7 +67,25 @@ fetched live from the GitHub API. Take Phaser:
 Deeper links (issues, trees, blobs) and links with other link text stay
 ordinary anchors.
 
-## 5. Before / after sliders
+## 5. Collapsible sections
+
+A `:::collapse` container becomes a native `<details>` panel that readers
+can expand and collapse. The state keyword sets the default state — `open`
+or `closed` (the default if omitted) — and the rest of the line is the
+visible title. The closing `:::` only needs to be on its own line, so a
+collapse written without blank lines still terminates correctly:
+
+:::collapse open An open-by-default section
+Everything inside the container can be any markdown — paragraphs,
+lists, code fences, cards, whatever.
+:::
+
+:::collapse A closed-by-default section
+Note the state keyword is optional; closed is the default. Nested
+containers work too.
+:::
+
+## 6. Before / after sliders
 
 Two images in one paragraph, both with alt text starting with
 `before|after`, turn into a draggable slider. Left side is desaturated,
@@ -76,7 +94,7 @@ right side is the original:
 ![before|after a colour grade](extras/old.webp)
 ![before|after a colour grade](extras/new.webp)
 
-## 6. Videos
+## 7. Videos
 
 If the image extension is a video one (mp4, webm, ogg, mov, m4v) the
 renderer puts down a `<video controls>` instead of an image. Hand written
@@ -84,7 +102,7 @@ renderer puts down a `<video controls>` instead of an image. Hand written
 
 ![a sample clip](extras/demo.mp4)
 
-## 7. Regular markdown
+## 8. Regular markdown
 
 The usual stuff still works: gfm tables, task lists, footnotes, links and
 the rest.
