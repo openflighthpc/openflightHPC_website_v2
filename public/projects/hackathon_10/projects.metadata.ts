@@ -1,13 +1,13 @@
 import { defineProjectMetadata } from '@/lib/metadata-handler';
 
 export default defineProjectMetadata({
-   name: 'Hackathon 10',
    colour: '#35a314',
    description: 'Exploration of testing personas and ai assisted testing',
-   languages: ['typescript'],
-   tags: ['R&D', 'Hackathon'],
-   status: 'complete',
+   endDate: '25/09/2026',
    featured: true,
+   languages: ['typescript'],
+   name: 'Hackathon 10',
    startDate: '25/09/2026',
-   endDate: '25/09/2026'
+   status: 'complete',
+   tags: ['R&D', 'Hackathon']
 });

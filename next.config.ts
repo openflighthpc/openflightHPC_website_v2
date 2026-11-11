@@ -1,23 +1,23 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
+   basePath: '/openflightHPC_website_v2',
    experimental: {
       agentFeedback: true
    },
-   output: 'export',
-   trailingSlash: true,
    images: {
       unoptimized: true
    },
+   output: 'export',
+   trailingSlash: true,
    turbopack: {
       rules: {
          '*.css': {
-            loaders: ['@tailwindcss/turbopack'],
-            as: '*.css'
+            as: '*.css',
+            loaders: ['@tailwindcss/turbopack']
          }
       }
-   },
-   basePath: '/openflightHPC_website_v2'
+   }
 };
 
 export default nextConfig;

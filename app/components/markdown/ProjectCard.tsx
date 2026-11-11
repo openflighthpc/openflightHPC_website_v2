@@ -1,6 +1,8 @@
 import Link from 'next/link';
+
 import { type Project } from '@/lib/project-handler';
-import { STATUS_COLOR, STATUS_TAGS } from './status';
+
+import { STATUS_TAGS } from './status';
 
 type ProjectCardProps = {
    project: Project;
@@ -10,10 +12,10 @@ const formatDate = (date: string) => {
    const [day, month, year] = date.split('/').map(Number);
 
    return new Date(Date.UTC(year, month - 1, day)).toLocaleDateString('en-US', {
-      month: 'short',
       day: 'numeric',
-      year: 'numeric',
-      timeZone: 'UTC'
+      month: 'short',
+      timeZone: 'UTC',
+      year: 'numeric'
    });
 };
 

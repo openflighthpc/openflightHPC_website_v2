@@ -1,8 +1,10 @@
 import 'server-only';
 
-import path from 'node:path';
 import fs from 'node:fs';
+import path from 'node:path';
+
 import ProjectMetadata from '@/public/projects/metadata.registry';
+
 import type { DetailedProject, Project } from './metadata-handler';
 
 export type { DetailedProject, Project } from './metadata-handler';
@@ -85,9 +87,9 @@ export function getProject(id: string): DetailedProject {
    return {
       id,
       ...metadata,
-      summary: summaryData,
       breakdown: breakdownData,
-      logoPath
+      logoPath,
+      summary: summaryData
    } as DetailedProject;
 }
 

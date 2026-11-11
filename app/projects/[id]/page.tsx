@@ -2,8 +2,8 @@ import MarkdownRenderer from '@/app/components/markdown/MarkdownRenderer';
 import { getAllProjects } from '@/lib/project-handler';
 
 function StencilText({
-   text,
-   repeat = 1
+   repeat = 1,
+   text
 }: Readonly<{
    text: string;
    repeat?: number;
@@ -25,7 +25,7 @@ function StencilText({
    );
 }
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
    return getAllProjects().map((project) => ({
       id: project.id
    }));

@@ -1,7 +1,9 @@
-import { getAllProjects, getProject } from '@/lib/project-handler';
 import ReactMarkdown from 'react-markdown';
-import ProjectDossierLayout from './ProjectDossierLayout';
+
+import { getAllProjects, getProject } from '@/lib/project-handler';
+
 import { createMarkdownComponents, REMARK_PLUGINS } from './markdown-components';
+import ProjectDossierLayout from './ProjectDossierLayout';
 
 type RendererProps = {
    projectName: string;

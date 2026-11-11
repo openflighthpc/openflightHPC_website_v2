@@ -1,7 +1,9 @@
+import './globals.css';
+
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
-import './globals.css';
 import localFont from 'next/font/local';
+
 import Header from './components/Header';
 
 const chaletFont = localFont({
@@ -10,18 +12,18 @@ const chaletFont = localFont({
 });
 
 const geistSans = Geist({
-   variable: '--font-geist-sans',
-   subsets: ['latin']
+   subsets: ['latin'],
+   variable: '--font-geist-sans'
 });
 
 const geistMono = Geist_Mono({
-   variable: '--font-geist-mono',
-   subsets: ['latin']
+   subsets: ['latin'],
+   variable: '--font-geist-mono'
 });
 
 export const metadata: Metadata = {
-   title: 'OpenFlight Labs',
-   description: 'Stories and ideas from OpenFlight.'
+   description: 'Stories and ideas from OpenFlight.',
+   title: 'OpenFlight Labs'
 };
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {

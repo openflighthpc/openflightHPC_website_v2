@@ -1,4 +1,5 @@
 import type { Project } from '@/lib/project-handler';
+
 import DossierTabs from './DossierTabs';
 import { STATUS_TAGS } from './status';
 
@@ -13,16 +14,14 @@ const formatDate = (date: string) => {
    const [day, month, year] = date.split('/').map(Number);
 
    return new Date(Date.UTC(year, month - 1, day)).toLocaleDateString('en-US', {
-      month: 'short',
       day: 'numeric',
-      year: 'numeric',
-      timeZone: 'UTC'
+      month: 'short',
+      timeZone: 'UTC',
+      year: 'numeric'
    });
 };
 
-
 function DossierSheet({
- 
    children
 }: Readonly<{
    index: string;
@@ -31,7 +30,6 @@ function DossierSheet({
 }>) {
    return (
       <section className=" shadow-[0_1.5rem_3rem_-1rem_rgba(0,0,0,0.9)]">
-        
          <div className="prose prose-invert max-w-none mt-6 sm:mt-10">{children}</div>
       </section>
    );
@@ -41,42 +39,32 @@ function DossierSheet({
  * Template for the actual pages
  */
 export default function ProjectDossierLayout({
-   project,
+   breakdown,
 
-   summary,
-   breakdown
+   project,
+   summary
 }: Readonly<LayoutProps>) {
    const stamp = STATUS_TAGS[project.status as keyof typeof STATUS_TAGS] ?? project.status;
 
-
    return (
-      <div className="relative min-h-screen font-sans text-neutral-100">
+      <div className="relative min-h-screen font-sans text-neutral-100 mb-10">
          {/* ————————————————————————————————————————
           BACKDROP — the wall behind everything:
           poured concrete, one warm seam, node-rack
           labels stencilled up the dark
           ———————————————————————————————————————— */}
-  
 
          <header className="relative mx-auto max-w-4xl px-6 pb-4 pt-20 sm:px-10">
-         
-
             <div className="mt-10 text-center">
-               <div className='flex font-bold justify-center gap-2'>
-                    {formatDate(project.startDate)}
-                        {project.status === 'in-progress'
-                           ? ' - In Progress'
-                           : project.endDate && project.endDate !== project.startDate
-                             ? ` - ${formatDate(project.endDate)}`
-                             : ''}
-                  {project.status !== 'in-progress' && (
-                        <p className='font-light'>{stamp}</p>
-
-                  )}
-               
-               
+               <div className="flex font-bold justify-center gap-2">
+                  {formatDate(project.startDate)}
+                  {project.status === 'in-progress'
+                     ? ' - In Progress'
+                     : project.endDate && project.endDate !== project.startDate
+                       ? ` - ${formatDate(project.endDate)}`
+                       : ''}
+                  {project.status !== 'in-progress' && <p className="font-light">{stamp}</p>}
                </div>
-      
 
                <h1 className="mt-6 tracking-wide text-center text-5xl font-bold leading-[1.05]  text-white sm:text-6xl">
                   {project.description}
@@ -102,17 +90,13 @@ export default function ProjectDossierLayout({
             </div>
          </header>
 
-     
-
          {/* 
          Main body including both the summary and breakdown in their own tabs
          See ./DossierTabs.tsx for more info
           */}
          <main className="relative mx-auto max-w-6xl px-6 sm:px-10">
             <div className="grid grid-cols-1 gap-y-16 mt-14 text-lg leading-loose [grid-template-columns:1fr] lg:text-xl lg:[grid-template-columns:3rem_minmax(0,1fr)] lg:gap-x-10">
-               <aside className="hidden lg:block">
-                
-               </aside>
+               <aside className="hidden lg:block"></aside>
 
                <DossierTabs
                   summarySheet={
@@ -130,8 +114,6 @@ export default function ProjectDossierLayout({
                />
             </div>
          </main>
-
-  
       </div>
    );
 }

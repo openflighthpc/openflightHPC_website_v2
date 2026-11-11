@@ -13,12 +13,12 @@ type BeforeAfterSliderProps = {
 };
 
 export default function BeforeAfterSlider({
-   beforeSrc,
-   beforeAlt,
-   afterSrc,
    afterAlt,
+   afterLabel = 'AFTER',
+   afterSrc,
+   beforeAlt,
    beforeLabel = 'BEFORE',
-   afterLabel = 'AFTER'
+   beforeSrc
 }: Readonly<BeforeAfterSliderProps>) {
    const containerRef = useRef<HTMLDivElement>(null);
    const [isDragging, setIsDragging] = useState(false);
