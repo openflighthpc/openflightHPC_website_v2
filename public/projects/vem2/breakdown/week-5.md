@@ -2,19 +2,15 @@
 
 ## API
 
-### Continuing
+### FiFo Slurm Configuration
 
-#### Oscar
-
-##### FiFo Slurm Configuration
-
-Having done some further research into this type of configuration, I have learned that it doesn’t do what I expect it to do, and would need the external controller to be attached anyway in order for this to work.
-Because of this, I think it makes sense to let the api handle everything to do with timetabling and reservations, and just let slurm manage the resource allocation.
+Having done some further research into this type of configuration, we have learned that it doesn’t do what we expected it to do, and would need the external controller to be attached anyway in order for this to work.
+Because of this, we think it makes sense to let the api handle everything to do with timetabling and reservations, and just let slurm manage the resource allocation.
 This means that the standard configurations for slurm can be used, without having to make any custom slurm plugins.
 Slurm isn’t designed for this type of timetabling, so it doesn’t make sense to try and force it to.
 The best course of action is just to restrict what applications can submit vviz jobs, and let those applications handle the scheduling.
 
-# What we learnt
+## What we learnt
 
 The slurm REST api vs running slurm commands directly was one of the first decisions, and the commands won out as the REST api isn't installed by default on slurm so there may be clusters without it, and mimicking the logged in user through it gets complicated.
 That does mean a fair amount of parsing though as slurm's output is written for humans rather than computers, and it also means being very restrictive with what commands the api can run, as an RCE exploit would be very dangerous on anything web facing attached to a HPC.
