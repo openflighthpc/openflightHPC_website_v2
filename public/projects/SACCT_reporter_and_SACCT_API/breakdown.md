@@ -25,19 +25,19 @@ Both combined can give a clear pitcure of the health of a cluster and how its jo
 
 TBD
 
-![CLI tool output](CLI.png)
+![CLI tool output](extras/CLI.webp)
 
 ## API tool
 
 TBD
 
-![API command line interface](API-CLI-7.png)
+![API command line interface](extras/API-CLI-7.webp)
 
-![API CLI timing output](API-CLI-Time.png)
+![API CLI timing output](extras/API-CLI-Time.webp)
 
-![JSON output for a 7 day period](JSON-7.png)
+![JSON output for a 7 day period](extras/JSON-7.webp)
 
-![JSON output with timing](JSON-Time.png)
+![JSON output with timing](extras/JSON-Time.webp)
 
 # What was learnt
 
