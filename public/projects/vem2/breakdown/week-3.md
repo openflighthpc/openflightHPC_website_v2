@@ -166,7 +166,6 @@ The history endpoints show the full history of a specified viz by the slurmid, a
 
 We’d say the majority of the time spent this week was looking at how the other API’s built during the project were put together and understanding why they did it that way.
 We definitely feel more comfortable doing backend work from making this basic api using hono.
-The API is currently on a vm and if you would like to have a look at the docs here is the link. http://10.151.0.109:8081/api/v1/docs#description/introduction
 
 Also we spent the Friday messing around with a frontend solution while fixing up little bugs with the frontend.
 The frontend was heavily AI as we wanted to focus more on the monitoring systems and other ideas.

@@ -7,11 +7,6 @@ We also worked on improving the CLI to handle the new features added to the API 
 
 As well as this we also worked on taking parts of the most recent API and implementing them into an API skeleton we’ve made to help with creating APIs in the future, some of the things we’ve taken is a new error handler for the API as well as streamlining other parts of the skeleton to make it easier to work with and more lightweight making it easy to work with and build on top of.
 
-Github links:
-
-[vem2 cli](https://gitlab.dmz.alces.network/dev/vem2-cli)
-[vem2 api](https://gitlab.dmz.alces.network/dev/vem2-api)
-
 ### Continuing
 
 #### Slurmy Vvizy Stuff
