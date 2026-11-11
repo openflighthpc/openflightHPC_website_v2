@@ -1,5 +1,7 @@
+import Footer from '@/app/components/Footer';
 import MarkdownRenderer from '@/app/components/markdown/MarkdownRenderer';
 import { getAllProjects } from '@/lib/project-handler';
+
 
 function StencilText({
    repeat = 1,
@@ -36,5 +38,10 @@ export default async function ProjectPage({
 }: Readonly<{ params: Promise<{ id: string }> }>) {
    const { id } = await params;
 
-   return <MarkdownRenderer projectName={id} StencilText={StencilText} />;
+   return (
+      <>
+         <MarkdownRenderer projectName={id} StencilText={StencilText} />
+         <Footer />
+      </>
+   );
 }

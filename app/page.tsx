@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Marquee from 'react-fast-marquee';
+import Footer from '@/app/components/Footer';
 
 import { getFeaturedProjects } from '@/lib/project-handler';
 
@@ -38,7 +39,8 @@ export default function Home() {
    const featuredProjects = getFeaturedProjects();
 
    return (
-      <main className="min-h-screen bg-black flex flex-col sm:mt-[-100] mt-[-60] items-center justify-start text-[#f8f8f8]">
+      <>
+      <main className="flex-1 bg-black flex flex-col sm:mt-[-100] mt-[-60] items-center justify-start text-[#f8f8f8]">
          <AnimatedLogo />
          <div className="w-full sm:mt-[-160] mt-[-100] font-bold tracking-wide flex flex-col mx-80 text-lg justify-center w-full max-w-4xl mx-auto px-6 flex flex-col gap-6 text-center">
             <p>
@@ -69,15 +71,20 @@ export default function Home() {
             </p>
          </div>
 
-         <section aria-labelledby="featured-projects" className="mt-20 w-full ">
+         <section aria-labelledby="featured-projects" className="mt-20 pb-26 w-full ">
             <h2 id="featured-projects" className="text-center text-4xl font-bold">
                Featured Projects
             </h2>
 
             <div className="mt-10  hidden sm:block ">
-               <Marquee speed={15} pauseOnHover autoFill>
+               <Marquee
+                  speed={15}
+                  pauseOnHover
+                  autoFill
+                  className="[&_.rfm-child]:self-start"
+               >
                   {featuredProjects.map((project, index) => (
-                     <article key={project.id} className="mx-3 h-[26rem] w-64 shrink-0 sm:w-72">
+                     <article key={project.id} className="mx-3 min-h-[26rem] w-64 shrink-0 sm:w-72">
                         <Link key={project.id} href={`/projects/${project.id}`}>
                            <div
                               style={{
@@ -163,9 +170,9 @@ export default function Home() {
                </Marquee>
             </div>
 
-            <div className="mt-10 flex-col flex mb-[-150]  w-full gap-10 items-center px-4 sm:hidden">
+            <div className="mt-10 flex w-full flex-col items-center gap-10 px-4 sm:hidden">
                {featuredProjects.map((project, index) => (
-                  <article key={project.id} className="mx-3 h-[26rem] w-95 px-4 shrink-0 sm:w-72">
+                  <article key={project.id} className="w-full max-w-sm">
                      <Link key={project.id} href={`/projects/${project.id}`}>
                         <div
                            style={{
@@ -251,5 +258,7 @@ export default function Home() {
             </div>
          </section>
       </main>
+      <Footer />
+      </>
    );
 }
