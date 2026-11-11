@@ -8,7 +8,7 @@ The team split into smaller projects, with each member or group focusing on a di
 
 ### Image Generation Server
 
-Intially, we experimented with [Ollama's image generation models](https://ollama.com/blog/image-generation). Although these models ran successfully locally, they presented challenges when it came to scalability and hosting.
+Initially, we experimented with [Ollama's image generation models](https://ollama.com/blog/image-generation). Although these models ran successfully locally, they presented challenges when it came to scalability and hosting.
 
 We then experimented with running a smaller image generation model, approximately 6GB in size, on CPU-only hardware behind a lightweight web server. This server accepted user inputs and returned a generated image. Despite running without GPU acceleration, the model was able to generate an image in approximately one minute.
 
@@ -37,7 +37,7 @@ One team member focused on developing the statistics system for the mascots. Eac
 
 - **Combat Ability**
 - **Coolness**
-- **Intelligenece**
+- **Intelligence**
 - **Popularity**
 - **Mischief**
 

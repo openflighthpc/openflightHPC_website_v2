@@ -39,7 +39,7 @@ Cloud-init is used to inject personality information into each host during boot.
 
 #### Overlayfs
 
-The shared base image is mounted as read-only on each host. OverlayFS is then used to provide a writable layer on top, allowing systems to be modified while running without changing the underlying source image.
+The shared base image is mounted as read-only on each host. OverlayFS is then used to provide a writeable layer on top, allowing systems to be modified while running without changing the underlying source image.
 
 An additional benefit of this approach is that differences between the running host and its original image can be identified. These changes are stored in `/run/upper/data/host`, making it easier to inspect and understand how a system has diverged from its base configuration.
 
@@ -57,7 +57,7 @@ The [Glow](https://github.com/charmbracelet/glow) project is used alongside a si
 
 This project provided experience in designing and deploying diskless HPC environments, particularly using PXE booting, OverlayFS and cloud-init. We gained a better understanding of how different node identities can be used to provide specific roles within a cluster, while maintaining a shared and consistent base configuration.
 
-We also explored how persistent storage and writable overlay layers can be combined to support both shared configuration and node-specific changes. This highlighted the benefits of separating the underlying system image from runtime modifications, particularly for disaster recovery, experimentation and configuration management.
+We also explored how persistent storage and writeable overlay layers can be combined to support both shared configuration and node-specific changes. This highlighted the benefits of separating the underlying system image from runtime modifications, particularly for disaster recovery, experimentation and configuration management.
 
 Finally, we learnt how packaging documentation within an appliance can make a system easier to deploy and maintain in offline environments.
 
