@@ -92,10 +92,10 @@ export default function ProjectsGallery({ projects }: Readonly<{ projects: Proje
 
    return (
       <>
-         <h1 className="md:text-5xl sm:text-4xl text-3xl font-bold mb-3 mt-14">
+         <h1 className="md:text-5xl sm:text-4xl text-4xl font-bold mb-3 mt-14">
             {selectedCategory} Projects
          </h1>
-         <div className="flex flex-wrap justify-between items-center gap-4">
+         <div className="flex mt-8 flex-wrap justify-between items-center gap-4">
             <div className="flex flex-wrap gap-2 text-lg" aria-label="Project categories">
                {categories.map((category) => (
                   <button
@@ -116,7 +116,7 @@ export default function ProjectsGallery({ projects }: Readonly<{ projects: Proje
             </div>
             <div
                ref={controlsRef}
-               className="flex items-center text-lg tracking-wide font-bold gap-5"
+               className="flex items-center text-md sm:text-lg tracking-wide font-bold gap-5 sm:ml-auto"
             >
                <div className="relative">
                   <button
@@ -137,7 +137,7 @@ export default function ProjectsGallery({ projects }: Readonly<{ projects: Proje
                         role="group"
                         id="project-status-options"
                         aria-label="Filter by project status"
-                        className="absolute right-0 top-full z-20 mt-2 w-44 rounded-xl  bg-zinc-900 p-1 shadow-xl"
+                        className="absolute left-0 top-full z-20 mt-2 w-44 rounded-xl bg-zinc-900 p-1 shadow-xl sm:left-auto sm:right-0"
                      >
                         {statusOptions.map((option) => (
                            <button
@@ -178,7 +178,7 @@ export default function ProjectsGallery({ projects }: Readonly<{ projects: Proje
                         role="group"
                         id="project-sort-options"
                         aria-label="Sort projects"
-                        className="absolute right-0 top-full z-20 mt-2 w-48 rounded-xl font-bold bg-zinc-900 p-1 shadow-xl"
+                        className="absolute left-0 top-full z-20 mt-2 w-48 rounded-xl bg-zinc-900 p-1 font-bold shadow-xl sm:left-auto sm:right-0"
                      >
                         {sortOptions.map((option) => (
                            <button
@@ -202,7 +202,7 @@ export default function ProjectsGallery({ projects }: Readonly<{ projects: Proje
             </div>
          </div>
 
-         <div className="grid w-full grid-cols-2 gap-6 md:grid-cols-3">
+         <div className="grid w-full  grid-cols-1 sm:grid-cols-2 gap-6 md:grid-cols-3">
             {visibleProjects.length === 0 && (
                <p className="col-span-full mt-10 text-zinc-400">No projects match these filters.</p>
             )}

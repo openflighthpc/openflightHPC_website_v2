@@ -30,7 +30,7 @@ function DossierSheet({
 }>) {
    return (
       <section className=" shadow-[0_1.5rem_3rem_-1rem_rgba(0,0,0,0.9)]">
-         <div className="prose prose-invert max-w-none mt-6 sm:mt-10">{children}</div>
+         <div className="prose prose-invert  max-w-none mt-6 sm:mt-10">{children}</div>
       </section>
    );
 }
@@ -66,7 +66,7 @@ export default function ProjectDossierLayout({
                   {project.status !== 'in-progress' && <p className="font-light">{stamp}</p>}
                </div>
 
-               <h1 className="mt-6 tracking-wide text-center text-5xl font-bold leading-[1.05]  text-white sm:text-6xl">
+               <h1 className="mt-6 tracking-wide text-center text-4xl sm:text-5xl font-bold leading-[1.05]  text-white sm:text-6xl">
                   {project.description}
                </h1>
 

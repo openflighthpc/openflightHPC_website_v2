@@ -1,5 +1,6 @@
 import Image from 'next/image';
 
+
 export default function Footer() {
    const year = new Date().getFullYear();
 
@@ -22,7 +23,7 @@ export default function Footer() {
                className="h-auto w-full max-w-[400px]"
             />
             <p className="mt-2 text-xs sm:text-sm md:text-lg tracking-wide text-center">
-               Maintained by <span className='text-green-400'>OpenFlightHPC </span>© {year}
+               Maintained by <a target="_blank" href="https://openflighthpc.github.io/docs.openflighthpc.org/latest/" className='text-green-400 transition hover:underline'>OpenFlightHPC</a> © {year}
             </p>
          </div>
 
