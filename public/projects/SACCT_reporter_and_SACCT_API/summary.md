@@ -10,6 +10,9 @@ The goal of this project was to improve the metrics reporting of SACCT via a CLI
 
 ## What was learned
 
+- How Ruby command line tools can interface with an active database
+- How metrics can be used and displayed as require
+
 # SACCT API
 
 The goal of this project was to use the knowledge from the SACCT CLI tool to act as an API to return JSON data on a SACCT cluster to result in a logical tree of the current usage of said cluster.
@@ -22,3 +25,7 @@ The goal of this project was to use the knowledge from the SACCT CLI tool to act
 - Said CLI tool also stores the current API address to make operations easier.
 
 ## What was learned
+
+- How an API can accept calls to query an active database
+- How to construct command line tools from a API call
+- How to return a structured JSON dump that contains all the necessary information
