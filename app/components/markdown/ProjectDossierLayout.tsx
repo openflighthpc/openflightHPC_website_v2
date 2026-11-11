@@ -29,7 +29,7 @@ function DossierSheet({
    children: React.ReactNode;
 }>) {
    return (
-      <section className=" shadow-[0_1.5rem_3rem_-1rem_rgba(0,0,0,0.9)]">
+      <section className="pb-24 shadow-[0_1.5rem_3rem_-1rem_rgba(0,0,0,0.9)]">
          <div className="prose prose-invert  max-w-none mt-6 sm:mt-10">{children}</div>
       </section>
    );
