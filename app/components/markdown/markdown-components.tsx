@@ -1,4 +1,4 @@
-import type { Project } from '@/lib/projects-handler';
+import type { Project } from '@/lib/project-handler';
 import type { Element as HastElement, Text as HastText } from 'hast';
 import Image from 'next/image';
 import remarkGfm from 'remark-gfm';

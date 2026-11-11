@@ -1,4 +1,4 @@
-import type { Project } from '@/lib/projects-handler';
+import type { Project } from '@/lib/project-handler';
 import DossierTabs from './DossierTabs';
 import { STATUS_COLOR, STATUS_TAGS } from './status';
 

@@ -1,5 +1,5 @@
 import MarkdownRenderer from '@/app/components/markdown/MarkdownRenderer';
-import { getAllProjects } from '@/lib/projects-handler';
+import { getAllProjects } from '@/lib/project-handler';
 
 function StencilText({
    text,
@@ -25,8 +25,8 @@ function StencilText({
    );
 }
 
-export function generateStaticParams() {
-   return getAllProjects().map((project) => ({
+export async function generateStaticParams() {
+   return (await getAllProjects()).map((project) => ({
       id: project.id
    }));
 }

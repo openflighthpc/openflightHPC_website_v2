@@ -1,3 +1,0 @@
-# SACCT reporter
-
-# SACCT API

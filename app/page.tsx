@@ -1,16 +1,10 @@
 import Marquee from 'react-fast-marquee';
 import Link from 'next/link';
 import AnimatedLogo from './components/AnimatedLogo';
-import { getFeaturedProjects } from '@/lib/projects-handler';
-import Image from "next/image"
+import { getFeaturedProjects } from '@/lib/project-handler';
+import Image from 'next/image';
 
-const projectBackgroundColors = [
-   '#1b8a62',
-   '#7d57b6',
-   '#c86e47',
-   '#2f76a6',
-   '#b39539'
-];
+const projectBackgroundColors = ['#1b8a62', '#7d57b6', '#c86e47', '#2f76a6', '#b39539'];
 
 const formatDate = (date: string) => {
    const [day, month, year] = date.split('/').map(Number);
@@ -23,8 +17,8 @@ const formatDate = (date: string) => {
    });
 };
 
-export default function Home() {
-   const featuredProjects = getFeaturedProjects();
+export default async function Home() {
+   const featuredProjects = await getFeaturedProjects();
 
    return (
       <main className="min-h-screen bg-black flex flex-col mt-[-100] items-center justify-start text-[#f8f8f8]">

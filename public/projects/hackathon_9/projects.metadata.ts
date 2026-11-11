@@ -1,0 +1,12 @@
+import { defineProjectMetadata } from '@/lib/metadata-handler';
+
+export default defineProjectMetadata({
+   name: 'Hackathon 9',
+   description: 'Exploration of openTUI',
+   languages: ['typescript'],
+   tags: ['R&D', 'Hackathon'],
+   status: 'complete',
+   featured: true,
+   startDate: '11/09/2026',
+   endDate: '11/09/2026'
+});

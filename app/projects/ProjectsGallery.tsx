@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ChevronRight, ChevronDown, X } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
-import type { Project } from '@/lib/projects-handler';
+import type { Project } from '@/lib/project-handler';
 import { RxFilter } from 'react-icons/rx';
 
 const projectGradients = [
@@ -132,7 +132,7 @@ export default function ProjectsGallery({ projects }: { projects: Project[] }) {
                         ? 'Filter'
                         : statusOptions.find((status) => status.value === selectedStatus)?.label}
 
-                     {openMenu === 'filter' ?  <X size={20}/> : <RxFilter aria-hidden="true" />}
+                     {openMenu === 'filter' ? <X size={20} /> : <RxFilter aria-hidden="true" />}
                   </button>
                   {openMenu === 'filter' && (
                      <div
@@ -170,8 +170,10 @@ export default function ProjectsGallery({ projects }: { projects: Project[] }) {
                      className="flex group cursor-pointer items-center gap-1 hover:text-green-400"
                   >
                      Sort
-                    
-                     <ChevronDown aria-hidden="true" className={` transition-transform duration-400 ${openMenu === "sort" ? "rotate-180" : "" }`} />
+                     <ChevronDown
+                        aria-hidden="true"
+                        className={` transition-transform duration-400 ${openMenu === 'sort' ? 'rotate-180' : ''}`}
+                     />
                   </button>
                   {openMenu === 'sort' && (
                      <div
