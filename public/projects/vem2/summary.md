@@ -22,7 +22,7 @@ Examples of configuration include:
 - The flavour of the vm
 - Any packages that come preinstalled on the vm
 
-![the vviz workflow next to the traditional hpc one](extras/summary/VVIZWorkflow.png)
+![the vviz workflow next to the traditional hpc one](extras/summary/VVIZWorkflow.webp)
 
 ## The vviz scripts
 
@@ -35,7 +35,7 @@ Viz node slots are configured on the hypervisors ahead of time rather than being
 newNode.sh is the script for adding a new slot: it edits the existing files programmatically, configures the new node with slurm and sorts out its connection to the nfs mount, and it can delete slots again as well.
 The number of licences in slurm.conf gets edited by the same script, as that needs to go up and down as slots are added and removed.
 
-![newNode.sh adding the viz7 slot](extras/vvizScripts/newVviz1.png)
+![newNode.sh adding the viz7 slot](extras/vvizScripts/newVviz1.webp)
 
 ### vm management
 
@@ -45,8 +45,8 @@ All of this is there so anything that wants to talk to the vizes (mostly the api
 The user who submitted the job is also created on the vviz, with their password passed through at submit time, so they can log into it straight away.
 Since the vvizes only live on the internal network with the login node acting as a router, vnc connections have to go through an ssh tunnel to reach them.
 
-![the job comment holding a vviz's attributes](extras/vvizScripts/commentExample.png)
-![the json written out once a vviz is ready](extras/vvizScripts/vvizJsonOutput.png)
+![the job comment holding a vviz's attributes](extras/vvizScripts/commentExample.webp)
+![the json written out once a vviz is ready](extras/vvizScripts/vvizJsonOutput.webp)
 
 ### flavours
 
@@ -60,10 +60,10 @@ openfoam goes through apptainer for that reason, since some distros have no pack
 The rest covers a spread of things: several text editors, podman and docker, firefox and the libreoffice suite, jupyter, general build tools and scientific tools like avogadro and IGV.
 Which seasonings and operating systems are available is kept in JSON files (seasonings.allowed and os.allowed), with the seasonings grouped into categories and the operating systems into families, which makes both easier to expand and much easier for the api to present.
 
-![blender running in a vviz with the blender seasoning](extras/vvizScripts/blender.png)
-![the supported seasonings](extras/frontend/packageChoice.png)
-![the supported operating systems](extras/frontend/flavourChoice.png)
-![a vviz with a desktop session](extras/vvizScripts/desktop.png)
+![blender running in a vviz with the blender seasoning](extras/vvizScripts/blender.webp)
+![the supported seasonings](extras/frontend/packageChoice.webp)
+![the supported operating systems](extras/frontend/flavourChoice.webp)
+![a vviz with a desktop session](extras/vvizScripts/desktop.webp)
 
 ### gpus
 
@@ -78,16 +78,16 @@ A fair share of its job is parsing, as slurm's output is written for humans rath
 Slurm also has a REST api that hands over json directly, but it isn't installed everywhere, and running everything as the logged in user (which the auth depends on) gets complicated through it, so it goes through the commands instead.
 The endpoints cover the obvious things, listing the available flavours, spinning up a vviz and cancelling one, with a check in front of scancel that the job exists and is actually a viz job, since scancel only complains about a bad id through stderr.
 
-![the flavours endpoint response](extras/api/getFlavoursResponse.png)
-![the create vviz endpoint response](extras/api/createVvizResponse.png)
-![the get vviz endpoint response](extras/api/getVvizResponse.png)
+![the flavours endpoint response](extras/api/getFlavoursResponse.webp)
+![the create vviz endpoint response](extras/api/createVvizResponse.webp)
+![the get vviz endpoint response](extras/api/getVvizResponse.webp)
 
 ### scheduling
 
 vvizes are scheduled by slurm like any other job, and the api can report when a job is expected to start, which lets a frontend actually tell the user.
 Slot booking is also in the works so a user can be sure of when their session is going to start, along with describing a job by when it should end rather than how long it should run.
 
-![the slot booking timetable](extras/api/timetable.png)
+![the slot booking timetable](extras/api/timetable.webp)
 
 ### auth
 
@@ -111,8 +111,8 @@ Monitoring is a script that runs on the login node every 20 seconds: it works ou
 A small read only api sits on top of that database, which can't alter what's in it by design since the script owns the writes, and serves the full history of a given viz along with averages of cpu, memory and memory used over a given time frame.
 Nothing has to be installed on the vvizes themselves for any of it, as all of the information is already available from libvirt on the hypervisor.
 
-![a cycle of the monitoring script](extras/monitoring/monitoringResponse.png)
-![the monitoring api's docs](extras/monitoring/apiDoc.png)
+![a cycle of the monitoring script](extras/monitoring/monitoringResponse.webp)
+![the monitoring api's docs](extras/monitoring/apiDoc.webp)
 
 ### cli
 
@@ -128,17 +128,17 @@ There is also a doctor command for when a vviz isn't behaving, which goes throug
 
 There are two frontends. The main one is AlcesNova, a proper portal which takes the user through a wizard of flavour, operating system, seasonings, time limit and whether they want a desktop session, then tracks the job and shows how to connect once it is running, with the expected start time pulled from the api so users know when their vviz will actually come up.
 
-![the alcesnova landing page](extras/frontend/homepage.png)
-![the flavour step of the wizard](extras/frontend/flavourChoice.png)
-![the operating system step](extras/frontend/osChoice.png)
-![the seasonings step](extras/frontend/packageChoice.png)
-![the time limit step](extras/frontend/timeLimit.png)
-![the desktop step of the wizard](extras/frontend/guiConfig.png)
+![the alcesnova landing page](extras/frontend/homepage.webp)
+![the flavour step of the wizard](extras/frontend/flavourChoice.webp)
+![the operating system step](extras/frontend/osChoice.webp)
+![the seasonings step](extras/frontend/packageChoice.webp)
+![the time limit step](extras/frontend/timeLimit.webp)
+![the desktop step of the wizard](extras/frontend/guiConfig.webp)
 
 Connections are either a web terminal in the browser or vnc for the desktops, which for now hops through the login node as a proxy jump, with the connection details (login included) coming from the api.
 Auth gates tie it into the api's login system.
 
 There is also a demo frontend for the monitoring api, which shows the cpu and memory of the whole fleet at a glance along with the history of an individual viz, radar and all.
 
-![the fleet view of the monitoring frontend](extras/monitoring/genericTelemetry.png)
-![the per viz view of the monitoring frontend](extras/monitoring/specificTelemetry.png)
+![the fleet view of the monitoring frontend](extras/monitoring/genericTelemetry.webp)
+![the per viz view of the monitoring frontend](extras/monitoring/specificTelemetry.webp)

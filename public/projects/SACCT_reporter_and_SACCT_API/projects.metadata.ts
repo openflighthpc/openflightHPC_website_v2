@@ -1,0 +1,13 @@
+import { defineProjectMetadata } from '@/lib/metadata-handler';
+
+export default defineProjectMetadata({
+   name: 'SACCT reporter and SACCT API',
+   colour: '#bada55',
+   description: 'Exploration of improved SACCT reporting metrics',
+   languages: ['ruby', 'python'],
+   tags: ['R&D', 'Adam'],
+   status: 'complete',
+   featured: true,
+   startDate: '06/08/2026',
+   endDate: '07/09/2026'
+});

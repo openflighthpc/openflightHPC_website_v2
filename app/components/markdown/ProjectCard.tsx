@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { type Project } from '@/lib/projects-handler';
-import { STATUS_TAGS } from './status';
+import { type Project } from '@/lib/project-handler';
+import { STATUS_COLOR, STATUS_TAGS } from './status';
 
 type ProjectCardProps = {
    project: Project;

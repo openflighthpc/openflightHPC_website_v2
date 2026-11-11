@@ -1,4 +1,4 @@
-import { getAllProjects, getProject } from '@/lib/projects-handler';
+import { getAllProjects, getProject } from '@/lib/project-handler';
 import ReactMarkdown from 'react-markdown';
 import ProjectDossierLayout from './ProjectDossierLayout';
 import { createMarkdownComponents, REMARK_PLUGINS } from './markdown-components';
