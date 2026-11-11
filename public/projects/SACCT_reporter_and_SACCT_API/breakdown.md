@@ -19,7 +19,7 @@ For the CLI tool, it is designed for a system operator who wants to understand t
 
 For the API tool it is designed for flight centre to monitor general system usage via a long distance API call using https processes. It is designed to see where the customer is using the systems to allow monitoring of how well used the cluster is and to adjust support as needed to customer usage.
 
-Both combined can give a clear pitcure of the health of a cluster and how its jobs process on the cluster
+Both combined can give a clear pitcure of the health of a cluster and how its jobs process.
 
 ## CLI Tool
 
