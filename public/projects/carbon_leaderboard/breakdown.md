@@ -1,4 +1,5 @@
 # Hypothesis
+
 The goal of this project was to collect and compare the estimated carbon impact of both physical and virtual servers.
 
 The initiative aims to provide a simple methodology for estimating and comparing the carbon impact of different server configurations, presented through a leaderboard with a light competitive element. By collecting data across different resource types and levels of utilisation, the project aims to improve understanding of the environmental impact of computing resources under varying workloads.
@@ -51,6 +52,7 @@ There are also several factors that the current leaderboard does not account for
 These limitations mean that the leaderboard provides a useful basis for comparison, but its values should not be interpreted as a complete measure of a server's overall environmental footprint.
 
 # What was learnt
+
 This project provided experience in collecting hardware information, integrating external APIs and using real-world data to produce environmental impact estimates. We gained a better understanding of the challenges involved in comparing physical and virtual resources, particularly the difficulty of identifying the underlying hardware used by virtual machines.
 
 We also learnt that carbon impact estimates depend heavily on the quality and availability of the input data. Issues such as missing CPU topology information can significantly affect the results, highlighting the importance of understanding the hardware being measured.
@@ -58,4 +60,5 @@ We also learnt that carbon impact estimates depend heavily on the quality and av
 Overall, we learnt how to build a system that turns server specifications into comparable carbon impact estimates, while recognising the limitations and assumptions involved in environmental calculations. The project also demonstrated how a leaderboard can make technical data more accessible and encourage users to consider the environmental impact of their computing resources.
 
 ## Links
+
 [Source Code](https://github.com/openflighthpc/carbon-leaderboard)

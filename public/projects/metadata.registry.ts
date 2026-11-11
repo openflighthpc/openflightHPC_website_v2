@@ -1,3 +1,4 @@
+import carbon_leaderboard from './carbon_leaderboard/projects.metadata';
 import feature_demo from './feature_demo/projects.metadata';
 import hackathon_4 from './hackathon_4/projects.metadata';
 import hackathon_8 from './hackathon_8/projects.metadata';
@@ -8,6 +9,7 @@ import SACCT_reporter_and_SACCT_API from './SACCT_reporter_and_SACCT_API/project
 import vem2 from './vem2/projects.metadata';
 
 const ProjectMetadata = {
+   carbon_leaderboard,
    feature_demo,
    hackathon_4,
    hackathon_8,
