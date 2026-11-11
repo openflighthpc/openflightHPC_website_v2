@@ -18,7 +18,7 @@ const formatDate = (date: string) => {
 };
 
 export default async function Home() {
-   const featuredProjects = await getFeaturedProjects();
+   const featuredProjects =  getFeaturedProjects();
 
    return (
       <main className="min-h-screen bg-black flex flex-col mt-[-100] items-center justify-start text-[#f8f8f8]">
