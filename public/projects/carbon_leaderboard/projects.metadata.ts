@@ -7,6 +7,6 @@ export default defineProjectMetadata({
    languages: ['ruby', 'html', 'css', 'javascript'],
    name: 'Carbon Leaderboard',
    startDate: '01/05/2024',
-   status: 'complete',
+   status: 'archived',
    tags: ['R&D']
 });

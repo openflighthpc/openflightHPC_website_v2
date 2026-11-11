@@ -1,5 +1,6 @@
 import type { Element as HastElement, Text as HastText } from 'hast';
 import Image from 'next/image';
+import { Children, type ComponentType, type ReactNode } from 'react';
 import type { Components } from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
@@ -8,8 +9,13 @@ import type { Project } from '@/lib/project-handler';
 import BeforeAfterSlider from './BeforeAfterSlider';
 import CodeBlock from './CodeBlock';
 import GithubRepoCard from './GithubRepoCard';
+import MarkdownTabs from './MarkdownTabs';
 import { resolveImagePath } from './paths';
 import ProjectCard from './ProjectCard';
+import remarkCollapse from './remarkCollapse';
+import remarkSpoiler from './remarkSpoiler';
+import remarkTabs from './remarkTabs';
+import Spoiler from './Spoiler';
 
 type MdastNode = {
    type: string;
@@ -23,6 +29,15 @@ const PROJECT_REF_PATTERN = /^\[\[([a-z0-9-]+)\]\]$/i;
 
 /** Matches a github.com repo root URL and extracts owner and repo name. */
 const GITHUB_REPO_PATTERN = /^https:\/\/github\.com\/([\w.-]+)\/([\w.-]+)\/?$/;
+
+/** Class name the remarkSpoiler plugin stamps on spoiler wrapper spans. */
+const SPOILER_CLASS = 'spoiler';
+
+/** Element name the remarkTabs plugin gives its custom container node. */
+const TABSET_ELEMENT = 'tabset';
+
+/** Element name the remarkTabs plugin gives each panel wrapper node. */
+const TABPANEL_ELEMENT = 'tabpanel';
 
 /**
  * Copies a fenced code block's info-string meta into `data.hProperties` so
@@ -41,8 +56,20 @@ function remarkCodeMeta() {
    };
 }
 
-/** Remark plugins applied to every markdown source rendered on the page. */
-export const REMARK_PLUGINS = [remarkGfm, remarkCodeMeta];
+/**
+ * Remark plugins applied to every markdown source rendered on the page.
+ * remarkTabs must run *before* remarkCollapse: both treat a bare `:::`
+ * line as a closer, and running container-splitting collapse-first eats
+ * tab closers — silently swallowing everything after a tabs container
+ * into its panels.
+ */
+export const REMARK_PLUGINS = [
+   remarkGfm,
+   remarkCodeMeta,
+   remarkTabs,
+   remarkCollapse,
+   remarkSpoiler
+];
 
 function hastTextContent(node: HastElement): string {
    return node.children
@@ -59,16 +86,17 @@ function hastTextContent(node: HastElement): string {
 /**
  * The react-markdown `components` overrides that implement the project's
  * custom markdown features: raw video tags, dossier cards for
- * `[[project-id]]` references, before/after comparison sliders and
- * shiki-highlighted code fences. Behaviour only — the page chrome and its
- * styling live in `ProjectDossierLayout.tsx`.
+ * `[[project-id]]` references, before/after comparison sliders,
+ * `:::tabs` tabsets and shiki-highlighted code fences. Behaviour
+ * only — the page chrome and its styling live in
+ * `ProjectDossierLayout.tsx`.
  */
 export function createMarkdownComponents(
    projectName: string,
    // Powers the `[[project-id]]` → ProjectCard lookups.
    allProjects: Project[]
 ): Components {
-   return {
+   const components: Components = {
       code({ children, className }) {
          const raw = String(children);
 
@@ -82,6 +110,22 @@ export function createMarkdownComponents(
          }
 
          return <code className="font-mono text-[0.85em] text-lime-200/90">{children}</code>;
+      },
+      details({ children, node, open, ...props }) {
+         // Everything after the summary is padded; the summary keeps its
+         // own padding so its bottom border stays full-bleed.
+         const [summary, ...content] = Children.toArray(children);
+
+         return (
+            <details
+               {...props}
+               open={open}
+               className="group/details my-8 border border-neutral-800 bg-neutral-900/40 shadow-[0_1.5rem_3rem_-1rem_rgba(0,0,0,0.9)]"
+            >
+               {summary}
+               {content.length > 0 && <div className="px-5 pb-4 sm:px-8">{content}</div>}
+            </details>
+         );
       },
       img({ alt, src }) {
          if (typeof src !== 'string') return null;
@@ -192,6 +236,32 @@ export function createMarkdownComponents(
 
          return <CodeBlock code={hastTextContent(codeEl)} lang={lang} meta={meta} />;
       },
+      // The remarkSpoiler plugin wraps `||…||` regions in spans carrying
+      // the spoiler class; render them as clickable reveal components.
+      span({ children, node, ...props }) {
+         const className = (node?.properties?.className as string[] | undefined) ?? [];
+         if (!className.includes(SPOILER_CLASS)) return <span {...props}>{children}</span>;
+         return <Spoiler>{children}</Spoiler>;
+      },
+      summary({ children }) {
+         return (
+            <summary className="block cursor-pointer list-none border-b border-neutral-800 px-5 py-4 font-bold tracking-wide transition-colors hover:text-lime-300 sm:px-8">
+               <span className="flex items-center justify-between gap-4">
+                  <span>{children}</span>
+                  <svg
+                     width="12"
+                     height="12"
+                     viewBox="0 0 12 12"
+                     fill="none"
+                     aria-hidden
+                     className="shrink-0 text-lime-400/70 transition-transform group-open/details:rotate-180"
+                  >
+                     <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" />
+                  </svg>
+               </span>
+            </summary>
+         );
+      },
       video({ children, src }) {
          if (typeof src !== 'string') return null;
 
@@ -206,4 +276,35 @@ export function createMarkdownComponents(
          );
       }
    };
+
+   // The remarkTabs plugin emits custom `tabset`/`tabpanel` elements, which
+   // have no intrinsic keys in react-markdown's `Components` map; hook the
+   // client component on with the loose keys the runtime lookup actually
+   // uses. The tabpanel wrapper is a plain passthrough div — MarkdownTabs
+   // reads each panel's label off its `data-*` props. Unmapped tab panels
+   // would render as unknown literal elements, so both keys are required.
+   const looseComponents = components as Record<
+      string,
+      ComponentType<{
+         children?: ReactNode;
+         className?: string;
+         'data-label'?: string;
+         'data-index'?: string;
+      }>
+   >;
+   looseComponents[TABSET_ELEMENT] = MarkdownTabs;
+   looseComponents[TABPANEL_ELEMENT] = function TabPanel({
+      children,
+      className,
+      'data-index': dataIndex,
+      'data-label': dataLabel
+   }) {
+      return (
+         <div data-label={dataLabel} data-index={dataIndex} className={className}>
+            {children}
+         </div>
+      );
+   };
+
+   return components;
 }

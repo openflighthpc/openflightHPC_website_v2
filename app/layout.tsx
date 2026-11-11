@@ -4,8 +4,8 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import localFont from 'next/font/local';
 
+import Footer from './components/Footer';
 import Header from './components/Header';
-import Footer from './components/Footer'
 
 const chaletFont = localFont({
    src: '../public//fonts/chalet.otf',
@@ -37,7 +37,6 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
             <Header></Header>
             {children}
             <Footer></Footer>
-            
          </body>
       </html>
    );
