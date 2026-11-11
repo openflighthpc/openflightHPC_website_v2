@@ -28,7 +28,7 @@ const formatCount = (count: number) =>
  * static export always serves live data; on failure (offline, rate
  * limited) the card degrades to just the name and a link.
  */
-export default function GithubRepoCard({ owner, repo, href }: Readonly<GithubRepoCardProps>) {
+export default function GithubRepoCard({ href, owner, repo }: Readonly<GithubRepoCardProps>) {
    const [repoData, setRepoData] = useState<RepoData | null>(null);
 
    useEffect(() => {
@@ -40,9 +40,9 @@ export default function GithubRepoCard({ owner, repo, href }: Readonly<GithubRep
             if (cancelled || !data || typeof data.stargazers_count !== 'number') return;
             setRepoData({
                description: data.description ?? null,
-               stargazersCount: data.stargazers_count,
                forksCount: data.forks_count ?? 0,
-               language: data.language ?? null
+               language: data.language ?? null,
+               stargazersCount: data.stargazers_count
             });
          })
          .catch(() => {
