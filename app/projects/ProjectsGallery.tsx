@@ -100,14 +100,15 @@ export default function ProjectsGallery({ projects }: Readonly<{ projects: Proje
                {categories.map((category) => (
                   <button
                      key={category}
-                     role='group'
+                     role="group"
                      type="button"
                      aria-pressed={selectedCategory === category}
                      onClick={() => setSelectedCategory(category)}
-                     className={`rounded-full border px-4 py-1.5 cursor-pointer text-sm transition ${selectedCategory === category
-                        ? 'border-green-400/60 bg-green-400/20 text-green-300'
-                        : 'border-slate-300/10 bg-slate-600/40 text-slate-200 hover:border-green-400/50'
-                        }`}
+                     className={`rounded-full border px-4 py-1.5 cursor-pointer text-sm transition ${
+                        selectedCategory === category
+                           ? 'border-green-400/60 bg-green-400/20 text-green-300'
+                           : 'border-slate-300/10 bg-slate-600/40 text-slate-200 hover:border-green-400/50'
+                     }`}
                   >
                      {category}
                   </button>
@@ -147,8 +148,9 @@ export default function ProjectsGallery({ projects }: Readonly<{ projects: Proje
                                  setSelectedStatus(option.value);
                                  setOpenMenu(null);
                               }}
-                              className={`block w-full cursor-pointer rounded-lg px-3 py-2 text-left text-sm font-medium tracking-normal hover:bg-white/10 ${selectedStatus === option.value ? 'text-green-400' : 'text-white'
-                                 }`}
+                              className={`block w-full cursor-pointer rounded-lg px-3 py-2 text-left text-sm font-medium tracking-normal hover:bg-white/10 ${
+                                 selectedStatus === option.value ? 'text-green-400' : 'text-white'
+                              }`}
                            >
                               {option.label}
                            </button>
@@ -187,8 +189,9 @@ export default function ProjectsGallery({ projects }: Readonly<{ projects: Proje
                                  setSortOrder(option.value);
                                  setOpenMenu(null);
                               }}
-                              className={`block w-full cursor-pointer rounded-lg px-3 py-2 text-left text-sm font-medium tracking-normal hover:bg-white/10 ${sortOrder === option.value ? 'text-green-400' : 'text-white'
-                                 }`}
+                              className={`block w-full cursor-pointer rounded-lg px-3 py-2 text-left text-sm font-medium tracking-normal hover:bg-white/10 ${
+                                 sortOrder === option.value ? 'text-green-400' : 'text-white'
+                              }`}
                            >
                               {option.label}
                            </button>
@@ -245,8 +248,8 @@ export default function ProjectsGallery({ projects }: Readonly<{ projects: Proje
                         {project.status === 'in-progress'
                            ? ' - In Progress'
                            : project.endDate && project.endDate !== project.startDate
-                              ? ` - ${formatDate(project.endDate)}`
-                              : ''}
+                             ? ` - ${formatDate(project.endDate)}`
+                             : ''}
                      </span>
 
                      <span className="flex items-center transition duration-400 group-hover:translate-x-2 group-hover:text-green-400 text-sm mt-2 font-bold">
