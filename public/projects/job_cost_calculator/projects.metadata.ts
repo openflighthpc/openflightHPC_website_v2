@@ -1,12 +1,12 @@
 import { defineProjectMetadata } from '@/lib/metadata-handler';
 
 export default defineProjectMetadata({
-   name: 'Job Cost Calculator',
    description: 'A tool for calculating the cost of running jobs on the cloud infrastructure',
-   languages: ['ruby'],
-   tags: ['R&D', 'HPC', 'Cloud'],
-   status: 'archived',
+   endDate: '03/11/2020',
    featured: false,
+   languages: ['ruby'],
+   name: 'Job Cost Calculator',
    startDate: '03/11/2020',
-   endDate: '03/11/2020'
+   status: 'archived',
+   tags: ['R&D', 'HPC', 'Cloud']
 });

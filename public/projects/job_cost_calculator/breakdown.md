@@ -1,7 +1,9 @@
 # Hypothesis
+
 The goal of this project was to translate historical SLURM job resource utilisation data into estimated cloud infrastructure costs.
 
 We developed a proof-of-concept Ruby application that analyses historical SLURM jobs to identify suitable cloud instances and estimate the cost of running those workloads. The aim was to help organisations understand the financial implications of migrating their existing HPC workloads to cloud infrastructure.
+
 # Approach
 
 ### How it works
@@ -16,6 +18,7 @@ The application provides cost estimates for individual jobs. For example:
 Job 001 used 16 GPUs, 32CPUs & 4181.11MB on 4 node(s) for 167mins. Instance config of 4 p3.8xlarge would cost $159.84.
 Job 002 used 0 GPUs, 4CPUs & 8.81MB on 1 node(s) for 12mins. Instance config of 1 c5.xlarge would cost $0.05.
 ```
+
 It can also analyse an entire SLURM accounting archive and provide an overview of the workload and its estimated costs:
 
 ```bash title=archiveCosts.sh
@@ -33,6 +36,7 @@ Average best fit cost per job: $40.06
 35 jobs requiring larger instances than base equivalent
 50 jobs requiring more nodes than used on physical cluster
 ```
+
 These summaries provide insight into both the overall cost of migrating a workload and the resource requirements that influence those costs.
 
 ### Key Features
@@ -46,6 +50,7 @@ The application includes several features to support workload analysis and cloud
 - **CSV export:** Optionally exports results for further analysis and reporting.
 - **Configurable analysis:** Provides options to include failed jobs, ignore node counts or use customer-facing instance names.
 - **Workload summaries:** Displays job totals, average resource usage and instance summaries.
+
 ### Use Case
 
 The tool is intended to help organisations considering migrating their HPC workloads to cloud infrastructure. By analysing existing SLURM job history, organisations can:
@@ -67,4 +72,5 @@ We also explored the differences between traditional HPC environments and cloud 
 Overall, we learnt how historical workload data can be used to make more informed infrastructure and budgeting decisions. The project demonstrated how a relatively simple analysis tool can help organisations assess the potential financial impact of moving HPC workloads to the cloud.
 
 ## Links
+
 [github](https://github.com/openflighthpc/cloud-job-cost-estimator)
