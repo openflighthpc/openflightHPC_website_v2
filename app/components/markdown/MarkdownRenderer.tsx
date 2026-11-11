@@ -14,13 +14,21 @@ export default function MarkdownRenderer({ projectName, StencilText }: Readonly<
    const components = createMarkdownComponents(projectName, allProjects);
 
    return (
-      <ProjectDossierLayout project={project} StencilText={StencilText}>
-         <ReactMarkdown remarkPlugins={REMARK_PLUGINS} components={components}>
-            {project.summary}
-         </ReactMarkdown>
-         <ReactMarkdown remarkPlugins={REMARK_PLUGINS} components={components}>
-            {project.breakdown}
-         </ReactMarkdown>
-      </ProjectDossierLayout>
+      <ProjectDossierLayout
+         project={project}
+         StencilText={StencilText}
+         summary={
+            <ReactMarkdown remarkPlugins={REMARK_PLUGINS} components={components}>
+               {project.summary}
+            </ReactMarkdown>
+         }
+         breakdown={
+            project.breakdown.trim() ? (
+               <ReactMarkdown remarkPlugins={REMARK_PLUGINS} components={components}>
+                  {project.breakdown}
+               </ReactMarkdown>
+            ) : null
+         }
+      />
    );
 }
