@@ -6,9 +6,21 @@ import { getFeaturedProjects } from '@/lib/project-handler';
 import AnimatedLogo from './components/AnimatedLogo';
 
 const projectBackgroundColors = [
-  '#1b8a62', '#7d57b6', '#c86e47', '#2f76a6', '#b39539',
-  '#b65773', '#5f69a8', '#2b8a83', '#a65d93', '#ba7042',
-  '#647f54', '#8b65aa', '#4f879f', '#aa5f5a', '#6a8f76',
+   '#1b8a62',
+   '#7d57b6',
+   '#c86e47',
+   '#2f76a6',
+   '#b39539',
+   '#b65773',
+   '#5f69a8',
+   '#2b8a83',
+   '#a65d93',
+   '#ba7042',
+   '#647f54',
+   '#8b65aa',
+   '#4f879f',
+   '#aa5f5a',
+   '#6a8f76'
 ];
 
 const formatDate = (date: string) => {
