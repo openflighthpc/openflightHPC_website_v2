@@ -2,7 +2,6 @@ import Footer from '@/app/components/Footer';
 import MarkdownRenderer from '@/app/components/markdown/MarkdownRenderer';
 import { getAllProjects } from '@/lib/project-handler';
 
-
 function StencilText({
    repeat = 1,
    text
