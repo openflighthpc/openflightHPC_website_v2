@@ -88,6 +88,19 @@ where a screenshot would:
 Hand written `<video>` tags are passed through too, which is how you would
 get poster images or multiple sources in.
 
+## Spoilers
+
+Double pipes around inline content blur it out until the reader clicks:
+
+```md
+||a hidden word||
+||![a hidden image](extras/old.webp)||
+||![a hidden clip](extras/demo.mp4)||
+```
+
+Works around words, images and videos. Inline code and code fences are
+untouched, and an unclosed `||` stays plain text.
+
 ## Everything else
 
 Headings, lists, tables, task lists, footnotes, quotes, links. All plain

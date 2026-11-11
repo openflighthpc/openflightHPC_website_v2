@@ -12,6 +12,8 @@ import GithubRepoCard from './GithubRepoCard';
 import { resolveImagePath } from './paths';
 import ProjectCard from './ProjectCard';
 import remarkCollapse from './remarkCollapse';
+import remarkSpoiler from './remarkSpoiler';
+import Spoiler from './Spoiler';
 
 type MdastNode = {
    type: string;
@@ -25,6 +27,9 @@ const PROJECT_REF_PATTERN = /^\[\[([a-z0-9-]+)\]\]$/i;
 
 /** Matches a github.com repo root URL and extracts owner and repo name. */
 const GITHUB_REPO_PATTERN = /^https:\/\/github\.com\/([\w.-]+)\/([\w.-]+)\/?$/;
+
+/** Class name the remarkSpoiler plugin stamps on spoiler wrapper spans. */
+const SPOILER_CLASS = 'spoiler';
 
 /**
  * Copies a fenced code block's info-string meta into `data.hProperties` so
@@ -44,7 +49,7 @@ function remarkCodeMeta() {
 }
 
 /** Remark plugins applied to every markdown source rendered on the page. */
-export const REMARK_PLUGINS = [remarkGfm, remarkCodeMeta, remarkCollapse];
+export const REMARK_PLUGINS = [remarkGfm, remarkCodeMeta, remarkCollapse, remarkSpoiler];
 
 function hastTextContent(node: HastElement): string {
    return node.children
@@ -71,6 +76,13 @@ export function createMarkdownComponents(
    allProjects: Project[]
 ): Components {
    return {
+      // The remarkSpoiler plugin wraps `||…||` regions in spans carrying
+      // the spoiler class; render them as clickable reveal components.
+      span({ node, children, ...props }) {
+         const className = (node?.properties?.className as string[] | undefined) ?? [];
+         if (!className.includes(SPOILER_CLASS)) return <span {...props}>{children}</span>;
+         return <Spoiler>{children}</Spoiler>;
+      },
       details({ children, open, node, ...props }) {
          // Everything after the summary is padded; the summary keeps its
          // own padding so its bottom border stays full-bleed.

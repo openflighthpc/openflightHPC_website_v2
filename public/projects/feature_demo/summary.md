@@ -115,3 +115,11 @@ the rest.
 | api     | 8000 | up     |
 
 > this is a blockquote. it exists to prove blockquotes work.
+
+## 9. Spoilers
+
+`||…||` around inline content blurs it until the reader clicks. A word,
+an image and a video, all hidden:
+
+The secret word is ||verisimilitude||, and this image is ||![a hidden image](extras/old.webp)||
+so is this clip: ||![a hidden clip](extras/demo.mp4)||
