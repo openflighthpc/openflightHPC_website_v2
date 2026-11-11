@@ -74,7 +74,6 @@ export default function Home() {
                Featured Projects
             </h2>
 
-
             <div className="mt-10  hidden sm:block ">
                <Marquee speed={15} pauseOnHover autoFill>
                   {featuredProjects.map((project, index) => (
