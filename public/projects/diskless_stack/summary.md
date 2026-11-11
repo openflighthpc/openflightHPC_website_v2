@@ -1,4 +1,4 @@
-# Diskless Stakc
+# Diskless Stack
 
 The goal was to build a diskless PXE-booted HPC stack using OverlayFS and cloud-init, providing a scalable and manageable way to deploy and maintain HPC clusters.
 

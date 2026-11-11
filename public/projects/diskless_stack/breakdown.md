@@ -45,7 +45,7 @@ An additional benefit of this approach is that differences between the running h
 
 ### Documentation
 
-Documentation for GHPC is kept relatively minimal on the[project website](https://ghpc.openflighthpc.org/). Instead, most of the documentation is included within the Director appliance itself.
+Documentation for GHPC is kept relatively minimal on the [project website](https://ghpc.openflighthpc.org/). Instead, most of the documentation is included within the Director appliance itself.
 
 This approach helps ensure that documentation remains alongside the software and supports fully offline deployments, where external documentation websites may not be accessible.
 
