@@ -8,5 +8,5 @@ export default defineProjectMetadata({
    name: 'vem2',
    startDate: '13/10/2026',
    status: 'in-progress',
-   tags: ['HPC', 'R&D', 'CLOUD', 'VM']
+   tags: ['HPC', 'R&D', 'Cloud', 'VM']
 });
