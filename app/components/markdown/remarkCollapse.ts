@@ -1,5 +1,7 @@
 type MdastNode = {
    type: string;
+   // Only on text nodes.
+   value?: string;
    data?: {
       hName?: string;
       hProperties?: Record<string, unknown>;
@@ -23,7 +25,7 @@ const CLOSE_MARKER = /^:::\s*$/;
 const OPEN_MARKER_TYPE = 'collapseOpen';
 const CLOSE_MARKER_TYPE = 'collapseClose';
 
-function textOf(node: MdastNode): string {
+function textOf(node: { children?: MdastNode[] }): string {
    return (node.children ?? []).map((child) => child.value ?? '').join('');
 }
 
