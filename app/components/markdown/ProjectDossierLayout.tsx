@@ -1,6 +1,6 @@
 import type { Project } from '@/lib/projects-handler';
 import DossierTabs from './DossierTabs';
-import { STATUS_COLOR, STATUS_TAGS } from './status';
+import { STATUS_TAGS } from './status';
 
 type LayoutProps = {
    project: Project;
@@ -20,11 +20,9 @@ const formatDate = (date: string) => {
    });
 };
 
-const NODE_LABELS = ['NODE', 'JOB', 'TAPE', 'RACK', 'PORT', 'ECHO', 'MOOR', 'FLUX'];
 
 function DossierSheet({
-   index,
-   title,
+ 
    children
 }: Readonly<{
    index: string;
@@ -44,15 +42,12 @@ function DossierSheet({
  */
 export default function ProjectDossierLayout({
    project,
-   StencilText,
+
    summary,
    breakdown
 }: Readonly<LayoutProps>) {
    const stamp = STATUS_TAGS[project.status as keyof typeof STATUS_TAGS] ?? project.status;
-   const stampColor =
-      STATUS_COLOR[project.status as keyof typeof STATUS_COLOR] ?? STATUS_COLOR.archived;
-   const stampAngle = ((project.name.length * 7) % 15) - 7;
-   const seed = project.name.length;
+
 
    return (
       <div className="relative min-h-screen font-sans text-neutral-100">
