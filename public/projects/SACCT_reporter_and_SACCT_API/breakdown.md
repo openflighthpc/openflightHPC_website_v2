@@ -1,6 +1,6 @@
 # Hypothesis
 
-The aims of both these projects was to improve the accessiblitly and readability of existing SACCT breakdowns via two methods of access:
+The aims of both these projects was to improve the accessibility and readability of existing SACCT breakdowns via two methods of access:
 
 - **CLI Tool:** A program on the cluster itself able to print out the general metrics of a cluster in operation.
 - **API:** A program to interface with an active cluster using API calls to provide a JSON dump of key metrics on how the cluster is being used by the end operator.
@@ -17,19 +17,19 @@ TBD
 
 TBD
 
-![CLI tool output](CLI.png)
+![CLI tool output](extras/CLI.webp)
 
 ## API tool
 
 TBD
 
-![API command line interface](API-CLI-7.png)
+![API command line interface](extras/API-CLI-7.webp)
 
-![API CLI timing output](API-CLI-Time.png)
+![API CLI timing output](extras/API-CLI-Time.webp)
 
-![JSON output for a 7 day period](JSON-7.png)
+![JSON output for a 7 day period](extras/JSON-7.webp)
 
-![JSON output with timing](JSON-Time.png)
+![JSON output with timing](extras/JSON-Time.webp)
 
 # What was learnt
 
