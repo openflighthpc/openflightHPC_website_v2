@@ -2,7 +2,6 @@ import Marquee from 'react-fast-marquee';
 import Link from 'next/link';
 import AnimatedLogo from './components/AnimatedLogo';
 import { getFeaturedProjects } from '@/lib/projects-handler';
-import Image from "next/image"
 
 const projectBackgroundColors = [
    '#1b8a62',
@@ -65,30 +64,31 @@ export default function Home() {
             <div className="mt-10">
                <Marquee speed={15} pauseOnHover autoFill>
                   {featuredProjects.map((project, index) => (
-                     <article key={project.id} className="mx-3 w-64 shrink-0 sm:w-72">
+                     <article key={project.id} className="mx-3 h-[26rem] w-64 shrink-0 sm:w-72">
                         <Link key={project.id} href={`/projects/${project.id}`}>
                            <div
                               style={{
-                                 backgroundColor: project.logoPath ? undefined : project.colour
+                                 backgroundColor: projectBackgroundColors[index]
                               }}
                               className="relative flex aspect-[4/3] flex-col justify-between overflow-hidden rounded-2xl p-5"
                            >
                               {/* Background logo */}
-                              {project.logoPath && (
+                              {/* {project.logoPath && (
                                  <>
                                     <Image
                                        src={project.logoPath}
                                        alt=""
                                        width={1}
                                        height={1}
+
                                        aria-hidden="true"
                                        className="absolute inset-0 h-full w-full scale-110 object-cover blur-md"
                                     />
 
-                                    {/* Darken logo only */}
+
                                     <div className="absolute inset-0 bg-black/40" />
                                  </>
-                              )}
+                              )} */}
 
                               {/* Decorative circle */}
                               <div
@@ -120,7 +120,7 @@ export default function Home() {
                         </Link>
 
                         <div className="pt-4">
-                           <h3 className="min-h-[4.5rem] text-lg font-semibold leading-snug text-[#f8f8f8]">
+                           <h3 className="mb-3 text-lg font-semibold leading-snug text-[#f8f8f8]">
                               {project.description}
                            </h3>
 

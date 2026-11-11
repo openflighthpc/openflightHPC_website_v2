@@ -34,7 +34,7 @@ export default function ProjectDossierLayout({
           labels stencilled up the dark
           ———————————————————————————————————————— */}
          <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-            <div className="absolute inset-0 bg-neutral-950" />
+            <div className="absolute inset-0" />
 
             {Array.from({ length: 36 }).map((_, i) => {
                const col = i % 6;
@@ -97,7 +97,7 @@ export default function ProjectDossierLayout({
                   </p>
                )}
 
-               <h1 className="mt-6 font-serif text-5xl font-bold leading-[1.05] tracking-tight text-white sm:text-6xl">
+               <h1 className="mt-6 tracking-wide text-5xl font-bold leading-[1.05]  text-white sm:text-6xl">
                   {project.name}
                </h1>
 
@@ -105,7 +105,7 @@ export default function ProjectDossierLayout({
                   {[
                      { label: 'status', value: project.status },
                      { label: 'featured', value: project.featured ? 'yes' : 'no' },
-                     { label: 'langs', value: project.languages.join(' · ') },
+                     { label: 'languages', value: project.languages.join(' · ') },
                      { label: 'tags', value: project.tags.join(' · ') }
                   ].map((m) => (
                      <div

@@ -20,7 +20,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-   title: 'OpenFlight Journal',
+   title: 'OpenFlight Labs',
    description: 'Stories and ideas from OpenFlight.'
 };
 

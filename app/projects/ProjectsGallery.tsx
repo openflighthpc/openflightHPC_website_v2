@@ -223,7 +223,7 @@ export default function ProjectsGallery({ projects }: { projects: Project[] }) {
                      </div>
                   ) : (
                      <div
-                        className="relative w-full aspect-square overflow-hidden rounded-lg mb-4"
+                        className="relative w-full duration-400 transition hover:brightness-80 aspect-square overflow-hidden rounded-lg mb-4"
                         style={{
                            backgroundImage: projectGradients[index % projectGradients.length]
                         }}
