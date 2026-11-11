@@ -1,5 +1,6 @@
 # Hypothesis
 
+<<<<<<< HEAD
 The aim of this hackathon was to explore user experience engineering and how it can be used to make learning new tools and technologies more accessible.
 
 A key challenge when introducing users to an unfamiliar concept is catering for different levels of existing knowledge and technical ability. How can we guide someone from having no prior experience to becoming a confident, capable user without overwhelming or discouraging them along the way?
@@ -210,3 +211,6 @@ Across all three projects, several important lessons emerged:
 - **Engagement is part of the experience**. Gamification, interactive tutorials and contextual guidance can all provide alternative ways to make technical concepts more approachable.
 
 - **Good documentation is essential, but not always sufficient**. A README may explain how to use a system, but a guided learning experience can provide the additional context and structure needed to help users understand it.
+=======
+TBD
+>>>>>>> 3a3d0d19d9ccc565dce0fb403b952f3f7e5d13e6
