@@ -98,5 +98,6 @@ Thus throughout the project, the skills gained were:
 
 # GitHub Repositories
 
-- [Alces-Sacct-V2](https://github.com/AdamJ2009/Alces-Sacct-V2) – CLI local program for sacct accounting.
-- [SACCT_API](https://github.com/AdamJ2009/SACCT_API) – Backend API service for SACCT data with CLI tarball for API.
+[github](https://github.com/AdamJ2009/Alces-Sacct-V2)
+
+[github](https://github.com/AdamJ2009/SACCT_API)
