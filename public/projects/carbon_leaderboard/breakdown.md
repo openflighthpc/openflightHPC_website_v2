@@ -47,7 +47,7 @@ There are also several factors that the current leaderboard does not account for
 
 - The cleanliness of the power source to the data-center housing the servers
 - impact of the manufacture of the hardware
-- Intiatives taken to offset carbon
+- Initiatives taken to offset carbon
 
 These limitations mean that the leaderboard provides a useful basis for comparison, but its values should not be interpreted as a complete measure of a server's overall environmental footprint.
 
