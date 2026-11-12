@@ -70,7 +70,7 @@ A timespan on the user, the default option, done with `curl https://127.0.0.1:50
 
 For those on a management system like rndhub(across clusters), using the CLI tool to call the API into clean dumps as below.
 
-7 Day singlar period from the CLI using `jobrep report -d 7`
+7 Day singular period from the CLI using `jobrep report -d 7`
 
 ![API CIL 7 day output](extras/API-CLI-7.webp)
 
@@ -86,15 +86,15 @@ It was also a developmental process of how a command line interface can connect 
 
 Thus throughout the project, the skills gained were:
 
-- **Colation and summary:**This project shows how data can be processed from raw points into a simple human readable format and JSON dumps for further processing.
+- **Collation and summary:**This project shows how data can be processed from raw points into a simple human readable format and JSON dumps for further processing.
 
 - **Filtering:**By using JSON dumps and CLI interfaces, the data can be broken up into the parts a system operator wants to see in their database.
 
 - **Deployment processes:**By having the program run via Ruby for the CLI, and flask for the API, it shows how a project can be deployed to run in the cluster to understand why the cluster act that way.
 
-- **Accessability:**By keeping commands simple, the project was able to make ease of use and understanding a key metric allowing for a tool that can be understood in minutes.
+- **Accessibility:**By keeping commands simple, the project was able to make ease of use and understanding a key metric allowing for a tool that can be understood in minutes.
 
-- **Development on customer needs:** Focusing on what a customer needs(a colated view of their cluster), this project allows it to be used as intended and adapted based on structural requirements.
+- **Development on customer needs:** Focusing on what a customer needs(a collated view of their cluster), this project allows it to be used as intended and adapted based on structural requirements.
 
 # GitHub Repositories
 
