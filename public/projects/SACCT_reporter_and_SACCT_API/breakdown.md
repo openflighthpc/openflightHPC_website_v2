@@ -25,7 +25,11 @@ Both combined can give a clear pitcure of the health of a cluster and how its jo
 
 ### Key features
 
-TBD
+- A pretty print table breakdown of every user and partition
+- A overall reading feature so as to compare it to the baseline
+- Filtering abilities to see what each section is(time, user, job state)
+- Information on both used cluster resources and job outcomes
+- Ability to export this table into a CSV format
 
 ### Usage demonstration
 
@@ -39,19 +43,39 @@ This allows the operator of the cluster to now look into why some of the jobs ha
 
 ### Key features
 
-TBD
+- Ability to generate a JSON dump of cluster use metrics
+- Ability to see both quota usage of the system and the CPU usage system
+- Visualisation of the efficencies of single core, multi core and multi node jobs
+- Ability to filer out on time and user specific equiries
+- Ability to view changes over time using a json chart
+
+#### CLI assistance features
+
+- Translation of key JSON data into a pretty print table
+- Ability to use single CLI tool to call an API from a different machine
 
 ### Usage demonstration
 
-TBD
+By using curl commands on the position, you are able to generate a JSON dump as shown by the screenshot of JSON crack below for both a 7 day fixed time period, and a time pread period.
 
-![API command line interface](extras/API-CLI-7.webp)
-
-![API CLI timing output](extras/API-CLI-Time.webp)
+The usual seven day period
 
 ![JSON output for a 7 day period](extras/JSON-7.webp)
 
+A timespan on the user
+
 ![JSON output with timing](extras/JSON-Time.webp)
+
+For those on a management system like rndhub(across clusters), using the CLI tool to call the API into clean dumps as below
+
+7 Day singlar period
+
+![API CIL 7 day output](extras/API-CLI-7.webp)
+
+Timespan CLI output
+
+![API CLI timing output](extras/API-CLI-Time.webp)
+
 
 # What was learnt
 
