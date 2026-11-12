@@ -81,7 +81,7 @@ export default async function ProjectPage({
       <>
          <MarkdownRenderer projectName={id} stencilText={StencilText} />
          <div className="relative z-10 mb-16 w-full px-4 sm:px-8 lg:px-20 max-w-7xl m-auto">
-            <hr className='text-neutral-800'/>
+            <hr className="text-neutral-800" />
             <div className="mt-4 flex justify-between">
                <p className="text-white font-bold text-2xl">Keep reading</p>
                <Link href="/projects" className="text-xl transition hover:text-white/80 text-white">
