@@ -201,7 +201,7 @@ export function createMarkdownComponents(
                if (referenced) {
                   return <ProjectCard project={referenced} />;
                } else {
-                  return <p>[{soleAnchor.properties.href} is invalid]</p>
+                  return <p>[{soleAnchor.properties.href} is invalid]</p>;
                }
             }
 
