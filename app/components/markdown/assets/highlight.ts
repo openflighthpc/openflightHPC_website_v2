@@ -16,10 +16,10 @@ import shellscript from 'shiki/langs/shellscript.mjs';
 import typescript from 'shiki/langs/typescript.mjs';
 import vesper from 'shiki/themes/vesper.mjs';
 
-export const highlighter: HighlighterCore = createHighlighterCoreSync({
-   // Forgiving mode: grammars that use oniguruma-only patterns are skipped
-   // instead of throwing, so fences render (slightly degraded) rather than
-   // silently falling back to plain text.
+/**
+ * Creates a Shiki core to handle formatting the code
+ */
+const highlighter: HighlighterCore = createHighlighterCoreSync({
    engine: createJavaScriptRegexEngine({ forgiving: true }),
    langs: [bash, css, diff, dockerfile, javascript, json, python, ruby, shellscript, typescript],
    themes: [vesper]
@@ -37,10 +37,6 @@ export function highlightCode(code: string, lang: string | undefined): string {
          theme: 'vesper'
       });
    } catch {
-      return `<pre class="shiki"><code>${escapeHtml(code)}</code></pre>`;
+      return `<pre class="shiki"><code>${code.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;')}</code></pre>`;
    }
-}
-
-function escapeHtml(code: string) {
-   return code.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
 }

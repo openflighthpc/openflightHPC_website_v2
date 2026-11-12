@@ -1,6 +1,8 @@
 import carbon_leaderboard from './carbon_leaderboard/projects.metadata';
 import diskless_stack from './diskless_stack/projects.metadata';
+import flight_control from './flight_control/projects.metadata';
 import flight_environment from './flight_environment/projects.metadata';
+import flight_solo from './flight_solo/projects.metadata';
 import flight_warehouse from './flight_warehouse/projects.metadata';
 import hackathon_4 from './hackathon_4/projects.metadata';
 import hackathon_8 from './hackathon_8/projects.metadata';
@@ -15,7 +17,9 @@ import vem2 from './vem2/projects.metadata';
 const ProjectMetadata = {
    carbon_leaderboard,
    diskless_stack,
+   flight_control,
    flight_environment,
+   flight_solo,
    flight_warehouse,
    hackathon_4,
    hackathon_8,

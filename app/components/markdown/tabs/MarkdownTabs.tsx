@@ -2,11 +2,6 @@
 
 import { useState } from 'react';
 
-type TabsetProps = {
-   'data-labels'?: string;
-   children?: React.ReactNode;
-};
-
 /**
  * The reader-facing side of the `:::tabs` feature. The `tabset` element
  * arriving from hast carries its labels in `data-labels`
@@ -22,7 +17,10 @@ type TabsetProps = {
 export default function MarkdownTabs({
    children,
    'data-labels': dataLabels
-}: Readonly<TabsetProps>) {
+}: Readonly<{
+   'data-labels'?: string;
+   children?: React.ReactNode;
+}>) {
    const labels = (dataLabels ?? '')
       .split('|')
       .map((label) => label.trim())
@@ -38,7 +36,6 @@ export default function MarkdownTabs({
    const [active, setActive] = useState(0);
 
    if (!labels.length || panels.length === 0) {
-      // A tabset without labels or panels degrades to its raw content.
       return <div>{children}</div>;
    }
 

@@ -1,12 +1,10 @@
+'use client';
+
 import Link from 'next/link';
 
 import { type Project } from '@/lib/project-handler';
 
-import { STATUS_TAGS } from './status';
-
-type ProjectCardProps = {
-   project: Project;
-};
+import { STATUS_TAGS } from '../assets/status';
 
 const formatDate = (date: string) => {
    const [day, month, year] = date.split('/').map(Number);
@@ -23,7 +21,11 @@ const formatDate = (date: string) => {
  * A mini dossier card for cross-project references in markdown,
  * written as `[[project-id]]`.
  */
-export default function ProjectCard({ project }: Readonly<ProjectCardProps>) {
+export default function ProjectCard({
+   project
+}: Readonly<{
+   project: Project;
+}>) {
    const status = STATUS_TAGS[project.status as keyof typeof STATUS_TAGS] ?? project.status;
    const dateRange =
       project.status === 'in-progress'

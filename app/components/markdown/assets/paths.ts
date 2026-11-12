@@ -7,6 +7,5 @@ export function resolveImagePath(src: string, projectName: string) {
       return src;
    }
 
-   // Change based on where project files are
    return `/openflightHPC_website_v2/projects/${encodeURIComponent(projectName)}/${src.replace(/^\.\//, '')}`;
 }

@@ -1,6 +1,7 @@
 import { defineProjectMetadata } from '@/lib/metadata-handler';
 
 export default defineProjectMetadata({
+   colour: '#6a8f76',
    description: 'A collection of user and admin tools.',
    endDate: '01/08/2019',
    featured: true,

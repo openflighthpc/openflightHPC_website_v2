@@ -41,10 +41,14 @@ function DossierSheet({
  */
 export default function ProjectDossierLayout({
    breakdown,
-
    project,
    summary
-}: Readonly<LayoutProps>) {
+}: Readonly<{
+   project: Project;
+   StencilText?: React.FC<{ text: string; repeat?: number }>;
+   summary: React.ReactNode;
+   breakdown: React.ReactNode;
+}>) {
    const stamp = STATUS_TAGS[project.status as keyof typeof STATUS_TAGS] ?? project.status;
 
     const projects = getAllProjects();

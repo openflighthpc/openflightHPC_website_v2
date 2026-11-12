@@ -1,29 +1,9 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import Marquee from 'react-fast-marquee';
 
+import AnimatedLogo from '@/app/components/AnimatedLogo';
 import Footer from '@/app/components/Footer';
 import { getFeaturedProjects } from '@/lib/project-handler';
-
-import AnimatedLogo from './components/AnimatedLogo';
-
-const projectBackgroundColors = [
-   '#1b8a62',
-   '#7d57b6',
-   '#c86e47',
-   '#2f76a6',
-   '#b39539',
-   '#b65773',
-   '#5f69a8',
-   '#2b8a83',
-   '#a65d93',
-   '#ba7042',
-   '#647f54',
-   '#8b65aa',
-   '#4f879f',
-   '#aa5f5a',
-   '#6a8f76'
-];
 
 const formatDate = (date: string) => {
    const [day, month, year] = date.split('/').map(Number);
@@ -87,7 +67,7 @@ export default function Home() {
                            <Link key={project.id} href={`/projects/${project.id}`}>
                               <div
                                  style={{
-                                    backgroundColor: projectBackgroundColors[index]
+                                    backgroundColor: project.colour
                                  }}
                                  className="relative flex aspect-[4/3] flex-col justify-between overflow-hidden rounded-2xl p-5"
                               >
@@ -160,28 +140,10 @@ export default function Home() {
                         <Link key={project.id} href={`/projects/${project.id}`}>
                            <div
                               style={{
-                                 backgroundColor: projectBackgroundColors[index]
+                                 backgroundColor: project.colour
                               }}
                               className="relative flex aspect-[4/3] flex-col justify-between overflow-hidden rounded-2xl p-5"
                            >
-                              {/* Background logo */}
-                              {/* {project.logoPath && (
-                                 <>
-                                    <Image
-                                       src={project.logoPath}
-                                       alt=""
-                                       width={1}
-                                       height={1}
-
-                                       aria-hidden="true"
-                                       className="absolute inset-0 h-full w-full scale-110 object-cover blur-md"
-                                    />
-
-
-                                    <div className="absolute inset-0 bg-black/40" />
-                                 </>
-                              )} */}
-
                               {/* Decorative circle */}
                               <div
                                  aria-hidden="true"

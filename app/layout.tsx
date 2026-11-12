@@ -4,7 +4,7 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import localFont from 'next/font/local';
 
-import Header from './components/Header';
+import Header from '@/app/components/Header';
 
 const chaletFont = localFont({
    src: '../public//fonts/chalet.otf',
