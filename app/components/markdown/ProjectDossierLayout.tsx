@@ -58,8 +58,8 @@ export default function ProjectDossierLayout({
                   {project.status === 'in-progress'
                      ? ' - In Progress'
                      : project.endDate && project.endDate !== project.startDate
-                        ? ` - ${formatDate(project.endDate)}`
-                        : ''}
+                       ? ` - ${formatDate(project.endDate)}`
+                       : ''}
                   {project.status !== 'in-progress' && <p className="font-light">{stamp}</p>}
                </div>
 

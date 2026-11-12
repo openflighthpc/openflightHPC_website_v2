@@ -19,7 +19,9 @@ const formatDate = (date: string) => {
  * A mini dossier card for cross-project references in markdown,
  * written as `[[project-id]]`.
  */
-export default function ProjectCard({ project }: Readonly<{
+export default function ProjectCard({
+   project
+}: Readonly<{
    project: Project;
 }>) {
    const status = STATUS_TAGS[project.status as keyof typeof STATUS_TAGS] ?? project.status;
@@ -27,8 +29,8 @@ export default function ProjectCard({ project }: Readonly<{
       project.status === 'in-progress'
          ? `${formatDate(project.startDate)} - In Progress`
          : project.endDate && project.endDate !== project.startDate
-            ? `${formatDate(project.startDate)} - ${formatDate(project.endDate)}`
-            : formatDate(project.startDate);
+           ? `${formatDate(project.startDate)} - ${formatDate(project.endDate)}`
+           : formatDate(project.startDate);
    // next/link prefixes the site basePath itself — do not include it here.
    const href = `/projects/${encodeURIComponent(project.id)}/`;
 

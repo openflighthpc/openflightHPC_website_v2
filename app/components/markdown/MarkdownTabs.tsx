@@ -52,10 +52,11 @@ export default function MarkdownTabs({
                   role="tab"
                   aria-selected={activeIndex === index}
                   onClick={() => setActive(index)}
-                  className={`cursor-pointer border-b-2 pb-1 transition-colors ${activeIndex === index
-                     ? 'border-neutral-600 font-bold text-neutral-100'
-                     : 'border-transparent bg-transparent text-neutral-500 hover:text-neutral-300'
-                     }`}
+                  className={`cursor-pointer border-b-2 pb-1 transition-colors ${
+                     activeIndex === index
+                        ? 'border-neutral-600 font-bold text-neutral-100'
+                        : 'border-transparent bg-transparent text-neutral-500 hover:text-neutral-300'
+                  }`}
                >
                   {label}
                </button>
