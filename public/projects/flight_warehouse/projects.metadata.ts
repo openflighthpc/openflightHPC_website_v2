@@ -1,7 +1,7 @@
 import { defineProjectMetadata } from '@/lib/metadata-handler';
 
 export default defineProjectMetadata({
-   colour: '#c86e47',
+   colour: '#8b65aa',
    description: 'Templates and guides for quickstart HPC environments',
    endDate: '03/11/2023',
    featured: false,

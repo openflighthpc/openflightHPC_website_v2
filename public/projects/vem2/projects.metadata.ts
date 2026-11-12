@@ -1,6 +1,7 @@
 import { defineProjectMetadata } from '@/lib/metadata-handler';
 
 export default defineProjectMetadata({
+   colour: '#b65773',
    description: 'An HPC as cloud computing model',
    endDate: '06/11/2026',
    featured: true,

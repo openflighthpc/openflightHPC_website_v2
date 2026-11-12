@@ -1,7 +1,7 @@
 import { defineProjectMetadata } from '@/lib/metadata-handler';
 
 export default defineProjectMetadata({
-   colour: '#1f8ece',
+   colour: '#647f54',
    description: 'A stack for managing diskless systems',
    endDate: '01/11/2025',
    featured: true,

@@ -1,6 +1,7 @@
 import { defineProjectMetadata } from '@/lib/metadata-handler';
 
 export default defineProjectMetadata({
+   colour: '#647f54',
    description: 'Exploration of AI image generation',
    endDate: '03/07/2026',
    featured: true,

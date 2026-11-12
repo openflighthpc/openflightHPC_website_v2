@@ -1,7 +1,8 @@
+'use client';
+
 import Image from 'next/image';
 
 export default function Footer() {
-   const year = new Date().getFullYear();
    return (
       <footer className=" z-80 flex h-40 w-full items-end justify-between bg-black/80 text-white backdrop-blur">
          <Image
@@ -29,7 +30,7 @@ export default function Footer() {
                >
                   OpenFlightHPC
                </a>{' '}
-               © {year}
+               © {new Date().getFullYear()}
             </p>
          </div>
 
