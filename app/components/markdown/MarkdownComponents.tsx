@@ -6,17 +6,17 @@ import remarkGfm from 'remark-gfm';
 
 import type { Project } from '@/lib/project-handler';
 
+import { resolveImagePath } from './assets/paths';
 import BeforeAfterSlider from './BeforeAfterSlider';
-import CodeBlock from './CodeBlock';
-import GithubRepoCard from './GithubRepoCard';
-import MarkdownTabs from './MarkdownTabs';
-import { resolveImagePath } from './paths';
-import ProjectCard from './ProjectCard';
-import remarkCollapse from './remarkCollapse';
-import remarkSpoiler from './remarkSpoiler';
-import remarkTabs from './remarkTabs';
-import Spoiler from './Spoiler';
-import WebsiteCard from './WebsiteCard';
+import GithubRepoCard from './cards/GithubRepoCard';
+import ProjectCard from './cards/ProjectCard';
+import WebsiteCard from './cards/WebsiteCard';
+import CodeBlock from './codeBlock/CodeBlock';
+import remarkCollapse from './collapse/remarkCollapse';
+import remarkSpoiler from './spoilers/remarkSpoiler';
+import Spoiler from './spoilers/Spoiler';
+import MarkdownTabs from './tabs/MarkdownTabs';
+import remarkTabs from './tabs/remarkTabs';
 
 type MdastNode = {
    type: string;

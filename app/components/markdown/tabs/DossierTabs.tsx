@@ -48,6 +48,7 @@ export default function DossierTabs({
                </button>
             ))}
          </div>
+
          <hr className="text-neutral-800"></hr>
 
          <div className="flex-1">

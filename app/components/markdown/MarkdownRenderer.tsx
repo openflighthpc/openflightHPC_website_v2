@@ -2,7 +2,7 @@ import ReactMarkdown from 'react-markdown';
 
 import { getAllProjects, getProject } from '@/lib/project-handler';
 
-import { createMarkdownComponents, REMARK_PLUGINS } from './markdown-components';
+import { createMarkdownComponents, REMARK_PLUGINS } from './MarkdownComponents';
 import ProjectDossierLayout from './ProjectDossierLayout';
 
 type RendererProps = {

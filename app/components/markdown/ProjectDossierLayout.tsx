@@ -1,7 +1,7 @@
 import type { Project } from '@/lib/project-handler';
 
-import DossierTabs from './DossierTabs';
-import { STATUS_TAGS } from './status';
+import { STATUS_TAGS } from './assets/status';
+import DossierTabs from './tabs/DossierTabs';
 
 const formatDate = (date: string) => {
    const [day, month, year] = date.split('/').map(Number);

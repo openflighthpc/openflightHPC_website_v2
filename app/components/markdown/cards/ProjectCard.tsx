@@ -1,8 +1,10 @@
+'use client';
+
 import Link from 'next/link';
 
 import { type Project } from '@/lib/project-handler';
 
-import { STATUS_TAGS } from './status';
+import { STATUS_TAGS } from '../assets/status';
 
 const formatDate = (date: string) => {
    const [day, month, year] = date.split('/').map(Number);

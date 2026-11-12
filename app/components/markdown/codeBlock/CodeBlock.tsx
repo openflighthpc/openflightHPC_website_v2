@@ -1,5 +1,7 @@
+'use client';
+
+import { highlightCode } from '../assets/highlight';
 import CopyCodeButton from './CopyCodeButton';
-import { highlightCode } from './highlight';
 
 /**
  * Parses the metadata from the object to retrieve the filename

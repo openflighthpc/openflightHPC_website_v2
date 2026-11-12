@@ -36,7 +36,6 @@ export default function MarkdownTabs({
    const [active, setActive] = useState(0);
 
    if (!labels.length || panels.length === 0) {
-      // A tabset without labels or panels degrades to its raw content.
       return <div>{children}</div>;
    }
 

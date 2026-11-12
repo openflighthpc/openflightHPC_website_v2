@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const ProjectMetadataSchema = z.object({
+const ProjectMetadataSchema = z.object({
    colour: z
       .string()
       .trim()
@@ -16,8 +16,8 @@ export const ProjectMetadataSchema = z.object({
    tags: z.array(z.string().trim().min(1)).default([])
 });
 
-export type ProjectMetadataInput = z.input<typeof ProjectMetadataSchema>;
-export type ProjectMetadata = z.output<typeof ProjectMetadataSchema>;
+type ProjectMetadataInput = z.input<typeof ProjectMetadataSchema>;
+type ProjectMetadata = z.output<typeof ProjectMetadataSchema>;
 
 export type Project = ProjectMetadata & {
    id: string;
