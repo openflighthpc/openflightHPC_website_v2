@@ -111,7 +111,7 @@ export default function ProjectsGallery({ projects }: Readonly<{ projects: Proje
                      className={`rounded-full border px-4 py-1.5 cursor-pointer text-sm transition ${
                         selectedCategory === category
                            ? 'border-green-400/60 bg-green-400/20 text-green-300'
-                           : 'border-slate-300/10 bg-slate-600/40 text-slate-200 hover:border-green-400/50'
+                           : 'border-slate-300/10 bg-neutral-600/40 text-neutral-200 hover:border-green-400/50'
                      }`}
                   >
                      {category}
