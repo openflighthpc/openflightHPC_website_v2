@@ -45,8 +45,8 @@ This allows the operator of the cluster to now look into why some of the jobs ha
 
 - Ability to generate a JSON dump of cluster use metrics
 - Ability to see both quota usage of the system and the CPU usage system
-- Visualisation of the efficencies of single core, multi core and multi node jobs
-- Ability to filer out on time and user specific equiries
+- Visualisation of the efficiencies of single core, multi core and multi node jobs
+- Ability to filer out on time and user specific enquiries
 - Ability to view changes over time using a json chart
 
 #### CLI assistance features
@@ -56,7 +56,7 @@ This allows the operator of the cluster to now look into why some of the jobs ha
 
 ### Usage demonstration
 
-By using curl commands on the position, you are able to generate a JSON dump as shown by the screenshot of JSON crack below for both a 7 day fixed time period, and a time pread period.
+By using curl commands on the position, you are able to generate a JSON dump as shown by the screenshot of JSON crack below for both a 7 day fixed time period, and a time spread period.
 
 The usual seven day period:
 
@@ -81,9 +81,9 @@ Timespan CLI output:
 - How an API can accept calls to query an active database
 - How to construct command line tools from a API call
 - How to return a structured JSON dump that contains all the necessary information
-- How to visulaise and colate single point datas into a summary
+- How to visualise and collate single point data into a summary
 - How to deploy an API on a cluster
-- How to make the user experiance worthwhile and make management easier.
+- How to make the user experience worthwhile and make management easier.
 
 # GitHub Repositories
 
