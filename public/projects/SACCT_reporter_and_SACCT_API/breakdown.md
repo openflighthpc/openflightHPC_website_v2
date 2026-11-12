@@ -35,7 +35,7 @@ Both combined can give a clear pitcure of the health of a cluster and how its jo
 
 A report of how the CLI tool is used on an actual customer cluster showing the user data of how jobs colate on the CLI over time, showing the mean usage statistics and the final job statuses:
 
-[CLI tool output](extras/CLI.webp)
+![CLI tool output](extras/CLI.webp)
 
 This allows the operator of the cluster to now look into why some of the jobs have failed, knowing that some jobs have failed from a specifific user on a specific cluster.
 
@@ -58,27 +58,29 @@ This allows the operator of the cluster to now look into why some of the jobs ha
 
 By using curl commands on the position, you are able to generate a JSON dump as shown by the screenshot of JSON crack below for both a 7 day fixed time period, and a time pread period.
 
-The usual seven day period
+The usual seven day period:
 
 ![JSON output for a 7 day period](extras/JSON-7.webp)
 
-A timespan on the user
+A timespan on the user:
 
 ![JSON output with timing](extras/JSON-Time.webp)
 
-For those on a management system like rndhub(across clusters), using the CLI tool to call the API into clean dumps as below
+For those on a management system like rndhub(across clusters), using the CLI tool to call the API into clean dumps as below.
 
-7 Day singlar period
+7 Day singlar period:
 
 ![API CIL 7 day output](extras/API-CLI-7.webp)
 
-Timespan CLI output
+Timespan CLI output:
 
 ![API CLI timing output](extras/API-CLI-Time.webp)
 
 # What was learnt
 
-TBD
+- How to visulaise and colate single point datas into a summary
+- How to deploy an API on a cluster
+- How to make the user experiance worthwhile and make management easier.
 
 # GitHub Repositories
 
