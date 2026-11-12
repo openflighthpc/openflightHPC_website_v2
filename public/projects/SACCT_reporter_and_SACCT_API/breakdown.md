@@ -1,6 +1,6 @@
 # Hypothesis
 
-The aims of both these projects was to improve the accessiblitly and readability of existing SACCT breakdowns via two methods of access:
+The aims of both these projects was to improve the accessibility and readability of existing SACCT breakdowns via two methods of access:
 
 - **CLI Tool:** A program on the cluster itself able to print out the general metrics of a cluster in operation.
 - **API:** A program to interface with an active cluster using API calls to provide a JSON dump of key metrics on how the cluster is being used by the end operator.
@@ -15,11 +15,11 @@ The approach taken was to consolidate command line sacct reporting metrics into 
 
 Each section is specifically designed for a different user in mind.
 
-For the CLI tool, it is designed for a system operator who wants to understand the current job completion statuses and if a certain partition or user data is more vunerable to a failure state, so that they can use traditional SACCT tools targeted at the known failure states to debug the program.
+For the CLI tool, it is designed for a system operator who wants to understand the current job completion statuses and if a certain partition or user data is more vulnerable to a failure state, so that they can use traditional SACCT tools targeted at the known failure states to debug the program.
 
 For the API tool it is designed for flight centre to monitor general system usage via a long distance API call using https processes. It is designed to see where the customer is using the systems to allow monitoring of how well used the cluster is and to adjust support as needed to customer usage.
 
-Both combined can give a clear pitcure of the health of a cluster and how its jobs process.
+Both combined can give a clear picture of the health of a cluster and how its jobs process.
 
 ## CLI Tool
 
@@ -33,11 +33,11 @@ Both combined can give a clear pitcure of the health of a cluster and how its jo
 
 ### Usage demonstration
 
-A report of how the CLI tool is used on an actual customer cluster showing the user data of how jobs colate on the CLI over time, showing the mean usage statistics and the final job statuses:
+A report of how the CLI tool is used on an actual customer cluster showing the user data of how jobs collate on the CLI over time, showing the mean usage statistics and the final job statuses:
 
 ![CLI tool output](extras/CLI.webp)
 
-This allows the operator of the cluster to now look into why some of the jobs have failed, knowing that some jobs have failed from a specifific user on a specific cluster.
+This allows the operator of the cluster to now look into why some of the jobs have failed, knowing that some jobs have failed from a specific user on a specific cluster.
 
 ## API tool
 

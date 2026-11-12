@@ -28,7 +28,7 @@ If a paragraph is just a project id in double brackets it becomes a card
 for that project, with its status stamp and a link to its page:
 
 ```md
-[[my-project]]
+[project](my-project)
 ```
 
 The id is matched against project folder names, case insensitive. If no

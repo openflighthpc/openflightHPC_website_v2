@@ -1,4 +1,4 @@
-import type { Element as HastElement, Text as HastText } from 'hast';
+import type { Element as HastElement } from 'hast';
 import Image from 'next/image';
 import { Children, type ComponentType, type ReactNode } from 'react';
 import type { Components } from 'react-markdown';
@@ -161,20 +161,6 @@ export function createMarkdownComponents(
          // A paragraph holding only a bare `[[project-id]]` reference renders
          // as a dossier card for that project.
          const paraChildren = node?.children ?? [];
-         const soleText =
-            paraChildren.length === 1 && paraChildren[0].type === 'text'
-               ? (paraChildren[0] as HastText)
-               : undefined;
-
-         if (soleText) {
-            const soleRef = new RegExp(PROJECT_REF_PATTERN).exec(soleText.value);
-            if (soleRef) {
-               const referenced = allProjects.find(
-                  (candidate) => candidate.id.toLowerCase() === soleRef[1].toLowerCase()
-               );
-               if (referenced) return <ProjectCard project={referenced} />;
-            }
-         }
 
          // A paragraph containing nothing but a <a> can be parsed into multiple types of cards
          const soleAnchor =
