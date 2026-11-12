@@ -4,7 +4,6 @@ import Marquee from 'react-fast-marquee';
 import AnimatedLogo from '@/app/components/AnimatedLogo';
 import Footer from '@/app/components/Footer';
 import { getFeaturedProjects } from '@/lib/project-handler';
-import Image from 'next/image';
 
 function CardWave() {
    return (
@@ -36,8 +35,6 @@ const formatDate = (date: string) => {
 
 export default function Home() {
    const featuredProjects = getFeaturedProjects();
-
-
 
    return (
       <>
