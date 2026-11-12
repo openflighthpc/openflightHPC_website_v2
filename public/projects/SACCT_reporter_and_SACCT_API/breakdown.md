@@ -78,6 +78,9 @@ Timespan CLI output:
 
 # What was learnt
 
+- How an API can accept calls to query an active database
+- How to construct command line tools from a API call
+- How to return a structured JSON dump that contains all the necessary information
 - How to visulaise and colate single point datas into a summary
 - How to deploy an API on a cluster
 - How to make the user experiance worthwhile and make management easier.
