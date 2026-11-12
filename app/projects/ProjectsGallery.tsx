@@ -242,7 +242,7 @@ export default function ProjectsGallery({ projects }: Readonly<{ projects: Proje
                      {project.tags.map((tag) => (
                         <span
                            key={tag}
-                           className="xtext-xs text-slate-200 border border-slate-300/10 rounded-full bg-slate-600/40 px-3 py-1"
+                           className="text-xs text-slate-200 border border-slate-300/10 rounded-full bg-slate-600/40 px-3 py-1"
                         >
                            {tag}
                         </span>
