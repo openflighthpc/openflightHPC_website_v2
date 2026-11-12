@@ -88,40 +88,20 @@ export default function Home() {
                                  }}
                                  className="relative flex aspect-[4/3] flex-col justify-between overflow-hidden rounded-2xl p-5"
                               >
-                                 {/* Background logo */}
-                                 {/* <CardWave /> */}
-
-                                 {/* Decorative circle */}
-                                 <div
-                                    aria-hidden="true"
-                                    className="absolute -right-12 -top-14 h-48 w-48 rounded-full border-[28px] border-white/15"
-                                 />
-
-                                 {/* <Image
-                                    src="/openflightHPC_website_v2/bumcloud_white.svg"
-                                    alt=""
-                                    width={180}
-                                    height={122}
-                                    className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 brightness-0 invert opacity-10"
-                                 /> */}
+                                 <CardWave />
 
                                  {/* Content */}
                                  <div className="relative z-10 flex items-center justify-between">
-                                    <span className="text-xs font-semibold uppercase tracking-[0.2em] text-white/80">
-                                       OpenFlight Labs
+                                    <span className="text-xs font-medium uppercase tracking-widest">
+                                       {project.status.replace('-', ' ')}
                                     </span>
-
-                                    <span className="text-xs font-medium text-white/60">
+                                    <span className="text-xs font-medium">
                                        {String(index + 1).padStart(2, '0')}
                                     </span>
                                  </div>
 
                                  <div className="relative z-10">
-                                    <span className="mb-2 block text-xs font-medium uppercase tracking-wider text-white/60">
-                                       {project.status.replace('-', ' ')}
-                                    </span>
-
-                                    <span className="block max-w-[10ch] text-3xl font-semibold leading-tight text-white">
+                                    <span className="block text-3xl font-semibold leading-tight text-white">
                                        {project.name}
                                     </span>
                                  </div>
@@ -169,30 +149,20 @@ export default function Home() {
                               }}
                               className="relative flex aspect-[4/3] flex-col justify-between overflow-hidden rounded-2xl p-5"
                            >
-                              {/* <CardWave /> */}
-                              {/* Decorative circle */}
-                              <div
-                                 aria-hidden="true"
-                                 className="absolute -right-12 -top-14 h-48 w-48 rounded-full border-[28px] border-white/15"
-                              />
+                              <CardWave />
 
                               {/* Content */}
                               <div className="relative z-10 flex items-center justify-between">
-                                 <span className="text-xs font-semibold uppercase tracking-[0.2em] text-white/80">
-                                    OpenFlight Labs
+                                 <span className="text-xs font-medium uppercase tracking-widest">
+                                    {project.status.replace('-', ' ')}
                                  </span>
-
-                                 <span className="text-xs font-medium text-white/60">
+                                 <span className="text-xs font-medium">
                                     {String(index + 1).padStart(2, '0')}
                                  </span>
                               </div>
 
                               <div className="relative z-10">
-                                 <span className="mb-2 block text-xs font-medium uppercase tracking-wider text-white/60">
-                                    {project.status.replace('-', ' ')}
-                                 </span>
-
-                                 <span className="block max-w-[10ch] text-3xl font-semibold leading-tight text-white">
+                                 <span className="block text-3xl font-semibold leading-tight text-white">
                                     {project.name}
                                  </span>
                               </div>
