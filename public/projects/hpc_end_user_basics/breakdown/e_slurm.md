@@ -1,6 +1,7 @@
 ## Slurm
 
 :::collapse Further Documentation
+
 # Further Documentation
 
 This guide is a quick overview of some of the many available options of the SLURM research environment scheduler. For more information on the available options, you may wish to reference some of the following available documentation for the demonstrated SLURM commands:
@@ -14,7 +15,9 @@ This guide is a quick overview of some of the many available options of the SLUR
 ### Running Jobs
 
 :::collapse Submitting an Interactive Job
+
 # Submitting an Interactive Job
+
 You can start a new interactive job on your research environment by using the `srun` command; the scheduler will search for an available compute node, and provide you with an interactive login shell on the node if one is available.
 
 ```bash
@@ -43,6 +46,7 @@ If the job-scheduler could not satisfy the resource you've requested for your in
 [flight@chead1 (mycluster1) ~]$ srun --pty /bin/bash
 srun: job 20 queued and waiting for resources
 ```
+
 :::
 
 :::collapse Submitting a Batch Job
@@ -80,9 +84,11 @@ simplejobscript.sh  slurm-21.out
 Starting running on host node01
 Finished running - goodbye from node01
 ```
+
 :::
 
 :::collapse Submitting an Array Job
+
 # Submitting an Array Job
 
 A common workload is having a large number of jobs to run which basically do the same thing, aside perhaps from having different input data. You could generate a job-script for each of them and submit it, but that's not very convenient - especially if you have many hundreds or thousands of tasks to complete. Such jobs are known as **task arrays** - an [embarrassingly parallel](https://en.wikipedia.org/wiki/Embarrassingly_parallel) job will often fit into this category.
@@ -126,14 +132,19 @@ All tasks in an array job are given a job ID with the format `[job_ID]_[task_num
 Array jobs can easily be cancelled using the `scancel` command - the following examples show various levels of control over an array job:
 
 - Cancel all array tasks under the job ID `77`
+
 ```bash
 scancel 77
 ```
+
 - Cancel array tasks `100-200` wunder the job ID `77`
+
 ```bash
 scancel 77_[100-200]
 ```
+
 - Cancel array task `5` under the job ID `77`
+
 ```bash
 scancel 77_5
 ```
@@ -141,6 +152,7 @@ scancel 77_5
 :::
 
 :::collapse Job Configuration
+
 # Job Configuration
 
 In order to promote efficient usage of the research environment - the job-scheduler is automatically configured with default run-time limits for jobs. These defaults can be overridden by users to help the scheduler understand how you want it to run your job.
@@ -148,6 +160,7 @@ In order to promote efficient usage of the research environment - the job-schedu
 Job instructions can be provided in two ways; they are:
 
 1. **On the command line**, as parameters to your `sbatch` or `srun` command. For example, you can set the name of your job using the `--job-name=[name] | -J [name]` option:
+
 ```bash
 [flight@chead1 (mycluster1) ~]$ sbatch --job-name=mytestjob simplejobscript.sh
 Submitted batch job 51
@@ -156,6 +169,7 @@ Submitted batch job 51
              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
                 51       all mytestjo    centos  R       0:02      1 node01
 ```
+
 2. **In your job script**, by including scheduler directives at the top of your job script - you can achieve the same effect as providing options with the `sbatch` or `srun` commands. Create an example job script or modify your existing script to include a scheduler directive to use a specified job name:
 
 ```bash
@@ -167,6 +181,7 @@ echo "Finished running - goodbye from $HOSTNAME"
 ```
 
 Including job scheduler instructions in your job-scripts is often the most convenient method of working for batch jobs - follow the guidelines below for the best experience:
+
 - Lines in your script that include job-scheduler directives must start with `#SBATCH` at the beginning of the line.
 - You can put multiple instructions separated by a space on a single line starting with `#SBATCH`
 - The scheduler will parse the script from top to bottom and set instructions in order; if you set the same parameter twice, the second value will be used.
@@ -225,9 +240,11 @@ Submitted batch job 76
                 76       all    myjob    centos PD       0:00      1 (Dependency)
                 75       all    myjob    centos  R       0:15      1 node01
 ```
+
 :::
 
 :::collapse Dynamic Scheduler Variables
+
 # Dynamic Scheduler Variables
 
 Your research environment job scheduler automatically creates a number of pseudo environment variables which are available to your job-scripts when they are running on research environment compute nodes, along with standard Linux variables. Useful values include the following:
@@ -243,10 +260,13 @@ Your research environment job scheduler automatically creates a number of pseudo
 :::
 
 :::collapse Requesting More Resources
+
 # Requesting More Resources
+
 By default, jobs are constrained to the default set of resources - users can use scheduler instructions to request more resources for their jobs. The following documentation shows how these requests can be made.
 
 # Running Multi-Threaded Jobs
+
 If users want to use multiple cores on a compute node to run a multi-threaded application, they need to inform the scheduler - this allows jobs to use multiple cores without needing to rely on any interconnect. Using multiple CPU cores is achieved by specifying the `-n` or `--ntasks=<number>` option in either your submission command or the scheduler directives in your job script. The `--ntasks` option informs the scheduler of the number of cores you wish to reserve for use. If the parameter is omitted, the default `--ntasks=1` is assumed. You could specify the option `-n 4` to request 4 CPU cores for your job. Besides the number of tasks, you will need to add `--nodes=1` to your scheduler command or at the top of your job script with `#SBATCH --nodes=1`, this will set the maximum number of nodes to be used to 1 and prevent the job selecting cores from multiple nodes.
 
 ```batch
@@ -264,6 +284,7 @@ If you request more cores than are available on a node in your research environm
 If users want to run parallel jobs via a messaging passing interface (MPI), they need to inform the scheduler - this allows jobs to be efficiently spread over compute nodes to get the best possible performance. Using multiple CPU cores across multiple nodes is achieved by specifying the `-N` or `--nodes=<minnodes[-maxnodes]>` option - which requests a minimum (and optional maximum) number of nodes to allocate to the submitted job. If only the `minnodes` count is specified - then this is used for both the minimum and maximum node count for the job.
 
 - Example of how to request a minimum of 1 node and maximum of 4.
+
 ```bash
 --nodes=1-4
 ```
@@ -271,17 +292,23 @@ If users want to run parallel jobs via a messaging passing interface (MPI), they
 You can request multiple cores over multiple nodes using a combination of scheduler directives either in your job submission command or within your job script. Some of the following examples demonstrate how you can obtain cores across different resources:
 
 - Request 16 cores across 2 compute nodes
+
 ```bash
 --nodes=2 --ntasks=16
 ```
+
 - Request all available cores of 2 compute nodes
+
 ```bash
 --nodes=2
 ```
+
 - Request 16 cores across any available compute nodes
+
 ```bash
 --ntasks=16
 ```
+
 If you request more CPU cores than your research environment can accommodate, your job will wait in the queue.
 
 # Requesting More Memory
@@ -298,6 +325,7 @@ Examples:
 When running a job across multiple compute hosts, the `--mem=<MB>` option informs the scheduler of the required memory per node
 
 # Requesting a Longer Runtime
+
 In order to promote best-use of the research environment scheduler, particularly in a shared environment, it is recommend to inform the scheduler the amount of time the submitted job is expected to take. You can inform the research environment scheduler of the expected runtime using the `-t`, `--time=<time>` option. For example - to submit a job that runs for 2 hours, the following example job script could be used:
 
 ```bash
@@ -322,7 +350,9 @@ Tue Aug 30 10:55:55 2016
 ### Running Jobs
 
 :::collapse Viewing and Controlling Queued Jobs
+
 # Viewing and Controlling Queued Jobs
+
 Once your job has been submitted, use the `squeue` command to view the status of the job queue. If you have available compute nodes, your job should be shown in the `R` (running) state; if your compute nodes are busy your job may be shown in the `PD` (pending) state until compute nodes are available to run it. If a job is in `PD` state - the reason for being unable to run will be displayed in the `NODELIST(REASON)` column of the `squeue` output.
 
 ```bash
@@ -332,7 +362,7 @@ Once your job has been submitted, use the `squeue` command to view the status of
             42       all simplejo    centos  R       0:00      1 node01
 ```
 
-You can keep running the `squeue` command until your job finishes running and disappears from the queue. The output of your batch job will be stored in a file for you to look at. The default location to store the output file is your home directory. You can use the linux `more` command to view your output file: 
+You can keep running the `squeue` command until your job finishes running and disappears from the queue. The output of your batch job will be stored in a file for you to look at. The default location to store the output file is your home directory. You can use the linux `more` command to view your output file:
 
 ```bash
 [flight@chead1 (mycluster1) ~]$ more slurm-42.out
@@ -371,7 +401,9 @@ Submitted batch job 48
 :::
 
 :::collapse Viewing Compute Host Status
+
 # Viewing Compute Host Status
+
 Users can use the `sinfo -Nl` command to view the status of compute node hosts in your research environment.
 
 ```bash
@@ -410,7 +442,9 @@ all*         up   infinite      2   idle cnode[01-02]
 :::
 
 :::collapse Viewing Default Resources
+
 # Viewing Default Resources
+
 In order to promote efficient usage of your research environment, the job-scheduler automatically sets a number of default resources for your jobs when you submit them. These defaults must be overridden by users to help the scheduler understand how you want it to run your job - if we don't include any instructions to the scheduler, then our job will take the defaults shown below:
 
 - Number of CPU cores for your job: 1

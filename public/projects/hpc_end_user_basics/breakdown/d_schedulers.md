@@ -1,6 +1,7 @@
 ## Job Schedulers
 
 :::collapse Job Scheduler Basics
+
 # Job Scheduler Basics
 
 # What is a Job?
@@ -36,9 +37,11 @@ Your research environment comes with a job-scheduler installed, ready for you to
 :::
 
 :::collapse Types of Compute Job
+
 # Types of Compute Job
 
 # Local Job
+
 ### Why Run a Local Job?
 
 When using a personal research environment there isn't a need to monitor resource usage as closely as multi-user systems where miscommunication and overloaded resources can negatively impact research progress. With all the resources available to one user it is quicker and easier to run jobs simply through a terminal than using a queue system.
@@ -54,7 +57,9 @@ In the event that a job script is executable, contains a shebang(#!) specifying 
 ```bash
 [flight@chead1 ~]$ ./myjob.sh
 ```
+
 # Scheduler Jobs
+
 Users can run a number of different types of job via the research environment scheduler, including:
 
 - **Batch jobs:** single-threaded applications that run only on one compute core

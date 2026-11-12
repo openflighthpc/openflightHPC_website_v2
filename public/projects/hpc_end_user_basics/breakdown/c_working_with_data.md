@@ -1,6 +1,7 @@
 ## Working with data
 
 :::collapse Storage types
+
 # Storage Types
 
 # Shared Storage
@@ -20,6 +21,7 @@ Utilising local scratch can dramatically increase the execution speed of HPC wor
 :::
 
 :::collapse Your Home Directory
+
 # Your Home Directory
 
 Linux automatically places users in their home-directory when they login to a node. By default, Linux will create your home-directory under the `/home/` directory. However, on some systems the home directory location may differ.
@@ -35,6 +37,7 @@ The root user in Linux has special meaning as a privileged user, and usually doe
 :::
 
 :::collapse Copying Data Between Hosts
+
 # Copying Data Between Hosts
 
 In a HPC environment there is likely to be a [shared filesystem](https://openflighthpc.org/lab/B4S1C5/docs/copy-between-hosts/storage-types.md#shared-storage), so it is not normally necessary to copy data directly between nodes in the research environment. Users simply need to place the data to be shared in their home-directory on the login node, and it will be available on all compute nodes in the same location.
@@ -52,10 +55,13 @@ Alternatively, users could login to a host that has unshared data on and copy th
 ### Copying Data
 
 :::collapse Using the CLI
+
 # Using the CLI
+
 Usually a HPC environment will have a "login" or "gateway" node which is the entrypoint to the rest of the nodes. From outside of the HPC environment the data will need to be copied to this system (likely to shared storage) to make it available.
 
 # Linux/Mac
+
 Linux and Mac users can use in-built SSH support to copy files. For example, the following will copy the file mydata.zip to `/home/flight/mydata.zip` on host `52.48.62.34` authenticating as the user `flight`:
 
 ```bash
@@ -63,6 +69,7 @@ scp mydata.zip flight@52.48.62.34:/home/flight/
 ```
 
 # Windows
+
 Windows users can download and install the [pscp](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) command to perform the same operation (you may need your .pem key in .ppk format, see [connecting from Windows with Putty](https://openflighthpc.org/lab/B4S1C5/cli-basics/logging-in.md)):
 
 For example, the following will copy the file `mydata.zip` to `/home/flight/mydata.zip` on host `52.48.62.34` authenticating as the user `flight`:
@@ -77,7 +84,9 @@ To retrieve files from the research environment, simply specify the location of 
 :::
 
 :::collapse Using Graphical Client
-# Using Graphical Client 
+
+# Using Graphical Client
+
 There are also a number of graphical file-management interfaces available that support the SSH/SCP/SFTP protocols. A graphical interface can make it easier for new users to manage their data, as they provide a simple drag-and-drop interface that helps to visualise where data is being stored. The example below shows how to configure the [WinSCP](https://winscp.net/eng/download.php) utility on a Windows client to allow data to be moved to and from a research environment.
 
 - On a Windows client, download and install [WinSCP](https://winscp.net/eng/download.php).
@@ -106,6 +115,7 @@ The amount of time taken to copy data to and from your research environment will
 :::
 
 :::collapse Object Storage for Archiving Data
+
 # Object Storage for Archiving Data
 
 As an alternative to copying data back to your client machine, users may prefer to upload their data to a cloud-based object storage service instead. Cloud storage solutions such as [AWS S3](https://aws.amazon.com/s3/), [Dropbox](https://www.dropbox.com/) and [SWIFT](https://wiki.openstack.org/wiki/Swift) have command-line tools which can be used to connect existing cloud storage to your research environment. Benefits of using an object-based storage service include:
