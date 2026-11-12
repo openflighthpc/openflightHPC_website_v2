@@ -24,9 +24,10 @@ type MdastNode = {
    data?: { hProperties?: Record<string, string> };
    children?: MdastNode[];
 };
-
 /** Matches a bare `[[project-id]]` reference, inline or sole in a paragraph. */
-const PROJECT_REF_PATTERN = /^\[\[([a-z0-9-]+)\]\]$/i;
+const PROJECT_REF_PATTERN = /^\[\[([a-z0-9 _-]+)\]\]$/i;
+
+const canonicalProjectId = (value: string) => value.toLowerCase().replace(/[^a-z0-9]/g, '');
 
 /** Matches a github.com repo root URL and extracts owner and repo name. */
 const GITHUB_REPO_PATTERN = /^https:\/\/github\.com\/([\w.-]+)\/([\w.-]+)\/?$/;
@@ -102,7 +103,7 @@ export function createMarkdownComponents(
             : undefined;
          if (refMatch) {
             const referenced = allProjects.find(
-               (candidate) => candidate.id.toLowerCase() === refMatch[1].toLowerCase()
+               (candidate) => canonicalProjectId(candidate.id) === canonicalProjectId(refMatch[1])
             );
             if (referenced) return <ProjectCard project={referenced} />;
          }
@@ -168,7 +169,7 @@ export function createMarkdownComponents(
 
          if (soleRef) {
             const referenced = allProjects.find(
-               (candidate) => candidate.id.toLowerCase() === soleRef[1].toLowerCase()
+               (candidate) => canonicalProjectId(candidate.id) === canonicalProjectId(soleRef[1])
             );
             if (referenced) return <ProjectCard project={referenced} />;
          }
