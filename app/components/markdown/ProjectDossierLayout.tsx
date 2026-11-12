@@ -1,7 +1,7 @@
 import type { Project } from '@/lib/project-handler';
 
-import DossierTabs from './DossierTabs';
-import { STATUS_TAGS } from './status';
+import DossierTabs from './tabs/DossierTabs';
+import { STATUS_TAGS } from './assets/status';
 import { getAllProjects } from '@/lib/project-handler';
 
 type LayoutProps = {
