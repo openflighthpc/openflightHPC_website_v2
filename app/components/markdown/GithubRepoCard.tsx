@@ -3,21 +3,13 @@
 import { useEffect, useState } from 'react';
 import { FaGithub } from 'react-icons/fa';
 
-type GithubRepoCardProps = {
-   owner: string;
-   repo: string;
-   href: string;
-};
-
-type RepoData = {
-   description: string | null;
-   stargazersCount: number;
-   forksCount: number;
-   language: string | null;
-};
-
 const FALLBACK_DESCRIPTION = 'GitHub repository';
 
+/**
+ * Formates a count into a given format
+ * @param count The count to format
+ * @returns The formatted count
+ */
 const formatCount = (count: number) =>
    count >= 1000 ? `${(count / 1000).toFixed(1).replace(/\.0$/, '')}k` : `${count}`;
 
@@ -29,8 +21,21 @@ const formatCount = (count: number) =>
  * static export always serves live data; on failure (offline, rate
  * limited) the card degrades to just the name and a link.
  */
-export default function GithubRepoCard({ href, owner, repo }: Readonly<GithubRepoCardProps>) {
-   const [repoData, setRepoData] = useState<RepoData | null>(null);
+export default function GithubRepoCard({
+   href,
+   owner,
+   repo
+}: Readonly<{
+   owner: string;
+   repo: string;
+   href: string;
+}>) {
+   const [repoData, setRepoData] = useState<{
+      description: string | null;
+      stargazersCount: number;
+      forksCount: number;
+      language: string | null;
+   } | null>(null);
 
    useEffect(() => {
       let cancelled = false;
@@ -46,9 +51,7 @@ export default function GithubRepoCard({ href, owner, repo }: Readonly<GithubRep
                stargazersCount: data.stargazers_count
             });
          })
-         .catch(() => {
-            // Rate limited or offline — the fallback card below still works.
-         });
+         .catch(() => {});
 
       return () => {
          cancelled = true;

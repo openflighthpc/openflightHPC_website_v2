@@ -29,8 +29,7 @@ export default function BeforeAfterSlider({
       if (!container) return;
 
       const rect = container.getBoundingClientRect();
-      const percent = ((clientX - rect.left) / rect.width) * 100;
-      setPosition(Math.min(100, Math.max(0, percent)));
+      setPosition(Math.min(100, Math.max(0, ((clientX - rect.left) / rect.width) * 100)));
    }, []);
 
    return (

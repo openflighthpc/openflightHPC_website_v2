@@ -2,6 +2,12 @@
 
 import { useEffect, useRef, useState } from 'react';
 
+/**
+ * Client component that renders a copy-to-clipboard button in a code block header.
+ * Shows "copied" for 1.5s after a successful copy, then reverts.
+ * @param code The raw code text written to the clipboard
+ * @returns the created copy button
+ */
 export default function CopyCodeButton({ code }: Readonly<{ code: string }>) {
    const [copied, setCopied] = useState(false);
    const timeout = useRef<number | undefined>(undefined);

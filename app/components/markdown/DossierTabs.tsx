@@ -2,30 +2,36 @@
 
 import { useState } from 'react';
 
-type SheetKey = 'summary' | 'breakdown';
+/**
+ * An enum for the available sheets
+ */
+enum SheetEnum {
+   summary,
+   breakdown
+}
 
-type DossierTabsProps = {
+/**
+ * Combines the breakdown and summary text into tab sections
+ * @param breakdownSheet The breakdown text
+ * @param summarySheet The summary text
+ * @returns The compiled tabs
+ */
+export default function DossierTabs({
+   breakdownSheet,
+   summarySheet
+}: Readonly<{
    summarySheet: React.ReactNode;
    breakdownSheet: React.ReactNode;
-};
-
-const TABS: { key: SheetKey; index: string; label: string }[] = [
-   { index: '01', key: 'summary', label: 'Summary' },
-   { index: '02', key: 'breakdown', label: 'Breakdown' }
-];
-
-export default function DossierTabs({ breakdownSheet, summarySheet }: Readonly<DossierTabsProps>) {
-   const [active, setActive] = useState<SheetKey>('summary');
-
-   const sheets: Record<SheetKey, React.ReactNode> = {
-      breakdown: breakdownSheet,
-      summary: summarySheet
-   };
+}>) {
+   const [active, setActive] = useState<SheetEnum>(SheetEnum.summary);
 
    return (
       <div className="flex flex-col gap-0">
          <div role="tablist" aria-label="dossier exhibits" className="flex text-md gap-4">
-            {TABS.map((tab) => (
+            {[
+               { index: '01', key: SheetEnum.summary, label: 'Summary' },
+               { index: '02', key: SheetEnum.breakdown, label: 'Breakdown' }
+            ].map((tab) => (
                <button
                   key={tab.key}
                   type="button"
@@ -44,7 +50,14 @@ export default function DossierTabs({ breakdownSheet, summarySheet }: Readonly<D
          </div>
          <hr className="text-neutral-800"></hr>
 
-         <div className="flex-1">{sheets[active]}</div>
+         <div className="flex-1">
+            {
+               {
+                  [SheetEnum.breakdown]: breakdownSheet,
+                  [SheetEnum.summary]: summarySheet
+               }[active]
+            }
+         </div>
       </div>
    );
 }
