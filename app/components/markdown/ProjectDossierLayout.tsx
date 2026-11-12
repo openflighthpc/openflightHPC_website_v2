@@ -3,13 +3,6 @@ import type { Project } from '@/lib/project-handler';
 import DossierTabs from './DossierTabs';
 import { STATUS_TAGS } from './status';
 
-type LayoutProps = {
-   project: Project;
-   StencilText?: React.FC<{ text: string; repeat?: number }>;
-   summary: React.ReactNode;
-   breakdown: React.ReactNode;
-};
-
 const formatDate = (date: string) => {
    const [day, month, year] = date.split('/').map(Number);
 
@@ -40,10 +33,14 @@ function DossierSheet({
  */
 export default function ProjectDossierLayout({
    breakdown,
-
    project,
    summary
-}: Readonly<LayoutProps>) {
+}: Readonly<{
+   project: Project;
+   StencilText?: React.FC<{ text: string; repeat?: number }>;
+   summary: React.ReactNode;
+   breakdown: React.ReactNode;
+}>) {
    const stamp = STATUS_TAGS[project.status as keyof typeof STATUS_TAGS] ?? project.status;
 
    return (
@@ -61,8 +58,8 @@ export default function ProjectDossierLayout({
                   {project.status === 'in-progress'
                      ? ' - In Progress'
                      : project.endDate && project.endDate !== project.startDate
-                       ? ` - ${formatDate(project.endDate)}`
-                       : ''}
+                        ? ` - ${formatDate(project.endDate)}`
+                        : ''}
                   {project.status !== 'in-progress' && <p className="font-light">{stamp}</p>}
                </div>
 

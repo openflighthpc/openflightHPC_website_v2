@@ -17,7 +17,7 @@ import typescript from 'shiki/langs/typescript.mjs';
 import vesper from 'shiki/themes/vesper.mjs';
 
 /**
- *
+ * Creates a Shiki core to handle formatting the code
  */
 const highlighter: HighlighterCore = createHighlighterCoreSync({
    engine: createJavaScriptRegexEngine({ forgiving: true }),

@@ -2,11 +2,6 @@
 
 import { useState } from 'react';
 
-type TabsetProps = {
-   'data-labels'?: string;
-   children?: React.ReactNode;
-};
-
 /**
  * The reader-facing side of the `:::tabs` feature. The `tabset` element
  * arriving from hast carries its labels in `data-labels`
@@ -22,7 +17,10 @@ type TabsetProps = {
 export default function MarkdownTabs({
    children,
    'data-labels': dataLabels
-}: Readonly<TabsetProps>) {
+}: Readonly<{
+   'data-labels'?: string;
+   children?: React.ReactNode;
+}>) {
    const labels = (dataLabels ?? '')
       .split('|')
       .map((label) => label.trim())
@@ -54,11 +52,10 @@ export default function MarkdownTabs({
                   role="tab"
                   aria-selected={activeIndex === index}
                   onClick={() => setActive(index)}
-                  className={`cursor-pointer border-b-2 pb-1 transition-colors ${
-                     activeIndex === index
-                        ? 'border-neutral-600 font-bold text-neutral-100'
-                        : 'border-transparent bg-transparent text-neutral-500 hover:text-neutral-300'
-                  }`}
+                  className={`cursor-pointer border-b-2 pb-1 transition-colors ${activeIndex === index
+                     ? 'border-neutral-600 font-bold text-neutral-100'
+                     : 'border-transparent bg-transparent text-neutral-500 hover:text-neutral-300'
+                     }`}
                >
                   {label}
                </button>

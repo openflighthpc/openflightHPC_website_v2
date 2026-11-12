@@ -2,14 +2,6 @@
 
 import { FaExternalLinkAlt } from 'react-icons/fa';
 
-type WebsiteCardProps = {
-   href: string;
-   name: string;
-   description?: string;
-};
-
-const FALLBACK_DESCRIPTION = 'A link to an external site';
-
 /**
  * An embed card for GitHub repos referenced in markdown by a paragraph
  * holding nothing but a `[github](repo-url)` link, similar to ProjectCard.
@@ -18,7 +10,15 @@ const FALLBACK_DESCRIPTION = 'A link to an external site';
  * static export always serves live data; on failure (offline, rate
  * limited) the card degrades to just the name and a link.
  */
-export default function WebsiteCard({ description, href, name }: Readonly<WebsiteCardProps>) {
+export default function WebsiteCard({
+   description,
+   href,
+   name
+}: Readonly<{
+   href: string;
+   name: string;
+   description?: string;
+}>) {
    return (
       <a
          href={href}
@@ -36,7 +36,7 @@ export default function WebsiteCard({ description, href, name }: Readonly<Websit
                {name}
             </p>
 
-            <p className="mt-3 text-neutral-400">{description ?? FALLBACK_DESCRIPTION}</p>
+            <p className="mt-3 text-neutral-400">{description ?? 'A link to an external site'}</p>
             <p className="mt-1 group-hover:text-lime-300">{href}</p>
          </div>
       </a>
