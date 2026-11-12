@@ -36,6 +36,6 @@ function parseFilenameFromMeta(meta: string | undefined) {
 
    // Accepts a bare filename (`title=prolog.sh`), a quoted one
    // (`title="prolog.sh"`) or a braced one (`title={prolog.sh}`).
-   const match = meta.match(/(?:^|\s)title=(?:"([^"]*)"|\{([^}]*)\}|([^\s"'}]+))/);
+   const match = new RegExp(/(?:^|\s)title=(?:"([^"]*)"|\{([^}]*)\}|([^\s"'}]+))/).exec(meta);
    return match?.[1] ?? match?.[2] ?? match?.[3];
 }

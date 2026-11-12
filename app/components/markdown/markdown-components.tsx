@@ -45,17 +45,15 @@ const TABPANEL_ELEMENT = 'tabpanel';
  * it survives into the hast `code` element's properties, e.g.
  * ```bash title=backup.sh → properties.meta === 'title=backup.sh'.
  */
-function remarkCodeMeta() {
-   return (tree: unknown) => {
-      const visitNode = (node: MdastNode) => {
-         if (node.type === 'code' && node.meta) {
-            node.data = { ...node.data, hProperties: { meta: node.meta } };
-         }
-         node.children?.forEach(visitNode);
-      };
-      visitNode(tree as MdastNode);
+const remarkCodeMeta = () => (tree: unknown) => {
+   const visitNode = (node: MdastNode) => {
+      if (node.type === 'code' && node.meta) {
+         node.data = { ...node.data, hProperties: { meta: node.meta } };
+      }
+      node.children?.forEach(visitNode);
    };
-}
+   visitNode(tree as MdastNode);
+};
 
 /**
  * Remark plugins applied to every markdown source rendered on the page.
@@ -72,8 +70,8 @@ export const REMARK_PLUGINS = [
    remarkSpoiler
 ];
 
-function hastTextContent(node: HastElement): string {
-   return node.children
+const hastTextContent = (node: HastElement): string =>
+   node.children
       .map((child) =>
          child.type === 'text'
             ? child.value
@@ -82,7 +80,6 @@ function hastTextContent(node: HastElement): string {
               : ''
       )
       .join('');
-}
 
 /**
  * The react-markdown `components` overrides that implement the project's
@@ -99,10 +96,10 @@ export function createMarkdownComponents(
 ): Components {
    const components: Components = {
       code({ children, className }) {
-         const raw = String(children);
-
          // Inline `[[project-id]]` references render as dossier cards.
-         const refMatch = !className ? new RegExp(PROJECT_REF_PATTERN).exec(raw) : undefined;
+         const refMatch = !className
+            ? new RegExp(PROJECT_REF_PATTERN).exec(String(children))
+            : undefined;
          if (refMatch) {
             const referenced = allProjects.find(
                (candidate) => candidate.id.toLowerCase() === refMatch[1].toLowerCase()
@@ -128,7 +125,7 @@ export function createMarkdownComponents(
             </details>
          );
       },
-      img({ alt, src }) {
+      img({ alt, children, src }) {
          if (typeof src !== 'string') return null;
 
          // A raw <video> tag falls back to the img component with the whole
@@ -141,7 +138,10 @@ export function createMarkdownComponents(
                   src={resolveImagePath(src, projectName)}
                   controls
                   className="max-w-full rounded-sm"
-               />
+               >
+                  <track kind="captions" />
+                  {children}
+               </video>
             );
          }
 
@@ -242,57 +242,55 @@ export function createMarkdownComponents(
 
          if (!codeEl) return <>{children}</>;
 
-         const className = (codeEl.properties.className as string[] | undefined) ?? [];
-         const lang = className
-            .find((cls) => cls.startsWith('language-'))
-            ?.replace('language-', '');
-         // `meta` is delivered as an attribute by the remarkCodeMeta plugin,
-         // with the hast node's data field as a fallback.
-         const meta =
-            (codeEl.properties.meta as string | undefined) ??
-            (codeEl.data as { meta?: string } | undefined)?.meta;
-
-         return <CodeBlock code={hastTextContent(codeEl)} lang={lang} meta={meta} />;
+         return (
+            <CodeBlock
+               code={hastTextContent(codeEl)}
+               lang={((codeEl.properties.className as string[] | undefined) ?? [])
+                  .find((cls) => cls.startsWith('language-'))
+                  ?.replace('language-', '')}
+               meta={
+                  (codeEl.properties.meta as string | undefined) ??
+                  (codeEl.data as { meta?: string } | undefined)?.meta
+               }
+            />
+         );
       },
       // The remarkSpoiler plugin wraps `||…||` regions in spans carrying
       // the spoiler class; render them as clickable reveal components.
-      span({ children, node, ...props }) {
-         const className = (node?.properties?.className as string[] | undefined) ?? [];
-         if (!className.includes(SPOILER_CLASS)) return <span {...props}>{children}</span>;
-         return <Spoiler>{children}</Spoiler>;
-      },
-      summary({ children }) {
-         return (
-            <summary className="block cursor-pointer list-none border-b border-neutral-800 px-5 py-4 font-bold tracking-wide transition-colors hover:text-lime-300 sm:px-8">
-               <span className="flex items-center justify-between gap-4">
-                  <span>{children}</span>
-                  <svg
-                     width="12"
-                     height="12"
-                     viewBox="0 0 12 12"
-                     fill="none"
-                     aria-hidden
-                     className="shrink-0 text-lime-400/70 transition-transform group-open/details:rotate-180"
-                  >
-                     <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" />
-                  </svg>
-               </span>
-            </summary>
-         );
-      },
-      video({ children, src }) {
-         if (typeof src !== 'string') return null;
-
-         return (
+      span: ({ children, node, ...props }) =>
+         !((node?.properties?.className as string[] | undefined) ?? []).includes(SPOILER_CLASS) ? (
+            <span {...props}>{children}</span>
+         ) : (
+            <Spoiler>{children}</Spoiler>
+         ),
+      summary: ({ children }) => (
+         <summary className="block cursor-pointer list-none border-b border-neutral-800 px-5 py-4 font-bold tracking-wide transition-colors hover:text-lime-300 sm:px-8">
+            <span className="flex items-center justify-between gap-4">
+               <span>{children}</span>
+               <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 12 12"
+                  fill="none"
+                  aria-hidden
+                  className="shrink-0 text-lime-400/70 transition-transform group-open/details:rotate-180"
+               >
+                  <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" />
+               </svg>
+            </span>
+         </summary>
+      ),
+      video: ({ children, src }) =>
+         typeof src !== 'string' ? null : (
             <video
                src={resolveImagePath(src, projectName)}
                controls
                className="max-w-full rounded-sm"
             >
+               <track kind="captions" />
                {children}
             </video>
-         );
-      }
+         )
    };
 
    // The remarkTabs plugin emits custom `tabset`/`tabpanel` elements, which

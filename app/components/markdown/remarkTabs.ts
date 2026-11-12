@@ -99,12 +99,12 @@ function classifyPiece(piece: Piece): {
 } {
    const line = textOf(piece).trim();
 
-   const tabsMatch = line.match(TABS_MARKER);
+   const tabsMatch = new RegExp(TABS_MARKER).exec(line);
    if (tabsMatch) {
       return { kind: 'tabs', labels: tabsMatch[1].split('|').map((label) => label.trim()) };
    }
 
-   const panelMatch = line.match(PANEL_MARKER);
+   const panelMatch = new RegExp(PANEL_MARKER).exec(line);
    if (panelMatch) {
       return { kind: 'panel', label: panelMatch[1].trim() };
    }

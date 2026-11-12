@@ -1,17 +1,13 @@
-import { readFileSync } from 'node:fs';
-import { join } from 'node:path';
+import Image from 'next/image';
 
 export default function AnimatedLogo() {
    return (
-      <div
+      <Image
          className="animated-logo"
-         aria-label="OpenFlight Labs logo"
-         role="img"
-         dangerouslySetInnerHTML={{
-            __html: readFileSync(join(process.cwd(), 'public/logo.svg'), 'utf8')
-               .replace(/^[\s\S]*?(?=<svg\b)/, '')
-               .replace(/<!\[CDATA\[|\]\]>/g, '')
-         }}
+         src="/openflightHPC_website_v2/logo.svg"
+         alt="OpenFlight Labs logo"
+         width={0}
+         height={0}
       />
    );
 }

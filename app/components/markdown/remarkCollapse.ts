@@ -94,7 +94,7 @@ function classifyPiece(piece: Piece): {
    title?: string;
 } {
    const line = textOf(piece).trim();
-   const openMatch = line.match(COLLAPSE_MARKER);
+   const openMatch = new RegExp(COLLAPSE_MARKER).exec(line);
 
    if (openMatch) {
       return {
