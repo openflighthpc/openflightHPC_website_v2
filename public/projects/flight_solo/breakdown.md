@@ -1,14 +1,17 @@
 # Hypothesis
+
 The goal of this project was to develop an HPC-ready, platform-agnostic image that enables the rapid deployment of complete High Performance Computing (HPC) environments.
 
 Flight Solo provides researchers and scientific users with a personal HPC environment, supporting deployment across on-demand, reserved and spot cloud instances.
 
 The image comes preconfigured with a job scheduler, software applications and a remote desktop service. It supports multiple software management frameworks, including Spack, EasyBuild and Conda, providing access to hundreds of applications, libraries, compilers and MPI implementations. It also includes data management tools for POSIX and S3-compatible object storage, making it easier to transfer files and manage storage resources.
+
 # Approach
 
 ### Architecture
 
 Flight Solo is built around three key components:
+
 - **HPC-Optimised Rocky 9 OS:** A clean Rocky Linux Enterprise 9 image configured for HPC workloads. It includes kernel drivers to support a range of virtualisation platforms, alongside appropriate security settings.
 - **Cloud-Init Integration:** Uses Cloud-Init to inject runtime information and configuration into the operating system when a cloud instance is provisioned. This allows the environment to be configured flexibly at deployment time.
 - **Flight Environment:** The complete Flight Environment is installed by default, with configuration optimisations to provide a ready-to-use HPC experience.
@@ -31,11 +34,13 @@ A key design goal was to make Flight Solo independent of any particular cloud pr
 The image was also made available through the AWS Marketplace, providing users with a straightforward way to find and deploy it.
 
 ### Outcomes
+
 The project delivered:
 
 - HPC-ready cloud images with the Flight Environment pre-installed and configured.
 - A platform-agnostic deployment approach supporting multiple cloud platforms.
 - A faster way to provision complete HPC environments, reducing the setup required from end-users.
+
 # What was learnt
 
 The project demonstrated how a preconfigured, platform-agnostic image can simplify access to HPC resources. By combining an HPC-optimised operating system, Cloud-Init and the Flight Environment, it is possible to provide a consistent environment that can be deployed across different cloud platforms.
