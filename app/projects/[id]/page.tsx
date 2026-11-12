@@ -79,7 +79,7 @@ export default async function ProjectPage({
 
    return (
       <>
-         <MarkdownRenderer projectName={id} StencilText={StencilText} />
+         <MarkdownRenderer projectName={id} stencilText={StencilText} />
          <div className="relative z-10 mb-16 w-full px-4 sm:px-8 lg:px-20 max-w-6xl m-auto">
             <div className="flex justify-between">
                <p className="text-white font-bold text-2xl">Keep reading</p>
@@ -87,8 +87,7 @@ export default async function ProjectPage({
                   View all
                </Link>
             </div>
-            <div
-               role="region"
+            <section
                aria-label="More projects"
                tabIndex={0}
                className="mt-10 flex w-full snap-x snap-mandatory gap-4 overflow-x-auto pb-4 lg:grid lg:grid-cols-3 lg:gap-6 lg:overflow-visible lg:pb-0 lg:snap-none"
@@ -145,7 +144,7 @@ export default async function ProjectPage({
                      </div>
                   </Link>
                ))}
-            </div>
+            </section>
          </div>
          <Footer />
       </>

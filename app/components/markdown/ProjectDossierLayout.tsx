@@ -52,6 +52,10 @@ export default function ProjectDossierLayout({
    breakdown: React.ReactNode;
 }>) {
    const stamp = STATUS_TAGS[project.status as keyof typeof STATUS_TAGS] ?? project.status;
+   const endDate =
+      project.endDate && project.endDate !== project.startDate
+         ? ` - ${formatDate(project.endDate)}`
+         : '';
 
    return (
       <div className="relative flex-1 font-sans text-neutral-100">
@@ -59,11 +63,7 @@ export default function ProjectDossierLayout({
             <div className="mt-10 text-center">
                <div className="flex font-bold justify-center gap-2">
                   {formatDate(project.startDate)}
-                  {project.status === 'in-progress'
-                     ? ' - In Progress'
-                     : project.endDate && project.endDate !== project.startDate
-                       ? ` - ${formatDate(project.endDate)}`
-                       : ''}
+                  {project.status === 'in-progress' ? ' - In Progress' : endDate}
                   {project.status !== 'in-progress' && <p className="font-light">{stamp}</p>}
                </div>
 
