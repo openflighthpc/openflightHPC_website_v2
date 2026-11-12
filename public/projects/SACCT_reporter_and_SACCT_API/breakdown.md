@@ -76,7 +76,6 @@ Timespan CLI output
 
 ![API CLI timing output](extras/API-CLI-Time.webp)
 
-
 # What was learnt
 
 TBD
