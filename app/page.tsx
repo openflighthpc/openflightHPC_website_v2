@@ -127,12 +127,12 @@ export default function Home() {
                                  dateTime={project.startDate}
                                  className="mt-3 block text-sm text-zinc-400"
                               >
-                               {formatDate(project.startDate)}
-                           {project.status === 'in-progress'
-                              ? ' - In Progress'
-                              : project.endDate && project.endDate !== project.startDate
-                                ? ` - ${formatDate(project.endDate)}`
-                                : ''}
+                                 {formatDate(project.startDate)}
+                                 {project.status === 'in-progress'
+                                    ? ' - In Progress'
+                                    : project.endDate && project.endDate !== project.startDate
+                                      ? ` - ${formatDate(project.endDate)}`
+                                      : ''}
                               </time>
                            </div>
                         </article>
@@ -190,12 +190,12 @@ export default function Home() {
                               dateTime={project.startDate}
                               className="mt-3 block text-sm text-zinc-400"
                            >
-                                 {formatDate(project.startDate)}
-                           {project.status === 'in-progress'
-                              ? ' - In Progress'
-                              : project.endDate && project.endDate !== project.startDate
-                                ? ` - ${formatDate(project.endDate)}`
-                                : ''}
+                              {formatDate(project.startDate)}
+                              {project.status === 'in-progress'
+                                 ? ' - In Progress'
+                                 : project.endDate && project.endDate !== project.startDate
+                                   ? ` - ${formatDate(project.endDate)}`
+                                   : ''}
                            </time>
                         </div>
                      </article>
