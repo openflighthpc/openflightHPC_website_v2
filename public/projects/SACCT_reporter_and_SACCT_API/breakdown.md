@@ -33,7 +33,9 @@ Both combined can give a clear picture of the health of a cluster and how its jo
 
 ### Usage demonstration
 
-A report of how the CLI tool is used on an actual customer cluster showing the user data of how jobs collate on the CLI over time, showing the mean usage statistics and the final job statuses:
+A report of how the CLI tool is used on an actual customer cluster showing the user data of how jobs collate on the CLI over time, showing the mean usage statistics and the final job statuses.
+
+The output of `sacct-reporter report -o` to see a unified outload summary with overalls:
 
 ![CLI tool output](extras/CLI.webp)
 
@@ -58,21 +60,21 @@ This allows the operator of the cluster to now look into why some of the jobs ha
 
 By using curl commands on the position, you are able to generate a JSON dump as shown by the screenshot of JSON crack below for both a 7 day fixed time period, and a time spread period.
 
-The usual seven day period:
+The usual seven day period, done with `curl https://127.0.0.1:5000/user/alces-cluster/7 `:
 
 ![JSON output for a 7 day period](extras/JSON-7.webp)
 
-A timespan on the user:
+A timespan on the user, the default option, done with `curl https://127.0.0.1:5000/user/alces-cluster`:
 
 ![JSON output with timing](extras/JSON-Time.webp)
 
 For those on a management system like rndhub(across clusters), using the CLI tool to call the API into clean dumps as below.
 
-7 Day singlar period:
+7 Day singlar period from the CLI using `jobrep report -d 7`
 
 ![API CIL 7 day output](extras/API-CLI-7.webp)
 
-Timespan CLI output:
+Timespan CLI output using `jobrep report -t `
 
 ![API CLI timing output](extras/API-CLI-Time.webp)
 
