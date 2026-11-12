@@ -107,7 +107,7 @@ export default function Home() {
 
                                  {/* Content */}
                                  <div className="relative z-10 flex items-center justify-between">
-                                    <span className="text-xs font-semibold uppercase tracking-[0.2em] text-white/80">
+                                    <span className="text-xs font-semibold uppercase tracking-[0.4em] text-white/80">
                                        OpenFlight Labs
                                     </span>
 
@@ -121,7 +121,7 @@ export default function Home() {
                                        {project.status.replace('-', ' ')}
                                     </span>
 
-                                    <span className="block max-w-[10ch] text-3xl font-semibold leading-tight text-white">
+                                    <span className="block max-w-full text-3xl font-semibold leading-tight text-white">
                                        {project.name}
                                     </span>
                                  </div>
@@ -148,10 +148,12 @@ export default function Home() {
                                  dateTime={project.startDate}
                                  className="mt-3 block text-sm text-zinc-400"
                               >
-                                 {formatDate(project.startDate)}
-                                 {project.endDate &&
-                                    project.endDate !== project.startDate &&
-                                    ` — ${formatDate(project.endDate)}`}
+                               {formatDate(project.startDate)}
+                           {project.status === 'in-progress'
+                              ? ' - In Progress'
+                              : project.endDate && project.endDate !== project.startDate
+                                ? ` - ${formatDate(project.endDate)}`
+                                : ''}
                               </time>
                            </div>
                         </article>
@@ -189,10 +191,10 @@ export default function Home() {
 
                               <div className="relative z-10">
                                  <span className="mb-2 block text-xs font-medium uppercase tracking-wider text-white/60">
-                                    {project.status.replace('-', ' ')}
+                                    {project.status.replace('-', ' ')} 
                                  </span>
 
-                                 <span className="block max-w-[10ch] text-3xl font-semibold leading-tight text-white">
+                                 <span className="block max-w-full text-3xl font-semibold leading-tight text-white">
                                     {project.name}
                                  </span>
                               </div>
@@ -219,10 +221,12 @@ export default function Home() {
                               dateTime={project.startDate}
                               className="mt-3 block text-sm text-zinc-400"
                            >
-                              {formatDate(project.startDate)}
-                              {project.endDate &&
-                                 project.endDate !== project.startDate &&
-                                 ` — ${formatDate(project.endDate)}`}
+                                 {formatDate(project.startDate)}
+                           {project.status === 'in-progress'
+                              ? ' - In Progress'
+                              : project.endDate && project.endDate !== project.startDate
+                                ? ` - ${formatDate(project.endDate)}`
+                                : ''}
                            </time>
                         </div>
                      </article>
