@@ -53,6 +53,8 @@ for a card for that project, status stamp and all. Take Hackathon-13:
 
 [[hackathon_13]]
 
+[project](hackathon_13)
+
 An id that matches no project stays a normal inline span:
 `[[does-not-exist]]`.
 

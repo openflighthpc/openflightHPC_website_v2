@@ -58,9 +58,7 @@ export default function ProjectsGallery({ projects }: Readonly<{ projects: Proje
    const [sortOrder, setSortOrder] = useState<SortOrder>('newest');
    const [openMenu, setOpenMenu] = useState<'filter' | 'sort' | null>(null);
    const controlsRef = useRef<HTMLDivElement>(null);
-   const [maxItems, setMaxItems] = useState<number>(6)
-
-   
+   const [maxItems, setMaxItems] = useState<number>(6);
 
    useEffect(() => {
       if (openMenu === null) return;
@@ -107,8 +105,8 @@ export default function ProjectsGallery({ projects }: Readonly<{ projects: Proje
                      type="button"
                      aria-pressed={selectedCategory === category}
                      onClick={() => {
-                        setMaxItems(9)
-                        setSelectedCategory(category)
+                        setMaxItems(9);
+                        setSelectedCategory(category);
                      }}
                      className={`rounded-full border px-4 py-1.5 cursor-pointer text-sm transition ${
                         selectedCategory === category
@@ -242,7 +240,7 @@ export default function ProjectsGallery({ projects }: Readonly<{ projects: Proje
                      {project.tags.map((tag) => (
                         <span
                            key={tag}
-                           className="xtext-xs text-slate-200 border border-slate-300/10 rounded-full bg-slate-600/40 px-3 py-1"
+                           className="text-xs text-slate-200 border border-slate-300/10 rounded-full bg-slate-600/40 px-3 py-1"
                         >
                            {tag}
                         </span>
@@ -264,16 +262,18 @@ export default function ProjectsGallery({ projects }: Readonly<{ projects: Proje
                   </div>
                </Link>
             ))}
-      
-          
          </div>
 
          {maxItems < visibleProjects.length && (
-             <div className='mt-12 flex w-full justify-center'>
-           <button onClick={() => setMaxItems(prev => prev + 6)} className= 'rounded-full px-4 py-2 bg-white text-black font-bold cursor-pointer transition hover:bg-white/80 duration-200'>View more</button>
-           </div>
+            <div className="mt-12 flex w-full justify-center">
+               <button
+                  onClick={() => setMaxItems((prev) => prev + 6)}
+                  className="rounded-full px-4 py-2 bg-white text-black font-bold cursor-pointer transition hover:bg-white/80 duration-200"
+               >
+                  View more
+               </button>
+            </div>
          )}
-        
       </>
    );
 }

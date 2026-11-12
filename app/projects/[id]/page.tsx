@@ -1,11 +1,16 @@
+import { ChevronRight } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
+
 import Footer from '@/app/components/Footer';
 import MarkdownRenderer from '@/app/components/markdown/MarkdownRenderer';
 import { getAllProjects } from '@/lib/project-handler';
-import Link from 'next/link';
-import type { Project } from '@/lib/project-handler';
-import { ChevronDown, ChevronRight, X } from 'lucide-react';
-import Image from 'next/image';
 
+/**
+ * Formats date to a formatted style
+ * @param date The date to format
+ * @returns The formatted date
+ */
 const formatDate = (date: string) => {
    const [day, month, year] = date.split('/').map(Number);
 
@@ -60,31 +65,35 @@ export function generateStaticParams() {
    }));
 }
 
+function getRandomProjects(id: string, count = 3) {
+   return getAllProjects()
+      .filter((project) => project.id !== id)
+      .toSorted(() => Math.random() - 0.5)
+      .slice(0, count);
+}
+
 export default async function ProjectPage({
    params
 }: Readonly<{ params: Promise<{ id: string }> }>) {
    const { id } = await params;
-   const projects: Project[] = getAllProjects();
-   const allowedProjects = projects.filter((project) => project.id !== id);
-
-   const visibleProjects = [...allowedProjects].sort(() => Math.random() - 0.5).slice(0, 3);
 
    return (
       <>
-         <MarkdownRenderer projectName={id} StencilText={StencilText} />
-         <div className="relative z-10 mb-16 w-full px-4 sm:px-8 lg:px-20">
+         <MarkdownRenderer projectName={id} stencilText={StencilText} />
+         <div className="relative z-10 mb-16 w-full px-4 sm:px-8 lg:px-20 max-w-6xl m-auto">
             <hr className='text-neutral-800'/>
             <div className="mt-4 flex justify-between">
                <p className="text-white font-bold text-2xl">Keep reading</p>
-               <Link href="/projects" className="text-xl transition hover:text-white/80 text-white">View all</Link>
+               <Link href="/projects" className="text-xl transition hover:text-white/80 text-white">
+                  View all
+               </Link>
             </div>
-            <div
-               role="region"
+            <section
                aria-label="More projects"
                tabIndex={0}
                className="mt-10 flex w-full snap-x snap-mandatory gap-4 overflow-x-auto pb-4 lg:grid lg:grid-cols-3 lg:gap-6 lg:overflow-visible lg:pb-0 lg:snap-none"
             >
-               {visibleProjects.slice(0, 3).map((project, index) => (
+               {getRandomProjects(id).map((project, index) => (
                   <Link
                      key={project.id}
                      href={`/projects/${project.id}`}
@@ -136,7 +145,7 @@ export default async function ProjectPage({
                      </div>
                   </Link>
                ))}
-            </div>
+            </section>
          </div>
          <Footer />
       </>

@@ -1,16 +1,13 @@
 import type { Project } from '@/lib/project-handler';
 
-import DossierTabs from './tabs/DossierTabs';
 import { STATUS_TAGS } from './assets/status';
-import { getAllProjects } from '@/lib/project-handler';
+import DossierTabs from './tabs/DossierTabs';
 
-type LayoutProps = {
-   project: Project;
-   StencilText?: React.FC<{ text: string; repeat?: number }>;
-   summary: React.ReactNode;
-   breakdown: React.ReactNode;
-};
-
+/**
+ * Formats the date into a given format
+ * @param date the date to format
+ * @returns The formatted date
+ */
 const formatDate = (date: string) => {
    const [day, month, year] = date.split('/').map(Number);
 
@@ -22,6 +19,11 @@ const formatDate = (date: string) => {
    });
 };
 
+/**
+ * Puts the children into the sheet layout
+ * @param children The children to put in the sheet  
+ * @returns The formatted sheet
+ */
 function DossierSheet({
    children
 }: Readonly<{
@@ -50,26 +52,18 @@ export default function ProjectDossierLayout({
    breakdown: React.ReactNode;
 }>) {
    const stamp = STATUS_TAGS[project.status as keyof typeof STATUS_TAGS] ?? project.status;
-
-    const projects = getAllProjects();
+   const endDate =
+      project.endDate && project.endDate !== project.startDate
+         ? ` - ${formatDate(project.endDate)}`
+         : '';
 
    return (
       <div className="relative flex-1 font-sans text-neutral-100">
-         {/* ————————————————————————————————————————
-          BACKDROP — the wall behind everything:
-          poured concrete, one warm seam, node-rack
-          labels stencilled up the dark
-          ———————————————————————————————————————— */}
-
          <header className="relative mx-auto max-w-4xl px-6 pb-4 pt-20 sm:px-10">
             <div className="mt-10 text-center">
                <div className="flex font-bold justify-center gap-2">
                   {formatDate(project.startDate)}
-                  {project.status === 'in-progress'
-                     ? ' - In Progress'
-                     : project.endDate && project.endDate !== project.startDate
-                       ? ` - ${formatDate(project.endDate)}`
-                       : ''}
+                  {project.status === 'in-progress' ? ' - In Progress' : endDate}
                   {project.status !== 'in-progress' && <p className="font-light">{stamp}</p>}
                </div>
 
@@ -96,11 +90,6 @@ export default function ProjectDossierLayout({
                </div>
             </div>
          </header>
-
-         {/* 
-         Main body including both the summary and breakdown in their own tabs
-         See ./DossierTabs.tsx for more info
-          */}
          <main className="relative mx-auto max-w-6xl px-6 sm:px-10">
             <div className="grid grid-cols-1 gap-y-16 mt-14 text-lg leading-loose [grid-template-columns:1fr] lg:text-xl lg:[grid-template-columns:3rem_minmax(0,1fr)] lg:gap-x-10">
                <aside className="hidden lg:block"></aside>
@@ -120,18 +109,6 @@ export default function ProjectDossierLayout({
                   }
                />
             </div>
-            {/* <div className='w-full'>
-               <div className='flex justify-between'>
-               <p>Kepp reading</p>
-               <p>View all</p>
-               </div>
-                       <div className="grid w-full  grid-cols-1 sm:grid-cols-2 gap-6 md:grid-cols-3">
-                        
-
-                        
-                       </div>
-
-            </div> */}
          </main>
       </div>
    );

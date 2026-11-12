@@ -5,12 +5,19 @@ import { getAllProjects, getProject } from '@/lib/project-handler';
 import { createMarkdownComponents, REMARK_PLUGINS } from './MarkdownComponents';
 import ProjectDossierLayout from './ProjectDossierLayout';
 
-type RendererProps = {
+/**
+ * Renders the markdown converting basic markdown into the enhanced version
+ * @param projectName The name of the project
+ * @param stencilText The stencil text for the page
+ * @returns The rendered markdown
+ */
+export default function MarkdownRenderer({
+   projectName,
+   stencilText
+}: Readonly<{
    projectName: string;
-   StencilText?: React.FC<{ text: string; repeat?: number }>;
-};
-
-export default function MarkdownRenderer({ projectName, StencilText }: Readonly<RendererProps>) {
+   stencilText?: React.FC<{ text: string; repeat?: number }>;
+}>) {
    const project = getProject(projectName);
    const allProjects = getAllProjects();
    const components = createMarkdownComponents(projectName, allProjects);
@@ -18,7 +25,7 @@ export default function MarkdownRenderer({ projectName, StencilText }: Readonly<
    return (
       <ProjectDossierLayout
          project={project}
-         StencilText={StencilText}
+         StencilText={stencilText}
          summary={
             <ReactMarkdown remarkPlugins={REMARK_PLUGINS} components={components}>
                {project.summary}

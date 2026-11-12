@@ -71,13 +71,15 @@ export const REMARK_PLUGINS = [
 
 const hastTextContent = (node: HastElement): string =>
    node.children
-      .map((child) =>
-         child.type === 'text'
-            ? child.value
-            : child.type === 'element'
-              ? hastTextContent(child)
-              : ''
-      )
+      .map((child) => {
+         if (child.type === 'text') {
+            return child.value;
+         }
+         if (child.type === 'element') {
+            return hastTextContent(child);
+         }
+         return '';
+      })
       .join('');
 
 /**
@@ -163,48 +165,58 @@ export function createMarkdownComponents(
             paraChildren.length === 1 && paraChildren[0].type === 'text'
                ? (paraChildren[0] as HastText)
                : undefined;
-         const soleRef = soleText?.value.match(PROJECT_REF_PATTERN);
 
-         if (soleRef) {
-            const referenced = allProjects.find(
-               (candidate) => candidate.id.toLowerCase() === soleRef[1].toLowerCase()
-            );
-            if (referenced) return <ProjectCard project={referenced} />;
+         if (soleText) {
+            const soleRef = new RegExp(PROJECT_REF_PATTERN).exec(soleText.value);
+            if (soleRef) {
+               const referenced = allProjects.find(
+                  (candidate) => candidate.id.toLowerCase() === soleRef[1].toLowerCase()
+               );
+               if (referenced) return <ProjectCard project={referenced} />;
+            }
          }
 
-         // A paragraph holding nothing but a `[github](repo-url)` link
-         // renders as a repo embed card for that repository.
+         // A paragraph containing nothing but a <a> can be parsed into multiple types of cards
          const soleAnchor =
             paraChildren.length === 1 && paraChildren[0].type === 'element'
                ? (paraChildren[0] as HastElement)
                : undefined;
 
-         const githubHref =
-            soleAnchor?.tagName === 'a' && hastTextContent(soleAnchor).toLowerCase() === 'github'
-               ? String(soleAnchor.properties.href ?? '')
-               : undefined;
+         if (soleAnchor && soleAnchor?.tagName === 'a') {
+            const anchorText = hastTextContent(soleAnchor).toLowerCase();
 
-         if (githubHref) {
-            const repoRef = new RegExp(GITHUB_REPO_PATTERN).exec(githubHref);
-            if (repoRef) {
-               return <GithubRepoCard owner={repoRef[1]} repo={repoRef[2]} href={githubHref} />;
+            if (anchorText === 'github') {
+               const githubHref = String(soleAnchor.properties.href ?? '');
+               const repoRef = new RegExp(GITHUB_REPO_PATTERN).exec(githubHref);
+               if (repoRef) {
+                  return <GithubRepoCard owner={repoRef[1]} repo={repoRef[2]} href={githubHref} />;
+               }
             }
-         }
 
-         if (
-            soleAnchor?.tagName === 'a' &&
-            hastTextContent(soleAnchor).toLowerCase().startsWith('pretty-link')
-         ) {
-            const [, name, description] = hastTextContent(soleAnchor)
-               .toLocaleLowerCase()
-               .split(':::');
-            return (
-               <WebsiteCard
-                  name={name}
-                  href={String(soleAnchor.properties.href ?? '')}
-                  description={description}
-               ></WebsiteCard>
-            );
+            if (anchorText === 'project') {
+               const referenced = allProjects.find(
+                  (candidate) =>
+                     candidate.id.toLowerCase() === (soleAnchor.properties.href ?? '').toLowerCase()
+               );
+               if (referenced) {
+                  return <ProjectCard project={referenced} />;
+               } else {
+                  return <p>[{soleAnchor.properties.href} is invalid]</p>;
+               }
+            }
+
+            if (anchorText.startsWith('pretty-link')) {
+               const [, name, description] = hastTextContent(soleAnchor)
+                  .toLocaleLowerCase()
+                  .split(':::');
+               return (
+                  <WebsiteCard
+                     name={name}
+                     href={String(soleAnchor.properties.href ?? '')}
+                     description={description}
+                  ></WebsiteCard>
+               );
+            }
          }
 
          // Two adjacent images in one paragraph whose alt text starts with
