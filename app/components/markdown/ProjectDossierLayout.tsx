@@ -1,15 +1,7 @@
 import type { Project } from '@/lib/project-handler';
 
-import DossierTabs from './tabs/DossierTabs';
 import { STATUS_TAGS } from './assets/status';
-import { getAllProjects } from '@/lib/project-handler';
-
-type LayoutProps = {
-   project: Project;
-   StencilText?: React.FC<{ text: string; repeat?: number }>;
-   summary: React.ReactNode;
-   breakdown: React.ReactNode;
-};
+import DossierTabs from './tabs/DossierTabs';
 
 const formatDate = (date: string) => {
    const [day, month, year] = date.split('/').map(Number);
@@ -51,8 +43,6 @@ export default function ProjectDossierLayout({
 }>) {
    const stamp = STATUS_TAGS[project.status as keyof typeof STATUS_TAGS] ?? project.status;
 
-    const projects = getAllProjects();
-
    return (
       <div className="relative flex-1 font-sans text-neutral-100">
          {/* ————————————————————————————————————————
@@ -60,7 +50,6 @@ export default function ProjectDossierLayout({
           poured concrete, one warm seam, node-rack
           labels stencilled up the dark
           ———————————————————————————————————————— */}
-
          <header className="relative mx-auto max-w-4xl px-6 pb-4 pt-20 sm:px-10">
             <div className="mt-10 text-center">
                <div className="flex font-bold justify-center gap-2">
@@ -120,18 +109,6 @@ export default function ProjectDossierLayout({
                   }
                />
             </div>
-            {/* <div className='w-full'>
-               <div className='flex justify-between'>
-               <p>Kepp reading</p>
-               <p>View all</p>
-               </div>
-                       <div className="grid w-full  grid-cols-1 sm:grid-cols-2 gap-6 md:grid-cols-3">
-                        
-
-                        
-                       </div>
-
-            </div> */}
          </main>
       </div>
    );

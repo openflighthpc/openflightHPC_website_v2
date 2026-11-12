@@ -72,7 +72,6 @@ export default function Home() {
                                  className="relative flex aspect-[4/3] flex-col justify-between overflow-hidden rounded-2xl p-5"
                               >
                                  {/* Background logo */}
-                        
 
                                  {/* Decorative circle */}
                                  <div
