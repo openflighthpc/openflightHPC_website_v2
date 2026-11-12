@@ -1,7 +1,7 @@
 import { defineProjectMetadata } from '@/lib/metadata-handler';
 
 export default defineProjectMetadata({
-   colour: '#bada55',
+   colour: '#9c374e',
    description: 'Exploration of improved SACCT reporting metrics',
    endDate: '07/09/2026',
    featured: true,

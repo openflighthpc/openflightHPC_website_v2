@@ -1,7 +1,7 @@
 import { defineProjectMetadata } from '@/lib/metadata-handler';
 
 export default defineProjectMetadata({
-   colour: '#2f76a6',
+   colour: '#8a39b3',
    description: 'Exploration of user experience engineering',
    endDate: '06/11/2026',
    featured: true,

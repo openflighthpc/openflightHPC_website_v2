@@ -1,8 +1,8 @@
 import { defineProjectMetadata } from '@/lib/metadata-handler';
 
 export default defineProjectMetadata({
-   colour: '#b39539',
-   description: 'Exploration of openTUI',
+   colour: '#02669f',
+   description: 'Exploration of terminal user interfaces with OpenTUI',
    endDate: '11/09/2026',
    featured: true,
    languages: ['typescript'],

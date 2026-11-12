@@ -1,8 +1,8 @@
 import { defineProjectMetadata } from '@/lib/metadata-handler';
 
 export default defineProjectMetadata({
-   colour: '#6a8f76',
-   description: 'A collection of user and admin tools.',
+   colour: '#5135ab',
+   description: 'An integrated suite of tools for easy HPC access and cluster management',
    endDate: '01/08/2019',
    featured: true,
    languages: ['typescript', 'ruby', 'html', 'css', 'bash'],

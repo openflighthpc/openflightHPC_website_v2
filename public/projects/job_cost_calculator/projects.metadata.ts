@@ -1,7 +1,7 @@
 import { defineProjectMetadata } from '@/lib/metadata-handler';
 
 export default defineProjectMetadata({
-   colour: '#6a8f76',
+   colour: '#0c64b9',
    description: 'A tool for calculating the cost of running jobs on the cloud infrastructure',
    endDate: '03/11/2020',
    featured: false,

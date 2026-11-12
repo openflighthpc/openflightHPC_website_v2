@@ -1,8 +1,8 @@
 import { defineProjectMetadata } from '@/lib/metadata-handler';
 
 export default defineProjectMetadata({
-   colour: '#35a314',
-   description: 'Exploration of testing personas and ai assisted testing',
+   colour: '#8d5403',
+   description: 'Exploration of persona roleplay and AI-assisted testing',
    endDate: '25/09/2026',
    featured: true,
    languages: ['typescript'],

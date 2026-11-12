@@ -1,7 +1,7 @@
 import { defineProjectMetadata } from '@/lib/metadata-handler';
 
 export default defineProjectMetadata({
-   colour: '#ba7042',
+   colour: '#af2355',
    description: 'Exploration of kubernetes',
    endDate: '28/07/2026',
    featured: true,

@@ -9,7 +9,7 @@ The folder the files are stored in must have the same name as the project but in
 ```ts
 export default defineProjectMetadata({
    name: 'Hackathon 13',
-   colour: '#c86e47',
+   colour: '#8a39b3',
    description: 'Exploration of user experience engineering',
    languages: ['typescript'],
    tags: ['R&D', 'Hackathon'],

@@ -1,7 +1,7 @@
 import { defineProjectMetadata } from '@/lib/metadata-handler';
 
 export default defineProjectMetadata({
-   colour: '#c86e47',
+   colour: '#9d3d0e',
    description: 'Ranking Carbon Emissions of Clusters',
    endDate: '01/05/2024',
    featured: false,

@@ -1,9 +1,9 @@
 import { defineProjectMetadata } from '@/lib/metadata-handler';
 
 export default defineProjectMetadata({
-   colour: '#c86e47',
+   colour: '#a64010',
    description:
-      'Predicting and capping cloud costs around a traditional-like HPC system build in the cloud.',
+      'Predicting and capping cloud costs around a traditional-like HPC system build in the cloud',
    endDate: '01/01/2019',
    featured: true,
    languages: ['ruby', 'html', 'javascript', 'css'],

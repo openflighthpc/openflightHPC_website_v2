@@ -4,6 +4,24 @@ import Marquee from 'react-fast-marquee';
 import AnimatedLogo from '@/app/components/AnimatedLogo';
 import Footer from '@/app/components/Footer';
 import { getFeaturedProjects } from '@/lib/project-handler';
+import Image from 'next/image';
+
+function CardWave() {
+   return (
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+         <svg className="h-full w-full" viewBox="0 0 288 216" preserveAspectRatio="none">
+            {/* The 312-unit wave period includes the 24px gap after each desktop card. */}
+            <path
+               d="M-156 108 C-117 175 -39 192 0 108 C39 24 117 24 156 108 S250 175 312 106 S429 24 468 108"
+               fill="none"
+               stroke="rgba(255, 255, 255, 0.15)"
+               strokeWidth="28"
+               transform="translate(-8 12)"
+            />
+         </svg>
+      </div>
+   );
+}
 
 const formatDate = (date: string) => {
    const [day, month, year] = date.split('/').map(Number);
@@ -18,6 +36,8 @@ const formatDate = (date: string) => {
 
 export default function Home() {
    const featuredProjects = getFeaturedProjects();
+
+
 
    return (
       <>
@@ -72,13 +92,21 @@ export default function Home() {
                                  className="relative flex aspect-[4/3] flex-col justify-between overflow-hidden rounded-2xl p-5"
                               >
                                  {/* Background logo */}
-                        
+                                 {/* <CardWave /> */}
 
                                  {/* Decorative circle */}
                                  <div
                                     aria-hidden="true"
                                     className="absolute -right-12 -top-14 h-48 w-48 rounded-full border-[28px] border-white/15"
                                  />
+
+                                 {/* <Image
+                                    src="/openflightHPC_website_v2/bumcloud_white.svg"
+                                    alt=""
+                                    width={180}
+                                    height={122}
+                                    className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 brightness-0 invert opacity-10"
+                                 /> */}
 
                                  {/* Content */}
                                  <div className="relative z-10 flex items-center justify-between">
@@ -144,6 +172,7 @@ export default function Home() {
                               }}
                               className="relative flex aspect-[4/3] flex-col justify-between overflow-hidden rounded-2xl p-5"
                            >
+                              {/* <CardWave /> */}
                               {/* Decorative circle */}
                               <div
                                  aria-hidden="true"
