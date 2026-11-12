@@ -58,6 +58,9 @@ export default function ProjectsGallery({ projects }: Readonly<{ projects: Proje
    const [sortOrder, setSortOrder] = useState<SortOrder>('newest');
    const [openMenu, setOpenMenu] = useState<'filter' | 'sort' | null>(null);
    const controlsRef = useRef<HTMLDivElement>(null);
+   const [maxItems, setMaxItems] = useState<number>(6)
+
+   
 
    useEffect(() => {
       if (openMenu === null) return;
@@ -103,7 +106,10 @@ export default function ProjectsGallery({ projects }: Readonly<{ projects: Proje
                      role="group"
                      type="button"
                      aria-pressed={selectedCategory === category}
-                     onClick={() => setSelectedCategory(category)}
+                     onClick={() => {
+                        setMaxItems(9)
+                        setSelectedCategory(category)
+                     }}
                      className={`rounded-full border px-4 py-1.5 cursor-pointer text-sm transition ${
                         selectedCategory === category
                            ? 'border-green-400/60 bg-green-400/20 text-green-300'
@@ -206,7 +212,7 @@ export default function ProjectsGallery({ projects }: Readonly<{ projects: Proje
             {visibleProjects.length === 0 && (
                <p className="col-span-full mt-10 text-zinc-400">No projects match these filters.</p>
             )}
-            {visibleProjects.map(({ index, project }) => (
+            {visibleProjects.slice(0, maxItems).map(({ index, project }) => (
                <Link
                   key={project.id}
                   href={`/projects/${project.id}`}
@@ -258,7 +264,16 @@ export default function ProjectsGallery({ projects }: Readonly<{ projects: Proje
                   </div>
                </Link>
             ))}
+      
+          
          </div>
+
+         {maxItems < visibleProjects.length && (
+             <div className='mt-12 flex w-full justify-center'>
+           <button onClick={() => setMaxItems(prev => prev + 6)} className= 'rounded-full px-4 py-2 bg-white text-black font-bold cursor-pointer transition hover:bg-white/80 duration-200'>View more</button>
+           </div>
+         )}
+        
       </>
    );
 }

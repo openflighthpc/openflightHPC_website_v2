@@ -92,21 +92,7 @@ export default function Home() {
                                  className="relative flex aspect-[4/3] flex-col justify-between overflow-hidden rounded-2xl p-5"
                               >
                                  {/* Background logo */}
-                                 {project.logoPath && (
-                                    <>
-                                       <Image
-                                          src={project.logoPath}
-                                          alt=""
-                                          width={1}
-                                          height={1}
-
-                                          aria-hidden="true"
-                                          className="absolute inset-0 h-full w-full scale-110 object-cover blur-md"
-                                       />
-
-                                       <div className="absolute inset-0 bg-black/40" />
-                                    </>
-                                 )}
+                        
 
                                  {/* Decorative circle */}
                                  <div

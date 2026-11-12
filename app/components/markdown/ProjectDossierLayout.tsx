@@ -2,6 +2,7 @@ import type { Project } from '@/lib/project-handler';
 
 import DossierTabs from './DossierTabs';
 import { STATUS_TAGS } from './status';
+import { getAllProjects } from '@/lib/project-handler';
 
 type LayoutProps = {
    project: Project;
@@ -45,6 +46,8 @@ export default function ProjectDossierLayout({
    summary
 }: Readonly<LayoutProps>) {
    const stamp = STATUS_TAGS[project.status as keyof typeof STATUS_TAGS] ?? project.status;
+
+    const projects = getAllProjects();
 
    return (
       <div className="relative flex-1 font-sans text-neutral-100">
@@ -113,6 +116,18 @@ export default function ProjectDossierLayout({
                   }
                />
             </div>
+            {/* <div className='w-full'>
+               <div className='flex justify-between'>
+               <p>Kepp reading</p>
+               <p>View all</p>
+               </div>
+                       <div className="grid w-full  grid-cols-1 sm:grid-cols-2 gap-6 md:grid-cols-3">
+                        
+
+                        
+                       </div>
+
+            </div> */}
          </main>
       </div>
    );
