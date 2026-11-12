@@ -16,7 +16,7 @@ Flight Solo is built around three key components:
 - **Cloud-Init Integration:** Uses Cloud-Init to inject runtime information and configuration into the operating system when a cloud instance is provisioned. This allows the environment to be configured flexibly at deployment time.
 - **Flight Environment:** The complete Flight Environment is installed by default, with configuration optimisations to provide a ready-to-use HPC experience.
 
-[[Flight-Environment]]
+[[flight_environment]]
 
 ### Use Cases
 

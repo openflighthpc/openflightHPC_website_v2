@@ -51,7 +51,7 @@ Inline code is smaller and tinted green: `curl -s localhost:8000/health`.
 A paragraph that only contains a project id in double brackets gets swapped
 for a card for that project, status stamp and all. Take Hackathon-13:
 
-[[Hackathon-13]]
+[[hackathon_13]]
 
 An id that matches no project stays a normal inline span:
 `[[does-not-exist]]`.
