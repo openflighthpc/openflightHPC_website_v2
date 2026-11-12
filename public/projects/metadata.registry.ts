@@ -13,6 +13,7 @@ import job_cost_calculator from './job_cost_calculator/projects.metadata';
 import openflight_labs_markdown_renderer from './openflight_labs_markdown_renderer/projects.metadata';
 import SACCT_reporter_and_SACCT_API from './SACCT_reporter_and_SACCT_API/projects.metadata';
 import vem2 from './vem2/projects.metadata';
+import hpc_end_user_basics from './hpc_end_user_basics/projects.metadata';
 
 const ProjectMetadata = {
    carbon_leaderboard,
@@ -29,7 +30,8 @@ const ProjectMetadata = {
    job_cost_calculator,
    openflight_labs_markdown_renderer,
    SACCT_reporter_and_SACCT_API,
-   vem2
+   vem2,
+   hpc_end_user_basics
 };
 
 export default ProjectMetadata;
