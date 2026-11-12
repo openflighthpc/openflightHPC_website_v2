@@ -10,7 +10,7 @@ This project sought to expose key considerations with HPC environments: workload
 
 Flight Warehouse was built around Flight Solo, the packaged cloud image containing Flight Tools and helpers to jump-start HPC environment creation. It provided templates and workflows for deploying complete HPC stacks in private cloud environments.
 
-[[flight_solo]]
+[project](flight_solo)
 
 ![WareHouse Home Page](extras/warehouse-1.webp)
 ![Slurm team edition Launch instructions](extras/warehouse-2.webp)

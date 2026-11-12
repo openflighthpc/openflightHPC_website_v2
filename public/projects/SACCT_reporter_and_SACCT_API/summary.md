@@ -29,3 +29,6 @@ The goal of this project was to use the knowledge from the SACCT CLI tool to act
 - How an API can accept calls to query an active database
 - How to construct command line tools from a API call
 - How to return a structured JSON dump that contains all the necessary information
+- How to visualise and collate single point data into a summary
+- How to deploy an API on a cluster
+- How to make the user experience worthwhile and make management easier.
