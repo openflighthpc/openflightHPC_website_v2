@@ -3,6 +3,11 @@ import type { Project } from '@/lib/project-handler';
 import { STATUS_TAGS } from './assets/status';
 import DossierTabs from './tabs/DossierTabs';
 
+/**
+ * Formats the date into a given format
+ * @param date the date to format
+ * @returns The formatted date
+ */
 const formatDate = (date: string) => {
    const [day, month, year] = date.split('/').map(Number);
 
@@ -14,6 +19,11 @@ const formatDate = (date: string) => {
    });
 };
 
+/**
+ * Puts the children into the sheet layout
+ * @param children The children to put in the sheet  
+ * @returns The formatted sheet
+ */
 function DossierSheet({
    children
 }: Readonly<{
@@ -45,11 +55,6 @@ export default function ProjectDossierLayout({
 
    return (
       <div className="relative flex-1 font-sans text-neutral-100">
-         {/* ————————————————————————————————————————
-          BACKDROP — the wall behind everything:
-          poured concrete, one warm seam, node-rack
-          labels stencilled up the dark
-          ———————————————————————————————————————— */}
          <header className="relative mx-auto max-w-4xl px-6 pb-4 pt-20 sm:px-10">
             <div className="mt-10 text-center">
                <div className="flex font-bold justify-center gap-2">
@@ -85,11 +90,6 @@ export default function ProjectDossierLayout({
                </div>
             </div>
          </header>
-
-         {/* 
-         Main body including both the summary and breakdown in their own tabs
-         See ./DossierTabs.tsx for more info
-          */}
          <main className="relative mx-auto max-w-6xl px-6 sm:px-10">
             <div className="grid grid-cols-1 gap-y-16 mt-14 text-lg leading-loose [grid-template-columns:1fr] lg:text-xl lg:[grid-template-columns:3rem_minmax(0,1fr)] lg:gap-x-10">
                <aside className="hidden lg:block"></aside>
