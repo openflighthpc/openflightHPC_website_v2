@@ -1,8 +1,11 @@
 # Hypothesis
+
 The goal of this project was to develop a Ruby on Rails application for tracking cloud computing costs and managing instances across AWS and Azure.
 
 Flight Control provides visibility into cloud expenditure across projects, enables users to manage instance lifecycles, and helps organisations control spending through budget policies, automated recommendations and resource management actions.
+
 # Approach
+
 Flight Control brings together cost monitoring, instance management and budget controls in a single application.
 
 ![Flight Control Overview Video](extras/flight-control-preview.mp4)
@@ -28,6 +31,7 @@ Flight Control brings together cost monitoring, instance management and budget c
 - Monitors CPU utilisation to identify underused resources and potential cost savings.
 
 #### Integration
+
 - **Slack integration:** Sends notifications, alerts and reports.
 - **Flight SSO:** Provides authentication through Flight's single sign-on system.
 - **Role-based permissions:** Controls access according to user roles.
