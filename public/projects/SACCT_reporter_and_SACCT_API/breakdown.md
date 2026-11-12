@@ -78,12 +78,21 @@ Timespan CLI output:
 
 # What was learnt
 
-- How an API can accept calls to query an active database
-- How to construct command line tools from a API call
-- How to return a structured JSON dump that contains all the necessary information
-- How to visualise and collate single point data into a summary
-- How to deploy an API on a cluster
-- How to make the user experience worthwhile and make management easier.
+This project allowed for the development of a software packaged designed specifically for the end user for cluster technicians so they can get the most use out of their machines and understand how they operate on the job, as well as debug and fix existing jobs to ensure a reliable uptime.
+
+It was also a developmental process of how a command line interface can connect to actual real world data, and how APIs can process existing data into a usable and human readable approach. Giving both a JSON dump and a TTY table for the API allows it to be used on both the cluster and by operators away from the cluster to verify existing results.
+
+Thus throughout the project, the skills gained were:
+
+- **Colation and summary:**This project shows how data can be processed from raw points into a simple human readable format and JSON dumps for further processing.
+
+- **Filtering:**By using JSON dumps and CLI interfaces, the data can be broken up into the parts a system operator wants to see in their database.
+
+- **Deployment processes:**By having the program run via Ruby for the CLI, and flask for the API, it shows how a project can be deployed to run in the cluster to understand why the cluster act that way.
+
+- **Accessability:**By keeping commands simple, the project was able to make ease of use and understanding a key metric allowing for a tool that can be understood in minutes.
+
+- **Development on customer needs:** Focusing on what a customer needs(a colated view of their cluster), this project allows it to be used as intended and adapted based on structural requirements.
 
 # GitHub Repositories
 
