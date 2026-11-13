@@ -706,7 +706,8 @@ Every command the tool offers, with its flags. The options most relevant to day-
    - `--dependency` — removes the dependency directive.
    - `--output_file`, `-o` — writes the result to a new file instead of overwriting the original.
    - `--submit` — submits the modified script after removal.
-     :::
+
+:::
 
 :::collapse Profiles, templates and validation
 
@@ -729,7 +730,8 @@ Every command the tool offers, with its flags. The options most relevant to day-
 - `alces-job validate script <path>` — validates an existing Slurm script file and reports any problems.
 
 - `alces-job validate template <name>` — validates a custom template by name.
-  :::
+
+:::
 
 :::collapse Monitoring, modules and system info
 
@@ -764,7 +766,8 @@ Every command the tool offers, with its flags. The options most relevant to day-
    - `--partition`, `-p` — updates partition information.
    - `--package`, `-k` — updates package information.
    - `--all`, `-a` — updates all available information.
-     :::
+
+:::
 
 :::collapse Setup and housekeeping
 
@@ -787,4 +790,9 @@ Every command the tool offers, with its flags. The options most relevant to day-
    - `--mail_type` — stores a default mail notification type.
    - `--submit` — stores the default submit behavior.
    - `--editor` — stores a default editor for manual script editing.
-     :::
+
+:::
+
+## Links
+
+[github](https://github.com/alces-software/alces-job)
