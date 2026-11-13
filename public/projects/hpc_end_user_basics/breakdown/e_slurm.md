@@ -247,9 +247,7 @@ Your research environment job scheduler automatically creates a number of pseudo
 - `%j` / `$SLURM_JOBID` Job allocation number. The %j substitution should only be used in your job scheduler filename directives
 
 [More information on this.](https://slurm.schedmd.com/sbatch.html#SECTION_%3CB%3Efilename-pattern%3C/B%3E)
-:::
-
-:::collapse Requesting More Resources
+:::page-break
 
 # Requesting More Resources
 
