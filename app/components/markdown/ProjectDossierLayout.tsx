@@ -60,8 +60,12 @@ export default function ProjectDossierLayout({
                   {[
                      { label: 'status', value: project.status },
                      { label: 'featured', value: project.featured ? 'yes' : 'no' },
-                     ...(project.languages.length > 0 ? [{ label: 'languages', value: project.languages.join(' · ') }] : []),
-                     ...(project.tags.length > 0 ? [{ label: 'tags', value: project.tags.join(' · ') }] : [])
+                     ...(project.languages.length > 0
+                        ? [{ label: 'languages', value: project.languages.join(' · ') }]
+                        : []),
+                     ...(project.tags.length > 0
+                        ? [{ label: 'tags', value: project.tags.join(' · ') }]
+                        : [])
                   ].map((m) => (
                      <div
                         key={m.label}
