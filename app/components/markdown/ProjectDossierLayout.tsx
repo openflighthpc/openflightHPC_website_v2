@@ -32,7 +32,7 @@ function DossierSheet({
    children: React.ReactNode;
 }>) {
    return (
-      <section className="pb-24 shadow-[0_1.5rem_3rem_-1rem_rgba(0,0,0,0.9)]">
+      <section className="shadow-[0_1.5rem_3rem_-1rem_rgba(0,0,0,0.9)]">
          <div className="prose prose-invert  max-w-none mt-6 sm:mt-10">{children}</div>
       </section>
    );
@@ -91,7 +91,7 @@ export default function ProjectDossierLayout({
             </div>
          </header>
          <main className="relative mx-auto max-w-6xl px-6 sm:px-10">
-            <div className="grid grid-cols-1 gap-y-16 mt-14 text-lg leading-loose [grid-template-columns:1fr] lg:text-xl lg:[grid-template-columns:3rem_minmax(0,1fr)] lg:gap-x-10">
+            <div className="grid grid-cols-1 gap-y-16 text-lg leading-loose [grid-template-columns:1fr] lg:text-xl lg:[grid-template-columns:3rem_minmax(0,1fr)] lg:gap-x-10">
                <aside className="hidden lg:block"></aside>
 
                <DossierTabs

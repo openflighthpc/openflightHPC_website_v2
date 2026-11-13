@@ -13,6 +13,8 @@ import ProjectCard from './cards/ProjectCard';
 import WebsiteCard from './cards/WebsiteCard';
 import CodeBlock from './codeBlock/CodeBlock';
 import remarkCollapse from './collapse/remarkCollapse';
+import MarkdownPagination from './pages/MarkdownPagination';
+import remarkPages from './pages/remarkPages';
 import remarkSpoiler from './spoilers/remarkSpoiler';
 import Spoiler from './spoilers/Spoiler';
 import MarkdownTabs from './tabs/MarkdownTabs';
@@ -66,7 +68,8 @@ export const REMARK_PLUGINS = [
    remarkCodeMeta,
    remarkTabs,
    remarkCollapse,
-   remarkSpoiler
+   remarkSpoiler,
+   remarkPages
 ];
 
 const hastTextContent = (node: HastElement): string =>
@@ -318,6 +321,12 @@ export function createMarkdownComponents(
          </div>
       );
    };
+
+   looseComponents['pagination'] = MarkdownPagination;
+
+   looseComponents['page'] = ({ children }) => (
+      <>{children}</>
+   );
 
    return components;
 }
