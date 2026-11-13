@@ -152,9 +152,13 @@ becomes a card for that website, with title and description.
 Pagination is supported allowing for pages to be broken down into multiple pages. this is done by using `:::page-break` to indicate a new page.
 
 ```md
-# Page 1 
+# Page 1
+
 :::page-break
+
 # Page 2
+
 :::page-break
+
 # Page 3
 ```

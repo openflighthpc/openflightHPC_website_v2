@@ -324,9 +324,7 @@ export function createMarkdownComponents(
 
    looseComponents['pagination'] = MarkdownPagination;
 
-   looseComponents['page'] = ({ children }) => (
-      <>{children}</>
-   );
+   looseComponents['page'] = ({ children }) => <>{children}</>;
 
    return components;
 }

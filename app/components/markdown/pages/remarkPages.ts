@@ -20,9 +20,7 @@ export default function remarkPages() {
          if (
             node.type === 'paragraph' &&
             node.children?.some(
-               (child) =>
-                  child.type === 'text' &&
-                  PAGE_BREAK_MARKER.test(child.value ?? '')
+               (child) => child.type === 'text' && PAGE_BREAK_MARKER.test(child.value ?? '')
             )
          ) {
             hasPageBreak = true;
@@ -39,10 +37,7 @@ export default function remarkPages() {
 
       if (!hasPageBreak) return;
 
-      while (
-         pages.length > 1 &&
-         pages[pages.length - 1].length === 0
-      ) {
+      while (pages.length > 1 && pages[pages.length - 1].length === 0) {
          pages.pop();
       }
 
