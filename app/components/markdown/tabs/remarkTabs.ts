@@ -235,8 +235,6 @@ function spliceTabsets(nodes: MdastNode[]): MdastNode[] {
             cursor += 1;
             break;
          } else {
-            // Content before the first `:::Label` lands in an unlabelled
-            // implicit first panel.
             if (!current) {
                current = { children: [], label: '' };
                panels.push(current);
@@ -246,8 +244,6 @@ function spliceTabsets(nodes: MdastNode[]): MdastNode[] {
 
          cursor += 1;
       }
-
-      const labels = node.labels ?? [];
 
       out.push({
          children: panels.map((panel, panelIndex) => ({
@@ -263,7 +259,7 @@ function spliceTabsets(nodes: MdastNode[]): MdastNode[] {
          })),
          data: {
             hName: 'tabset',
-            hProperties: { 'data-labels': labels.join(' | ') }
+            hProperties: { 'data-labels': (node.labels ?? []).join(' | ') }
          },
          type: 'tabset'
       });

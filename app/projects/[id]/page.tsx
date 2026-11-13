@@ -3,24 +3,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import Footer from '@/app/components/Footer';
+import { formatDate } from '@/app/components/markdown/assets/formatDate';
 import MarkdownRenderer from '@/app/components/markdown/MarkdownRenderer';
 import { getAllProjects } from '@/lib/project-handler';
-
-/**
- * Formats date to a formatted style
- * @param date The date to format
- * @returns The formatted date
- */
-const formatDate = (date: string) => {
-   const [day, month, year] = date.split('/').map(Number);
-
-   return new Date(Date.UTC(year, month - 1, day)).toLocaleDateString('en-US', {
-      day: 'numeric',
-      month: 'short',
-      timeZone: 'UTC',
-      year: 'numeric'
-   });
-};
 
 const projectGradients = [
    'linear-gradient(135deg, #166534 0%, #0f766e 55%, #164e63 100%)',
@@ -102,7 +87,7 @@ export default async function ProjectPage({
                      {project.logoPath ? (
                         <div className="relative w-full aspect-square overflow-hidden rounded-lg mb-4">
                            <Image
-                              src={`/openflightHPC_website_v2/${project.logoPath}`}
+                              src={`/${project.logoPath}`}
                               alt={`${project.name} logo`}
                               fill
                               className="object-cover scale-100 transition-transform duration-400 hover:scale-110"

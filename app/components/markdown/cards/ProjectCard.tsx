@@ -4,18 +4,8 @@ import Link from 'next/link';
 
 import { type Project } from '@/lib/project-handler';
 
+import { formatDate } from '../assets/formatDate';
 import { STATUS_TAGS } from '../assets/status';
-
-const formatDate = (date: string) => {
-   const [day, month, year] = date.split('/').map(Number);
-
-   return new Date(Date.UTC(year, month - 1, day)).toLocaleDateString('en-US', {
-      day: 'numeric',
-      month: 'short',
-      timeZone: 'UTC',
-      year: 'numeric'
-   });
-};
 
 /**
  * A mini dossier card for cross-project references in markdown,
@@ -33,12 +23,10 @@ export default function ProjectCard({
          : project.endDate && project.endDate !== project.startDate
            ? `${formatDate(project.startDate)} - ${formatDate(project.endDate)}`
            : formatDate(project.startDate);
-   // next/link prefixes the site basePath itself — do not include it here.
-   const href = `/projects/${encodeURIComponent(project.id)}/`;
 
    return (
       <Link
-         href={href}
+         href={`/projects/${encodeURIComponent(project.id)}/`}
          className="group not-prose my-8 block border border-neutral-800 bg-neutral-900/40 px-6 py-8 text-neutral-100 shadow-[0_1.5rem_3rem_-1rem_rgba(0,0,0,0.9)] transition-colors hover:border-lime-400/40 sm:px-10"
       >
          <div className="text-center max-w-2xl mx-auto">

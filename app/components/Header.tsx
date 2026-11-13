@@ -12,7 +12,7 @@ export default function Header() {
       <header className="sticky top-0 z-80 pt-4 flex h-16 w-full items-center justify-between bg-black/80 px-8 text-white backdrop-blur sm:px-16">
          <Link href="/" className="cursor-pointer">
             <Image
-               src="/openflightHPC_website_v2/header_logo.svg"
+               src="/header_logo.svg"
                width={221}
                height={40}
                alt="OpenFlight Labs"
