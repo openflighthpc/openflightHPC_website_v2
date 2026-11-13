@@ -1,7 +1,5 @@
 ## Job Schedulers
 
-:::collapse Job Scheduler Basics
-
 # Job Scheduler Basics
 
 # What is a Job?
@@ -34,9 +32,7 @@ However, a job-scheduler can still be a useful tool for a research environment r
 
 Your research environment comes with a job-scheduler installed, ready for you to start using. The scheduler uses very few resources when idle, so you can choose to use it if you find it useful, or run jobs manually across your research environment if you prefer.
 
-:::
-
-:::collapse Types of Compute Job
+:::page-break
 
 # Types of Compute Job
 
@@ -80,4 +76,4 @@ Users typically interact with research environments by running either interactiv
 
 Both methods of running jobs can be equally as efficient, particularly on a personal, ephemeral research environment. Both classes of job can be of any type - for example, it's possible to run interactive parallel jobs and batch multi-threaded jobs across your research environment. The choice of which class of job-type you want to use will depend on the application you're running, and which method is more convenient for you to use.
 
-:::
+:::page-break

@@ -1,7 +1,5 @@
 ## CLI Basics
 
-:::collapse Logging In
-
 # Logging In
 
 You can access the login node for your research environment using SSH to connect to the externally facing IP address of the login node. You will need to use the SSH keypair configured for the research environment in order to access it.
@@ -45,9 +43,7 @@ The first time you connect to your research environment, you will be prompted to
 
 ![First login image](./extras/firstlogin.webp)
 
-:::
-
-:::collapse Understanding the CLI
+:::page-break
 
 # Understanding the CLI
 
@@ -66,9 +62,7 @@ Hello World!
 
 The prompt can vary based on user preference and global environment configuration. The above is an example for illustrative purposes.
 
-:::
-
-:::collapse Moving Between Hosts
+:::page-break
 
 # Moving Between Hosts
 
@@ -83,9 +77,7 @@ ssh node01
 ```
 
 Use the command `logout` or `exit` (or press **CTRL+D**) to exit the compute node and return to the previous host.
-:::
-
-:::collapse Becoming the Root User
+:::page-break
 
 # Becoming the Root User
 
@@ -102,4 +94,4 @@ Users must exercise caution when running commands as root, as they have the pote
 Some users may not have root privileges. This is at the discretion of your admin or system configuration.
 
 You can log out of the root user by running the command `exit`, `logout`, or by pressing **CTRL+D**.
-:::
+:::page-break

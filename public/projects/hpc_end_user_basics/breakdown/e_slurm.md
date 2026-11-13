@@ -1,7 +1,5 @@
 ## Slurm
 
-:::collapse Further Documentation
-
 # Further Documentation
 
 This guide is a quick overview of some of the many available options of the SLURM research environment scheduler. For more information on the available options, you may wish to reference some of the following available documentation for the demonstrated SLURM commands:
@@ -10,11 +8,9 @@ This guide is a quick overview of some of the many available options of the SLUR
 - Use the `man sbatch/srun` command to see a full list of scheduler submission instructions.
 - Online documentation for the SLURM scheduler is [available here](https://slurm.schedmd.com/documentation.html)
 
-:::
+:::page-break
 
 ### Running Jobs
-
-:::collapse Submitting an Interactive Job
 
 # Submitting an Interactive Job
 
@@ -47,9 +43,9 @@ If the job-scheduler could not satisfy the resource you've requested for your in
 srun: job 20 queued and waiting for resources
 ```
 
-:::
+:::page-break
 
-:::collapse Submitting a Batch Job
+# Submitting a Batch Job
 
 Batch (or non-interactive) jobs allow users to leverage one of the main benefits of having a research environment scheduler; jobs can be queued up with instructions on how to run them and then executed across the research environment while the user [does something else](https://www.quora.com/What-do-you-do-while-youre-waiting-for-your-code-to-finish-running). Users submit jobs as scripts, which include instructions on how to run the job - the output of the job (stdout and stderr in Linux terminology) is written to a file on disk for review later on. You can write a batch job that does anything that can be typed on the command-line.
 
@@ -85,9 +81,7 @@ Starting running on host node01
 Finished running - goodbye from node01
 ```
 
-:::
-
-:::collapse Submitting an Array Job
+:::page-break
 
 # Submitting an Array Job
 
@@ -149,9 +143,7 @@ scancel 77_[100-200]
 scancel 77_5
 ```
 
-:::
-
-:::collapse Job Configuration
+:::page-break
 
 # Job Configuration
 
@@ -241,9 +233,7 @@ Submitted batch job 76
                 75       all    myjob    centos  R       0:15      1 node01
 ```
 
-:::
-
-:::collapse Dynamic Scheduler Variables
+:::page-break
 
 # Dynamic Scheduler Variables
 
@@ -257,9 +247,7 @@ Your research environment job scheduler automatically creates a number of pseudo
 - `%j` / `$SLURM_JOBID` Job allocation number. The %j substitution should only be used in your job scheduler filename directives
 
 [More information on this.](https://slurm.schedmd.com/sbatch.html#SECTION_%3CB%3Efilename-pattern%3C/B%3E)
-:::
-
-:::collapse Requesting More Resources
+:::page-break
 
 # Requesting More Resources
 
@@ -345,11 +333,9 @@ Tue Aug 30 10:55:55 2016
               1163       all    sleep    centos  RUNNING       0:07   2:00:00      1 ip-10-75-1-42
 ```
 
-:::
+:::page-break
 
 ### Running Jobs
-
-:::collapse Viewing and Controlling Queued Jobs
 
 # Viewing and Controlling Queued Jobs
 
@@ -398,9 +384,7 @@ Submitted batch job 48
                 48       all simplejo    centos  R       0:11      1 node03
 ```
 
-:::
-
-:::collapse Viewing Compute Host Status
+:::page-break
 
 # Viewing Compute Host Status
 
@@ -439,9 +423,7 @@ PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST
 all*         up   infinite      2   idle cnode[01-02]
 ```
 
-:::
-
-:::collapse Viewing Default Resources
+:::page-break
 
 # Viewing Default Resources
 
@@ -461,5 +443,3 @@ SallocDefaultCommand    = (null)
 ```
 
 This documentation will explain how to change these limits to suit the jobs that you want to run. You can also disable these limits if you prefer to control resource allocation manually by yourself.
-
-:::

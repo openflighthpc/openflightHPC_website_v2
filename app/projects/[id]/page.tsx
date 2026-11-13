@@ -91,7 +91,7 @@ export default async function ProjectPage({
             <section
                aria-label="More projects"
                tabIndex={0}
-               className="mt-10 flex w-full snap-x snap-mandatory gap-4 overflow-x-auto pb-4 lg:grid lg:grid-cols-3 lg:gap-6 lg:overflow-visible lg:pb-0 lg:snap-none"
+               className="mt-6 flex w-full snap-x snap-mandatory gap-4 overflow-x-auto pb-4 lg:grid lg:grid-cols-3 lg:gap-6 lg:overflow-visible lg:pb-0 lg:snap-none"
             >
                {getRandomProjects(id).map((project, index) => (
                   <Link

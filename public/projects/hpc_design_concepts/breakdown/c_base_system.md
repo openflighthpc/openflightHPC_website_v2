@@ -1,5 +1,3 @@
-:::collapse Base System
-
 # Base System
 
 Before considering how the OS and applications will be deployed it is worth making a few decisions regarding the OS that will be used:
@@ -44,4 +42,4 @@ For more information regarding network package managers and application deployme
 - How will new package versions be installed when the HPC environment being maintained in the future?
 - How will you create and maintain a consistent software environment on all nodes over time?
 
-:::
+:::page-break

@@ -46,6 +46,15 @@ becomes an embed card with live repo stats:
 Links with other link text, or URLs deeper than the repo root, stay
 ordinary anchors.
 
+## Website cards
+
+A paragraph that only contains a `[pretty-link:::<title>:::<description>](…)` link pointing at a website
+becomes a card for that website, with title and description.
+
+```md
+[pretty-link:::pretty.io:::this is just a test page link](https://pretty-link.io)
+```
+
 ## Collapsible sections
 
 A `:::collapse` container renders as a native `<details>` panel. The line
@@ -131,22 +140,6 @@ Double pipes around inline content blur it out until the reader clicks:
 Works around words, images and videos. Inline code and code fences are
 untouched, and an unclosed `||` stays plain text.
 
-## Everything else
-
-Headings, lists, tables, task lists, footnotes, quotes, links. All plain
-markdown via remark-gfm, images go through next/image. Image and video
-paths are resolved relative to the project's own folder, so `extras/…`
-means that project's assets.
-
-## Website cards
-
-A paragraph that only contains a `[pretty-link:::<title>:::<description>](…)` link pointing at a website
-becomes a card for that website, with title and description.
-
-```md
-[pretty-link:::pretty.io:::this is just a test page link](https://pretty-link.io)
-```
-
 ### Pagination
 
 Pagination is supported allowing for pages to be broken down into multiple pages. this is done by using `:::page-break` to indicate a new page.
@@ -162,3 +155,10 @@ Pagination is supported allowing for pages to be broken down into multiple pages
 
 # Page 3
 ```
+
+## Everything else
+
+Headings, lists, tables, task lists, footnotes, quotes, links. All plain
+markdown via remark-gfm, images go through next/image. Image and video
+paths are resolved relative to the project's own folder, so `extras/…`
+means that project's assets.

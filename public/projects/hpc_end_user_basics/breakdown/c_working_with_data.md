@@ -1,7 +1,5 @@
 ## Working with data
 
-:::collapse Storage types
-
 # Storage Types
 
 # Shared Storage
@@ -18,9 +16,7 @@ Users must make sure that they copy data they want to keep back to the shared fi
 
 Utilising local scratch can dramatically increase the execution speed of HPC workflows that generate a lot of data during runtime where a lot of it isn't required for analysing results. By utilising the local scratch, this data can typically be written to, and read from, quicker than network shared storage.
 
-:::
-
-:::collapse Your Home Directory
+:::page-break
 
 # Your Home Directory
 
@@ -34,9 +30,7 @@ The Linux command line will accept the `~` (tilde) symbol as a substitute for th
 
 The root user in Linux has special meaning as a privileged user, and usually does not have a shared home-directory across a research environment. The root account on all nodes is likely to have a home-directory in `/root`, which is separate for every node. For security reasons, users are not permitted to login to a node as the root.
 
-:::
-
-:::collapse Copying Data Between Hosts
+:::page-break
 
 # Copying Data Between Hosts
 
@@ -50,11 +44,9 @@ scp node01:/tmp/myfile.txt .
 
 Alternatively, users could login to a host that has unshared data on and copy the data back to the shared filesystem.
 
-:::
+:::page-break
 
 ### Copying Data
-
-:::collapse Using the CLI
 
 # Using the CLI
 
@@ -81,9 +73,7 @@ pscp -i mykeyfile.ppk mydata.zip flight@52.48.62.34:/home/flight/ # (1)!
 Both the `scp` and the `pscp` commands take the parameter `-r` to recursively copy entire directories of files to the research environment.
 
 To retrieve files from the research environment, simply specify the location of the remote file first in the scp command, followed by the location on the local system to put the file.
-:::
-
-:::collapse Using Graphical Client
+:::page-break
 
 # Using Graphical Client
 
@@ -112,9 +102,7 @@ The amount of time taken to copy data to and from your research environment will
 - The speed of your Internet link to the research environment; if you are copying large amounts of data, try to connect using a wired connection rather than wireless
 - The type and location of your research environment login node in relation to your client location
 
-:::
-
-:::collapse Object Storage for Archiving Data
+:::page-break
 
 # Object Storage for Archiving Data
 
@@ -129,4 +117,4 @@ As an alternative to copying data back to your client machine, users may prefer 
 
 Object storage is particularly useful for archiving data, as it typically provides a convenient, accessible method of storing data which may need to be shared with a wide group of individuals.
 
-:::
+:::page-break
