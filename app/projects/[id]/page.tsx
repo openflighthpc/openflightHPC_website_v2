@@ -3,8 +3,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import Footer from '@/app/components/Footer';
-import { formatDate } from '@/app/components/markdown/assets/formatDate';
 import MarkdownRenderer from '@/app/components/markdown/MarkdownRenderer';
+import { formatDate } from '@/lib/date-formatter';
 import { getAllProjects } from '@/lib/project-handler';
 
 const projectGradients = [
