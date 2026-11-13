@@ -37,7 +37,7 @@ export default function WebsiteCard({
             </p>
 
             <p className="mt-3 text-neutral-400">{description ?? 'A link to an external site'}</p>
-            <p className="mt-1 group-hover:text-lime-300">{href}</p>
+            <p className="mt-1 group-hover:text-lime-300 break-all">{href}</p>
          </div>
       </a>
    );
