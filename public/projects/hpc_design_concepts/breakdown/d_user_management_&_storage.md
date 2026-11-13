@@ -217,6 +217,6 @@ Additionally, benchmarking can be performed using whichever applications the HPC
 # Additional Considerations and Questions
 
 - How will you know that a compute node is performing at the expected level?
-    - Gflops theoretical vs actual performance efficiency
-    - Network performance (bandwidth, latency, ping interval)
+   - Gflops theoretical vs actual performance efficiency
+   - Network performance (bandwidth, latency, ping interval)
 - How can you test nodes regularly to ensure that performance has not changed / degraded?

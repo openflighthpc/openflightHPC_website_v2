@@ -1,6 +1,5 @@
 ## Working with data
 
-
 # Storage Types
 
 # Shared Storage
@@ -49,7 +48,6 @@ Alternatively, users could login to a host that has unshared data on and copy th
 
 ### Copying Data
 
-
 # Using the CLI
 
 Usually a HPC environment will have a "login" or "gateway" node which is the entrypoint to the rest of the nodes. From outside of the HPC environment the data will need to be copied to this system (likely to shared storage) to make it available.
@@ -76,7 +74,6 @@ Both the `scp` and the `pscp` commands take the parameter `-r` to recursively co
 
 To retrieve files from the research environment, simply specify the location of the remote file first in the scp command, followed by the location on the local system to put the file.
 :::page-break
-
 
 # Using Graphical Client
 
@@ -106,7 +103,6 @@ The amount of time taken to copy data to and from your research environment will
 - The type and location of your research environment login node in relation to your client location
 
 :::page-break
-
 
 # Object Storage for Archiving Data
 

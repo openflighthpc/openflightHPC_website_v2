@@ -1,6 +1,5 @@
 ## CLI Basics
 
-
 # Logging In
 
 You can access the login node for your research environment using SSH to connect to the externally facing IP address of the login node. You will need to use the SSH keypair configured for the research environment in order to access it.
@@ -46,7 +45,6 @@ The first time you connect to your research environment, you will be prompted to
 
 :::page-break
 
-
 # Understanding the CLI
 
 Usually a lot of HPC environment usage takes place via the Linux command line. For unfamiliar users here is a brief description of a typical CLI prompt.
@@ -66,7 +64,6 @@ The prompt can vary based on user preference and global environment configuratio
 
 :::page-break
 
-
 # Moving Between Hosts
 
 Usually SSH is used to navigate between systems in a HPC environment. This provides a secure shell connection to another host in order to access the CLI on that system.
@@ -81,7 +78,6 @@ ssh node01
 
 Use the command `logout` or `exit` (or press **CTRL+D**) to exit the compute node and return to the previous host.
 :::page-break
-
 
 # Becoming the Root User
 

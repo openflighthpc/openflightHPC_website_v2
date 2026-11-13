@@ -45,7 +45,6 @@ srun: job 20 queued and waiting for resources
 
 :::page-break
 
-
 # Submitting a Batch Job
 
 Batch (or non-interactive) jobs allow users to leverage one of the main benefits of having a research environment scheduler; jobs can be queued up with instructions on how to run them and then executed across the research environment while the user [does something else](https://www.quora.com/What-do-you-do-while-youre-waiting-for-your-code-to-finish-running). Users submit jobs as scripts, which include instructions on how to run the job - the output of the job (stdout and stderr in Linux terminology) is written to a file on disk for review later on. You can write a batch job that does anything that can be typed on the command-line.
