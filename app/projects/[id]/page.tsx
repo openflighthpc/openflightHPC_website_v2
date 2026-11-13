@@ -1,4 +1,5 @@
 import { ChevronRight } from 'lucide-react';
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -48,6 +49,31 @@ export function generateStaticParams() {
    return getAllProjects().map((project) => ({
       id: project.id
    }));
+}
+
+/**
+ * Builds the page metadata from the project's own data
+ * @param params The project id from the route
+ * @returns The metadata for the project page
+ */
+export async function generateMetadata({
+   params
+}: Readonly<{ params: Promise<{ id: string }> }>): Promise<Metadata> {
+   const { id } = await params;
+   const project = getAllProjects().find((project) => project.id === id);
+
+   if (!project) {
+      return { description: 'Project page not found.', title: 'Not Found' };
+   }
+
+   return {
+      description: project.description,
+      openGraph: {
+         description: project.description,
+         title: project.name
+      },
+      title: project.name
+   };
 }
 
 function getRandomProjects(id: string, count = 3) {
