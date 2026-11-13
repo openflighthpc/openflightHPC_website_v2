@@ -2,7 +2,7 @@ import { defineProjectMetadata } from '@/lib/metadata-handler';
 
 export default defineProjectMetadata({
    description:
-      'Present info to introduce basics of using Linux within the context of an HPC environment',
+      'An introduction to the basics of using Linux within the context of an HPC environment',
    endDate: '01/06/2023',
    featured: true,
    name: 'HPC End User Basics',
