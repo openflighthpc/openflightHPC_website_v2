@@ -1,12 +1,4 @@
-type MdastNode = {
-   type: string;
-   value?: string;
-   data?: {
-      hName?: string;
-      hProperties?: Record<string, unknown>;
-   };
-   children?: MdastNode[];
-};
+import { MdastNode } from '../assets/types';
 
 /** Block nodes whose children are inline content. */
 const INLINE_PARENTS = new Set(['paragraph', 'heading', 'tableCell']);
