@@ -60,6 +60,6 @@ Finally, taac highlighted what a good CLI lifecycle looks like. Covering creatio
 
 ## Links
 
-(github)[https://github.com/acegoal07/taac]
+[github](https://github.com/acegoal07/taac)
 
 [pretty-link:::taac npm page:::A link to the taac npm page](https://www.npmjs.com/package/@acegoal07/taac)
