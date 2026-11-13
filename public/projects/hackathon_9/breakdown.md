@@ -108,3 +108,6 @@ We also explored how OpenTUI could be used alongside other technologies, includi
 Another important takeaway was the value of having freedom to experiment. Rather than working towards a single predefined outcome, everyone was able to pursue an idea that interested them, resulting in a diverse range of projects and approaches.
 
 Ultimately, the hackathon demonstrated that the CLI does not have to be limited to text-based interaction. With frameworks such as OpenTUI, it is possible to build rich, interactive experiences that retain the convenience of terminal-based applications while introducing many of the benefits traditionally associated with graphical user interfaces.
+
+## Links
+[github](https://github.com/openflighthpc/Hackathon-9)
