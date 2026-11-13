@@ -1,7 +1,7 @@
 'use client';
 
-import { Children, type ReactNode, useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { Children, type ReactNode, useEffect, useRef, useState } from 'react';
 
 export default function MarkdownPagination({
    children
@@ -10,16 +10,16 @@ export default function MarkdownPagination({
 }>) {
    const pages = Children.toArray(children);
    const [currentPage, setCurrentPage] = useState(0);
-   const [scrolling, setScrolling] = useState(false);
+   const scrolling = useRef(false);
 
    useEffect(() => {
-      if (currentPage === 0 && !(scrolling)) return;
+      if (!scrolling.current) return;
 
       document.getElementById('page-start')?.scrollIntoView({
          block: 'start',
          behavior: 'smooth'
       });
-      setScrolling(false);
+      scrolling.current = false;
    }, [currentPage]);
 
    if (!pages.length) return null;
@@ -34,7 +34,7 @@ export default function MarkdownPagination({
          <div className="flex items-center justify-between mt-8 mb-8">
             <button
                onClick={() => {
-                  setScrolling(true);
+                  scrolling.current = true;
 
                   setCurrentPage((page) => page - 1);
                }}
@@ -50,7 +50,10 @@ export default function MarkdownPagination({
             </span>
 
             <button
-               onClick={() => setCurrentPage((page) => page + 1)}
+               onClick={() => {
+                  scrolling.current = true;
+                  setCurrentPage((page) => page + 1);
+               }}
                disabled={isLastPage}
                className={`flex items-center px-4 py-2 border cursor-pointer ${isLastPage ? 'opacity-0' : ''} rounded-full font-bold transition hover:bg-white/10 duration-200 disabled:cursor-not-allowed`}
             >
