@@ -1,3 +1,4 @@
+import alces_job from './alces_job/projects.metadata';
 import carbon_leaderboard from './carbon_leaderboard/projects.metadata';
 import diskless_stack from './diskless_stack/projects.metadata';
 import flight_control from './flight_control/projects.metadata';
@@ -17,6 +18,7 @@ import SACCT_reporter_and_SACCT_API from './SACCT_reporter_and_SACCT_API/project
 import vem2 from './vem2/projects.metadata';
 
 const ProjectMetadata = {
+   alces_job,
    carbon_leaderboard,
    diskless_stack,
    flight_control,
