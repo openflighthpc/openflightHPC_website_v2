@@ -98,6 +98,6 @@ Thus throughout the project, the skills gained were:
 
 # GitHub Repositories
 
-[github](https://github.com/AdamJ2009/Alces-Sacct-V2)
+[github](https://github.com/openflighthpc/sacct-reporter)
 
-[github](https://github.com/AdamJ2009/SACCT_API)
+[github](https://github.com/openflighthpc/SACCT_API)
