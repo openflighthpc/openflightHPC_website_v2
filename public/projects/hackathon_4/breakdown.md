@@ -86,4 +86,5 @@ Finally, developing the battling game demonstrated how data generated from real 
 Overall, we learnt how to bring together generative AI, web development, API integration, data processing and gamification into one connected system. The hackathon also highlighted the importance of defining clear integration points between independently developed components and allowing time to address compatibility and API limitations.
 
 ## Links
+
 (github)[https://github.com/openflighthpc/Hackathon-4/tree/main]
