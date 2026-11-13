@@ -31,7 +31,7 @@ export default function Timeline({ items }: Readonly<{ items: Project[] }>) {
 
                   <div className="min-w-0 max-w-2xl">
                      <p className="text-sm font-medium tracking-wide text-zinc-400">
-                        {item.startDate}
+                        {formatDate(item.startDate)}
                         {dateRange(item)}
                      </p>
                      <p className="mt-2 text-zinc-300">{item.description}</p>
