@@ -1,5 +1,3 @@
-:::collapse Infrastructure
-
 # Infrastructure
 
 Infrastructure design largely relates to the considerations made for the [cluster architecture](https://openflighthpc.org/lab/D3S1GN/docs/network-and-hardware/#hardware-recommendations). Depending on the design being used, some of the infrastructure decisions may have already been made.

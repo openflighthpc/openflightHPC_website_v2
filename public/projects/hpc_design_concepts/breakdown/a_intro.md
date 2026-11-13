@@ -4,8 +4,6 @@ The goal of this project is to provide documentation covering general HPC Design
 
 # Documentation
 
-:::collapse Overview
-
 # Overview
 
 The purpose of this documentation is to provide a list of considerations and guidelines for the development of a HPC environment. This documentation should be followed through in order to properly understand the structure of the environment and that certain considerations are not missed out along the way.
@@ -27,9 +25,7 @@ Finally, platform delivery includes a range of connectivity, performance and qua
 
 It is recommended to read through all of the documentation before starting to design the HPC platform to understand the scope and considerations.
 
-:::
-
-:::collapse Network and Hardware
+:::page-break
 
 # Network and Hardware
 
@@ -210,4 +206,4 @@ The wordings for settings above may differ depending on the hardware that is bei
 
 For hardware-specific BIOS configuration settings see the [Alces Software knowledgebase](https://github.com/alces-software/knowledgebase/wiki#servers) which has many recommendations based on their experience with integrating HPC environments.
 
-:::
+:::page-break
