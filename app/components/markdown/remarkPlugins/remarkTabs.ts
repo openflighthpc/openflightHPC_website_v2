@@ -1,14 +1,4 @@
-type MdastNode = {
-   type: string;
-   value?: string;
-   labels?: string[];
-   label?: string;
-   data?: {
-      hName?: string;
-      hProperties?: Record<string, unknown>;
-   };
-   children?: MdastNode[];
-};
+import { MdastNode } from '../assets/types';
 
 /**
  * `:::tabs A | B | C` opens a tabset. Each panel inside is bounded by a

@@ -1,18 +1,4 @@
-type MdastNode = {
-   type: string;
-   value?: string;
-   data?: {
-      hName?: string;
-      hProperties?: Record<string, unknown>;
-   };
-   children?: MdastNode[];
-};
-
-/** Block nodes whose children are inline content. */
-const INLINE_PARENTS = new Set(['paragraph', 'heading', 'tableCell']);
-
-/** The spoiler node renders as this element via `data.hName`. */
-const WRAPPER_CLASS = 'spoiler';
+import { MdastNode } from '../assets/types';
 
 function hasDelimiter(children: MdastNode[]): boolean {
    return children.some((child) => child.type === 'text' && (child.value ?? '').includes('||'));
@@ -32,7 +18,7 @@ function wrapSpoilers(children: MdastNode[]): MdastNode[] {
       if (buffer.length) {
          out.push({
             children: buffer,
-            data: { hName: 'span', hProperties: { className: WRAPPER_CLASS } },
+            data: { hName: 'span', hProperties: { className: 'spoiler' } },
             type: 'spoil'
          });
          buffer = [];
@@ -75,7 +61,7 @@ function walk(node: MdastNode): void {
    const children = node.children;
    if (!children) return;
 
-   if (INLINE_PARENTS.has(node.type)) {
+   if (new Set(['paragraph', 'heading', 'tableCell']).has(node.type)) {
       if (hasDelimiter(children)) node.children = wrapSpoilers(children);
       return;
    }

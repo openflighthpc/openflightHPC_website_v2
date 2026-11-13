@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from 'react';
 import { RxFilter } from 'react-icons/rx';
 
 import { formatDate } from '@/app/components/markdown/assets/formatDate';
+import { dateValue } from '@/lib/date';
 import type { Project } from '@/lib/project-handler';
 
 const projectGradients = [
@@ -36,11 +37,6 @@ const sortOptions: { label: string; value: SortOrder }[] = [
    { label: 'Newest to oldest', value: 'newest' },
    { label: 'Oldest to newest', value: 'oldest' }
 ];
-
-const dateValue = (date: string) => {
-   const [day, month, year] = date.split('/').map(Number);
-   return Date.UTC(year, month - 1, day);
-};
 
 export default function ProjectsGallery({ projects }: Readonly<{ projects: Project[] }>) {
    const [selectedCategory, setSelectedCategory] = useState('All');
