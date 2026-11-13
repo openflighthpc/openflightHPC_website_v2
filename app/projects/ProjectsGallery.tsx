@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { RxFilter } from 'react-icons/rx';
 
+import { formatDate } from '@/app/components/markdown/assets/formatDate';
 import type { Project } from '@/lib/project-handler';
 
 const projectGradients = [
@@ -39,17 +40,6 @@ const sortOptions: { label: string; value: SortOrder }[] = [
 const dateValue = (date: string) => {
    const [day, month, year] = date.split('/').map(Number);
    return Date.UTC(year, month - 1, day);
-};
-
-const formatDate = (date: string) => {
-   const [day, month, year] = date.split('/').map(Number);
-
-   return new Date(Date.UTC(year, month - 1, day)).toLocaleDateString('en-US', {
-      day: 'numeric',
-      month: 'short',
-      timeZone: 'UTC',
-      year: 'numeric'
-   });
 };
 
 export default function ProjectsGallery({ projects }: Readonly<{ projects: Project[] }>) {

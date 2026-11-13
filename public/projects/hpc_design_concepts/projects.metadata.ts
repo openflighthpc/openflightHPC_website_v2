@@ -7,5 +7,5 @@ export default defineProjectMetadata({
    name: 'HPC Design Concepts',
    startDate: '01/04/2018',
    status: 'archived',
-   tags: ['HPC', 'R&D']
+   tags: ['HPC', 'R&D', 'Guide']
 });

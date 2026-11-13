@@ -8,5 +8,5 @@ export default defineProjectMetadata({
    name: 'OpenFlight Labs Markdown renderer',
    startDate: '10/11/2026',
    status: 'in-progress',
-   tags: ['Meta', 'Demo', 'Renderer']
+   tags: ['Demo', 'Renderer']
 });

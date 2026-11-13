@@ -9,5 +9,5 @@ export default defineProjectMetadata({
    name: 'Carbon Leaderboard',
    startDate: '01/05/2024',
    status: 'archived',
-   tags: ['R&D']
+   tags: ['R&D', 'HPC']
 });

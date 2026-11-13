@@ -3,15 +3,6 @@
 import Image from 'next/image';
 import { useCallback, useRef, useState } from 'react';
 
-type BeforeAfterSliderProps = {
-   beforeSrc: string;
-   beforeAlt: string;
-   afterSrc: string;
-   afterAlt: string;
-   beforeLabel?: string;
-   afterLabel?: string;
-};
-
 export default function BeforeAfterSlider({
    afterAlt,
    afterLabel = 'AFTER',
@@ -19,7 +10,14 @@ export default function BeforeAfterSlider({
    beforeAlt,
    beforeLabel = 'BEFORE',
    beforeSrc
-}: Readonly<BeforeAfterSliderProps>) {
+}: Readonly<{
+   beforeSrc: string;
+   beforeAlt: string;
+   afterSrc: string;
+   afterAlt: string;
+   beforeLabel?: string;
+   afterLabel?: string;
+}>) {
    const containerRef = useRef<HTMLDivElement>(null);
    const [isDragging, setIsDragging] = useState(false);
    const [position, setPosition] = useState(50);

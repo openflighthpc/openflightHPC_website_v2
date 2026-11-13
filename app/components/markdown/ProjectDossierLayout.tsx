@@ -1,23 +1,8 @@
 import type { Project } from '@/lib/project-handler';
 
+import { formatDate } from './assets/formatDate';
 import { STATUS_TAGS } from './assets/status';
 import DossierTabs from './tabs/DossierTabs';
-
-/**
- * Formats the date into a given format
- * @param date the date to format
- * @returns The formatted date
- */
-const formatDate = (date: string) => {
-   const [day, month, year] = date.split('/').map(Number);
-
-   return new Date(Date.UTC(year, month - 1, day)).toLocaleDateString('en-US', {
-      day: 'numeric',
-      month: 'short',
-      timeZone: 'UTC',
-      year: 'numeric'
-   });
-};
 
 /**
  * Puts the children into the sheet layout

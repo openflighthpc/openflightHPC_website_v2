@@ -52,3 +52,5 @@ Overall, Flight Solo showed how cloud images can reduce the complexity of settin
 ## Links
 
 [pretty-link:::Flight Solo Documentation:::Part of a github repository containing documentation for Flight Solo](https://github.com/openflighthpc/docs.openflighthpc.org/tree/release/2024.1/docs/docs/flight-solo)
+
+[pretty-link:::Flight Solo:::A link to flight solo](https://openflighthpc.github.io/docs.openflighthpc.org/latest/solo/)
