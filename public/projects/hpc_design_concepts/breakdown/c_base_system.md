@@ -1,4 +1,5 @@
 :::collapse Base System
+
 # Base System
 
 Before considering how the OS and applications will be deployed it is worth making a few decisions regarding the OS that will be used:
@@ -37,6 +38,7 @@ Further to managing packages on the local system, the entire network may require
 For more information regarding network package managers and application deployment, see application deployment.
 
 # Additional Considerations and Questions
+
 - How will applications outside of the repositories be installed?
 - Will the application need to be usable by all nodes in the HPC network? (e.g. an NFS export for apps may solve the issue of multiple installations)
 - How will new package versions be installed when the HPC environment being maintained in the future?

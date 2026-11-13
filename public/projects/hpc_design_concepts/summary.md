@@ -14,14 +14,8 @@ The goal was to document the key considerations and best practices for designing
 
 A well-planned infrastructure and network design is essential for a reliable HPC environment.
 
-
-
 Automation and centralised management simplify system deployment and maintenance.
 
-
-
 Storage, monitoring and workload management should be selected based on the needs of users and applications.
-
-
 
 Regular verification and benchmarking help ensure the system is configured correctly and performs as expected.

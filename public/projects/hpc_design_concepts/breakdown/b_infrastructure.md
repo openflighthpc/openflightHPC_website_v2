@@ -1,8 +1,11 @@
 :::collapse Infrastructure
+
 # Infrastructure
+
 Infrastructure design largely relates to the considerations made for the [cluster architecture](https://openflighthpc.org/lab/D3S1GN/docs/network-and-hardware/#hardware-recommendations). Depending on the design being used, some of the infrastructure decisions may have already been made.
 
 # Infrastructure Service Availability
+
 There are typically 3 possible service availability options to choose from, these are:
 
 - All-in-one
@@ -43,28 +46,33 @@ In addition to the availability of services, the network configuration on the no
 - **VLAN Interface Tagging:** VLAN management can be performed both on a managed switch and on the node. The node is able to create subdivisions of network interfaces to add VLAN tags to packets. This will create separate interfaces that can be seen by the operating system (e.g. eth0.1 and eth0.2) which can individually have IP addresses set.
 
 ### Additional Considerations and Questions
+
 - Could containerised solutions be used instead of VMs?
-    - Docker or Singularity containerised services can provide similar levels of isolation between services as VMs without the additional performance overhead.
+   - Docker or Singularity containerised services can provide similar levels of isolation between services as VMs without the additional performance overhead.
 
 # Recommendations for Infrastructure Design
 
 The example configurations here combine elements of the network and hardware guide as well as the different infrastructure solutions from these infrastructure considerations. These focus on the internal configuration of the master node but these examples can be extrapolated for configuring login, storage, compute or any other nodes that are part of the HPC environment.
 
 ### Simple Infrastructure
+
 ![Simple Infrastructure image](./extras/InfrastructureDesign1.webp)
 The simplest infrastructure configuration uses the all-in-one approach where services are configured on the master node's operating system.
 
 ### Virtual Machine Infrastructure
+
 ![Virtual Machine Infrastructure image](./extras/InfrastructureDesign2.webp)
 
 This solution separates the services into VMs running on the master node. In order for these VMs to be able to connect to the primary network a network bridge is created that allows the VM interfaces to send traffic over the eth0 interface.
 
 ### Channel Bonded Infrastructure
+
 ![Channel Bonded Infrastructure image](./extras/InfrastructureDesign3.webp)
 
 This example adds a layer of redundancy over the VM Infrastructure design by bonding the eth0 and eth3 interfaces. These interfaces are connected to separate network switches (the switches will be bridged together as well) which provides redundancy should a switch or network interface fail. Bonding of the two interfaces creates a new bond interface that the bridge for the virtual machines connects to.
 
-### VLAN Infrastruture 
+### VLAN Infrastruture
+
 ![VLAN Infrastructure image](./extras/InfrastructureDesign4.webp)
 
 The above solution implements the channel bonded infrastructure in a network with VLANs. The VLANs have bond and bridge interfaces created for them. This allows some additional flexibility for VM bridging as virtual interfaces can be bridged onto specific VLANs whilst maintaining the redundancy provided by the bond. This adds additional security to the network as the master node can be left without an IP on certain VLAN bond interfaces which prevents that network from accessing the master node whilst VMs on the master node are able to reach that VLAN.

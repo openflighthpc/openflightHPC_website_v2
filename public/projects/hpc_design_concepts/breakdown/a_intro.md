@@ -1,13 +1,17 @@
 # Hypothesis
+
 The goal of this project is to provide documentation covering general HPC Design concepts.
 
 # Documentation
+
 :::collapse Overview
+
 # Overview
 
 The purpose of this documentation is to provide a list of considerations and guidelines for the development of a HPC environment. This documentation should be followed through in order to properly understand the structure of the environment and that certain considerations are not missed out along the way.
 
 To generalise the entire process, it goes as follows:
+
 1. Hardware Architecture Design
 2. Hardware Build
 3. Software Build
@@ -26,6 +30,7 @@ It is recommended to read through all of the documentation before starting to de
 :::
 
 :::collapse Network and Hardware
+
 # Network and Hardware
 
 In general, the things to consider when designing the hardware and network solution for a HPC platform are:
@@ -96,6 +101,7 @@ node01.pri.cluster1.compute.estate
 ```
 
 Which can be broken down as follows:
+
 - `node01`: The hostname of the system
 - `pri`: The network that the interface is sat on (in this case, `pri` = primary)
 - `cluster1`: The cluster that `node01` is a part of
@@ -121,42 +127,47 @@ Non-Ethernet networks usually cannot usually be secured to the same level as Eth
 The below questions should be considered when designing the network and hardware solution for the HPC platform.
 
 - How much power will the systems draw?
-    - Think about the power draw of the selected hardware, it may be drawing a large amount of amps so sufficient power sources must be available.
+   - Think about the power draw of the selected hardware, it may be drawing a large amount of amps so sufficient power sources must be available.
 
 - How many users are going to be accessing the system?
-    - A complex, distributed service network would most likely be overkill and a centralised login/master node would be more appropriate.
+   - A complex, distributed service network would most likely be overkill and a centralised login/master node would be more appropriate.
 
 - What network interconnect will be used?
-    - It's most likely that different network technologies will be used for different-networks. For example, the high performance network could benefit from using Infiniband as the interconnect.
+   - It's most likely that different network technologies will be used for different-networks. For example, the high performance network could benefit from using Infiniband as the interconnect.
 
 - How could the hardware be optimised?
-    - BIOS settings could be tweaked on the motherboard to give additional performance and stability improvements.
-    - Network switch configurations could be optimised for different types of traffic
+   - BIOS settings could be tweaked on the motherboard to give additional performance and stability improvements.
+   - Network switch configurations could be optimised for different types of traffic
 
 - What types of nodes will be in the system?
 - What applications are going to be run on the system?
-    - Are they memory intensive?
-    - Is interconnect heavily relied upon for computations?
+   - Are they memory intensive?
+   - Is interconnect heavily relied upon for computations?
 
 # Recommendations
+
 Below are some different recommendations for hardware and network design. These can vary depending on the number of users and quantity of systems within the HPC platform.
 
 ### Hardware Recommendations
+
 Useful recommendations for blades, network switches and storage technologies can be found in the [Alces Software knowledgebase](https://github.com/alces-software/knowledgebase/wiki)
 
 With the above in mind, diagrams of different architectures are below. They increase in complexity and redundancy as the list goes on.
 
 #### Example 1 - Standalone
+
 ![Standalone architecture](./extras/NodeTypes1.webp)
 
 The above architecture consists of master, login and compute nodes. The services provided by the master & login nodes can be seen to the right of each node type. This architecture only separates the services for users and admins.
 
 #### Example 2 - High Availability
+
 ![High Availability architecture](./extras/NodeTypes2.webp)
 
 This architecture provides additional redundancy to the services running on the master node. For example, the disk array is connected to both master nodes which use multipath to ensure the higher availability of the storage device.
 
 #### Example 3 - HA VMs
+
 ![HA VMS architecture](./extras/NodeTypes3.webp)
 
 This architecture puts services inside of VMs to improve the ability to migrate and modify services with little impact to the other services and systems on the architecture. Virtual machines can be moved between VM hosts live without service disruption allowing for hardware replacements to take place on servers.
@@ -166,6 +177,7 @@ This architecture puts services inside of VMs to improve the ability to migrate 
 The above architectures can be implemented with any of the below network designs.
 
 #### Example 1 - Simple
+
 ![Simple network design](./extras/NetworkDesign1.webp)
 
 The above design contains the minimum recommended internal networks. A primary network (for general logins and navigating the system), a management network (for BMC management of nodes and switches) and a high performance Infiniband network (connected to the nodes). The master and login nodes have access to the external network for user and admin access to the HPC network.
@@ -173,11 +185,13 @@ The above design contains the minimum recommended internal networks. A primary n
 The master node could additionally be connected to the high performance network so that compute nodes have a faster network connection to storage.
 
 #### Example 2 - VLANs
+
 ![VLAN network design](./extras/NetworkDesign2.webp)
 
 The above network design has a few additions to the first example. The main change is the inclusion of VLANs for the primary, management and build networks (with the build network being a new addition to this design). The build network allows for systems to be toggled over to a DHCP system that uses PXE booting to kickstart an OS installation.
 
 ### Other Recommendations
+
 #### BIOS Settings
 
 It's recommended to ensure that the BIOS settings are reset to default and the latest BIOS version is installed before optimising the settings. This can ensure that any issues that may be present in the configuration before proceeding have been removed.

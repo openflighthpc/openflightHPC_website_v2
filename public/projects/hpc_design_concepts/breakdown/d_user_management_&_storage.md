@@ -1,4 +1,5 @@
 :::collapse User Management
+
 # User Management
 
 # User Authentication
@@ -12,6 +13,7 @@ User authentication is usually performed in a server/client setup inside the HPC
 If the user accounts need to be consistent with accounts on the external network then the master node should have a replica service to the external networks account management system. This will allow the account information to be forwarded to the HPC network, without creating a hard-dependency on an external authentication service.
 
 # User Access
+
 It is also worth considering how users will be accessing the system. A few ways that users can be accessing and interacting with the HPC environment are:
 
 - SSH: This is the most common form of access for both users and admins. SSH will provide terminal-based access and X forwarding capabilities to the user.
@@ -21,18 +23,22 @@ It is also worth considering how users will be accessing the system. A few ways 
 If running firewall services within the environment (recommended) then be sure to allow access from the ports used by the selected user access protocols.
 
 # Additional Considerations and Questions
+
 - What information will need to be shared between the systems?
 - How will users want to access the system?
 
 :::
 
 :::collapse Storage
+
 # Storage
 
 # Storage Hardware
+
 When selecting the storage solution it is worth considering the size, performance and resilience of the desired storage solution. Usually some sort of storage array will be used; e.g. a collection of disks (otherwise known as JBOD) in the form of an internal or external RAID array.
 
 # Type of filesystem
+
 For many requirements, a simple NFS solution can provide sufficient performance and resiliency for data. Application, library and source-code files are often small enough to be stored on an appropriately sized NFS solution; such storage systems can even be grown over time using technologies like LVM and XFS as requirements increase.
 
 For data-sets that require high capacity (>100TB) or high-performance (>1GB/sec) access, a parallel filesystem may be suitable to store data. Particularly well suited to larger files (e.g. at least 4MB per storage server), a parallel filesystem can provide additional features such as byte-range locking (the ability for multiple nodes to update sections of a large file simultaneously), and MPI-IO (the ability to control data read/written using MPI calls). Parallel filesystems work by aggregating performance and capacity from multiple servers and allowing clients (your cluster compute and login nodes) to mount the filesystem as a single mount-point. Common examples include:
@@ -52,44 +58,50 @@ If your data-set contains a large number of files which need to be kept and sear
 # Network Storage Solutions
 
 ### Single server with NFS
+
 ![Single Server NFS picture](./extras/SingleServerNFS.webp)
 
 In this example, a single server is connected to a RAID 6 storage array which it is serving over NFS to the systems on the network. While simple in design and implementation, this design only provides redundancy at the RAID level.
 
-### Mutiple Servers with NFS 
+### Mutiple Servers with NFS
+
 ![Multiple Servers with NFS picture](./extras/MultiServerNFS.webp)
 
 In addition to the previous example, this setup features multiple storage servers which balance the load of serving the disk over NFS.
 
 ### Multiple Servers with Parallel filesystem
+
 ![Multiple Servers with Parallel filesystem picture](./extras/MultiServerLustre.webp)
 
 This setup features multiple RAID sets which are installed externally to the storage servers and are connected to both of them using multipath - this allows for multiple paths to the storage devices to be utilised. Using this storage, a Lustre volume has been configured which consists of a combination of all the external disks. Authorisation of access to the storage volume is managed by the metadata node, which also has dedicated storage.
 
 ### Additional Considerations and Question
+
 - What data will need to be centrally stored?
 - Where will data be coming from?
-    - Are source files created within the HPC network or do they exist in the external network?
-    - Will compute nodes be writing out logs/results from running jobs?
-    - Where else might data be coming from?
+   - Are source files created within the HPC network or do they exist in the external network?
+   - Will compute nodes be writing out logs/results from running jobs?
+   - Where else might data be coming from?
 - Is scratch space needed?
 - What level of redundancy/stability is required for the data?
 - How will the data be backed up?
-    - Will there be off-site backups?
-    - Should a separate storage medium be used?
-    - Does all the data need backing up or only certain files?
-    - For how long will we keep the data, and any backups created?
+   - Will there be off-site backups?
+   - Should a separate storage medium be used?
+   - Does all the data need backing up or only certain files?
+   - For how long will we keep the data, and any backups created?
 - What are my disaster recovery and business continuity plans?
-    - If the storage service fails, how will my users continue working?
-    - How can I recreate the storage service if it fails?
-    - How long will it take to restore any data from backups?
+   - If the storage service fails, how will my users continue working?
+   - How can I recreate the storage service if it fails?
+   - How long will it take to restore any data from backups?
 
 :::
 
 :::collapse Monitoring
+
 # Monitoring
 
 # Types of Monitoring
+
 There are 2 types of monitoring that can be implemented into a network; these are:
 
 - **Passive:** Passive monitoring tools collect data and store from systems. Usually this data will be displayed in graphs and is accessible either through command-line or web interfaces. This sort of monitoring is useful for historical metrics and live monitoring of systems.
@@ -98,44 +110,48 @@ There are 2 types of monitoring that can be implemented into a network; these ar
 Both forms of monitoring are usually necessary in order to ensure that your HPC cluster is running properly, and in full working order.
 
 # Metrics
+
 It is worth considering what metrics for the system will be monitored; a few common ones are listed here:
 
 - CPU
-    - Load average
-    - Idle percentage
-    - Temperature
+   - Load average
+   - Idle percentage
+   - Temperature
 - Memory
-    - Used
-    - Free
-    - Cached
+   - Used
+   - Free
+   - Cached
 - Disk
-    - Free space
-    - Used space
-    - Swap (free/used/total)
-    - Quotas (if configured)
+   - Free space
+   - Used space
+   - Swap (free/used/total)
+   - Quotas (if configured)
 - Network
-    - Packets in
-    - Packets out
+   - Packets in
+   - Packets out
 
 Cloud service providers usually have both passive and active monitoring services available through their cloud management front-end.
 
 # Additional Considerations and Questions
+
 - What metrics should be monitored?
 - How frequently should metrics be checked?
 - What level of notification is required?
-    - Escalation upon repeated errors?
-    - Acknowledgement of long-running outages?
-    - How do we avoid over-saturation of notifications during major outages?
-    - What tests will we run to ensure notifications are working properly?
+   - Escalation upon repeated errors?
+   - Acknowledgement of long-running outages?
+   - How do we avoid over-saturation of notifications during major outages?
+   - What tests will we run to ensure notifications are working properly?
 
 :::
 
 :::collapse HPC Environment
+
 # HPC Environment
 
 In a HPC environment there are large, distributed, multiple processor jobs that the users wish to run. While these jobs can be run manually by simply executing job scripts along with a hostfile containing the compute nodes to execute on, you will soon run into problems with multiple users, job queuing and priorities. These features are provided by a job scheduler, delivering a centralised server that manages the distribution, prioritisation and execution of job scripts from multiple users in the HPC network.
 
 Popular job schedulers for HPC clusters include:
+
 - Open Grid Scheduler (SGE)
 - PBS/Torque-Maui/ Torque-Moab / PBSPro
 - SLURM
@@ -178,11 +194,12 @@ It is important that your users receive a consistent, long-term service from you
 :::
 
 :::collapse Verification
+
 # Verification
 
 Before putting the system into a production environment it is worth verifying that the hardware and software is functioning as expected. The 2 key types of verification are:
 
-- **Configuration:**  Verifying that the system is functioning properly as per the server setup.
+- **Configuration:** Verifying that the system is functioning properly as per the server setup.
 - **Performance:** Verifying that the performance of the system is as expected for the hardware, network and applications.
 
 # Verifying the configuration
@@ -210,8 +227,8 @@ Additionally, benchmarking can be performed using whichever applications the HPC
 # Additional Considerations and Questions
 
 - How will you know that a compute node is performing at the expected level?
-    - Gflops theoretical vs actual performance efficiency
-    - Network performance (bandwidth, latency, ping interval)
+   - Gflops theoretical vs actual performance efficiency
+   - Network performance (bandwidth, latency, ping interval)
 - How can you test nodes regularly to ensure that performance has not changed / degraded?
 
 :::
