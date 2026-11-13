@@ -6,11 +6,11 @@ const ProjectMetadataSchema = z.object({
       .trim()
       .regex(/^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/, 'Invalid hex colour')
       .default('#2f76a6'),
-   description: z.string().trim().min(1),
+   description: z.string().trim().min(1).max(90),
    endDate: z.string().trim().min(1).nullable().default(null),
    featured: z.boolean().default(false),
    languages: z.array(z.string().trim().min(1)).default([]),
-   name: z.string().trim().min(1),
+   name: z.string().trim().min(1).max(40),
    startDate: z.string().trim().min(1),
    status: z.enum(['in-progress', 'complete', 'archived']),
    tags: z.array(z.string().trim().min(1)).default([])
