@@ -16,7 +16,8 @@ export default function MarkdownPagination({
       if (currentPage === 0 && !(scrolling)) return;
 
       document.getElementById('page-start')?.scrollIntoView({
-         block: 'start'
+         block: 'start',
+         behavior: 'smooth'
       });
       setScrolling(false);
    }, [currentPage]);
