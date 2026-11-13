@@ -12,49 +12,14 @@ import GithubRepoCard from './cards/GithubRepoCard';
 import ProjectCard from './cards/ProjectCard';
 import WebsiteCard from './cards/WebsiteCard';
 import CodeBlock from './codeBlock/CodeBlock';
-import remarkCollapse from './collapse/remarkCollapse';
 import MarkdownPagination from './pages/MarkdownPagination';
-import remarkPages from './pages/remarkPages';
-import remarkSpoiler from './spoilers/remarkSpoiler';
+import remarkCodeMeta from './remarkPlugins/remarkCodeMeta';
+import remarkCollapse from './remarkPlugins/remarkCollapse';
+import remarkPages from './remarkPlugins/remarkPages';
+import remarkSpoiler from './remarkPlugins/remarkSpoiler';
+import remarkTabs from './remarkPlugins/remarkTabs';
 import Spoiler from './spoilers/Spoiler';
 import MarkdownTabs from './tabs/MarkdownTabs';
-import remarkTabs from './tabs/remarkTabs';
-
-type MdastNode = {
-   type: string;
-   meta?: string;
-   data?: { hProperties?: Record<string, string> };
-   children?: MdastNode[];
-};
-/** Matches a bare `[[project-id]]` reference, inline or sole in a paragraph. */
-const PROJECT_REF_PATTERN = /^\[\[([a-z0-9 _-]+)\]\]$/i;
-
-/** Matches a github.com repo root URL and extracts owner and repo name. */
-const GITHUB_REPO_PATTERN = /^https:\/\/github\.com\/([\w.-]+)\/([\w.-]+)\/?$/;
-
-/** Class name the remarkSpoiler plugin stamps on spoiler wrapper spans. */
-const SPOILER_CLASS = 'spoiler';
-
-/** Element name the remarkTabs plugin gives its custom container node. */
-const TABSET_ELEMENT = 'tabset';
-
-/** Element name the remarkTabs plugin gives each panel wrapper node. */
-const TABPANEL_ELEMENT = 'tabpanel';
-
-/**
- * Copies a fenced code block's info-string meta into `data.hProperties` so
- * it survives into the hast `code` element's properties, e.g.
- * ```bash title=backup.sh → properties.meta === 'title=backup.sh'.
- */
-const remarkCodeMeta = () => (tree: unknown) => {
-   const visitNode = (node: MdastNode) => {
-      if (node.type === 'code' && node.meta) {
-         node.data = { ...node.data, hProperties: { meta: node.meta } };
-      }
-      node.children?.forEach(visitNode);
-   };
-   visitNode(tree as MdastNode);
-};
 
 /**
  * Remark plugins applied to every markdown source rendered on the page.
@@ -100,22 +65,23 @@ export function createMarkdownComponents(
 ): Components {
    const components: Components = {
       code({ children, className }) {
-         // Inline `[[project-id]]` references render as dossier cards.
          const refMatch = !className
-            ? new RegExp(PROJECT_REF_PATTERN).exec(String(children))
+            ? new RegExp(/^\[\[([a-z0-9 _-]+)\]\]$/i).exec(String(children))
             : undefined;
+
          if (refMatch) {
             const referenced = allProjects.find(
                (candidate) => candidate.id.toLowerCase() === refMatch[1].toLowerCase()
             );
-            if (referenced) return <ProjectCard project={referenced} />;
+
+            if (referenced) {
+               return <ProjectCard project={referenced} />;
+            }
          }
 
          return <code className="font-mono text-[0.85em] text-lime-200/90">{children}</code>;
       },
       details({ children, node, open, ...props }) {
-         // Everything after the summary is padded; the summary keeps its
-         // own padding so its bottom border stays full-bleed.
          const [summary, ...content] = Children.toArray(children);
 
          return (
@@ -130,11 +96,9 @@ export function createMarkdownComponents(
          );
       },
       img({ alt, children, src }) {
-         if (typeof src !== 'string') return null;
-
-         // A raw <video> tag falls back to the img component with the whole
-         // tag leaked into `alt`, so only keep a genuine alt text.
-         const altText = alt && alt !== src ? alt : '';
+         if (typeof src !== 'string') {
+            return null;
+         }
 
          if (/\.(mp4|webm|ogg|mov|m4v)$/i.test(src)) {
             return (
@@ -152,7 +116,7 @@ export function createMarkdownComponents(
          return (
             <Image
                src={resolveImagePath(src, projectName)}
-               alt={altText}
+               alt={alt && alt !== src ? alt : ''}
                width={1200}
                height={800}
                className="grayscale-[35%] max-w-full h-auto rounded-sm"
@@ -161,11 +125,8 @@ export function createMarkdownComponents(
          );
       },
       p({ children, node }) {
-         // A paragraph holding only a bare `[[project-id]]` reference renders
-         // as a dossier card for that project.
          const paraChildren = node?.children ?? [];
 
-         // A paragraph containing nothing but a <a> can be parsed into multiple types of cards
          const soleAnchor =
             paraChildren.length === 1 && paraChildren[0].type === 'element'
                ? (paraChildren[0] as HastElement)
@@ -176,7 +137,10 @@ export function createMarkdownComponents(
 
             if (anchorText === 'github') {
                const githubHref = String(soleAnchor.properties.href ?? '');
-               const repoRef = new RegExp(GITHUB_REPO_PATTERN).exec(githubHref);
+               const repoRef = new RegExp(/^https:\/\/github\.com\/([\w.-]+)\/([\w.-]+)\/?$/).exec(
+                  githubHref
+               );
+
                if (repoRef) {
                   return <GithubRepoCard owner={repoRef[1]} repo={repoRef[2]} href={githubHref} />;
                }
@@ -208,8 +172,6 @@ export function createMarkdownComponents(
             }
          }
 
-         // Two adjacent images in one paragraph whose alt text starts with
-         // `before|after` collapse into a draggable comparison slider.
          const images = (node?.children ?? []).filter(
             (child): child is HastElement => child.type === 'element' && child.tagName === 'img'
          );
@@ -258,7 +220,7 @@ export function createMarkdownComponents(
       // The remarkSpoiler plugin wraps `||…||` regions in spans carrying
       // the spoiler class; render them as clickable reveal components.
       span: ({ children, node, ...props }) =>
-         !((node?.properties?.className as string[] | undefined) ?? []).includes(SPOILER_CLASS) ? (
+         !((node?.properties?.className as string[] | undefined) ?? []).includes('spoiler') ? (
             <span {...props}>{children}</span>
          ) : (
             <Spoiler>{children}</Spoiler>
@@ -308,8 +270,8 @@ export function createMarkdownComponents(
          'data-index'?: string;
       }>
    >;
-   looseComponents[TABSET_ELEMENT] = MarkdownTabs;
-   looseComponents[TABPANEL_ELEMENT] = function TabPanel({
+   looseComponents['tabset'] = MarkdownTabs;
+   looseComponents['tabpanel'] = function TabPanel({
       children,
       className,
       'data-index': dataIndex,
@@ -321,9 +283,7 @@ export function createMarkdownComponents(
          </div>
       );
    };
-
    looseComponents['pagination'] = MarkdownPagination;
-
    looseComponents['page'] = ({ children }) => <>{children}</>;
 
    return components;
