@@ -1,7 +1,6 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-   basePath: '/openflightHPC_website_v2',
    experimental: {
       agentFeedback: true
    },

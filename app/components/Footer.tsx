@@ -6,7 +6,7 @@ export default function Footer() {
    return (
       <footer className=" z-80 flex h-40 w-full items-end justify-between bg-black/80 text-white backdrop-blur">
          <Image
-            src="/openflightHPC_website_v2/parting_cloud_l.svg"
+            src="/parting_cloud_l.svg"
             width={288}
             height={150}
             alt=""
@@ -15,7 +15,7 @@ export default function Footer() {
 
          <div className="flex min-w-0 flex-1 flex-col items-center self-center px-2">
             <Image
-               src="/openflightHPC_website_v2/header_logo.svg"
+               src="/header_logo.svg"
                width={288}
                height={150}
                alt="OpenFlight Labs"
@@ -35,7 +35,7 @@ export default function Footer() {
          </div>
 
          <Image
-            src="/openflightHPC_website_v2/parting_cloud_r.svg"
+            src="/parting_cloud_r.svg"
             width={288}
             height={150}
             alt=""

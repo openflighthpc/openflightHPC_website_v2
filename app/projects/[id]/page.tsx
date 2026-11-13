@@ -102,7 +102,7 @@ export default async function ProjectPage({
                      {project.logoPath ? (
                         <div className="relative w-full aspect-square overflow-hidden rounded-lg mb-4">
                            <Image
-                              src={`/openflightHPC_website_v2/${project.logoPath}`}
+                              src={`/${project.logoPath}`}
                               alt={`${project.name} logo`}
                               fill
                               className="object-cover scale-100 transition-transform duration-400 hover:scale-110"
