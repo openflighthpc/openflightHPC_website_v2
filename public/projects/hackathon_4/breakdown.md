@@ -87,4 +87,4 @@ Overall, we learnt how to bring together generative AI, web development, API int
 
 ## Links
 
-(github)[https://github.com/openflighthpc/Hackathon-4/tree/main]
+[github](https://github.com/openflighthpc/Hackathon-4/tree/main)

@@ -4,7 +4,7 @@ export default defineProjectMetadata({
    colour: '#027060',
    description: 'Exploration of AI image generation',
    endDate: '03/07/2026',
-   featured: true,
+   featured: false,
    languages: ['typescript'],
    name: 'Hackathon 4',
    startDate: '03/07/2026',

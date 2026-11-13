@@ -4,7 +4,7 @@ export default defineProjectMetadata({
    colour: '#0c64b9',
    description: 'A tool for calculating the cost of running jobs on the cloud infrastructure',
    endDate: '03/11/2020',
-   featured: false,
+   featured: true,
    languages: ['ruby'],
    name: 'Job Cost Calculator',
    startDate: '03/11/2020',

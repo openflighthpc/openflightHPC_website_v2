@@ -25,7 +25,7 @@ export default function Footer() {
                Maintained by{' '}
                <a
                   target="_blank"
-                  href="https://openflighthpc.github.io/docs.openflighthpc.org/latest/"
+                  href="https://github.com/openflighthpc"
                   className="text-green-400 transition hover:underline"
                >
                   OpenFlightHPC
