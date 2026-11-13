@@ -67,7 +67,14 @@ fetched live from the GitHub API. Take Phaser:
 Deeper links (issues, trees, blobs) and links with other link text stay
 ordinary anchors.
 
-## 5. Collapsible sections
+## 5. Website card
+
+A paragraph that only contains a `[pretty-link:::title:::description](…)` link pointing at a website
+becomes a card for that website, with title and description.
+
+[pretty-link:::pretty.io:::this is just a test page link](https://pretty-link.io)
+
+## 6. Collapsible sections
 
 A `:::collapse` container becomes a native `<details>` panel that readers
 can expand and collapse. The state keyword sets the default state — `open`
@@ -87,7 +94,7 @@ containers work too.
 
 :::page-break
 
-## 6. Before / after sliders
+## 7. Before / after sliders
 
 Two images in one paragraph, both with alt text starting with
 `before|after`, turn into a draggable slider. Left side is desaturated,
@@ -96,7 +103,7 @@ right side is the original:
 ![before|after a colour grade](extras/old.webp)
 ![before|after a colour grade](extras/new.webp)
 
-## 7. Videos
+## 8. Videos
 
 If the image extension is a video one (mp4, webm, ogg, mov, m4v) the
 renderer puts down a `<video controls>` instead of an image. Hand written
@@ -104,7 +111,7 @@ renderer puts down a `<video controls>` instead of an image. Hand written
 
 ![a sample clip](extras/demo.mp4)
 
-## 8. Tabs
+## 9. Tabs
 
 A `:::tabs` container turns its content into client-side tabs. The header
 line after `:::tabs` is a pipe-separated list of labels, and each panel
@@ -143,7 +150,7 @@ outside a tabset.
 :::
 :::
 
-## 9. Spoilers
+## 10. Spoilers
 
 `||…||` around inline content blurs it until the reader clicks. A word,
 an image and a video, all hidden:
@@ -151,7 +158,7 @@ an image and a video, all hidden:
 The secret word is ||verisimilitude||, and this image is ||![a hidden image](extras/old.webp)||
 so is this clip: ||![a hidden clip](extras/demo.mp4)||
 
-## 10. Regular markdown
+## 11. Regular markdown
 
 The usual stuff still works: gfm tables, task lists, footnotes, links and
 the rest.
@@ -164,10 +171,3 @@ the rest.
 | api     | 8000 | up     |
 
 > this is a blockquote. it exists to prove blockquotes work.
-
-## 11. Website card
-
-A paragraph that only contains a `[pretty-link:::title:::description](…)` link pointing at a website
-becomes a card for that website, with title and description.
-
-[pretty-link:::pretty.io:::this is just a test page link](https://pretty-link.io)
