@@ -11,7 +11,7 @@ The goal of this project is to provide documentation covering the fundamental co
 
 # Documentation
 
-:::collapse Genders and PDSH
+# Genders and PDSH
 
 # Overview
 
@@ -106,4 +106,4 @@ pdsh -g nodes -f 1 df -h /tmp
 pdsh -w node01,node03 which ldconfig
 ```
 
-:::
+:::page-break

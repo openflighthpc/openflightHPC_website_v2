@@ -1,5 +1,4 @@
 :::collapse Infrastructure
-
 # Infrastructure
 
 Infrastructure design largely relates to the considerations made for the [cluster architecture](https://openflighthpc.org/lab/D3S1GN/docs/network-and-hardware/#hardware-recommendations). Depending on the design being used, some of the infrastructure decisions may have already been made.
@@ -77,4 +76,4 @@ This example adds a layer of redundancy over the VM Infrastructure design by bon
 
 The above solution implements the channel bonded infrastructure in a network with VLANs. The VLANs have bond and bridge interfaces created for them. This allows some additional flexibility for VM bridging as virtual interfaces can be bridged onto specific VLANs whilst maintaining the redundancy provided by the bond. This adds additional security to the network as the master node can be left without an IP on certain VLAN bond interfaces which prevents that network from accessing the master node whilst VMs on the master node are able to reach that VLAN.
 
-:::
+:::page-break

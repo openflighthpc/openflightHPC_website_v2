@@ -1,6 +1,5 @@
 ## CLI Basics
 
-:::collapse Logging In
 
 # Logging In
 
@@ -45,9 +44,8 @@ The first time you connect to your research environment, you will be prompted to
 
 ![First login image](./extras/firstlogin.webp)
 
-:::
+:::page-break
 
-:::collapse Understanding the CLI
 
 # Understanding the CLI
 
@@ -66,9 +64,8 @@ Hello World!
 
 The prompt can vary based on user preference and global environment configuration. The above is an example for illustrative purposes.
 
-:::
+:::page-break
 
-:::collapse Moving Between Hosts
 
 # Moving Between Hosts
 
@@ -83,9 +80,8 @@ ssh node01
 ```
 
 Use the command `logout` or `exit` (or press **CTRL+D**) to exit the compute node and return to the previous host.
-:::
+:::page-break
 
-:::collapse Becoming the Root User
 
 # Becoming the Root User
 
@@ -102,4 +98,4 @@ Users must exercise caution when running commands as root, as they have the pote
 Some users may not have root privileges. This is at the discretion of your admin or system configuration.
 
 You can log out of the root user by running the command `exit`, `logout`, or by pressing **CTRL+D**.
-:::
+:::page-break

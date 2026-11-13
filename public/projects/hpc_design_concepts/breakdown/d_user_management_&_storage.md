@@ -1,5 +1,3 @@
-:::collapse User Management
-
 # User Management
 
 # User Authentication
@@ -27,9 +25,7 @@ If running firewall services within the environment (recommended) then be sure t
 - What information will need to be shared between the systems?
 - How will users want to access the system?
 
-:::
-
-:::collapse Storage
+:::page-break
 
 # Storage
 
@@ -94,9 +90,7 @@ This setup features multiple RAID sets which are installed externally to the sto
    - How can I recreate the storage service if it fails?
    - How long will it take to restore any data from backups?
 
-:::
-
-:::collapse Monitoring
+:::page-break
 
 # Monitoring
 
@@ -142,9 +136,7 @@ Cloud service providers usually have both passive and active monitoring services
    - How do we avoid over-saturation of notifications during major outages?
    - What tests will we run to ensure notifications are working properly?
 
-:::
-
-:::collapse HPC Environment
+:::page-break
 
 # HPC Environment
 
@@ -191,9 +183,7 @@ It is important that your users receive a consistent, long-term service from you
 - How will I prepare for moving to a new HPC cluster created on fresh hardware, or using cloud resources?
 - What are the disaster recovery plans for my software applications?
 
-:::
-
-:::collapse Verification
+:::page-break
 
 # Verification
 
@@ -227,8 +217,6 @@ Additionally, benchmarking can be performed using whichever applications the HPC
 # Additional Considerations and Questions
 
 - How will you know that a compute node is performing at the expected level?
-   - Gflops theoretical vs actual performance efficiency
-   - Network performance (bandwidth, latency, ping interval)
+    - Gflops theoretical vs actual performance efficiency
+    - Network performance (bandwidth, latency, ping interval)
 - How can you test nodes regularly to ensure that performance has not changed / degraded?
-
-:::
