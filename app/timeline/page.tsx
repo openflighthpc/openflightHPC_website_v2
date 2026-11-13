@@ -1,7 +1,14 @@
+import type { Metadata } from 'next';
+
 import Footer from '@/app/components/Footer';
 import { getTimelineItems } from '@/lib/timeline-handler';
 
 import Timeline from './Timeline';
+
+export const metadata: Metadata = {
+   description: 'Projects and milestones from OpenFlight Labs, most recent first.',
+   title: 'Timeline'
+};
 
 export default function TimelinePage() {
    // The timeline handler merges the projects and markdown entries, newest first

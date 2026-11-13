@@ -23,7 +23,10 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
    description: 'Stories and ideas from OpenFlight.',
-   title: 'OpenFlight Labs'
+   title: {
+      default: 'OpenFlight Labs',
+      template: '%s — OpenFlight Labs'
+   }
 };
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {
