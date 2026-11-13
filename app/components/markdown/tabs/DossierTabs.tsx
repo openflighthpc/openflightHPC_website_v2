@@ -27,7 +27,7 @@ export default function DossierTabs({
 
    return (
       <div className="flex flex-col gap-0">
-         <div role="tablist" aria-label="dossier exhibits" className="flex text-md gap-4">
+         <div role="tablist" aria-label="dossier exhibits" className="mt-2 flex text-md gap-4">
             {[
                { index: '01', key: SheetEnum.summary, label: 'Summary' },
                { index: '02', key: SheetEnum.breakdown, label: 'Breakdown' }
