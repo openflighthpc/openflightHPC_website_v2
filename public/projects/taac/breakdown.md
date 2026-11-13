@@ -31,7 +31,6 @@ Because the cluster is recreated from these settings, the same command always pr
 
 ![Image showing the taac creation process](extras/taac-create.webp)
 
-
 ### Managing Clusters
 
 Once created, clusters are managed entirely through the CLI. Environments can be paused and resumed, their configuration edited after the fact, and commands executed inside them without opening an interactive session:
@@ -60,7 +59,7 @@ The project also demonstrated the value of describing environments rather than h
 Finally, taac highlighted what a good CLI lifecycle looks like. Covering creation, customisation, execution, access and teardown inside one tool removed the usual scatter of docker commands, config files and SSH incantations, and showed how a small CLI wrapper can make disposable infrastructure feel as approachable as any other developer tool.
 
 ## Links
+
 (github)[https://github.com/acegoal07/taac]
 
 [pretty-link:::taac npm page:::A link to the taac npm page](https://www.npmjs.com/package/@acegoal07/taac)
-
