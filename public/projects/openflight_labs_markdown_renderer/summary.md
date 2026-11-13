@@ -92,9 +92,14 @@ Note the state keyword is optional; closed is the default. Nested
 containers work too.
 :::
 
+## 7. Page breaks
+
+A `:::page-break` tag will allow the page to be broken up into more easily digestable
+chunks that can make it easier to navigate. These can be placed on either the summary or the breakdown.
+
 :::page-break
 
-## 7. Before / after sliders
+## 8. Before / after sliders
 
 Two images in one paragraph, both with alt text starting with
 `before|after`, turn into a draggable slider. Left side is desaturated,
@@ -103,7 +108,7 @@ right side is the original:
 ![before|after a colour grade](extras/old.webp)
 ![before|after a colour grade](extras/new.webp)
 
-## 8. Videos
+## 9. Videos
 
 If the image extension is a video one (mp4, webm, ogg, mov, m4v) the
 renderer puts down a `<video controls>` instead of an image. Hand written
@@ -111,7 +116,7 @@ renderer puts down a `<video controls>` instead of an image. Hand written
 
 ![a sample clip](extras/demo.mp4)
 
-## 9. Tabs
+## 10. Tabs
 
 A `:::tabs` container turns its content into client-side tabs. The header
 line after `:::tabs` is a pipe-separated list of labels, and each panel
@@ -150,7 +155,7 @@ outside a tabset.
 :::
 :::
 
-## 10. Spoilers
+## 11. Spoilers
 
 `||…||` around inline content blurs it until the reader clicks. A word,
 an image and a video, all hidden:
@@ -158,7 +163,7 @@ an image and a video, all hidden:
 The secret word is ||verisimilitude||, and this image is ||![a hidden image](extras/old.webp)||
 so is this clip: ||![a hidden clip](extras/demo.mp4)||
 
-## 11. Regular markdown
+## 12. Regular markdown
 
 The usual stuff still works: gfm tables, task lists, footnotes, links and
 the rest.
