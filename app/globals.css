@@ -26,6 +26,22 @@ body {
    font-family: var(--font-chalet), Arial, Helvetica, sans-serif;
 }
 
+@keyframes timeline-brightness {
+   0%,
+   100% {
+      filter: brightness(1);
+   }
+   50% {
+      filter: brightness(1.5);
+   }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+   .timeline-node {
+      animation: timeline-brightness 2s ease-in-out infinite;
+   }
+}
+
 .animated-logo {
    width: 500px;
    max-width: 100%;
