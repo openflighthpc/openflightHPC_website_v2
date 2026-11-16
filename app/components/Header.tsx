@@ -4,11 +4,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-const navLinks = [
-   { href: '/projects', label: 'projects' },
-   { href: '/timeline', label: 'timeline' }
-];
-
 export default function Header() {
    const pathname = usePathname();
    const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
@@ -28,7 +23,10 @@ export default function Header() {
             aria-label="Main"
             className="flex items-center gap-6 text-lg font-bold tracking-widest sm:gap-10 sm:text-xl"
          >
-            {navLinks.map((link) => (
+            {[
+               { href: '/projects', label: 'projects' },
+               { href: '/timeline', label: 'timeline' }
+            ].map((link) => (
                <Link
                   key={link.href}
                   href={link.href}

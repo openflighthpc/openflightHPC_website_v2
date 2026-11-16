@@ -5,6 +5,7 @@ import path from 'node:path';
 
 import ProjectMetadata from '@/public/projects/metadata.registry';
 
+import { dateValue } from './date-formatter';
 import type { DetailedProject, Project } from './metadata-handler';
 
 export type { DetailedProject, Project } from './metadata-handler';
@@ -27,7 +28,8 @@ export function getAllProjects(): Project[] {
       return {
          id,
          ...metadata,
-         logoPath
+         logoPath,
+         timestamp: dateValue(metadata.startDate)
       } as Project;
    });
 
@@ -89,7 +91,8 @@ export function getProject(id: string): DetailedProject {
       ...metadata,
       breakdown: breakdownData,
       logoPath,
-      summary: summaryData
+      summary: summaryData,
+      timestamp: dateValue(metadata.startDate)
    } as DetailedProject;
 }
 

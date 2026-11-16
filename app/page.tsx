@@ -4,7 +4,7 @@ import Marquee from 'react-fast-marquee';
 import AnimatedLogo from '@/app/components/AnimatedLogo';
 import CardWave from '@/app/components/CardWave';
 import Footer from '@/app/components/Footer';
-import { formatDate } from '@/app/components/markdown/assets/formatDate';
+import { formatDate } from '@/lib/date-formatter';
 import { getFeaturedProjects } from '@/lib/project-handler';
 
 export default function Home() {

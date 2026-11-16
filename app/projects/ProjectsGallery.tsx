@@ -6,8 +6,7 @@ import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { RxFilter } from 'react-icons/rx';
 
-import { formatDate } from '@/app/components/markdown/assets/formatDate';
-import { dateValue } from '@/lib/date';
+import { dateValue, formatDate } from '@/lib/date-formatter';
 import type { Project } from '@/lib/project-handler';
 
 const projectGradients = [

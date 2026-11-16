@@ -2,9 +2,9 @@
 
 import Link from 'next/link';
 
+import { formatDate } from '@/lib/date-formatter';
 import { type Project } from '@/lib/project-handler';
 
-import { formatDate } from '../assets/formatDate';
 import { STATUS_TAGS } from '../assets/status';
 
 /**

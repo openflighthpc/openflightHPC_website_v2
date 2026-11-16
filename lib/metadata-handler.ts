@@ -22,6 +22,7 @@ type ProjectMetadata = z.output<typeof ProjectMetadataSchema>;
 export type Project = ProjectMetadata & {
    id: string;
    logoPath: string | null;
+   timestamp: number;
 };
 
 export type DetailedProject = Project & {
