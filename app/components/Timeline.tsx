@@ -11,32 +11,50 @@ import { Project } from '@/lib/metadata-handler';
  */
 export default function Timeline({ items }: Readonly<{ items: Project[] }>) {
    return (
-      <ol className="relative mt-12 flex flex-col">
+      <ol className="mx-auto mt-12 w-full max-w-5xl">
          {items.map((item, index) => {
             const isLast = index === items.length - 1;
+            const isLeft = index % 2 === 0;
 
             return (
-               <li key={item.id} className={`flex gap-6 ${isLast ? '' : 'pb-16'}`}>
-                  <div className="flex flex-col items-center">
-                     {/* Line node, coloured per item */}
+               <li
+                  key={item.id}
+                  className={`relative grid grid-cols-[1rem_minmax(0,1fr)] gap-x-6 gap-y-3 md:grid-cols-[minmax(0,1fr)_1rem_minmax(0,1fr)] md:gap-x-8 md:gap-y-0 ${isLast ? '' : 'pb-16'}`}
+               >
+                  {!isLast && (
                      <span
                         aria-hidden="true"
-                        className="mt-2 h-4 w-4 shrink-0 rounded-full border-2 border-black"
-                        style={{ backgroundColor: item.colour }}
+                        className="absolute -bottom-4 left-2 top-4 w-px bg-neutral-700 md:left-1/2 md:-translate-x-1/2"
                      />
+                  )}
+                  <span
+                     aria-hidden="true"
+                     className="timeline-node relative z-10 col-start-1 row-start-1 mt-2 h-4 w-4 rounded-full border-2 border-black md:col-start-2"
+                     style={{ backgroundColor: item.colour }}
+                  />
 
-                     {/* Connector to the next item */}
-                     {!isLast && <div aria-hidden="true" className="w-px flex-1 bg-neutral-700" />}
-                  </div>
-
-                  <div className="min-w-0 max-w-2xl">
-                     <p className="text-sm font-medium tracking-wide text-zinc-400">
+                  <div
+                     className={`col-start-2 row-start-1 mt-1 min-w-0 text-md font-medium tracking-wide text-white ${isLeft ? 'md:col-start-3' : 'md:col-start-1'}`}
+                  >
+                     <p
+                        className={`w-fit rounded-full border p-2 ${isLeft ? '' : 'md:ml-auto md:text-right'}`}
+                        style={{
+                           backgroundColor: `color-mix(in srgb, ${item.colour} 40%, transparent)`,
+                           borderColor: item.colour
+                        }}
+                     >
                         {formatDate(item.startDate)}
                         {dateRange(item)}
                      </p>
-                     <p className="mt-2 text-zinc-300">{item.description}</p>
+                  </div>
 
-                     <div className="mt-3 flex flex-wrap gap-2">
+                  <Link
+                     href={`/projects/${item.id}`}
+                     className={`col-start-2 cursor-pointer group border border-transparent transition duration-400 hover:border-green-900 row-start-2 min-w-0 rounded-xl bg-neutral-600/30 p-4 md:row-start-1 ${isLeft ? 'md:col-start-1 md:text-right' : 'md:col-start-3'}`}
+                  >
+                     <p className="text-white">{item.description}</p>
+
+                     <div className={`mt-3 flex flex-wrap gap-2 ${isLeft ? 'md:justify-end' : ''}`}>
                         {item.tags.map((tag) => (
                            <span
                               key={tag}
@@ -47,13 +65,10 @@ export default function Timeline({ items }: Readonly<{ items: Project[] }>) {
                         ))}
                      </div>
 
-                     <Link
-                        href={`/projects/${item.id}`}
-                        className="mt-4 inline-block text-sm font-bold text-white transition hover:text-green-400"
-                     >
+                     <p className="mt-4 inline-block text-sm font-bold text-white transition group-hover:text-green-400">
                         View project
-                     </Link>
-                  </div>
+                     </p>
+                  </Link>
                </li>
             );
          })}
