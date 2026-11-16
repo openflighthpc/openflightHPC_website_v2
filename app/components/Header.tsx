@@ -14,9 +14,9 @@ const navigationLinks = [
 
 const mobileLinks = [
    { href: '/', label: 'home' },
-    { href: '/projects', label: 'projects' },
+   { href: '/projects', label: 'projects' },
    { href: '/timeline', label: 'timeline' }
-]
+];
 
 export default function Header() {
    const pathname = usePathname();
