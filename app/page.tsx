@@ -28,8 +28,8 @@ export default function Home() {
                   >
                      OpenFlightHPC group
                   </a>
-                  . Each project in our collection represents a unique exploration — an idea tested,
-                  a hypothesis pursued, a discovery made.
+                  . Each project in our collection represents an idea explored, a hypothesis tested,
+                  or a discovery made.
                </p>
 
                <p>

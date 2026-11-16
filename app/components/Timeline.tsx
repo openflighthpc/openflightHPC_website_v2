@@ -49,7 +49,7 @@ export default function Timeline({ items }: Readonly<{ items: Project[] }>) {
                   </div>
 
                   <Link
-                   href={`/projects/${item.id}`}
+                     href={`/projects/${item.id}`}
                      className={`col-start-2 cursor-pointer group border border-transparent transition duration-400 hover:border-green-900 row-start-2 min-w-0 rounded-xl bg-neutral-600/30 p-4 md:row-start-1 ${isLeft ? 'md:col-start-1 md:text-right' : 'md:col-start-3'}`}
                   >
                      <p className="text-white">{item.description}</p>
@@ -65,10 +65,7 @@ export default function Timeline({ items }: Readonly<{ items: Project[] }>) {
                         ))}
                      </div>
 
-                     <p
-                       
-                        className="mt-4 inline-block text-sm font-bold text-white transition group-hover:text-green-400"
-                     >
+                     <p className="mt-4 inline-block text-sm font-bold text-white transition group-hover:text-green-400">
                         View project
                      </p>
                   </Link>
