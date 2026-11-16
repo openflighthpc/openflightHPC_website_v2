@@ -4,7 +4,7 @@ import { X } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { IoReorderTwoOutline } from 'react-icons/io5';
 
 const navigationLinks = [
@@ -14,9 +14,9 @@ const navigationLinks = [
 
 const mobileLinks = [
    { href: '/', label: 'home' },
-    { href: '/projects', label: 'projects' },
+   { href: '/projects', label: 'projects' },
    { href: '/timeline', label: 'timeline' }
-]
+];
 
 export default function Header() {
    const pathname = usePathname();
@@ -58,6 +58,14 @@ export default function Header() {
 function MobileNavigation({ isActive }: Readonly<{ isActive: (href: string) => boolean }>) {
    const [menuOpen, setMenuOpen] = useState(false);
 
+   useEffect(() => {
+      document.body.style.overflow = menuOpen ? 'hidden' : '';
+
+      return () => {
+         document.body.style.overflow = '';
+      };
+   }, [menuOpen]);
+
    return (
       <>
          <button
@@ -73,7 +81,7 @@ function MobileNavigation({ isActive }: Readonly<{ isActive: (href: string) => b
          {menuOpen && (
             <nav
                aria-label="Mobile navigation"
-               className="fixed inset-0 z-50 flex flex-col items-center justify-center gap-6 bg-black text-4xl font-bold tracking-widest md:hidden"
+               className="fixed inset-0 z-50 flex flex-col items-center justify-center overflow-y-auto overscroll-contain gap-6 bg-black text-4xl font-bold tracking-widest md:hidden"
             >
                <button
                   type="button"
