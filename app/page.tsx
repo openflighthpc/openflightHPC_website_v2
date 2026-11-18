@@ -74,16 +74,16 @@ export default function Home() {
                            organisations running our work
                         </span>
                         <p className="mt-3 text-sm text-zinc-400">
-                           From universities and healthcare to motorsport &amp; engineering —
-                           our research and projects have gone on to help them in production.
+                           From universities and healthcare to motorsport &amp; engineering.
+                           Our research and projects have gone on to help them in production.
                         </p>
                      </div>
                   </div>
 
                   <p className="mt-8 text-center text-sm text-zinc-400">
                      Our work has supported{' '}
-                     <span className="text-green-300/70">11+ academic institutions</span> — including{' '}
-                     <span className="text-[#f8f8f8]">University of Liverpool, UCL, University of York, University of Stirling and City St George&apos;s</span> — alongside{' '}
+                     <span className="text-green-300/70">11+ academic institutions</span> (including{' '}
+                     <span className="text-[#f8f8f8]">University of Liverpool, UCL, University of York, University of Stirling and City St George&apos;s</span>) alongside{' '}
                      <span className="text-green-300/70">4+ motorsport and engineering companies</span> (including{' '}
                      <span className="text-[#f8f8f8]">Formula 1</span>) and{' '}
                      <span className="text-green-300/70">5+ healthcare, virus and cancer research groups</span> — including{' '}
@@ -94,7 +94,7 @@ export default function Home() {
 
             <section aria-labelledby="featured-projects" className="mt-20 pb-26 w-full ">
                <h2 id="featured-projects" className="text-center text-4xl font-bold">
-                  Featured Projects
+                  Our Research Projects
                </h2>
 
                <div className="mt-10  hidden sm:block ">
