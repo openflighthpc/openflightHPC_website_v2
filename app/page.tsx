@@ -58,7 +58,7 @@ export default function Home() {
                      </div>
 
                      <div className="rounded-2xl bg-white/5 p-6 text-center">
-                        <span className="block text-4xl font-bold text-green-400/70">SC · ISC · CIUK</span>
+                        <span className="block whitespace-nowrap text-3xl font-bold text-green-400/70">SC · ISC · CIUK</span>
                         <span className="mt-2 block text-sm font-semibold tracking-wide text-[#f8f8f8]">
                            live demos at the major HPC events
                         </span>
