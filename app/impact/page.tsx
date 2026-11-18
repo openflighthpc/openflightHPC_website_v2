@@ -8,7 +8,21 @@ export const metadata: Metadata = {
    title: 'Impact'
 }
 
-const stories = [
+type ImpactStory = {
+   org: string;
+   project: {
+      href: string;
+      name: string;
+   };
+   title: string;
+   body: string[];
+   reference: {
+      href: string;
+      label: string;
+   } | null;
+};
+
+const stories: ImpactStory[] = [
    {
       org: 'University College London',
       project: { href: '/projects/flight_control', name: 'Flight Control' },
