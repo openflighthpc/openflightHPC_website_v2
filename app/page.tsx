@@ -26,6 +26,7 @@ export default function Home() {
                   for the HPC industry.
                   
                   We explore, build, test and iterate on ideas to expand and grow the capabilities of academic, commercial and nonprofit HPC & AI environments.
+                  Our work is majorly supported by <span className="text-green-400/70">Alces Flight</span>.
                </p>
 
                <p>
