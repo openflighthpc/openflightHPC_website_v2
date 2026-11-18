@@ -25,8 +25,9 @@ export default function Home() {
                   <span className="text-green-400/70"> open knowledge </span>
                   for the HPC industry.
                   
-                  We explore, build, test and iterate on ideas to expand and grow the capabilities of academic, commercial and nonprofit HPC & AI environments.
-                  Our work is majorly supported by <span className="text-green-400/70">Alces Flight</span>.
+                  Thanks to support from <span className="text-green-400/70">Alces Flight</span> we explore, build, test and iterate on ideas.
+                  
+                  Our research has helped to expand and grow the capabilities of <span className="text-green-400/70">academic</span>, <span className="text-green-400/70">commercial</span> and <span className="text-green-400/70">nonprofit</span> HPC & AI environments.
                </p>
 
                <p>
