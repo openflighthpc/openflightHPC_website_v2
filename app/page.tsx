@@ -87,7 +87,13 @@ export default function Home() {
                      <span className="text-green-300/70">4+ motorsport and engineering companies</span> (including{' '}
                      <span className="text-[#f8f8f8]">Formula 1</span>) and{' '}
                      <span className="text-green-300/70">5+ healthcare, virus and cancer research groups</span> — including{' '}
-                     <span className="text-[#f8f8f8]">the NHS and CompBioMed</span>.
+                     <span className="text-[#f8f8f8]">the NHS and CompBioMed</span>. See{' '}
+                     <Link
+                        href="/impact"
+                        className="text-green-300/70 underline transition hover:text-green-400"
+                     >
+                        where our work has been used
+                     </Link>.
                   </p>
                </div>
             </section>
