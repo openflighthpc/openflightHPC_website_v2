@@ -16,20 +16,16 @@ export default function Home() {
             <AnimatedLogo />
             <div className="w-full sm:mt-[-160] mt-[-100] font-bold tracking-wide flex flex-col mx-80 text-lg justify-center w-full max-w-4xl mx-auto px-6 flex flex-col gap-6 text-center">
                <p>
-                  Welcome to the{' '}
                   <em>
-                     OpenFlight <span className="text-green-400/70">Labs</span>
+                     OpenFlight <span className="text-green-400/70">Labs</span>{' '} 
                   </em>
-                  , a curated collection of research and development experiments from the{' '}
-                  <a
-                     href="https://github.com/openflighthpc"
-                     className="text-green-300/70 underline transition hover:text-green-400"
-                     target="_blank"
-                  >
-                     OpenFlightHPC group
-                  </a>
-                  . Each project in our collection represents an idea explored, a hypothesis tested,
-                  or a discovery made.
+                  provides
+                  <span className="text-green-400/70"> community tools </span> 
+                  and 
+                  <span className="text-green-400/70"> open knowledge </span>
+                  for the HPC industry.
+                  
+                  We explore, build, test and iterate on ideas to expand and grow the capabilities of academic, commercial and nonprofit HPC & AI environments.
                </p>
 
                <p>
