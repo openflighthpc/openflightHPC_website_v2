@@ -22,15 +22,21 @@ export default function Footer() {
                className="h-auto w-full max-w-[400px]"
             />
             <p className="mt-2 text-[8px] sm:text-sm md:text-lg tracking-wide text-center">
-               Maintained by{' '}
+               Supported by{' '}
                <a
                   target="_blank"
-                  href="https://github.com/openflighthpc"
-                  className="text-green-400 transition hover:underline"
+                  rel="noopener"
+                  href="https://alces-flight.com"
+                  className="inline-block align-middle"
                >
-                  OpenFlightHPC
-               </a>{' '}
-               © {new Date().getFullYear()}
+                  <Image
+                     src="/alces-flight-horizontal.png"
+                     width={394}
+                     height={85}
+                     alt="Alces Flight"
+                     className="ml-1 inline-block h-auto w-20 align-middle sm:w-32 md:w-40"
+                  />
+               </a>
             </p>
          </div>
 

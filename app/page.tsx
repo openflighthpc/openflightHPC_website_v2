@@ -16,20 +16,18 @@ export default function Home() {
             <AnimatedLogo />
             <div className="w-full sm:mt-[-160] mt-[-100] font-bold tracking-wide flex flex-col mx-80 text-lg justify-center w-full max-w-4xl mx-auto px-6 flex flex-col gap-6 text-center">
                <p>
-                  Welcome to the{' '}
                   <em>
-                     OpenFlight <span className="text-green-400/70">Labs</span>
+                     OpenFlight <span className="text-green-400/70">Labs</span>{' '} 
                   </em>
-                  , a curated collection of research and development experiments from the{' '}
-                  <a
-                     href="https://github.com/openflighthpc"
-                     className="text-green-300/70 underline transition hover:text-green-400"
-                     target="_blank"
-                  >
-                     OpenFlightHPC group
-                  </a>
-                  . Each project in our collection represents an idea explored, a hypothesis tested,
-                  or a discovery made.
+                  provides
+                  <span className="text-green-400/70"> community tools </span> 
+                  and 
+                  <span className="text-green-400/70"> open knowledge </span>
+                  for the HPC industry.
+                  
+                  Thanks to support from <span className="text-green-400/70">Alces Flight</span> we explore, build, test and iterate on ideas.
+                  
+                  Our research has helped to expand and grow the capabilities of <span className="text-green-400/70">academic</span>, <span className="text-green-400/70">commercial</span> and <span className="text-green-400/70">nonprofit</span> HPC & AI environments.
                </p>
 
                <p>
@@ -43,9 +41,68 @@ export default function Home() {
                </p>
             </div>
 
+            <section aria-labelledby="community-presence" className="mt-20 w-full">
+               <div className="mx-auto w-full max-w-4xl px-6">
+                  <h2 id="community-presence" className="text-center text-4xl font-bold">
+                     Present in the Community
+                  </h2>
+
+                  <div className="mt-10 grid gap-6 sm:grid-cols-3">
+                     <div className="rounded-2xl bg-white/5 p-6 text-center">
+                        <span className="block text-4xl font-bold text-green-400/70">400+</span>
+                        <span className="mt-2 block text-sm font-semibold tracking-wide text-[#f8f8f8]">
+                           students educated, trained &amp; challenged
+                        </span>
+                        <p className="mt-3 text-sm text-zinc-400">
+                           Since 2020 through our cluster training roadshow, Student Cluster
+                           Competition contributions and community workshops.
+                        </p>
+                     </div>
+
+                     <div className="rounded-2xl bg-white/5 p-6 text-center">
+                        <span className="block whitespace-nowrap text-3xl font-bold text-green-400/70">SC · ISC · CIUK</span>
+                        <span className="mt-2 block text-sm font-semibold tracking-wide text-[#f8f8f8]">
+                           live demos at the major HPC events
+                        </span>
+                        <p className="mt-3 text-sm text-zinc-400">
+                           Performed live at Supercomputing, ISC and CIUK on booths including
+                           Alces, AWS, Azure and Google Cloud.
+                        </p>
+                     </div>
+
+                     <div className="rounded-2xl bg-white/5 p-6 text-center">
+                        <span className="block text-4xl font-bold text-green-400/70">20+</span>
+                        <span className="mt-2 block text-sm font-semibold tracking-wide text-[#f8f8f8]">
+                           organisations running our work
+                        </span>
+                        <p className="mt-3 text-sm text-zinc-400">
+                           From universities and healthcare to motorsport &amp; engineering.
+                           Our research and projects have gone on to help them in production.
+                        </p>
+                     </div>
+                  </div>
+
+                  <p className="mt-8 text-center text-sm text-zinc-400">
+                     Our work has supported{' '}
+                     <span className="text-green-300/70">11+ academic institutions</span> (including{' '}
+                     <span className="text-[#f8f8f8]">University of Liverpool, UCL, University of York, University of Stirling and City St George&apos;s</span>) alongside{' '}
+                     <span className="text-green-300/70">4+ motorsport and engineering companies</span> (including{' '}
+                     <span className="text-[#f8f8f8]">Formula 1</span>) and{' '}
+                     <span className="text-green-300/70">5+ healthcare, virus and cancer research groups</span> — including{' '}
+                     <span className="text-[#f8f8f8]">the NHS and CompBioMed</span>. See{' '}
+                     <Link
+                        href="/impact"
+                        className="text-green-300/70 underline transition hover:text-green-400"
+                     >
+                        where our work has been used
+                     </Link>.
+                  </p>
+               </div>
+            </section>
+
             <section aria-labelledby="featured-projects" className="mt-20 pb-26 w-full ">
                <h2 id="featured-projects" className="text-center text-4xl font-bold">
-                  Featured Projects
+                  Our Research Projects
                </h2>
 
                <div className="mt-10  hidden sm:block ">

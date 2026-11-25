@@ -8,12 +8,14 @@ import { useEffect, useState } from 'react';
 import { IoReorderTwoOutline } from 'react-icons/io5';
 
 const navigationLinks = [
+   { href: '/impact', label: 'impact' },
    { href: '/projects', label: 'projects' },
    { href: '/timeline', label: 'timeline' }
 ];
 
 const mobileLinks = [
    { href: '/', label: 'home' },
+   { href: '/impact', label: 'impact' },
    { href: '/projects', label: 'projects' },
    { href: '/timeline', label: 'timeline' }
 ];
