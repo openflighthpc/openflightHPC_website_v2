@@ -17,17 +17,18 @@ export default function Home() {
             <div className="w-full sm:mt-[-160] mt-[-100] font-bold tracking-wide flex flex-col mx-80 text-lg justify-center w-full max-w-4xl mx-auto px-6 flex flex-col gap-6 text-center">
                <p>
                   <em>
-                     OpenFlight <span className="text-green-400/70">Labs</span>{' '} 
+                     OpenFlight <span className="text-green-400/70">Labs</span>{' '}
                   </em>
                   provides
-                  <span className="text-green-400/70"> community tools </span> 
-                  and 
+                  <span className="text-green-400/70"> community tools </span>
+                  and
                   <span className="text-green-400/70"> open knowledge </span>
-                  for the HPC industry.
-                  
-                  Thanks to support from <span className="text-green-400/70">Alces Flight</span> we explore, build, test and iterate on ideas.
-                  
-                  Our research has helped to expand and grow the capabilities of <span className="text-green-400/70">academic</span>, <span className="text-green-400/70">commercial</span> and <span className="text-green-400/70">nonprofit</span> HPC & AI environments.
+                  for the HPC industry. Thanks to support from{' '}
+                  <span className="text-green-400/70">Alces Flight</span> we explore, build, test
+                  and iterate on ideas. Our research has helped to expand and grow the capabilities
+                  of <span className="text-green-400/70">academic</span>,{' '}
+                  <span className="text-green-400/70">commercial</span> and{' '}
+                  <span className="text-green-400/70">nonprofit</span> HPC & AI environments.
                </p>
 
                <p>
@@ -60,13 +61,15 @@ export default function Home() {
                      </div>
 
                      <div className="rounded-2xl bg-white/5 p-6 text-center">
-                        <span className="block whitespace-nowrap text-3xl font-bold text-green-400/70">SC · ISC · CIUK</span>
+                        <span className="block whitespace-nowrap text-3xl font-bold text-green-400/70">
+                           SC · ISC · CIUK
+                        </span>
                         <span className="mt-2 block text-sm font-semibold tracking-wide text-[#f8f8f8]">
                            live demos at the major HPC events
                         </span>
                         <p className="mt-3 text-sm text-zinc-400">
-                           Performed live at Supercomputing, ISC and CIUK on booths including
-                           Alces, AWS, Azure and Google Cloud.
+                           Performed live at Supercomputing, ISC and CIUK on booths including Alces,
+                           AWS, Azure and Google Cloud.
                         </p>
                      </div>
 
@@ -76,8 +79,8 @@ export default function Home() {
                            organisations running our work
                         </span>
                         <p className="mt-3 text-sm text-zinc-400">
-                           From universities and healthcare to motorsport &amp; engineering.
-                           Our research and projects have gone on to help them in production.
+                           From universities and healthcare to motorsport &amp; engineering. Our
+                           research and projects have gone on to help them in production.
                         </p>
                      </div>
                   </div>
@@ -85,17 +88,26 @@ export default function Home() {
                   <p className="mt-8 text-center text-sm text-zinc-400">
                      Our work has supported{' '}
                      <span className="text-green-300/70">11+ academic institutions</span> (including{' '}
-                     <span className="text-[#f8f8f8]">University of Liverpool, UCL, University of York, University of Stirling and City St George&apos;s</span>) alongside{' '}
-                     <span className="text-green-300/70">4+ motorsport and engineering companies</span> (including{' '}
-                     <span className="text-[#f8f8f8]">Formula 1</span>) and{' '}
-                     <span className="text-green-300/70">5+ healthcare, virus and cancer research groups</span> — including{' '}
-                     <span className="text-[#f8f8f8]">the NHS and CompBioMed</span>. See{' '}
+                     <span className="text-[#f8f8f8]">
+                        University of Liverpool, UCL, University of York, University of Stirling and
+                        City St George&apos;s
+                     </span>
+                     ) alongside{' '}
+                     <span className="text-green-300/70">
+                        4+ motorsport and engineering companies
+                     </span>{' '}
+                     (including <span className="text-[#f8f8f8]">Formula 1</span>) and{' '}
+                     <span className="text-green-300/70">
+                        5+ healthcare, virus and cancer research groups
+                     </span>{' '}
+                     — including <span className="text-[#f8f8f8]">the NHS and CompBioMed</span>. See{' '}
                      <Link
                         href="/impact"
                         className="text-green-300/70 underline transition hover:text-green-400"
                      >
                         where our work has been used
-                     </Link>.
+                     </Link>
+                     .
                   </p>
                </div>
             </section>

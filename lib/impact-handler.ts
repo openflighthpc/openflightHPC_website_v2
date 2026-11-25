@@ -33,7 +33,11 @@ function parseMarkdownLink(line: string): { href: string; label: string } | null
  * paragraphs and optional `Deployed by:` / `Reference:` link lines.
  */
 function parseStory(id: string, raw: string): ImpactStory {
-   const lines = raw.trim().split('\n').map((line) => line.trim()).filter(Boolean);
+   const lines = raw
+      .trim()
+      .split('\n')
+      .map((line) => line.trim())
+      .filter(Boolean);
 
    const org = (lines[0]?.match(/^#\s+(.+)$/) ?? [])[1] ?? '';
    const title = (lines[1]?.match(/^##\s+(.+)$/) ?? [])[1] ?? '';
