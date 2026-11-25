@@ -7,7 +7,7 @@ import { getAllImpactStories } from '@/lib/impact-handler';
 export const metadata: Metadata = {
    description: 'Where OpenFlight Labs projects have been used and the difference they made.',
    title: 'Impact'
-}
+};
 
 export default function ImpactPage() {
    const stories = getAllImpactStories();
@@ -15,14 +15,13 @@ export default function ImpactPage() {
    return (
       <>
          <main className="mx-auto w-full max-w-7xl flex-1 px-6 py-12 sm:px-16 text-white">
-            <h1 className="text-4xl font-bold">Impact</h1>
-            <p className="mt-4 max-w-3xl text-lg text-zinc-400">
-               Our projects don&apos;t stay in the lab.
-               Here&apos;s where they&apos;ve been used, and what the organisations
-               using them have achieved.
+            <h1 className="text-center text-4xl font-bold">Impact</h1>
+            <p className="mx-auto mt-4 max-w-3xl text-center text-lg text-zinc-400">
+               Our projects don&apos;t stay in the lab. Here&apos;s where they&apos;ve been used,
+               and what the organisations using them have achieved.
             </p>
 
-            <div className="mt-10 flex flex-col gap-10">
+            <div className="mt-10 flex flex-col items-center gap-10">
                {stories.map((story) => (
                   <article
                      key={story.title}
@@ -33,10 +32,7 @@ export default function ImpactPage() {
                      </p>
                      <h2 className="mt-2 text-2xl font-bold">{story.title}</h2>
                      {story.body.map((paragraph) => (
-                        <p
-                           key={paragraph}
-                           className="mt-3 text-zinc-300"
-                        >
+                        <p key={paragraph} className="mt-3 text-zinc-300">
                            {paragraph}
                         </p>
                      ))}
