@@ -71,8 +71,7 @@ export default function ImpactPage() {
             </div>
 
             <p className="mt-10 max-w-3xl text-zinc-400">
-               More customer stories are in the works — including one of the
-               most prolific users of the Flight Web Suite.{' '}
+               More customer stories are in the works.{' '}
                <Link
                   href="/projects"
                   className="text-green-300/70 underline transition hover:text-green-400"
