@@ -66,7 +66,7 @@ export default function ImpactPage() {
                ))}
             </div>
 
-            <p className="mt-10 max-w-3xl text-zinc-400 text-center m-a">
+            <p className="mt-10 max-w-3xl text-zinc-400 text-center m-auto">
                More customer stories are in the works.{' '}
                <Link
                   href="/projects"
