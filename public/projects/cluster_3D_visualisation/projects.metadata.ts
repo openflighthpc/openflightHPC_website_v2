@@ -5,7 +5,7 @@ export default defineProjectMetadata({
    description: 'A 3D Visualisation of a Cluster',
    endDate: '01/05/2024',
    featured: true,
-   languages: [ 'html', 'css', 'typescript'],
+   languages: ['html', 'css', 'typescript'],
    name: 'Cluster 3D Visualisation',
    startDate: '11/07/2026',
    status: 'in-progress',
