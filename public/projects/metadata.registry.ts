@@ -1,5 +1,6 @@
 import alces_job from './alces_job/projects.metadata';
 import carbon_leaderboard from './carbon_leaderboard/projects.metadata';
+import cve_monitoring from './cve_monitoring/projects.metadata';
 import diskless_stack from './diskless_stack/projects.metadata';
 import flight_control from './flight_control/projects.metadata';
 import flight_environment from './flight_environment/projects.metadata';
@@ -22,6 +23,7 @@ import cluster_3D_visualisation from './cluster_3D_visualisation/projects.metada
 const ProjectMetadata = {
    alces_job,
    carbon_leaderboard,
+   cve_monitoring,
    diskless_stack,
    flight_control,
    flight_environment,
