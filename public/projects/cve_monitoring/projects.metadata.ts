@@ -4,7 +4,7 @@ export default defineProjectMetadata({
    colour: '#841B2D',
    description: 'Rapidly Responding to CVEs and Security Threats',
    featured: true,
-   languages: ['ruby', 'html', 'css', 'javascript'],
+   languages: ['python', 'shell script'],
    name: 'HPC CVE Triage',
    startDate: '01/10/2026',
    status: 'in-progress',
