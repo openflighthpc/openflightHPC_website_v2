@@ -3,6 +3,7 @@
 Performed R&D into developing a custom CVE scanning tool focused on vulnerabilities relevant to HPC environments, rather than traditional scanners that can produce large numbers of findings that aren't necessarily relevant.
 
 The main aims were:
+
 - Agentless/remote - no additional software required on cluster nodes.
 - Identify CVEs particularly relevant to HPC systems, such as privilege escalation and unauthorised access.
 - Reduce the amount of manual work required to review CVEs.
