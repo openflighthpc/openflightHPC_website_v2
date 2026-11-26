@@ -12,4 +12,4 @@ AI was used to help develop a python script, this pulled data from several sourc
 
 The resulting script provides a way of identifying and filtering potentially relevant CVEs, helping narrow down which vulnerabilities require further manual investigation.
 
-![Example output](extras/cves.png)
+![Example output](extras/cves.webp)
