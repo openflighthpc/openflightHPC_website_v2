@@ -25,7 +25,7 @@ export default function Header() {
    const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
 
    return (
-      <header className="sticky top-0 z-80 flex h-16 w-full items-center justify-between bg-black/80 px-8 text-white sm:px-16">
+      <header className="sticky top-0 backdrop-blur-sm z-80 flex h-16 w-full items-center justify-between bg-black/80 px-8 text-white sm:px-16">
          <Link href="/" className="cursor-pointer">
             <Image
                src="/header_logo.svg"

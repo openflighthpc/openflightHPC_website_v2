@@ -1,7 +1,7 @@
 import { defineProjectMetadata } from '@/lib/metadata-handler';
 
 export default defineProjectMetadata({
-   colour: '#096b73',
+   colour: '#386b2a',
    description: 'A custom markdown renderer with enhanced features and styling',
    featured: true,
    languages: ['markdown'],

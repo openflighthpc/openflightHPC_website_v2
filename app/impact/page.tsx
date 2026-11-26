@@ -14,9 +14,13 @@ export default function ImpactPage() {
 
    return (
       <>
-         <main className="mx-auto w-full max-w-7xl flex-1 px-6 py-12 sm:px-16 text-white">
-            <h1 className="text-center text-4xl font-bold">Impact</h1>
-            <p className="mx-auto mt-4 max-w-3xl text-center text-lg text-zinc-400">
+         <main className="mx-auto w-full max-w-7xl flex-1 px-6 sm:px-16 py-12">
+            <div className="w-full flex justify-center">
+               <h1 className="text-center w-fit mt-14 text-4xl font-bold sm:text-5xl md:text-6xl bg-linear-to-r from-green-500 to-green-200 bg-clip-text text-transparent">
+                  Our Impact
+               </h1>
+            </div>
+            <p className="mx-auto mt-4 max-w-3xl text-center text-lg sm:text-xl text-zinc-400">
                Our projects don&apos;t stay in the lab. Here&apos;s where they&apos;ve been used,
                and what the organisations using them have achieved.
             </p>

@@ -17,6 +17,7 @@ import openflight_labs_markdown_renderer from './openflight_labs_markdown_render
 import SACCT_reporter_and_SACCT_API from './SACCT_reporter_and_SACCT_API/projects.metadata';
 import taac from './taac/projects.metadata';
 import vem2 from './vem2/projects.metadata';
+import cluster_3D_visualisation from './cluster_3D_visualisation/projects.metadata';
 
 const ProjectMetadata = {
    alces_job,
@@ -37,7 +38,8 @@ const ProjectMetadata = {
    openflight_labs_markdown_renderer,
    SACCT_reporter_and_SACCT_API,
    taac,
-   vem2
+   vem2,
+   cluster_3D_visualisation
 };
 
 export default ProjectMetadata;

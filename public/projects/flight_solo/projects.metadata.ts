@@ -1,7 +1,7 @@
 import { defineProjectMetadata } from '@/lib/metadata-handler';
 
 export default defineProjectMetadata({
-   colour: '#9d298b',
+   colour: '#a52650',
    description: 'HPC-ready, platform-agnostic image approach to deploying HPC resources',
    endDate: '01/08/2024',
    featured: true,

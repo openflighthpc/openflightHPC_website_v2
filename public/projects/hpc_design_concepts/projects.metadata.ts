@@ -1,6 +1,7 @@
 import { defineProjectMetadata } from '@/lib/metadata-handler';
 
 export default defineProjectMetadata({
+   colour: '#2f76a6',
    description: 'An introduction to HPC concepts and considerations when designing an environment.',
    endDate: '01/06/2023',
    featured: true,
