@@ -1,5 +1,6 @@
 import alces_job from './alces_job/projects.metadata';
 import carbon_leaderboard from './carbon_leaderboard/projects.metadata';
+import cluster_3D_visualisation from './cluster_3D_visualisation/projects.metadata';
 import cve_monitoring from './cve_monitoring/projects.metadata';
 import diskless_stack from './diskless_stack/projects.metadata';
 import flight_control from './flight_control/projects.metadata';
@@ -18,11 +19,11 @@ import openflight_labs_markdown_renderer from './openflight_labs_markdown_render
 import SACCT_reporter_and_SACCT_API from './SACCT_reporter_and_SACCT_API/projects.metadata';
 import taac from './taac/projects.metadata';
 import vem2 from './vem2/projects.metadata';
-import cluster_3D_visualisation from './cluster_3D_visualisation/projects.metadata';
 
 const ProjectMetadata = {
    alces_job,
    carbon_leaderboard,
+   cluster_3D_visualisation,
    cve_monitoring,
    diskless_stack,
    flight_control,
@@ -40,8 +41,7 @@ const ProjectMetadata = {
    openflight_labs_markdown_renderer,
    SACCT_reporter_and_SACCT_API,
    taac,
-   vem2,
-   cluster_3D_visualisation
+   vem2
 };
 
 export default ProjectMetadata;
