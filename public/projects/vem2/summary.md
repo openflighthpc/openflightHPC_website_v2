@@ -128,7 +128,7 @@ There is also a doctor command for when a vviz isn't behaving, which goes throug
 
 There are two frontends. The main one is AlcesNova, a proper portal which takes the user through a wizard of flavour, operating system, seasonings, time limit and whether they want a desktop session, then tracks the job and shows how to connect once it is running, with the expected start time pulled from the api so users know when their vviz will actually come up.
 
-![the alcesnova landing page](extras/frontend/homepage.webp)
+![the alcesnova landing page](extras/frontend/homepage3.webp)
 ![the flavour step of the wizard](extras/frontend/flavourChoice.webp)
 ![the operating system step](extras/frontend/osChoice.webp)
 ![the seasonings step](extras/frontend/packageChoice.webp)
